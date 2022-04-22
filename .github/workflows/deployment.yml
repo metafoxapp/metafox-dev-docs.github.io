@@ -30,11 +30,14 @@ jobs:
       - run: yarn
       - run: yarn build
 
-      - uses: burnett01/rsync-deployments@5.1
+      - name: Commit files
+        run: |
+          git config --local user.email "namnv@younetgroup.com"
+          git config --local user.name "jacky158"
+          git commit -m "Rebuild document" -a
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
         with:
-          switches: -avzr --delete
-          path: .docz/dist/
-          remote_user: root
-          remote_host: 159.65.143.162
-          remote_path: /home/docs/
-          remote_key: ${{ secrets.DEPLOY_KEY }}
+          github_token: ${{ secrets.PERSONAL_TOKEN }}
+          branch: ${{ github.ref }}
