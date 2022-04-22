@@ -1,0 +1,170 @@
+---
+route: /frontend/theme
+name: Theme
+menu: Frontend
+---
+
+# Basic
+
+phpFox platform theme system is based on [Material-UI](https://mui.com/), A [ThemeProvider]() component created and you are able to acess all standard `Material-UI` features in phpfox platform.
+
+## Theme ThemeProvider
+
+You can pass a custom css rules overrides to global, by modify themeOptions:
+
+```tsx
+// file packages/sites/example/src/themeOptions.tsx
+
+const themeOptions = {
+  overrides: {
+    MuiCssBaseline: {
+      'your-css-selector': {
+        // pass css object here
+      }
+    }
+  }
+};
+```
+
+Reading futher information https://mui.com/material-ui/customization/theming/#themeprovider
+
+## styled
+
+Most of developers write custom styles using makeStyles, creatStyles features, look likes:
+
+```tsx
+// file MyComponent.styles.tsx
+import { makeStyles, createStyles, Theme } from '@metafox/ui/styles';
+
+const useStyles = makeStyles(
+  (theme: Theme) =>
+    createStyles({
+      root: {},
+      header: {
+        display: 'flex',
+        alignItems: 'center',
+        color: theme.palette.primary.main,
+        marginBottom: theme.spacing(2)
+      }
+    }),
+  { name: 'MuiSideMenu' }
+);
+
+export default useStyles;
+```
+
+In component
+
+```tsx
+// file MyComponent.tsx
+import useStyles from './MyComponent.styles'
+
+const MyComponent = ()=>{
+  const classes  = useStyles();
+
+  return (
+    <div className={classes.root}>
+      ... others class access here.
+    </div>);
+}
+
+Control className logic
+
+Most of developers control React className properties logic by `classnames` or `clsx` tools.
+`clsx` is choice of `Material-UI` team. I dont know why but we should not add others tools for the same features.
+
+For more information you can check [trends](https://www.npmtrends.com/classnames-vs-clsx) and [clsx](https://github.com/lukeed/clsx)
+
+```
+
+## Variables
+
+TBD by @sonh
+
+## Add mixins
+
+TBD by @sonh
+
+## Dark mode vs Light mode
+
+TBD by @sonh
+
+## Theme Editor
+
+TBD by @sonh
+
+## Guidelines
+
+- Separate styling to `*.styles.tsx`
+- Do not pass object to `useStyles`
+- TBD by @sonh
+
+## Typescript
+
+In others to extends declaration, read futher [Customization of theme](https://material-ui.com/guides/typescript/#customization-of-theme) and [Module Augmentation](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation)
+
+# Theming
+
+Theming is the ability to systematically customize site look & feel to better reflect your product’s brand such as color, spacing, round corner, shadow, background and typography.
+
+@metafox provider MaterialUI ThemeProvider at RootContainer, developer can access add new variable to themes provider.
+
+## Variables
+
+```js
+// file /src/themes.tsx
+export default {
+  status: {
+    color: '#dadada',
+    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'
+  }
+};
+```
+
+## Hook
+
+using `useTheme` in pure function to get theme variable
+
+Examples
+
+```jsx
+import { useTheme } from '@metafox/core/theme';
+
+export const MyComponent = () => {
+  const theme = useTheme();
+  return (
+    <span
+      style={{ background: theme.status.background, color: theme.status.color }}
+    >
+      Using Theme Variable
+    </span>
+  );
+};
+```
+
+## HOC
+
+Examples
+
+```jsx
+import { withTheme } from '@metafox/core/theme';
+
+function DeepChildRaw(props) {
+  const theme = useTheme();
+  return (
+    <span
+      style={{ background: theme.status.background, color: theme.status.color }}
+    >
+      Using Theme Variable
+    </span>
+  );
+}
+
+const DeepChild = withTheme(DeepChildRaw);
+```
+
+## Theme Questions
+
+1. How to add new custom fonts ?
+2. How to add more icon ?
+3. Use font icon vs svg icon ?

@@ -1,0 +1,110 @@
+---
+name: Contentable
+menu: Backend
+---
+
+# Contentable
+
+This is an interface of a Contract Content. Example: Blog, Photo v.v...
+
+A Contract Content always has user_id, user_type, owner_id, owner_type.
+
+```php
+
+namespace FoxSocial\Platform\Contracts;
+
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Support\Collection;
+
+interface Content extends Entity
+{
+    /**
+     * @return int
+     */
+    public function userId(): int;
+
+    /**
+     * @return string
+     */
+    public function userType(): string;
+
+    /**
+     * @return int
+     */
+    public function ownerId(): int;
+
+    /**
+     * @return string
+     */
+    public function ownerType(): string;
+
+    /**
+     * @return User|MorphTo
+     */
+    public function user();
+
+    /**
+     * @return UserEntity|BelongsTo
+     */
+    public function userEntity();
+
+    /**
+     * @return User|MorphTo
+     */
+    public function owner();
+
+    /**
+     * @return UserEntity|BelongsTo
+     */
+    public function ownerEntity();
+}
+
+```
+
+# HasNestedAttributes
+
+Platform provides a trait to support quick saving relation data: FoxSocial\Platform\Traits\Eloquent\Model\HasNestedAttributes
+
+Example if you has Blog, Blog Category, Blog Tags. To quick save, define nestedAttributes the same name with relation.
+
+```php
+use FoxSocial\Platform\Traits\Eloquent\Model\HasNestedAttributes;
+
+class Blog extends Model implements Content
+{
+    use HasNestedAttributes;
+
+    public $nestedAttributes = [
+        'categories',
+        'blog_text' => ['text', 'text_parsed'],
+    ];
+
+    public function categories(): BelongsToMany
+    {
+        // relation.
+    }
+
+    public function blog_text(): HasOne
+    {
+        // relation
+    }
+}
+
+```
+
+Usage
+
+```php
+$blog = new Blog();
+$blog->fill([
+    'title' => 'abc',
+    'categories' => [1, 2, 3],
+    'blog_text' => [
+
+    ]
+])
+$blog->save();
+```

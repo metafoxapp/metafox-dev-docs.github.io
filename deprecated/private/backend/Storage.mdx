@@ -1,0 +1,11 @@
+---
+name: Storage
+route: /storage
+hidden: true
+---
+
+In order to support multiple storage system, we use numeric string as disk identity instead of driver name
+
+Instead of `Storage::disk('public')` => `Storage::disk(0)`
+
+Instead of `Storage::disk('aws')` => `Storage::disk('1')`

@@ -1,0 +1,169 @@
+---
+route: /frontend/dialog
+name: Dialog
+menu: Frontend
+---
+
+@metafox `Dialog` is based on [Material-UI Dialog](https://material-ui.com/components/dialogs/#dialog),
+We wrapped in a Controller and `dialogBackend` services
+to make developers more easily to work with Dialog Component, by `dialogBackend` service and `useDialog` hooks.
+
+## Create Dialog
+
+Example declaration a simple dialog. Note that annotations must be begine of source file.
+
+```tsx
+/**
+ * @type: dialog
+ * name: ExampleDialog
+ *
+ */
+
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle
+} from '@metafox/dialog';
+import React from 'react';
+
+export default function ExampleDialog({
+  title,
+  message
+}}) {
+  const { useDialog } = useGlobal();
+  const { setDialogValue, dialogProps } = useDialog();
+
+  const onSubmit = () => setDialogValue(true);
+
+  const onCancel = () => setDialogValue();
+
+  return (
+    <Dialog {...dialogProps}>
+      <DialogTitle id="dialog-title">{title}</DialogTitle>
+      <DialogContent>{message}</DialogContent>
+      <DialogActions>
+        <Button onClick={onCancel}>OK</Button>
+        <Button onClick={onSubmit}>Cancel</Button>
+      </DialogActions>
+    </Dialog>
+  );
+}
+```
+
+## Export Dialog
+
+Using @metafox annotations syntax to use the created dialog.
+
+etc: this source defines a dialog named `sampleModalDialog`
+
+```text
+/**
+ * @type: dialog
+ * name: sampleModalDialog
+ */
+```
+
+## Present
+
+```tsx
+const value = await dialogBackend.present({
+  component: 'sampleModalDialog',
+  props: {
+    title: 'Simple Dialog Title',
+    message:
+      'This is simple dialog demo, you can extends with others function laters.'
+  }
+});
+
+In order to present dialog, pass compnent = "sampleModalDialog" to dialogBackend.
+
+dialogBackend
+  .present({
+    component: 'sampleModalDialog',
+    props: {
+      title: 'Simple Dialog Title',
+      message:
+        'This is simple dialog demo, you can extends with others function laters.'
+    }
+  })
+  .then(value => {
+    // your code
+  });
+```
+
+### Alert
+
+Single line message
+
+```tsx
+dialogBackend.alert({
+  title: 'Alert',
+  messsage: 'You can not delete this content!'
+});
+```
+
+Multiple line message
+
+```tsx
+dialogBackend.alert({
+  message:
+    '- Checking the network cables, modem, and router\n- Reconnecting to Wi-Fi'
+});
+```
+
+Message Component
+
+Content of message should be wrapped in <DialogContentText/> to keep consistent look and feel.
+
+```tsx
+dialogBackend.alert({
+  message: (
+    <DialogContentText>
+      Checking the network cables, modem, and router
+    </DialogContentText>
+  )
+});
+```
+
+### Confirm
+
+```tsx
+const ok: boolean = await dialogBackend.confirm({
+  title: 'Confirm',
+  messsage: 'Are you sure?'
+});
+```
+
+Message content is similar to alert method.
+
+Custom Button
+
+```tsx
+const ok: boolean = await dialogBackend.confirm({
+  title: 'Confirm',
+  messsage: 'Are you sure?'
+});
+```
+
+### Dismiss
+
+Dismiss presenting dialog
+
+```tsx
+dialogBackend.dimiss();
+```
+
+### Dismiss All
+
+Dimiss all dialog
+
+```tsx
+dialogBackend.dismiss(true);
+```
+
+### Dialog Form
+
+Using `setDialogValue` to set value for current promise call.

@@ -1,0 +1,112 @@
+---
+route: /performance-review
+name: Performance Review
+hidden: true
+---
+
+Tools:
+
+- psql explain analyze
+- stress test: locust - graphql client
+
+# Performance Review
+
+| id             | value     |
+| :------------- | :-------- |
+| event          | 22,779    |
+| group          | 28,675    |
+| page           | 29,032    |
+| user           | 93,851    |
+| music_album    | 435,462   |
+| music_playlist | 435,543   |
+| blog           | 869411    |
+| photo_album    | 869,534   |
+| photo          | 871,076   |
+| video          | 956,850   |
+| friend         | 1,126,988 |
+| feed           | 8,324,581 |
+
+## Postgres
+
+```postgresql
+EXPLAIN ANALYZE
+SELECT stream.feed_id
+FROM activity_streams AS stream
+      JOIN activity_subscriptions AS follow
+           ON (stream.owner_id = follow.owner_id)
+      JOIN activity_privacy_members AS pm
+           ON (pm.privacy_id = stream.privacy_id)
+WHERE
+    follow.user_id = 1
+    AND stream.updated_at > '2021-03-27 21:31:07'
+    AND pm.user_id = 1
+    ORDER BY stream.updated_at DESC
+LIMIT 10;
+
+--- select all blogs
+EXPLAIN ANALYSE
+SELECT data.*
+FROM blogs data
+         JOIN blog_privacy_streams ps ON (data.id = ps.item_id)
+         JOIN core_privacy_members pm ON ps.privacy_id = pm.privacy_id
+WHERE pm.user_id = 1
+GROUP BY data.id
+LIMIT 10;
+```
+
+## Mysql
+
+| id              | value     |
+| :-------------- | :-------- |
+| activity_post   | 594603    |
+| blog            | 538217    |
+| event           | 7107      |
+| group           | 14208     |
+| music_album     | 269678    |
+| music_playlist  | 268996    |
+| music_song      | 594709    |
+| page            | 14294     |
+| photo           | 537551    |
+| photo_album     | 540183    |
+| user            | 72,418    |
+| feed            | 5,151,431 |
+| friend          | 2,691,185 |
+| privacy_members | 3,701,733 |
+
+docker exec -it laravel-mysql-database bash -c "mysql -u root -p phpfoxdb"
+show variables where variable_name like 'innodb_buffer_pool%';
+
+```mysql
+
+-- pick select but filesort.
+EXPLAIN
+SELECT SQL_NO_CACHE stream.feed_id
+FROM activity_privacy_members AS pm
+      JOIN  activity_streams as stream
+           ON (pm.user_id=1 AND pm.privacy_id=stream.privacy_id)
+      JOIN activity_subscriptions follow
+           ON (follow.user_id=1 AND follow.owner_id=stream.owner_id )
+WHERE stream.updated_at > '2021-03-27 21:31:07'
+ORDER BY stream.updated_at DESC
+LIMIT 20;
+
+
+--- select all blogs
+EXPLAIN ANALYSE
+SELECT data.*
+FROM blogs data
+         JOIN blog_privacy_streams ps ON (data.id = ps.item_id)
+         JOIN core_privacy_members pm ON ps.privacy_id = pm.privacy_id
+WHERE pm.user_id = 1
+GROUP BY data.id
+LIMIT 10;
+```
+
++----+-------------+--------+------------+------+-----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------+---------+--------------------------------+------+----------+---------------------------------+
+| id | select_type | table | partitions | type | possible_keys | key | key_len | ref | rows | filtered | Extra |
++----+-------------+--------+------------+------+-----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------+---------+--------------------------------+------+----------+---------------------------------+
+| 1 | SIMPLE | pm | NULL | ref | activity_privacy_members_privacy_id_user_id_unique,activity_privacy_members_user_id_index,activity_privacy_members_owner_id_index | activity_privacy_members_user_id_index | 8 | const | 306 | 100.00 | Using temporary; Using filesort |
+| 1 | SIMPLE | stream | NULL | ref | activity_streams_owner_id_index,activity_streams_updated_at_index,activity_streams_privacy_id_index | activity_streams_privacy_id_index | 8 | phpfoxdb.pm.privacy_id | 8 | 50.00 | Using where |
+| 1 | SIMPLE | follow | NULL | ref | activity_subscriptions_user_id_index,activity_subscriptions_onwer_id_index,activity_subscriptions_user_id_owner_id_index | activity_subscriptions_user_id_owner_id_index | 8 | const,phpfoxdb.stream.owner_id | 1 | 100.00 | Using where; Using index |
++----+-------------+--------+------------+------+-----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------+---------+--------------------------------+------+----------+---------------------------------+
+3 rows in set, 2 warnings (0.00 sec)

@@ -1,0 +1,59 @@
+---
+route: /backend/category
+name: Category
+menu: Backend
+---
+
+### Basic
+
+Example you want to organanize note items into categorize, you need 02 schema  
+`note_categories` and `note_category_data` to keep relation many to many of `notes` and `categories`
+
+### Schema
+
+```php
+
+class NoteMigration extends Migration{
+
+  public function up (){
+    DbTableHelper::categoryTable('note_categories', true);
+    DbTableHelper::categoryDataTable('blog_category_data');
+  }
+
+  public function down(){
+    Schema::dropIfExists('note_categories');
+    Schema::dropIfExists('note_category_data');
+  }
+}
+
+```
+
+Category DDL
+
+```sql
+-- auto-generated definition
+CREATE TABLE note_categories
+(
+    id         serial CONSTRAINT note_categories_pkey PRIMARY KEY,
+    parent_id  integer,
+    name       varchar(255)                   NOT NULL,
+    name_url   varchar(255),
+    is_active  smallint DEFAULT '1'::smallint NOT NULL,
+    ordering   integer  DEFAULT 0             NOT NULL,
+    total_item integer  DEFAULT 0             NOT NULL,
+    created_at timestamp(0),
+    updated_at timestamp(0)
+);
+```
+
+Category Data DDL
+
+```sql
+-- auto-generated definition
+CREATE TABLE note_category_data
+(
+    id          bigserial CONSTRAINT blog_category_data_pkey PRIMARY KEY,
+    item_id     bigint  NOT NULL,
+    category_id integer NOT NULL
+);
+```

@@ -1,0 +1,532 @@
+---
+name: Event List
+menu: Backend
+---
+
+# Event List
+
+```text
++---------------------------------------------------------+------------------------------------------------------------------------+
+| Event                                                   | Listeners                                                              |
++---------------------------------------------------------+------------------------------------------------------------------------+
+| activity.count_feed_pending_on_owner                    | Modules\Activity\Listeners\CountFeedPendingOnOwnerListener             |
+| activity.delete_feed                                    | Modules\Activity\Listeners\DeleteFeedListener                          |
+| activity.get_feed                                       | Modules\Activity\Listeners\GetFeedListener                             |
+| activity.get_feed_by_item_id                            | Modules\Activity\Listeners\GetFeedByItemIdListener                     |
+| activity.get_feed_id                                    | Modules\Activity\Listeners\GetFeedIdListener                           |
+| activity.push_feed_on_top                               | Modules\Activity\Listeners\PushFeedOnTopListener                       |
+| activity.redundant                                      | Modules\Activity\Listeners\FeedRedundantListener                       |
+| activity.sponsor_in_feed                                | Modules\Activity\Listeners\SponsorInFeedListener                       |
+| activity.update_feed_item_privacy                       | Modules\Activity\Listeners\UpdateFeedItemPrivacy                       |
+| album.get_album_item                                    | Modules\Photo\Listeners\GetAlbumItemListener                           |
+| background-status.get_bg_status_image                   | Modules\BackgroundStatus\Listeners\GetBgStatusImageListener            |
+| comment.related_comments                                | Modules\Comment\Listeners\RelatedCommentsListener                      |
+| comment.related_comments.item_detail                    | Modules\Comment\Listeners\RelatedCommentsItemDetailListener            |
+| core.check_privacy_list                                 | Modules\Core\Listeners\CheckPrivacyListListener                        |
+| core.get_privacy_id                                     | Modules\Core\Listeners\GetPrivacyIdListener                            |
+| core.parse_content                                      | Modules\Friend\Listeners\ParseFeedContentListener                      |
+| core.privacy.check_privacy_member                       | Modules\Core\Listeners\CheckPrivacyMember                              |
+| core.total_view                                         | Modules\Activity\Listeners\FeedRedundantListener                       |
+| core.user_privacy.get_privacy_id                        | Modules\Core\Listeners\GetPrivacyIdForUserPrivacyListener              |
+| feed.composer                                           | Modules\Core\Listeners\FeedComposerListener                            |
+| feed.composer.edit                                      | Modules\Core\Listeners\FeedComposerEditListener                        |
+| friend.can_add_friend                                   | Modules\Friend\Listeners\CanAddFriendListener                          |
+| friend.count_total_friend                               | Modules\Friend\Listeners\CountTotalFriendListener                      |
+| friend.count_total_mutual_friend                        | Modules\Friend\Listeners\CountTotalMutualFriendListener                |
+| friend.create_tag_friends                               | Modules\Friend\Listeners\CreateTagFriendsListener                      |
+| friend.delete_tag_friend                                | Modules\Friend\Listeners\DeleteTagFriendListener                       |
+| friend.friend_ids                                       | Modules\Friend\Listeners\GetFriendIdsListener                          |
+| friend.get_count_new_friend_request                     | Modules\Friend\Listeners\CountNewFriendRequestListener                 |
+| friend.get_friend_ship                                  | Modules\Friend\Listeners\GetFriendShipListener                         |
+| friend.get_photo_tag_friends                            | Modules\Friend\Listeners\GetPhotoTagFriendsListener                    |
+| friend.get_suggestion                                   | Modules\Friend\Listeners\GetSuggestionListener                         |
+| friend.get_tag_friend_by_id                             | Modules\Friend\Listeners\GetTagFriendByIdListener                      |
+| friend.get_tag_friends                                  | Modules\Friend\Listeners\GetTagFriendsListener                         |
+| friend.is_friend                                        | Modules\Friend\Listeners\IsFriendListener                              |
+| friend.is_friend_of_friend                              | Modules\Friend\Listeners\IsFriendOfFriendListener                      |
+| friend.update_tag_friends                               | Modules\Friend\Listeners\UpdateTagFriendsListener                      |
+| friendList.check_privacy_list                           | Modules\Friend\Listeners\CheckPrivacyListListener                      |
+| group.get_privacy_for_setting                           | Modules\Group\Listeners\PrivacyForSetting                              |
+| group.get_search_resource                               | Modules\Group\Listeners\GetSearchResourceListener                      |
+| group.get_user_preview                                  | Modules\Group\Listeners\UserPreviewListener                            |
+| group.update_cover                                      | Modules\Group\Listeners\UpdateGroupCover                               |
+| hashtag.create_hashtag                                  | Modules\Hashtag\Listeners\ItemTagAwareListener                         |
+| hashtag.update_total_item                               | Modules\Hashtag\Listeners\UpdateTotalItemListener                      |
+| like.is_liked                                           | Modules\Like\Listeners\IsLikedListener                                 |
+| like.most_reactions                                     | Modules\Like\Listeners\MostReactionsListener                           |
+| like.user_reacted                                       | Modules\Like\Listeners\UserReactedListener                             |
+| models.notify.created                                   | Modules\Core\Listeners\ModelCreatedListener                            |
+| models.notify.creating                                  | Modules\Core\Listeners\ModelCreatingListener                           |
+| models.notify.deleted                                   | Modules\Core\Listeners\ModelDeletedListener                            |
+| models.notify.updated                                   | Modules\Core\Listeners\ModelUpdatedListener                            |
+| models.notify.updating                                  | Modules\Core\Listeners\ModelUpdatingListener                           |
+| modules.installed                                       | Modules\Sticker\Listeners\ModuleInstalledListener                      |
+| modules.scan                                            | Modules\Core\Listeners\ModuleScanListener                              |
+| modules.updated                                         | Modules\User\Listeners\ModuleUpdatedListener                           |
+| notification.delete_notification_by_type_and_notifiable | Modules\Notification\Listeners\DeleteNotifyByTypeAndNotifiableListener |
+| notification.getEmailNotificationSettings               | Modules\Notification\Listeners\GetEmailNotificationSettingsListener    |
+| notification.get_count_new_notification                 | Modules\Notification\Listeners\GetNewNotificationCount                 |
+| notification.updateEmailNotificationSettings            | Modules\Notification\Listeners\UpdateEmailNotificationSettingsListener |
+| packages.deleting                                       | Modules\Core\Listeners\PackageDeletingListener                         |
+| page.get_privacy_for_setting                            | Modules\Page\Listeners\PrivacyForSetting                               |
+| page.get_search_resource                                | Modules\Page\Listeners\GetSearchResourceListener                       |
+| page.get_user_preview                                   | Modules\Page\Listeners\UserPreviewListener                             |
+| page.update_cover                                       | Modules\Page\Listeners\UpdatePageCover                                 |
+| photo.create                                            | Modules\Photo\Listeners\PhotoCreateListener                            |
+| photo.media_remove                                      | Modules\Photo\Listeners\MediaRemoveListener                            |
+| photo.media_update                                      | Modules\Photo\Listeners\MediaUpdateListener                            |
+| photo.media_upload                                      | Modules\Photo\Listeners\MediaUploadListener                            |
+| photo.update_avatar_path                                | Modules\Photo\Listeners\UpdateAvatarPathListener                       |
+| search.created                                          | Modules\Search\Listeners\ModelCreatedListener                          |
+| search.deleted                                          | Modules\Search\Listeners\ModelDeletedListener                          |
+| search.updated                                          | Modules\Search\Listeners\ModelUpdatedListener                          |
+| site_settings.updated                                   | Modules\ChatPlus\Listeners\SiteSettingUpdated                          |
+| sticker.get_sticker_image                               | Modules\Sticker\Listeners\GetStickerImageListener                      |
+| tag.get_search_resource                                 | Modules\Hashtag\Listeners\GetSearchResourceListener                    |
+| user.blocked                                            | Modules\Friend\Listeners\UserBlockedListener                           |
+| user.get_mentions                                       | Modules\User\Listeners\UserGetMentions                                 |
+| user.get_privacy_for_setting                            | Modules\User\Listeners\PrivacyForSetting                               |
+| user.get_search_resource                                | Modules\User\Listeners\GetSearchResourceListener                       |
+| user.get_user_preview                                   | Modules\User\Listeners\UserPreviewListener                             |
+| user.social_account.callback                            | Foxsocial\Facebook\Listeners\UserSocialAccountCallbackListener         |
+| user.social_account.request                             | Foxsocial\Facebook\Listeners\UserSocialAccountRequestListener          |
+| video.mux.webhook_callback                              | Modules\Video\Listeners\MuxWebhookCallback                             |
++---------------------------------------------------------+------------------------------------------------------------------------+
+```
+
+## Model Events
+
+These are events that were called in EloquentModelObserver: modules/platform/src/Support/EloquentModelObserver.php
+
+### Model Creating Event
+
+- Event name: models.notify.creating
+- Example:
+
+```php
+    /**
+     * @var Model $model
+     */
+    app('events')->dispatch('models.notify.creating', [$model]);
+```
+
+### Model Created Event
+
+- Event name: models.notify.created
+- Example:
+
+```php
+    /**
+     * @var Model $model
+     */
+    app('events')->dispatch('models.notify.created', [$model]);
+```
+
+### Model Updating Event
+
+- Event name: models.notify.updating
+- Example:
+
+```php
+    /**
+     * @var Model $model
+     */
+    app('events')->dispatch('models.notify.updating', [$model]);
+```
+
+### Model Updated Event
+
+- Event name: models.notify.updated
+- Example:
+
+```php
+    /**
+     * @var Model $model
+     */
+    app('events')->dispatch('models.notify.updated', [$model]);
+```
+
+### Model Deleted Event
+
+- Event name: models.notify.deleted
+- Example:
+
+```php
+    /**
+     * @var Model $model
+     */
+    app('events')->dispatch('models.notify.deleted', [$model]);
+```
+
+## Module Events
+
+### Module installed Event
+
+This event will be called after run install command
+
+- Event name: modules.installed
+
+### Module updated Event
+
+This event will be called after run updated command
+
+- Event name: modules.updated
+
+### Module scan Event
+
+Scan all module folders and metafox config file to update into a module table
+
+- Event name: modules.scan
+
+### Module Export Menu Event
+
+This event will be called when export module
+
+- Event name: modules.export_menu
+
+### Module Export Phrase Event
+
+This event will be called when export module
+
+- Event name: modules.export_phrase
+
+### Package Deleting Event
+
+This event will be called when uninstall module
+
+- Event name: packages.deleting
+
+## Core Module Events
+
+### Check Privacy List Event
+
+- Check user has owner privacy list
+
+- Event name: core.check_privacy_list
+
+### Parse content Event
+
+- Parse content: convert mention, tag,.. in text
+
+- Event name: core.parse_content
+
+### Check Privacy member Event
+
+- Check user has privacy member
+
+- Event name: core.privacy.check_privacy_member
+
+### Total View Event
+
+- Redundant total view from content to feed
+
+- Event name: core.total_view
+
+### Get Privacy Id Event
+
+- Privacy id form user_id and privacy
+
+- Event name: core.user_privacy.get_privacy_id
+
+## Activity Module Events
+
+### Count Pending Feed On Owner Event
+
+- Get count pending feed
+
+- Event name: activity.count_feed_pending_on_owner
+
+### Delete Feed Event
+
+- Event name: activity.delete_feed
+
+### Get Feed Event
+
+- Event name: activity.get_feed
+
+### Get Feed By Item Id Event
+
+- Event name: activity.get_feed_by_item_id
+
+### Get Feed By Id Event
+
+- Event name: activity.get_feed_id
+
+### Push Feed On Top Event
+
+- Event name: activity.push_feed_on_top
+
+### Push Feed On Top Event
+
+- Event name: activity.push_feed_on_top
+
+### Redundant Data Event
+
+- Update total comment, total like, total view,... from resource content to feed
+
+- Event name: activity.redundant
+
+### Sponsor Feed Event
+
+- Event name: activity.sponsor_in_feed
+
+### Update feed item privacy Event
+
+- When update privacy on feed, also update on item
+
+- Event name: activity.update_feed_item_privacy
+
+### Feed Composer Event
+
+- Support create item when create feed by feed form
+
+- Event name: feed.composer
+
+### Edit Feed Composer Event
+
+- Support create item when create feed by feed form
+
+- Event name: feed.composer.edit
+
+## Friend Module Events
+
+### Check Can Add Friend Event
+
+- Event name: friend.can_add_friend
+
+### Count Total Friend Event
+
+- Event name: friend.count_total_friend
+
+### Count Total Mutual Friend Event
+
+- Event name: friend.count_total_mutual_friend
+
+### Create Tag Friend Event
+
+- Event name: friend.create_tag_friends
+
+### Delete Tag Friend Event
+
+- Event name: friend.delete_tag_friend
+
+### Get Friend Ids Event
+
+- Event name: friend.friend_ids
+
+### Get Friendship Event
+
+- Event name: friend.get_friend_ship
+
+### Count New Friend Request Event
+
+- Event name: friend.get_count_new_friend_request
+
+### Get Tagged Friend In Photo Event
+
+- Event name: friend.get_photo_tag_friends
+
+### Get Friend Suggestion Event
+
+- Event name: friend.get_suggestion
+
+### Get Tagged Friend By Tag Id Event
+
+- Event name: friend.get_tag_friend_by_id
+
+### Get Tagged Friend By Tag Id Event
+
+- Event name: friend.get_tag_friend_by_id
+
+### Get Tagged Friends Event
+
+- Event name: friend.get_tag_friends
+
+### Check Is Friend Of Friend Event
+
+- Event name: friend.is_friend_of_friend
+
+### Update Tagged Friend Event
+
+- Event name: friend.update_tag_friends
+
+## Comment Module Events
+
+### Get Related Comments Event
+
+- Event name: comment.related_comments
+
+### Get Related Comments For Item Detail Event
+
+- Event name: comment.related_comments.item_detail
+
+## Background Status Module Events
+
+### Get Background Status By Id Event
+
+- Event name: background-status.get_bg_status_image
+
+## Group Module Events
+
+### Get Privacy For Setting Event
+
+- Event name: group.get_privacy_for_setting
+
+### Get Search Resource Event
+
+- Event name: group.get_search_resource
+
+### Get User Preview Event
+
+- Event name: group.get_user_preview
+
+### Update Cover Event
+
+- Event name: group.update_cover
+
+## HashTag Module Events
+
+### Create HashTag Event
+
+- Event name: hashtag.create_hashtag
+
+### Update Total Item Event
+
+- Event name: hashtag.update_total_item
+
+### Get Search Resource Event
+
+- Event name: tag.get_search_resource
+
+## Like Module Events
+
+### Check Is Liked Event
+
+- Event name: like.is_liked
+
+### Get Most Reactions Event
+
+- Event name: like.most_reactions
+
+### Get User Reacted Event
+
+- Event name: like.user_reacted
+
+## Notification Module Events
+
+### Delete Notification Event
+
+- When deleting an item, also delete notification of an item
+
+- Event name: notification.delete_notification_by_type_and_notifiable
+
+### Get Email Notification Settings Event
+
+- Event name: notification.getEmailNotificationSettings
+
+### Count New Notification Settings Event
+
+- Event name: notification.get_count_new_notification
+
+### Update Notification Settings Event
+
+- Event name: notification.updateEmailNotificationSettings
+
+## Page Module Events
+
+### Get Privacy For Setting Event
+
+- Event name: page.get_privacy_for_setting
+
+### Get Search Resource Event
+
+- Event name: page.get_search_resource
+
+### Get User Preview Event
+
+- Event name: page.get_user_preview
+
+### Update Cover Event
+
+- Event name: page.update_cover
+
+## Photo Module Events
+
+### Create Photo Event
+
+- Event name: photo.create
+
+### Remove Media Event
+
+- Event name: photo.media_remove
+
+### Update Media Event
+
+- Event name: photo.media_update
+
+### Upload Media Event
+
+- Event name: photo.media_upload
+
+### Update Avatar Path Event
+
+- Event name: photo.update_avatar_path
+
+## Search Module Events
+
+### Create Search Record Event
+
+- This event will be called after Content was created
+- Event name: search.created
+
+### Update Search Record Event
+
+- This event will be called after content was updated
+- Event name: search.updated
+
+### Delete Search Record Event
+
+- This event will be called after content was deleted
+- Event name: search.deleted
+
+## Sticker Module Events
+
+### Get Sticker Image Event
+
+- Event name: sticker.get_sticker_image
+
+## User Module Events
+
+### Block User Event
+
+- Event name: user.blocked
+
+### Get Mentions Event
+
+- Event name: user.get_mentions
+
+### Get Privacy For Setting Event
+
+- Event name: user.get_privacy_for_setting
+
+### Get Search Resource Event
+
+- Event name: user.get_search_resource
+
+### Get User Preview Event
+
+- Event name: user.get_user_preview
+
+### Social Account Request Event
+
+- Event name: user.social_account.request
+
+### Social Account Callback Event
+
+- Event name: user.social_account.callback
+
+## Video Module Events
+
+### Mux Webhook Callback Event
+
+- Event name: video.mux.webhook_callback

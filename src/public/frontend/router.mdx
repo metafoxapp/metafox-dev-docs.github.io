@@ -1,0 +1,132 @@
+---
+route: /frontend/router
+name: Router
+menu: Frontend
+---
+
+# Router
+
+Table of Contents
+
+- Dynamic/Async Routing
+- Router and Code Splitting
+- Router and Transition
+- Router and Loading progress
+- Router and Modal
+
+Let's take a look at phpfox's url structure
+
+- `/`: Display `home` page or `user.home` page depend on user authentication state.
+- `/blog`: Display `user.browse` page.
+- `/blog/my`: Display `user.browse.my` page.
+- `/user`: Display `user.browse` page.
+- `/user/profile/1`: Display profile of user
+- `/pages/profile/14`: Display profile of pages
+- `/groups/profile/12`: Display profile of groups
+- `/jack`: Display `user.profile` page, alias of `/user/profile/1`
+- `/jack/photo`: Display `user.profile.photo` page, alias of `/user/profile/1/photo`
+- `/barca`: Display `pages.profile` as alias of `/pages/profile/14`
+- `/barca/groups`: Display `pages.profile.groups` as alias of `/pages/profile/14/photo`
+- `/nancy-club`: Display private `groups.profile` as alias of `/group/profile/12`
+
+Using react-router-dom and React.lazy we can structure react component:
+
+```javascript
+<Router>
+  <Switch>
+    <Route path="/" component={HomePage} />
+    <Route path="/blog" component={BlogPage} />
+    <Route path="/blog/my" component={MyBlogPage} />
+    <Route path="/user/profile/:userId" component={UserProfilePage} />
+    <Route
+      path="/user/profile/:userId/photo"
+      component={UserProfilePhotoPage}
+    />
+    <Route path="/pages/profile/:pageId" component={PageProfilePage} />
+    <Route
+      path="/pages/profile/:pageId/photo"
+      component={PageProfilePhotoPage}
+    />
+    <Route path="/groups/profile/:groupId" component={GroupProfilePage} />
+    ... Others Routes
+    <NoMatchRoute />
+  </Switch>
+</Router>
+```
+
+As you see `/`, `blog`,`blog/my` is static regex url, its solve by regex or literal string.
+
+While `/jack`, `jack/photo`, `/barca`, `/barca/groups` is difficult, we have to query database to know
+terms of `jack`, `barca` is a username or pages slug.
+
+**Challenges**
+
+We must send an async request to APIS server, get a result after 1-5 seconds depend on network speed and server capability. etc we get result
+`/jack/photo` should be `/profile/user/1/photo`. We hate to update current browser address to `user/profile/1/photo`, so we must replace current its state and keep origin path.
+
+During of waiting to solve `/jack/photo` what should be displaying to end users, `NoMatchRoute` it depend on result of `NoMatchRoute` component, simple solution is display a loading screen. Try to implement solution, when waiting time is 3-5 seconds, it looks good but flash screen if network is faster. Look at instagram and youtube, they have another better solution, browser keeps old screens during loading next, Try with react-router but implement is very difficult. `react-navi` supports this feature but we don't like their syntax, it's not popular too.
+Other popular router lib such as `@reach/router` does not help to solve our requirement, so we decide to folk `reac-router-dom` and do our customization.
+
+```text
+ 1. Router got /jack/photo pathname
+ 2. Try other router path but no matched,
+ 3. Keep previous matched Route, showing loading progress bar/empty/loading screen.
+ 4. Async request to get canonical pathname of /jack/photo
+ 5. If got /user/profile/1/photo => replace current location state, keep location pathname.
+ 6. Router try re-run and UI update.
+```
+
+NOTE:
+
+- Application is configurable using Loading progress bar or Empty waiting screen?
+- Should use nested route in user/pages/event profile page. TBD.
+
+Caveat:
+
+- Do not trust browse location.
+- When develop UI, we use \$PageContext to ask the context to query content instead of location.
+
+## Code Splitting
+
+Because of app sizing, we have to split code of every Page components. [read more](/technical/code-splitting)
+
+At the first time visit `/user`, the associate chunk file is not ready, if network around 1 seconds, end users can see a flash animate.
+
+## Router and Transition
+
+TBD
+
+## Modal Route
+
+Visit https://www.instagram.com/leomessi/, click on photo item, it shows a modal photo viewer.
+refresh browser, it shows another screens.
+
+It helps to improving user experience, Facebook uses the same solutions for photo viewer.
+
+Our routing support to check any pathname prefix by `/m/` to be display modal overlay on last UI. and display original /ui/.
+
+Then separate modals and pages to 2 Switch, we solve related issues.
+
+**Cons**
+
+Developer have to create two routes, 01 is ModalRoute, and the seconds is Page Route. Declare theme all in 'routes.ts', with the same path but add property "modal".
+
+How to disable modal dialog on mobile device?
+
+**Pros**
+
+Re-use user experience.
+
+```text
+{
+  sampleModalDialog: {
+    modal: true,
+    path: '/m/example/simple-modal',
+    component: loadable(() => import('./pages/ExampleModal')),
+  },
+  sampleModalPage: {
+    path: '/m/example/simple-modal',
+    component: loadable(() => import('./pages/ExampleModalPage')),
+  },
+}
+```

@@ -1,0 +1,28 @@
+---
+route: /test-e2e/writing-gherkin
+name: Writing Gherkin
+menu: Tests E2E
+---
+
+## Rules
+
+1. **the user** instead of **I** pronoun
+2. **Given** in past - **When** in present sentence.
+3. **the user see {string} ** is equal find [data-testid=""].
+4. **the user see {string} contains** is equal find text contains.
+
+Writting **Given** in past sentence
+
+```gherkin
+Feature: Example Testcase
+
+  #Bad
+  Scenario:
+    Given the user navigate to "/"
+    Then the user navigated to "/blog"
+
+  #Good
+  Scenario:
+    Given the user navigated to "/"
+    Then the user navigate to "/"
+```

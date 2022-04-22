@@ -1,0 +1,136 @@
+---
+route: /frontend/example-app
+name: Basic
+menu: Frontend
+---
+
+# Intro
+
+This article guide you how to develop a new app which allows user share notes. End user are able to post
+new notes, edit their note, share their own note to activity feed and more.
+
+**Table Of Contents**
+
+- Create a new app landing page.
+- Add an exists page to Primary Menu
+- Add a new portable block
+- Working with apiClient
+- Show listing of items.
+
+## Skeleton
+
+At root of your workbox, execute
+
+```shell script
+yarn create-app --package=@example/module-note --item=note
+```
+
+The command create Notes app skeleton under ./workbox/packages/example-notes
+
+## Directory Structure
+
+```text
+- module-note/
+  - package.json
+  - src/
+    - components/
+    - containers/
+    - reducers/
+    - sagas/
+    - pages/
+```
+
+## Landing Page
+
+Step to step to add /notes to landing page.
+
+Step 1: create page components
+
+```tsx
+/**
+ * @type: route
+ * path: /note
+ * pageName: note.langing
+ */
+
+#file pages/HomePage/HomePage.tsx
+
+import * as React from 'react';
+import { Page } from '@metafox/core';
+
+const HomePage = props => {
+  return (
+    <Page pageName="note.home"  pageLayout={{}} />
+  );
+};
+
+export default HomePage;
+```
+
+Step 02: Declare layouts
+
+It help to combine all needed scripts in a single directory.
+
+Add new file `src/pages/HomePage/package.json`
+
+```json
+{ "main": "HomePage.tsx" }
+```
+
+Step 03: verify
+
+Reload browser and redirect to /note to verify result.
+
+## Configure Layout
+
+Add new file `pages/HomePage/layout.json`
+
+We will configure block in next section
+
+```tsx
+{
+  blocks: [
+  ],
+}
+```
+
+## Block
+
+Create custom block, to view simple featured note.
+
+Step 01: Create Block
+
+```tsx
+/**
+ * @type: block
+ * name: note.block.featuredNotes
+ */
+#file components/BlockFeatureNotes.tsx
+
+import * as React from 'react';
+
+import {createBlock} from '@metafox/core';
+
+// Implement base component
+const BlockFeatureNotes = ({
+  title = 'Featured Notes',
+}: Props) => {
+  return (
+    <div>
+      <h4>{title}</h4>
+      <div>Display Featured Notes</div>
+    </div>
+  );
+};
+
+
+export default createBlock({
+  extendBlock: BlockFeatureNotes
+});
+```
+
+# Verify
+
+Open live edit mode, click on `Add new block`, you see `Featured Notes` block here.
+
+You can add then export layout to other pages.

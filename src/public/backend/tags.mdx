@@ -1,0 +1,134 @@
+---
+route: /backend/advanced/tags
+name: Tags
+menu: Backend
+---
+
+Each content support hashtag and tags
+
+- hashtag is tagged word start by `#` in description or content.
+- tag (sometime named topics) is separated word directly in database
+
+in order to support tags and search
+
+step 1:
+
+Add `*_tag_data` relation to migration
+
+```php
+DbTableHelper::createTagDataTable('blog_tag_data');
+
+```
+
+Modify content table to have `tags`
+
+step 2:
+
+```php
+class CreateBlogTables extends Migration{
+
+    function up(){
+        // add this line to up() method
+        DbTableHelper::tagsColumns($table);
+    }
+}
+```
+
+Add `*TagData` table class, etc
+
+```php
+<?php
+
+namespace Modules\Blog\Models;
+
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\Pivot;
+
+/**
+ * Class BlogTagData.
+ * @mixin Builder
+ * @property int    $id
+ * @property int    $item_id
+ * @property int    $tag_id
+ * @property string $tag_text
+ */
+class BlogTagData extends Pivot
+{
+    /**
+     * @var bool
+     */
+    public $timestamps = false;
+
+    /**
+     * @var string
+     */
+    protected $table = 'blog_tag_data';
+
+    /**
+     * @var string[]
+     */
+    protected $fillable = [
+        'item_id',
+        'tag_id',
+    ];
+}
+```
+
+step 3.
+
+```php
+class Blog {
+  /**
+   * @return BelongsToMany
+   */
+  public function tagData(): BelongsToMany
+  {
+      return $this->belongsToMany(
+          Tag::class,
+          'blog_tag_data',
+          'item_id',
+          'tag_id'
+      )->using(BlogTagData::class);
+  }
+  // ... other method
+}
+```
+
+step 4:
+
+add tag scope to associate query to filter tag.
+
+```php
+  if ($searchTag != '') {
+       $query = $query->addScope(new TagScope($searchTag));
+  }
+```
+
+step 5:
+
+On search form, there are no tag field, so users used to type "#" before query field to search.
+
+WARNING: this step should be improve to skip ASAP.
+
+```php
+
+class IndexRequest{
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function validated(): array
+    {
+        $data = parent::validated();
+
+        // .. other process
+
+        if (Str::startsWith($data['q'], '#')) {
+            $data['tag'] = Str::substr($data['q'], 1);
+            $data['q'] = PhpfoxConstant::EMPTY_STRING;
+        }
+
+        return $data;
+    }
+}
+```

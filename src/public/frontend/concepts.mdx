@@ -1,0 +1,168 @@
+---
+name: Concepts
+route: /frontend/concepts
+menu: Frontend
+---
+
+# Concepts
+
+## Annotation
+
+When @metafox comes with modular structure,
+Build tool solve issues dependencies without using `import` directly.
+
+Build tool scan all packages declares in `settings.json`,
+finding all component, library to build bundle.
+
+examples
+
+```text
+/**
+ * @type: route
+ * name: user.profile
+ * path: /user/:user_id(\d+)/:tab?
+ */
+```
+
+WARN:
+
+1. Keep anotation at begin of source file
+2. Each file can declare only one component.
+
+### Annotation
+
+| Type        | Group                    |
+| ----------- | ------------------------ |
+| ui          | generic ui components    |
+| block       | Layout block component   |
+| itemView    | Item view component      |
+| embedView   | embedView view component |
+| dialog      | dialog component         |
+| formElement | Form Elements            |
+| popover     | popover component        |
+| route       | page route               |
+| modalRoute  | modal route              |
+| saga        | saga function(s)         |
+| reducer     | reducer functions        |
+| service     | service provider         |
+
+## Using testid
+
+In order to automation testing, please following rules:
+
+- In item view, embed view component, detail view component, All clickable/focusable item MUST have data-tid (link , ....)
+- In menu component, All menu item MUST have data-tid
+
+## ui
+
+type `ui` declare generic react component.
+
+```jsx
+/**
+ * @type: ui
+ * name: CategoryTitle
+ */
+
+export default function CategoryTitle(): React.FC<{}> {
+  // your code
+}
+```
+
+## itemView
+
+naming convention **{resource_name}**.itemView.**{suffix}**
+
+Declare react component is included in a listing/grid component as render.
+
+In some specific case, framework use naming convention to find the best match render.
+
+**resource_name** : blog, photo, video, .... etc.
+
+**suffix**: mainCard, smallCard, flatCard, etc ...
+
+```jsx
+/**
+ * @type: itemView
+ * name: photo_album.itemView.mainCard
+ */
+export default function PhotoAlbumMainCard() {
+  // your code
+}
+```
+
+## embedView
+
+naming convention: **{resource_name}**.embedView.**{parent_resource}**
+
+Declare react component is used as embed content of other component.
+
+etc
+
+```jsx
+/**
+ * @type: itemView
+ * name: photo_album.embedView.feedItem
+ */
+export default function EmbedPhotoAlbum() {
+  // your code
+}
+```
+
+## dialog
+
+naming convention: dialog.**{purpose}**
+
+See [dialog](/dialog)
+
+```jsx
+/**
+ * @type: dialog
+ *
+ * name: dialog.
+ */
+
+export default function MyDialog() {
+  // dialog code
+}
+```
+
+## formElement
+
+supports elements
+
+1. button
+2. cancel
+3. captcha
+4. checkbox
+5. hidden
+6. linkButton
+7. password
+8. editor
+9. submit
+10. text
+11. attachment
+12. date
+13. time
+14. datetime
+15. friendPicker
+16. itemPhoto
+17. itemPhotoGallery
+18. location
+19. searchBox
+20. select
+21. Tags
+22. TypeCategory
+23. videoUrl
+24. addAlbumn
+
+## popover
+
+## route
+
+## modalRoute
+
+## saga
+
+## reducer
+
+## service

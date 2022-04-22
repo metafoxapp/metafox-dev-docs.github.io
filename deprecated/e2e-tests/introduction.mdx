@@ -1,0 +1,95 @@
+---
+route: /test-e2e/introduction
+name: Getting Started
+menu: Tests E2E
+---
+
+# Getting Started
+
+@metafox build e2e testing based on
+
+- [cypress](https://www.cypress.io/)
+- [cucumber](https://github.com/TheBrainFamily/cypress-cucumber-preprocessor)
+
+## Requirements
+
+- Writing BDD using [Gherkin](https://cucumber.io/docs/gherkin/)
+- Basic knowledge about javascript
+
+## Installation
+
+Checkout **https://git.younetco.com/metafox/workbox**
+
+Switch to branch `test-e2e`
+
+Go to directory **/tests/e2e**
+
+Install dependencies
+
+```bash
+# skip if you had installed yarn.
+npm install -g yarn
+
+# install dependencies
+yarn
+
+# Open cypress
+yarn cypress:open
+
+```
+
+For coder, I recommend should use [Visual Studio Code](https://code.visualstudio.com/), And follow preset
+**/tests/e2e/e2e.code-workspace**
+
+## Directory Structure
+
+```text
+  cypress/
+  |- fixtures/            : Contain json sample data
+  |- integration/         : Contain all testcases
+  |    apps/              : Contain all apps testcases
+  |    |- blog/           : Contain all tetcases for blog
+  |       |--frontend/    : fronend testcases
+  |       |--backend/     : backend testcases
+  |
+  |    platform/          : core feature testcases
+  |    |- user/           : Contain all tetcases for user
+  |       |-- frontend/   : fronend testcases
+  |       |-- backend/    : backend testcases
+  |
+  |    installation/      : Installation testcases
+  |
+  |    upgrades/          : Upgrade testcases,
+  |      |- v4-upgrade    : Upgrade from v4
+  |
+  |    common/            :  steps definitions & custom parameter types
+  |
+  |- plugins/
+  |   |- index.ts         : Define plugins for cypress
+  |
+  |- support/             : Define custom commands
+  |
+  |- videos/              : Video records when test failure tests
+  |
+  |- sreenshots/          : Screenshots when failure tests
+  |
+  cypress.json            : Cypress configuration
+```
+
+## Organization
+
+@metafox comes with multiple user roles & support difference layouts per device sizes,
+In order to avoid missing keys and dev costs.
+
+## Tags
+
+Custom tags lists
+
+| tag      | meaning                                      |
+| -------- | -------------------------------------------- |
+| @focus   | Active @focus testcases and skip others      |
+| @mobile  | Run testcase on mobile iphone-x              |
+| @tablet  | Run testcase on mobile ipad-mini screen size |
+| @desktop | Run testcase on macbook-16 screen size       |
+| @fast    | Testcase is fast, < 5 seconds                |
+| @slow    | Testcase is slow, > 5 seconds                |

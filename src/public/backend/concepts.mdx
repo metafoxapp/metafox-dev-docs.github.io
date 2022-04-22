@@ -1,0 +1,307 @@
+---
+name: Concepts
+menu: Backend
+---
+
+# Concepts
+
+This document explain platform concepts, it's helpful for developers base knowledge
+about platform.
+
+The implementation guide will be described in other parts.
+
+## Model
+
+When we store data to database, it's a record.
+
+When we map a record of database to php class (using Eloquent) it's be come a Model.
+
+When we present a model to frontend (via controller) model becomes resource.
+
+sometimes you hear about entity but there are a diffence between resource vs entity.
+
+Both resource and entity has their types.
+
+Resources are unique to their type while entities are not.
+
+## User vs Content
+
+When surfacing @metafox
+
+blogs, videos, photo, .... has detail page.
+Users can comment, share, like, ... on their detail page.
+
+Friends list, saved, report item, ... has no detail page.
+Users can not coment, share, like to these items.
+
+User, Pages, Groups have it's profile pages (detail page), activity stream, privacy settings, and owner of other blogs, videos, ... etc
+
+In order to abstract types of theme into programing concepts, we categorize theme into **Content** and **User**
+
+### Content
+
+- Have unique id in their types
+- Has its privacy value
+- Have detail page
+- Can like, comment, share
+
+blogs, video, photos are **Content**
+
+### User
+
+- Have profile page
+- Can have others contents (blogs, videos, ...)
+- Have their activity stream
+- User can logged in as
+
+users, pages, groups as **User**
+
+now we can call page, group as page user, group user as abstraction.
+
+## Membership
+
+When a user is logged in
+
+- he can send friend request to become friends of others.
+- he can assign his friends to a his friend lists.
+- he can send member request to become group member.
+- he can like a page to become members of page.
+
+When logged in as group user
+
+- he can assign a members to be group admin, etc
+
+We call these relationship are membership.
+
+**membership** is relationship of two **User**
+
+User are owner of these membership
+
+- his friends
+- his friend lists
+
+Group User's memberships
+
+- group members
+- group admins
+
+Page User's memberships
+
+- page members
+- page admins
+
+## Privacy
+
+When users post a blog, video ... on their profile page,
+They can set who can see their posts?
+
+They use their own memberships
+
+etc:
+
+- friends
+- a specific friend list
+
+In order keep clean of design, privacy should be centralized to a place, so it's have a global unique id.
+Then we can map `membership` to `privacy` concept as simple as possible.
+
+## Action Entity
+
+When users do something, example: like, share, friend request v.v... Those Models are called ActionEntity.
+
+It is similar to Content, but ActionEntity is defined who did the action on a Content (can be Content or User - since User was a child of Content).
+
+## Role & Permissions
+
+Think role as phpfox v4 **user_group**
+
+Think permissions as phpfox v4 **user_group_params**. Has two type:
+
+- Permission with boolean value
+- Permission with actual value
+
+## Policy
+
+When user post a comment, write a blogs, share a content ... developers have to check permissions he can
+do that actions by role & permission.
+
+When he post on others profile pages, we also have to check owner's membership and privacy.
+
+To reduce duplicated and keep code clean, we centralize all check permission, privacy to **Policy** class.
+
+In Policy, every action we have 5 privacy layers:
+
+- Role/Permission
+
+```php
+$user->hasPermissionTo('resource.view'); // return bool.
+```
+
+- Privacy Owner
+
+```php
+use FoxSocial\Platform\Support\Facades\PrivacyPolicy;
+
+PrivacyPolicy::checkPermissionOwner($user, $owner); // return bool.
+```
+
+- User Privacy Setting of Owner
+
+```php
+use Modules\User\Support\Facades\UserPrivacy;
+
+UserPrivacy::hasAccess($user->entityId(), $owner->entityId(), 'blog.view_browse_blogs'); // return bool.
+```
+
+- Resource Setting: consider to use it on which level depends on context.
+
+```php
+use FoxSocial\Platform\Facades\Settings;
+
+Settings::get('blog.privacy_enabled'); // return mixed (your module is free to define var type).
+
+```
+
+- Privacy Resource
+
+```php
+use FoxSocial\Platform\Support\Facades\PrivacyPolicy;
+
+PrivacyPolicy::checkPermission($user, $resource); // return bool.
+```
+
+## Event
+
+Laravel's event is a implementation of [Observer Pattern](https://en.wikipedia.org/wiki/Observer_pattern)
+
+In thinking, event is a replacement of phpFox plugins.
+
+event is simple way to decouple package dependencies and extends platform features.
+
+### using event to notify an action
+
+When a new user registered, we should notify an action `user_created` with `$user` data.
+
+```php
+events()->dispatch('user_created', $user);
+```
+
+all listeners registered to action `user_registered` will handle the action as
+
+```php
+class UserCreatedListener
+{
+  public function handle($user){
+      // put your code here
+  }
+}
+```
+
+### using event to interact
+
+```php
+$response = event()->dispatch('get_module_settings');
+```
+
+```php
+class ModuleSettingListener
+{
+  function handle()
+  {
+    return ['add_new_setting'=>['database_down']];
+  }
+}
+```
+
+### using event to call others module api
+
+```php
+event()->dispatch('create_new_feed', $action);
+```
+
+```php
+class CreateFeedActionHandler
+{
+  public function handle($action)
+  {
+      $feedService->createAction($action);
+  }
+}
+```
+
+## Model Observer
+
+Model observer is integration of Eloquent model and event system with events
+creating, created, updating, updated, deleting, deleted.
+
+```php
+class PostObserver
+{
+
+  public function creating($post)
+  {
+    // this method is invoked automatically when Blog is created
+  }
+
+
+  public function created($post)
+  {
+    // this method is invoked automatically when Blog is created
+  }
+
+  // others
+}
+```
+
+## Feed & Stream
+
+When user post blogs, video, photo, ... platform centralized actions into feed, then following users can see and interact with.
+
+platform keep in as simple as possible, it contains:
+
+feed(item_type, item_id, user_id, user_type, owner_id, owner_type, type_id)
+
+item_type, item_id: to specify item talking about
+
+user_type, user_id: to specific user who is created item
+
+owner_type, owner_id: to specific where it's posted to (other users, on a page, on a group v.v...)
+
+type_id: to categorize feed, feed abilities: **can_comment**, **can_like**, **can_share**, **can_edit**, **can_create_feed**, **can_put_stream**.
+
+When a feed is created, how to deliver it ?
+
+The trouble comes when feed owner set privacy to many friend lists. We can not keep many privacy in single feed record, So we put feed + privacy to other feed_stream tables.
+
+It contains feed_id, privacy_id, owner_id so we can deliver feed in flexible way.
+
+privacy_id: to specify who can see
+
+owner_id: to specify profile page
+
+## Storage & Disk
+
+We have core_storage_services : currently we support s3 and local. Per service we can have multiple config instances (core_storage).
+
+- Config in config/filesystems.php
+
+## Scope
+
+When you want to add custom query to Query Builder, use Scope. phpFox support:
+
+- [Global scopes](https://laravel.com/docs/8.x/eloquent#global-scopes): avoid to use this because it will add to model static and apply for the whole request process.
+- [Local scopes](https://laravel.com/docs/8.x/eloquent#local-scopes): write inside Model, but try not to write too much in Model, only write Scope that will always be used.
+- Apply Scope: This is metaFox own feature. When we build query, we can create a Scope and apply it into current Query.
+
+Example:
+
+```php
+
+$exampleScope = new ExampleScope();
+$exampleScope->setSomeAttribute('123');
+
+$model = new Model();
+$query = $model->newQuery()->applyScope($exampleScope);
+$data = $query->get();
+
+```

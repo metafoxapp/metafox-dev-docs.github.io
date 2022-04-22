@@ -1,0 +1,28 @@
+---
+route: /backend/commands
+name: Commands
+menu: Backend
+---
+
+# List all Commands
+
+```bash
+
+# Listing all supported commands
+php artisan list
+
+# Listing all supported commands
+php artisan db:wipe
+
+# Fresh Install MetaFox, drop old data
+php artisan metafox:install --force
+
+# Seed platform data into database
+#  + API key + secret.
+#  + Roles, permissions.
+#  + Default admin user (check `.env` to get user name + password).
+#  + All modules in folder `/modules`.
+#  + Migrate all app + modules phrases from files to database.
+php artisan phpfox:seed --force
+
+```

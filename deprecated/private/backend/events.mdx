@@ -1,0 +1,150 @@
+---
+route: /event-integration
+name: Event & Integration
+hidden: true
+---
+
+# Event Summary
+
+## Model Observer Event
+
+Ta sử dụng các event default của model, tùy vào model implement những interface như thế nào, ở mỗi module ta listener như thế nào thì sẽ xử lý khác nhau.
+
+- models.notify.created
+- models.notify.updated
+- models.notify.deleted
+
+Mỗi module có thể listen các event này như sau:
+
+```php
+namespace Modules\ToDo\Listeners;
+
+use Phpfox\Core\Support\BaseModuleSettingListener;
+
+class ModuleSettingListener extends BaseModuleSettingListener {
+    public function getEvents()
+    {
+        return [
+            'models.notify.created'          => [
+                ModelCreatedListener::class,
+            ],
+            'models.notify.updated'          => [
+                ModelUpdatedListener::class,
+            ],
+            'models.notify.deleted'          => [
+                ModelDeletedListener::class,
+            ],
+            'modules.updated'                => [
+                ModuleUpdatedListener::class,
+            ],
+            'activity.updateFeedItemPrivacy' => [
+                UpdateFeedItemPrivacy::class,
+            ],
+        ];
+    }
+}
+```
+
+### Activity Feed Resource
+
+Để 1 resource model có khả năng tạo feed nó sẽ cần được implement interface Phpfox\Core\Contracts\ActivityFeedSource và define như sau:
+
+```php
+use Phpfox\Core\Contracts\ActivityFeedSource;
+use Illuminate\Database\Eloquent\Model;
+use Phpfox\Core\Support\FeedAction;
+
+class ToDo extends Model implements ActivityFeedSource {
+
+    public function toActivityFeed()
+    {
+        return new FeedAction([
+            'user_id'    => $this->userId(),
+            'user_type'  => $this->userType(),
+            'owner_id'   => $this->ownerId(),
+            'owner_type' => $this->ownerType(),
+            'item_id'    => $this->entityId(),
+            'item_type'  => $this->entityType(),
+            'type_id'    => 'blog_created',
+            'privacy'    => $this->privacy,
+        ]);
+    }
+}
+```
+
+### Is Resource?
+
+- Implement interface Phpfox\Core\Contracts\Content
+
+### Is User
+
+- Implement interface Phpfox\Core\Contracts\User
+
+### Privacy List
+
+- 1 resource model nếu có khả năng tạo privacy list, ta phải implement interface Phpfox\Core\Contracts\PrivacyList và define như sau:
+
+```php
+
+use Phpfox\Core\Contracts\IsPrivacyModelInterface;
+use Phpfox\Core\PhpfoxPrivacy;
+use Illuminate\Database\Eloquent\Model;
+
+class ToDo extends Model implements PrivacyList {
+
+    public function toPrivacyLists()
+    {
+        return [
+            [
+                'item_id'      => $this->id,
+                'item_type'    => self::ENTITY_TYPE,
+                'user_id'      => $this->id,
+                'user_type'    => 'user',
+                'owner_id'     => $this->id,
+                'privacy'      => PhpfoxPrivacy::ONLY_ME,
+                'owner_type'   => 'user',
+                'privacy_type' => 'user_private',
+            ], [
+                'item_id'      => $this->id,
+                'item_type'    => self::ENTITY_TYPE,
+                'user_id'      => $this->id,
+                'user_type'    => 'user',
+                'owner_id'     => $this->id,
+                'owner_type'   => 'user',
+                'privacy'      => PhpfoxPrivacy::FRIENDS,
+                'privacy_type' => 'user_friends',
+            ],
+        ];
+    }
+
+}
+```
+
+### Privacy Members
+
+- Nếu 1 resource model có khả năng owner 1 privacy nào đó, ta sẽ implement interface Phpfox\Core\Contracts\IsPrivacyItemInterface và define như sau:
+
+```php
+
+use Phpfox\Core\Contracts\IsPrivacyItemInterface;
+
+class ToDo extends Model implements IsPrivacyItemInterface {
+
+    public function toPrivacyItem()
+    {
+        return [
+            [
+                $this->id,
+                "item_id",
+                "item_type",
+                "privacy_type",
+            ],
+        ];
+    }
+}
+
+```
+
+## Module Event
+
+- modules.updated (Call in phpfox:update)

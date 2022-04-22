@@ -1,0 +1,200 @@
+---
+route: /frontend/service
+name: service
+menu: Frontend
+---
+
+# Service Manager
+
+Service is class instance, function or React Component to handle a pieces of your app logic.
+
+In phpFox, platform keeps service in a service manager called `globalContext`, You can not access global `manager` directly but via hooks or saga context instead.
+
+Any service passed to global service manager can be access in React component or sagas function.
+
+In React component:
+
+```tsx
+import {useGlobal} from '@metafox/core'
+
+const MyComponent (){
+  const manager = useGlobal();
+  const {apiClient} =  manager
+
+  // or simplier
+  // const {apiClient} =  useGlobal();
+}
+```
+
+In saga component:
+
+```ts
+import { getContext } from 'redux-saga/effects';
+
+export function mySagas() {
+  const { apiClient } = yield * getGlobalContext();
+}
+```
+
+> globalContext is mutable, changed a its members will affected others later access without changed or update.
+
+## Class Services
+
+A standard service class must have `bootstrap` method, DO NOT define bootstrap as arrow function.
+
+```tsx
+/**
+ * @type: service
+ * name: logService
+ **/
+
+# file src/manager/LogService.ts
+
+import {Manager} from '@metafox/manager'
+
+type LogServiceProps {
+  // any property here
+}
+
+class LogService {
+  options: LogServiceProps;
+  constructor(config: LogServiceProps){
+    this.config = LogServiceProps
+  }
+
+  bootstrap(manager: Manager){
+    // to do something here.
+    // return this or void
+  }
+  info(message: string){
+    console.log(message)
+  }
+}
+```
+
+Restart dev server, now you can retry service use `useGlobal` hook, example:
+
+```tsx
+import useGlobal from '@metafox/core';
+
+const LoginForm (){
+  const { logService } = useGlobal();
+  logService.info('This message is passed by logService')
+}
+```
+
+## Configuration
+
+A above example, You have created a service named `logService`, You can pass configuration from root app by a section with the same name in `manifest.json`
+
+```json
+{
+  "logService": {
+    "level": "warn"
+  }
+}
+```
+
+Service manager will pass this configuration to LogService constructor.
+
+If you want ot access global configuration in LogService use `manager.options` accesstor.
+
+## Functional Service
+
+Some time you would like to declare general functions which can be used anywhere in components and sagas, You also hate to declare import dependencies everywhere. You
+The better way is inject theme into manager manager.
+
+This example define a function generate random string
+
+```tsx
+export default function randomId(): string {
+  return Math.random()
+    .toString(36)
+    .replace(/[^a-z]+/g, '')
+    .substr(0, 5);
+}
+```
+
+Now, you pass it to manager
+
+```tsx
+# file src/manager.tsx
+
+const manager = {
+  logService: LogService,
+  randomId,
+  // other manager here
+}
+
+export default manager
+```
+
+```tsx
+import {useGlobal} from '@metafox/core';
+
+const LoginForm (){
+  const { logService, randomId } = useGlobal();
+  logService.info('This message is passed by logService')
+  logService.info('test message id:', randomId());
+}
+```
+
+## React Component Service
+
+In order to inject a React Component Cross module without dependencies declaration, the best way
+is inject component into global service manager using inject method
+
+```tsx
+/**
+ * @type: service
+ * name: CommentList
+ */
+
+export default function CommentList() {}
+```
+
+declare typings
+
+create ./src/module.d.ts
+
+```tsx
+import '@metafox/core/Manager';
+declare module '@metafox/core/Manager' {
+  interface Manager {
+    CommentList?: React.FC<{}>;
+  }
+}
+```
+
+Getting CommentList from any component
+
+```tsx
+import { useGlobal } from '@metafox/core';
+
+function MyComponent() {
+  const { CommentList } = useGlobal();
+
+  return <CommentList />;
+}
+```
+
+## Core Services
+
+- apiClient
+- usePopover
+- cookieBackend
+- normalization
+- preferenceBackend
+- dialogBackend
+- intl
+- createPageParams
+- localStore
+- compactUrl
+- slugify
+- copyToClipboard
+- useActionControl
+- useSession
+- useGetItem
+- useLoggedIn
+- useIsMobile
+- usePageParams

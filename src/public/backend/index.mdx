@@ -1,0 +1,97 @@
+---
+name: The Basic
+route: /backend
+menu: Backend
+---
+
+### Knowledge Requirements
+
+MetaFox is based on Laravel framework, ensure you have Knowledge about laravel framework.
+
+### Credit
+
+- [Authentication](https://laravel.com/docs/8.x/passport)
+- [Authorization](https://github.com/spatie/laravel-permission)
+- [Image Processing](http://image.intervention.io/)
+- [Debug Tool](https://github.com/laravel/tinker)
+- [Storage System](https://github.com/thephpleague/flysystem)
+- [Module Management](https://github.com/nWidart/laravel-modules)
+- [GraphQL](https://github.com/rebing/graphql-laravel)
+- [Globalization](https://github.com/spatie/laravel-translatable)
+- [Message Queue](http://vladimir-yuldashev/laravel-queue-rabbitmq)
+
+### Unit Test:
+
+- [Testing](https://laravel.com/docs/8.x/testing)
+- [Mockery](https://github.com/mockery/mockery)
+- [Faker](https://fakerphp.github.io/)
+
+### Installation
+
+Checkout [source code](https://github.com/metafoxapp/metafox-platform)
+
+Copy content from `docker-compose.postgres.yml` then to new file `docker-compose.yml`.
+
+```bash
+
+# Start docker.
+docker-compose up -d
+
+# Go into docker container.
+docker-compose exec -it metafox-postgres-php-fpm bash
+
+# Install all the dependencies using composer
+composer install
+
+# Install MetaFox (required, do not use default laravel installation.)
+php artisan metafox:install
+
+# Seed data phpFox.
+php artisan phpfox:seed --force
+
+# Run Laravel Queue in background:
+nohup php artisan queue:work --daemon
+```
+
+### Directory Structure
+
+```text
+   app/            : Laravel default, don't change
+   bootstrap/      : Laravel default, don't change
+   config/         : Laravel default, don't change
+   database/       : Laravel default, don't change
+   modules/        : All packages
+       metafox/  : Core package
+       platform/   : Platform Directory
+   public/         : Laravel defaults
+       .htaccess
+       robot.txt
+       index.php   : Entry point for all requests
+    resources/     : Laravel default
+    routes/        : Laravel default
+    storage/       : Laravel default
+    tests/         : Laravel default
+    vendor/        : Laravel default
+```
+
+modules containts all packages, organize as bellow convention.
+
+vendor_name should be your company name to avoid duplicated with others.
+
+```text
+modules/
+    [company]/
+        package-1/
+        package-2/
+```
+
+example
+
+```text
+modules/
+    metafox/
+        blog/
+        photo/
+```
+
+### modules

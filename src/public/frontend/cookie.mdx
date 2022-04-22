@@ -1,0 +1,48 @@
+---
+route: /frontend/cookie
+name: Cookie
+menu: Frontend
+---
+
+## Cookie
+
+cookieBackend a wrapper of [js-cookie](https://github.com/js-cookie/js-cookie)
+
+## Hooks
+
+```tsx
+const ComponentWithCookieBackend = () => {
+  const { cookieBackend } = useGlobal();
+
+  // ... your code
+};
+```
+
+## Saga
+
+```ts
+import { getContext } from 'redux-saga/effects';
+
+export function* functionWithCookieBackend() {
+  const { cookieBackend } = yield getContext('useGlobal');
+
+  // ... your code
+}
+```
+
+## Apis
+
+```tsx
+
+# Get a cookie value
+cookieBackend.get("name");
+
+// Set a string to name
+cookieBackend.set("name", "string value");
+
+// return number or undefined
+cookieBackend.getInt("name");
+
+```
+
+Cookie is send back to server in every request, so do not storage more data than you need to cookie.

@@ -1,0 +1,223 @@
+---
+menu: Frontend
+route: /frontend
+name: Getting Started
+---
+
+> This documentation is guide to `Frontend` and `ReactJs` developer setup development environment.
+> If you are looking for `testers` or `backend` development, reading this docs is not neccessary.
+
+## Knowlege
+
+Before reading this documentation, you must confident with
+
+- [ReactJs](https://reactjs.org/)
+- [Typescript](https://www.typescriptlang.org/)
+- [React redux](https://react-redux.js.org/)
+- [Redux saga](https://redux-saga.js.org/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [Material UI](https://mui.com)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+- [Jest](https://jestjs.io/docs/getting-started)
+
+## System Requirements
+
+- node 16+
+
+If you are using Linux/MacOS, You should install node via [Node Version Manager](https://github.com/nvm-sh/nvm).
+
+Helpful commands
+
+```bash
+# Check current default node version
+node --version
+
+# Check nvm is installed
+nvm --version
+
+## install missing nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+
+# Install specify node version
+nvm install 16.14.0
+
+# Set 12.18.0 as default node excutable.
+nvm alias default 16.14.0
+```
+
+** Start Development **
+
+Checkout [source code](https://git.younetco.com/metafox/workbox)
+
+## Environment
+
+location: app/.env
+
+```conf
+;--------------------------------------------------------------------
+; location: /app/.env
+; Configuration
+;--------------------------------------------------------------------
+
+; run multiple site on the same server
+MFOX_SITE_ID=1
+
+; A properly formatted must have a leading slash but no ending slash.
+PUBLIC_URL=
+MFOX_API_KEY=2
+MFOX_API_SECRET=738ab5b83c902a7b81860e05811fd5cd65e95f72
+
+; A properly formatted must have a leading slash but no ending slash.
+MFOX_BASE_URL = https://dev-foxsocial.phpfox.us
+
+; A properly formatted must have a leading slash but no ending slash.
+MFOX_API_URL=https://dev-foxsocial.phpfox.us/v5-backend/api/v1
+
+MFOX_GOOGLE_MAP_API_KEY=AIzaSyBiQutexpRrU8p0wg7-H8CM9kfKeOfk9HE
+
+# loading background color
+MFOX_LOADING_BG=#2d2d2d
+```
+
+## Start Dev Server
+
+```shell
+# to workbox dir
+cd workbox
+
+# install yarn
+npm install -g yarn
+
+# install dependencies
+yarn && yarn bootstrap
+
+# start dev server
+yarn start
+
+# start dev server for admin site
+yarn start:admin
+```
+
+By default, deverlopment server will start at `http://localhost:3000`
+
+## Directory Structure
+
+Workbox contains all libraries, tools and extensions of phpfox projects. We use `lerna` to organize many packages into single repository. Let's look overall to top level of directory strucrure.
+
+```text
+workbox/
+  app/
+  packages/
+    apps/
+    framework/
+    yourcompany/
+  tests/
+    jest/
+    tools
+  package.json
+```
+
+**packages/framework/**
+
+This directory contains metafox core libraries.
+
+**packages/apps/**
+
+It contains modules, themes, and other extensions.
+
+**packages/app**
+
+It contains configuration.
+
+Look deeper to `app/` directory
+
+```text
+app/
+  dist/
+  public/
+    favicon.ico
+    index.html
+    logo192.png
+    logo512.png
+  src/
+    index.tsx
+  .env
+  settings.json
+  package.json
+```
+
+## Apps
+
+**dist/**
+
+It contains bundled react app result to deployment.
+
+**public/**
+
+It contains static resource to build react app.
+
+**src/**
+
+It contains source code of `frontend` app.
+
+It contains application configurations.
+
+## Configuration
+
+Site configuration is located at `settings.json`
+
+- Only packages listed `packages`
+
+```json
+# file /workbox/app/settings.json
+
+{
+  "siteUrl": "http://localhost:3000",
+  "api": {
+    "baseUrl": "http://localhost:3000/api",
+  },
+  "i18n": {
+    "locale": "en",
+    "supports": ["en", "ar", "zh-cn", "fr"]
+  },
+  "packages": [
+    "@metafox/core",
+    "@metafox/ui",
+    "@metafox/form",
+    "@metafox/html-viewer",
+    "@metafox/module-core",
+    "@metafox/module-user",
+    "@metafox/module-blog",
+    "@metafox/module-feed",
+    "@metafox/module-video",
+    "@metafox/module-event",
+    "@metafox/module-forum",
+    "@metafox/module-quiz",
+    "@metafox/module-saved",
+    "@metafox/module-ad",
+    "@metafox/module-group",
+    "@metafox/module-pages",
+    "@metafox/module-poll",
+    "@metafox/module-photo",
+    "@metafox/module-friend",
+    "@metafox/module-music",
+    "@metafox/module-marketplace",
+    "@metafox/module-forum",
+    "@metafox/module-ad"
+  ],
+}
+```
+
+### Deployment
+
+[TBD]
+
+### Visual Sudio IDE
+
+Skip this section if you not familiar with [VSCode](https://code.visualstudio.com/)
+
+Must have plugins
+
+- [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin)

@@ -1,0 +1,63 @@
+---
+route: /backend/advanced/policy
+name: Policy
+menu: Backend
+---
+
+# Policy
+
+## Policy Interface
+
+This is the main interface for all Policies.
+
+```php
+namespace FoxSocial\Platform\Contracts\Policy;
+
+use FoxSocial\Platform\Contracts\User;
+use FoxSocial\Platform\Contracts\Content;
+
+interface ResourcePolicyInterface
+{
+    public function viewAny(User $user, ?User $owner = null): bool;
+
+    public function view(User $user, Content $resource): bool;
+
+    public function viewOwner(User $user, User $owner): bool;
+
+    public function create(User $user, ?User $owner = null): bool;
+
+    public function update(User $user, ?Content $resource = null): bool;
+
+    public function delete(User $user, ?Content $resource = null): bool;
+
+    public function deleteOwn(User $user, ?Content $resource = null): bool;
+}
+
+```
+
+## Global Policy
+
+When you want to set a global policy to every resource, you should create in path: modules/company/package/src/Policies/Handlers
+
+Example CanComment will add policy "comment" to every policy class
+
+```php
+
+namespace Modules\Comment\Policies\Handlers;
+
+use MetaFox\Platform\Contracts\Content;
+use MetaFox\Platform\Contracts\HasTotalComment;
+use MetaFox\Platform\Contracts\User;
+use MetaFox\Platform\Support\Facades\PrivacyPolicy;
+
+class CanComment
+{
+    public function check(string $entityType, User $user, Content $resource): bool
+    {
+        // Code here
+    }
+}
+
+```
+
+If your policy has its own "comment" method, it will override global policy method.

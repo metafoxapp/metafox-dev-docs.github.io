@@ -1,0 +1,170 @@
+---
+route: /test-e2e/test-in-scope
+name: Scenario Rules
+menu: Tests E2E
+---
+
+Document này hướng dẫn những quy tắc khi bạn tổ chức scenario để có thể sử dụng lại các step.
+
+1. Test dựa trên data-testid thay vì element id, class, xpath.
+2. Chỉ chain các action (When) khi OUTPUT của action trước là INPUT của action sau.
+3. Nên verify kết quả của mỗi action
+4. Background chỉ nên dùng để setup application context
+5. Dùng And khi có thể
+6. Dùng thì quá khứ cho Given, Hiện tại cho When, Then
+
+**Test dựa trên data-testid thay vì element id, class, xpath**
+
+Khi dev thay đổi source code, data-testid sẽ được cố định, trong khi id, classname, xpath có thể thay đổi. Cho nên tuyệt đối không viết test dựa trên id nếu thiếu data-testid hãy report cho developers để thêm testid.
+
+**Chỉ chain các action khi OUTPUT của action trước là INPUT của action sau**
+
+```text
+Scenario: The user Share the item to News Feed without compose status
+    Given the user focused on the first "feed" item
+    # first action
+    When the user opens item share menu
+    And the user clicks on menu item "share_to_newsfeed"
+    Then the menu is closed
+    # second action
+    When the user focuses on "status composer" popup
+    Then the user sees popup title is "Share to News Feed"
+    # third action
+    When the user clicks on popup "submit" button
+    Then the popup is closed
+    And the user sees notice message "Shared to News Feed."
+```
+
+**Nên verify kết quả của mỗi action**
+
+```text
+  # first action
+  When the user opens item share menu
+  And the user clicks on menu item "share_to_newsfeed"
+  Then the menu is closed
+```
+
+**Background chỉ nên dùng để setup application context**
+
+```text
+  # DON'T ------------------------------------------------
+
+  #stub: background/stub.feature
+  Background:
+    Given the user logged in as "admin"
+    And the user used "macbook-16"
+    And the browser opened at "/blog/all"
+    When the user clicks on the sidebar search box
+
+  #stub: sidebarSearch/stub.feature
+  Scenario: Search on sidebar search form
+    When the user types "No Results Found"
+    Then the user sees "No Results Found" in search result
+
+  # DO ----------------------------------------------
+
+  #stub: background/stub.feature
+  Background:
+    Given the user logged in as "admin"
+    And the user used "macbook-16"
+    And the browser opened at "/blog/all"
+
+
+  #stub: sidebarSearch/stub.feature
+  Scenario: Search on sidebar search form
+    When the user clicks on the sidebar search box
+    And the user types "No Results Found"
+    Then the user sees "No Results Found" in search result
+```
+
+**Dùng And khi có thể**
+
+```text
+  # DON'T ------------------------------------------------
+
+  #stub: background/stub.feature
+  Background:
+    Given the user logged in as "admin"
+    Given the user used "macbook-16"
+    Given the browser opened at "/blog/all"
+
+  # DO ----------------------------------------------
+
+  #stub: background/stub.feature
+  Background:
+    Given the user logged in as "admin"
+    And the user used "macbook-16"
+    And the browser opened at "/blog/all"
+```
+
+**Dùng thì quá khứ cho Given, Hiện tại cho When, Then**
+
+```text
+  # DON'T --------------------------------------------
+  Given the user logs in as "admin"
+  When the user focused on the firt "blog" item
+
+  # DO -----------------------------------------
+  Given the user logged in as "admin"
+  When the user focuses on the firt "blog" item
+```
+
+**Đóng gói các item cần test trong scope**
+
+Ví dụ step sau:
+
+When the user focused on the firt "blog" item
+
+Khi đó chúng đóng gói các element cần verify trong một scope `item` vào một element cụ thể.
+các step sau sẽ query element trong scope `item` đó.
+
+- the user opens item share menu
+- the user opens item action menu
+- the item is removed
+
+Tương tự chúng ta đóng gói scope menu như sau
+
+the user open item action menu
+
+Khi đó scope `menu` được đóng gói, và query vào scope `menu` sẽ có được ngữ cảnh cụ thể.
+
+- the user clicks on menu item "share"
+- the user clicks on menu item "report"
+- the menu is closed
+
+Tương tự khi chúng ta làm việc với popup
+
+When the user focuses on "status composer" popup
+
+Khi đó scope `popup` được gắn với ngữ cảnh là status composer
+
+- Then the user sees popup title is "Share to News Feed"
+- When the user clicks on popup "submit" button
+- Then the popup is closed
+
+Khi một scope cụ thể được chuyển qua lại các element khác, chúng ta cần `focus` trở lại nếu muốn các step chạy tiếp tục.
+
+```text
+  Given the user focused on the first "feed" item
+  When the user opens item share menu
+  And the user clicks on menu item "share_to_newsfeed"
+  # next step
+  When the user focuses on "composer status" popup
+  Then the user sees popup title is "Share to News Feed"
+  # next step
+  When the user types "sample status" in "status" popup field
+  And the user clicks on popup "checkInButton" button
+  # next step
+  When the user focuses on "location picker" popup
+  Then the user sees popup title is "Search for location"
+  When the user types "ho chi minh" in "search" popup field
+  And the user clicks on the first suggestion in the popup
+  Then the popup is closed
+  # next step
+  When the user focuses on "composer status" popup
+  And the user clicks on popup "submit" button
+  Then the popup is closed
+  And the user sees notice message "Shared to News Feed."
+```
+
+Ở ví dụ trên, scope `popup` được chuyển qua lại giữa "composer status" và "location picker" nên chúng ta cần thiết lập lại ngữ cảnh.

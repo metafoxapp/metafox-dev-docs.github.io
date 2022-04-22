@@ -1,0 +1,315 @@
+---
+route: /frontend/layout
+name: Layouts
+menu: Frontend
+---
+
+## Comments
+
+phpFox build system scan code to check declaration.
+
+```tsx
+/**
+ * @type: itemView
+ * name: blog.itemView.mainCard
+ * keywords: blog
+ * description:
+ * previewImage:
+ * deps:
+ * priority: sort orthers.
+ */
+```
+
+@type:
+
+- `itemView`: Declare grid/list item view component.
+- `embedView`: Declare embedView in feed/notification/search embed view component.
+- `block`: Declare configurably block view component.
+- `saga`: Declare redux saga effects.
+- `reducer`: Declare redux reducer function.
+
+## Filename
+
+file types:
+
+- messages.json: Declare translation objects.
+- layouts.json: Declare layout configuration objects.
+
+## Naming
+
+Export Component Naming
+
+- Item view: [resource_type].itemView.\*, etc: blog.itemView.mainCard, blog.itemView.smallFlat
+- Embed item view: [resource_type].embedView.\*, etc: blog.embedItem.basic
+- Form Field: form.field.[name]: etc: form.field.text, form.field.upload
+- Block Component: [module_name].block.[name], etc: core.block.listview
+
+## Layout Size
+
+Layout configrations are seprarated by viewport sizes:
+
+- <=375: xxsmall
+- <=480 : xsmall
+- <=767 : small
+- <=991 : medium
+- <=1199: large
+- &gt;= 1200: xlarge
+
+**How to detect layout variants**
+
+Image that users is view user.profile page in `medium` viewport size, but administrators had not define particular layout configuration.
+Layout service will check size variants from up to down size priority: `medium`, `small`, `xsmall`, `xxsmall`, `large`, `xlarge`.
+
+Check detail of selection:
+
+- xxsmall: xxsmall, xsmall, small, medium, large, xlarge
+- xsmall: xsmall, xxsmall, small, medium, large, xlarge
+- small: small, xsmall, xxsmall, medium, large, xlarge
+- medium: medium, small, xsmall, xxsmall, large, xlarge
+- large: large, medium, small, xsmall, xxsmall, xlarge
+- xlarge: xlarge, large, medium, small, xsmall, xxsmall
+
+**When to detect layout size variants**
+
+For performance reasons, layout size variants will at page start rendering time, It means layout does not apply when user resize viewport.
+
+## Layout Elements
+
+### Block
+
+A Block is a react component that site administrators can add/remove/configure/drag-drop to layout `slot`
+
+### Slot:
+
+A slot is area which site administrators can put block,
+
+Slot can contain others slot.
+
+#### actions:
+
+##### Resize
+
+Resize a slot for responsive viewport size as small, medium, and more.
+
+##### Split
+
+Split a slot into vertical direction. It's is not usually but requiredment to build complex layout.
+
+##### Add Slot
+
+Add others siblings slot in start/end of current slot.
+
+### Section
+
+Section similar to material-ui Container component, it's define a row in layouts.
+
+#### actions:
+
+##### Settings
+
+** maxWidth **
+
+Values: 'lg'| 'md'| 'sm'| 'xl'| 'xs'| false
+
+Determine the max-width of the container. The container width grows with the size of the screen. Set to false to disable maxWidth.
+
+** disableGutters **
+
+If true, the left and right padding is removed.
+
+##### Remove
+
+##### Add new slot
+
+### Item View
+
+Item View is a component that implements UI for a single item in a listing block, etc: featured members, activity feeds:
+
+```tsx
+// file blog/src/components/BlogItemView.tsx
+export type BlogItemShape = {
+  title: string;
+  description: string;
+} & ItemShape;
+
+const BlogItemView = ({ item, itemProps }: ItemViewProps<BlogItemShape>) => {
+  const to = `/blog/view/${item.id}`;
+  const classes = useStyles();
+  const cover = /string/i.test(typeof item.image)
+    ? item.image
+    : item.image['500'];
+
+  const [control, state] = useActionControl<{}>(item, {
+    menuOpened: false
+  });
+
+  return (
+    <div className={classes.root}>
+      <div className={classes.outer}>
+        <Link to={to} className={classes.media}>
+          <span
+            className={classes.mediaBg}
+            style={{ backgroundImage: `url(${cover})` }}
+          />
+        </Link>
+        <div className={classes.inner}>
+          <div className={classes.header}>
+            <Link to={to} className={classes.title}>
+              {item.title}
+            </Link>
+            <ItemActionMenu state={state} handleAction={control} />
+          </div>
+          <p>{item.description}</p>
+          <Statistic
+            values={item.statistic}
+            display={'total_like,total_view'}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default BlogItemView;
+```
+
+```tsx
+// file blog/src/views.tsx
+import BlogItemView from './components/BlogItemView';
+export default {
+  'blog.itemView.card': BlogItemView
+};
+```
+
+## Loading Skeleton
+
+```tsx
+// file blog/src/components/BlogItemView.tsx
+
+const LoadingSkeleton = ({ itemProps }) => {
+  const classes = useStyles();
+  return (
+    <div className={classes.root}>
+      <div className={classes.outer}>
+        <div className={classes.media}>
+          <Skeleton variant="rect" height={120} component={'div'} />
+        </div>
+        <div className={classes.inner}>
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+BlogItemView.LoadingSkeleton = LoadingSkeleton;
+
+export default BlogItemView;
+```
+
+## Listing Block
+
+In most case, You will create new block components by extends other block
+
+```tsx
+import createBlock from '@metafox/core/createBlock';
+import { ListViewBlockProps } from '@metafox/core/types';
+
+const BlogListingBlock = createBlock<ListViewBlockProps>({
+  extendBlock: 'core.block.listview', // extend from block
+  name: 'BlogListingBlock', // based Block compoinent
+  overrides: {
+    // override properties automacally merged to targed component
+    contentType: 'blog', // layout editor will load view prefix by `contentType.itemView.*` to select itemView.
+    dataSource: { apiUrl: '/blog' }
+  },
+  defaults: {
+    // default properties show in layout editor,
+    // only property show in defaults AND NOT in overrides will be show in editor.
+    title: 'Blogs',
+    blockProps: { variant: 'contained' },
+    itemView: 'blog.itemView.mainCard',
+    gridContainerProps: { spacing: 2 },
+    gridItemProps: { xs: 12, sm: 12, md: 12, lg: 12, xl: 12 }
+  }
+});
+
+export default BlogListingBlock;
+```
+
+## Side Menu Block
+
+Create a side menu block
+
+```tsx
+import createBlock from '@metafox/core/createBlock';
+import { SideMenuBlockProps as Props } from '@metafox/core/types';
+
+const BlogSideMenuBlock = createBlock<Props>({
+  extendBlock: 'core.block.sideNavigation',
+  name: 'BlogSideMenuBlock',
+  displayName: 'Blog Menu',
+  keywords: 'blogs, navigation, menu',
+  description: '',
+  previewImage: '',
+  overrides: {
+    menuItems: [
+      {
+        to: '/blog',
+        label: 'All Blogs',
+        active: true
+      },
+      {
+        to: '/blog?view=my',
+        label: 'My Blogs'
+      },
+      {
+        to: '/blog?view=friend',
+        label: "Friend's Blogs"
+      }
+    ]
+  },
+  defaults: {
+    title: 'Blogs',
+    blockProps: { variant: 'plained', noHeader: true, noFooter: false }
+  }
+});
+
+export default BlogSideMenuBlock;
+```
+
+## Side Category
+
+```tsx
+import createBlock from '@metafox/core/createBlock';
+import { CategoryBlockProps } from '@metafox/core/types';
+
+const SideCategoryBlock = createBlock<CategoryBlockProps>({
+  extendBlock: 'core.categoryBlock', // based Block compoinent
+  name: 'BlogCategoryBlock', // React component name
+  displayName: 'Blog Categories', // display in layout editor
+  keywords: 'blogs, category', // keyword to search on layout editor
+  description: '', // description in layout editor
+  previewImage: '', // preview image in layout editor 200x200
+  overrides: {
+    // overrides properties will apply to derived blog automacally.
+    dataSource: { apiUrl: '/blog-category', apiParams: '' },
+    href: '/blog/category'
+  },
+  defaults: {
+    // properties will show in edit block modal.
+    title: 'Categories',
+    blockProps: { variant: 'plained' }
+  }
+});
+
+export default SideCategoryBlock;
+```
+
+## Modal
+
+```tsx
+<Link to={'/m/example/simple-modal'}>/m/example/simple-modal</Link>
+```

@@ -1,0 +1,58 @@
+---
+route: /advanced/code-splitting
+name: Code Splitting
+menu: Getting Deeper
+---
+
+# Code Splitting
+
+Refs:
+
+- https://reactjs.org/docs/code-splitting.html
+- https://webpack.js.org/guides/code-splitting/
+- https://survivejs.com/webpack/building/code-splitting/
+- https://dev.to/thekashey/code-splitting-what-when-and-why-59op
+
+> One and the only one true reason - it should make things faster.
+
+### What is code splitting?
+
+Your React application grows complex and large code base, webpack is tried to bundle all resources into single file. It is slow to browser download and compile a big bundle file. You need splitting resources into several smaller chunks. it's code splitting.
+
+![All Bype are not equal](https://res.cloudinary.com/practicaldev/image/fetch/s--3DDESfNm--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://thepracticaldev.s3.amazonaws.com/i/z1daezpdbwkpgwe6o58g.jpeg)
+
+> Code splitting is one of the most compelling features of webpack. This feature allows you to split your code into various bundles which can then be loaded on demand or in parallel. It can be used to achieve smaller bundles and control resource load prioritization which, if used correctly, can have a major impact on load time. --webpack
+
+There are three general approaches to code splitting available:
+
+1. Entry Points: Manually split code using entry configuration.
+2. Prevent Duplication: Use the SplitChunksPlugin to dedupe and split chunks.
+3. Dynamic Imports: Split code via inline function calls within modules.
+
+### TBD why we prefer choose dynamic import.
+
+TBD
+
+### Choose the right tool
+
+There are many tools and lib supports dynamic import, [Check statistic](https://www.npmtrends.com/react-loadable-vs-@loadable/component-vs-react-lazyload-vs-react-waypoint)
+
+1. [React.lazy and Suspense](https://reactjs.org/docs/code-splitting.html#reactlazy)
+2. [Loadable Components](https://loadable-components.com/)
+3. [React loadable](https://github.com/jamiebuilds/react-loadable)
+
+React.lazy and Suspense are not yet available for server-side rendering.
+
+react-loadable was the recommended way for React code splitting for a long time. However, today it is not maintained any more and it is not compatible with Webpack v4+ and Babel v7.
+
+## How phpfox team splitting code
+
+Route base + component base + library base.
+
+Core framework is splitting to 3 libs react base, ui base + others.
+
+- Combining all packages reducer files into single one and prefetch it.
+- Combining all packages sagas files into single one and prefetch it.
+- Combining all translation (messages.json) files into single one and prefetch it.
+- Split all page route components ect (./pages/UserBrowsePages.tsx)
+- fox team develop application with built-in injectable reducers, sagas, so you can split your sagas, reducers. See more [Inject reducers + sagas](/technical/injectable-store).
