@@ -1,4 +1,5 @@
 export default {
+  port: 3004,
   base: '/',
   typescript: true,
   title: 'MetaFox Developer Document',
