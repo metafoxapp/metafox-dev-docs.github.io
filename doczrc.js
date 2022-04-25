@@ -5,6 +5,7 @@ export default {
   title: 'MetaFox Developer Document',
   description: 'MetaFox Developer Document',
   src: './src',
+  dest: './docs',
   menu: [
     { name: 'Getting Started' },
     {

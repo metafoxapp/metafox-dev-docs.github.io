@@ -1,0 +1,127 @@
+---
+name: Example App
+menu: Example
+route: /example/
+---
+
+> In this section we create new package "note" of company `company` allow users to post notes and sharing with others users.
+
+## Create New App
+
+In other create new app skeleton
+
+**Frontend**
+
+```bash
+yarn metafox create-new-app --package=@company/note --item=note
+
+```
+
+directory
+
+```text
+- packages/
+--  company/
+---- note/
+------ package.json
+------ tsconfig.json
+------ actions/: define actions
+------- noteItemActions.tsx
+------ sagas/: define redux sagas actions
+------- note.tsx
+------ reducers/: define reducers
+------- index.tsx
+------ components/: define components
+------ blocks/: define blocks
+------- BrowseNotes/
+-------- Block.tsx
+------- ProfileNotes/
+-------- Block.tsx
+------- ViewNote/
+-------- Block.tsx
+------ pages/: define pages
+------- NoteHome/
+-------- Page.tsx
+-------- layouts.json
+------ types.ts: define typings
+------ index.tsx: general export
+------ module.d.ts: integrate typing
+
+```
+
+**Backend**
+
+access /admincp/apps, press "Create New App" then fill compnay and app name to generate new app skeleton.
+
+in app options, press "Code Generator", and fill "note" in others to genate item type `note` skeketon.
+
+Backend directory structure
+
+```text
+- modules/
+-- company/
+---- example/
+----- routes/
+------ api.php
+----- config/
+----- resources/
+------ lang/: define supported languages
+------- en/
+-------- phrase.php: define message translation
+-------- validation.php: define message phrases
+------- menu/
+-------- items.php: define menu items
+-------- menus.php: define menus
+----- src/
+------ Database/
+------- Factories/
+------- Migrations/
+------- Seeders/
+------- Seeders/
+------ Events/
+------ Http/
+------- Controllers/
+------- Requests/
+------- Resources/
+------ Job/
+------ Listeners/
+------ Mail/
+------ Models/
+------ Notifications/
+------ Obsevers/
+------ Policies/
+------ Providers/
+------ Repositories/
+------ Support/
+----- tests/
+------ Unit/: Unit test source root
+------ Features/: Feature test source root
+```
+
+## Add Apis
+
+## Transalation
+
+## WebSettings
+
+## Resource Settings
+
+## Add New Menu
+
+## Creation Form
+
+## Flash Messages
+
+## Editing Form
+
+## Validation
+
+## Page Browsing
+
+## Page Search
+
+## Global Search
+
+## Feed Integrations
+
+## Notifications
