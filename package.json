@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "dev": "docz dev",
-    "prebuild": "rm -rf .docs/.cache/* && rm -rf ./.docz/dist/*",
+    "prebuild": "rm -rf .docz/.cache/* && rm -rf ./.docz/dist/*",
     "build": "docz build",
     "unittest": "metafox jest-unittest",
     "launch": "yarn prebuild && yarn build && yarn deploy"

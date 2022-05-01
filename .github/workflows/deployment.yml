@@ -2,10 +2,11 @@ name: publish
 
 on:
   push:
-    branches: [main]
+    branches: [develop]
 
 env:
   NODE_VER: 16.14.0
+  DIR: metafox-dev-docs-master
 
 jobs:
   build:
@@ -30,14 +31,13 @@ jobs:
       - run: yarn
       - run: yarn build
 
-      - name: Commit files
+      # rebuild frontend documentation
+      - name: push to doc repo
         run: |
-          git config --local user.email "namnv@younetgroup.com"
-          git config --local user.name "jacky158"
-          git commit -m "Rebuild document" -a
-
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.PERSONAL_TOKEN }}
-          branch: ${{ github.ref }}
+          rm -rf ${{ env.DIR }
+          git clone --single-branch --branch main https://metafoxapp:${{ secrets.API_PERSONAL_TOKEN }}@github.com/metafoxapp/metafox-dev-docs.git ${{ env.DIR }
+          cd ${{ env.DIR }
+          cp -rf ./../.docz/dist/* ./docs
+          git add .
+          git commit -m "ci updated"
+          git push --force
