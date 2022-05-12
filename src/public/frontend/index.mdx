@@ -1,0 +1,205 @@
+---
+menu: Frontend
+route: /frontend
+name: Getting Started
+---
+
+> This documentation is guide to `Frontend` and `ReactJs` developer setup development environment.
+> If you are looking for `testers` or `backend` development, reading this docs is not neccessary.
+
+## Prerequisites
+
+The MetaFox **Frontend** is developed with ReactJS. Thus, in this documentation, we assume that you are already familiar with Frontend Development with ReactJS. If you aren't still confident with Frontend Development with ReactJS, you may want to take a look at the following docs before continuing:
+
+- [ReactJs](https://reactjs.org/)
+- [Typescript](https://www.typescriptlang.org/)
+- [React redux](https://react-redux.js.org/)
+- [Redux saga](https://redux-saga.js.org/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [Material UI](https://mui.com)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+- [Jest](https://jestjs.io/docs/getting-started)
+
+## System Requirements for Development Environment
+
+- Software
+  - Node 16+
+    - If you are using Linux/MacOS, You should install node via [Node Version Manager](https://github.com/nvm-sh/nvm).
+  - PHP 7.x or later
+  - Database: MySQL, Postgres
+  - OS: Linux is recommended
+- Hardware: 
+  - RAM at least 4GB
+
+
+## Helpful Commands
+
+```bash
+# Check current default node version
+node --version
+
+# Check nvm is installed
+nvm --version
+
+## install missing nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+
+# Install specify node version
+nvm install 16.14.0
+
+# Set 12.18.0 as default node excutable.
+nvm alias default 16.14.0
+```
+
+## Environment
+
+location: app/.env
+
+```conf
+;--------------------------------------------------------------------
+; location: /app/.env
+; Configuration
+;--------------------------------------------------------------------
+
+; run multiple site on the same server
+MFOX_SITE_ID=1
+
+; A properly formatted must have a leading slash but no ending slash.
+PUBLIC_URL=
+MFOX_API_KEY=2
+MFOX_API_SECRET=738ab5b83c902a7b81860e05811fd5cd65e95f72
+
+; A properly formatted must have a leading slash but no ending slash.
+MFOX_BASE_URL = https://dev-MetaFox.MetaFox.us
+
+; A properly formatted must have a leading slash but no ending slash.
+MFOX_API_URL=https://dev-MetaFox.MetaFox.us/v5-backend/api/v1
+
+MFOX_GOOGLE_MAP_API_KEY=AIzaSyBiQutexpRrU8p0wg7-H8CM9kfKeOfk9HE
+
+# loading background color
+MFOX_LOADING_BG=#2d2d2d
+```
+
+## Start Dev Server
+
+```shell
+# to workbox dir
+cd workbox
+
+# install yarn
+npm install -g yarn
+
+# install dependencies
+yarn && yarn bootstrap
+
+# start dev server
+yarn start
+
+# start dev server for admin site
+yarn start:admin
+```
+
+By default, deverlopment server will start at `http://localhost:3000`
+
+## Directory Structure
+
+Workbox contains all libraries, tools and extensions of MetaFox Frontend. We use `lerna` to organize many packages into a single repository. Let's look overall to the top level of directory strucrure.
+
+```text
+workbox/
+  app/
+  packages/
+    apps/
+    framework/
+    yourcompany/
+  tests/
+    jest/
+    tools
+  package.json
+```
+
+**packages/framework/**: This directory contains metafox core libraries.
+
+**packages/apps/**: It contains modules, themes, and other extensions.
+
+**packages/app**: It contains configuration.
+
+Look deeper to `app/` directory
+
+```text
+app/
+  dist/
+  public/
+    favicon.ico
+    index.html
+    logo192.png
+    logo512.png
+  src/
+    index.tsx
+  .env
+  settings.json
+  package.json
+```
+
+**app/dist/**: It contains bundled code for deployment.
+
+**app/public/**: It contains static resources to build React app.
+
+**app/src/**: It contains source code of `frontend` app.
+
+### Site Configurations
+
+Many site configurations are declared in `app/settings.json`
+
+- Packages are listed in `packages`
+
+```json
+# file /workbox/app/settings.json
+
+{
+  "siteUrl": "http://localhost:3000",
+  "api": {
+    "baseUrl": "http://localhost:3000/api",
+  },
+  "i18n": {
+    "locale": "en",
+    "supports": ["en", "ar", "zh-cn", "fr"]
+  },
+  "packages": [
+    "@metafox/framework",
+    "@metafox/ui",
+    "@metafox/form",
+    "@metafox/html-viewer",
+    "@metafox/core",
+    "@metafox/user",
+    "@metafox/blog",
+    "@metafox/feed",
+    "@metafox/video",
+    "@metafox/event",
+    "@metafox/forum",
+    "@metafox/quiz",
+    "@metafox/saved",
+    "@metafox/ad",
+    "@metafox/group",
+    "@metafox/pages",
+    "@metafox/poll",
+    "@metafox/photo",
+    "@metafox/friend",
+    "@metafox/music",
+    "@metafox/marketplace",
+    "@metafox/forum",
+    "@metafox/ad"
+  ],
+}
+```
+
+## IDE Tools
+
+There are many IDE tools supporting React Development and you can choose one IDE that you are familiar with. If you haven't got a idea about IDE for developing React, one of the most popular and powerful IDE tools that we would like to recommend to you is [VSCode](https://code.visualstudio.com/) since it has well-support for React Development with many good extensions
+
+### Recommended Extensions
+
+- [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin)

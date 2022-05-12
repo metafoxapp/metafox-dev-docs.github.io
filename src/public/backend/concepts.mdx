@@ -1,0 +1,279 @@
+---
+name: /private/concepts
+menu: Private
+hidden: true
+---
+
+# Concepts
+
+In order to help you get familiar with MetaFox platform more conveniently, this document will explain to you some main platform concepts. The implementation guide won't be covered at this document.
+
+## User vs Content
+
+Each blog, video, photo, .... has a detail page. User can comment, share, like, ... on detail pages of those item.
+
+Friends list, saved items, report item, ... has no detail pages. Users can not comment on, share or like these items.
+
+User, pages, groups have profile pages, activity streams, privacy settings, and owner of other blogs, videos, ... etc
+
+To abstract types of theme into programing concepts, we categorize them into **Content** and **User**
+
+### Content
+The object will be categorized as **Content** if:
+- Have unique id in their types
+- Has its privacy value
+- Have a detail page
+- Can like, comment, share
+
+For example: blogs, videos, photos are **Content**
+
+### User
+The object will be categorized as **User** if:
+- Have a profile page
+- Can have others content (blogs, videos, ...)
+- Have their activity stream
+
+For example: users, pages, groups as **User**
+
+Thus, we can call a page, group as `page` user, `group` user.
+
+And, obviously, we can say that **User* is `child` of **Content*
+
+## Membership
+
+**membership** is relationship of two **User**. For example:
+
+After logged in, a user can:
+
+- Send friend request to become friends of others.
+- Assign his friends to a his friend lists.
+- Send member request to become group member.
+- Like a page to become members of page.
+
+When logged in as group user, a user can:
+
+- Assign a members to be group admin, etc
+
+We call these relationships are membership.
+
+A User has the following **memberships**:
+
+- his friends
+- his friend lists
+
+A `group` User has the following memberships:
+
+- group members
+- group admins
+
+A `page` User has the following memberships
+
+- page members
+- page admins
+
+## Privacy
+
+When users post items ... on their profile pages, they can set who can see their posts with their memberships
+
+For example: A user can post a blog and set the privacy with their **memberships**:
+
+- friends
+- Specific friend lists
+
+In order to keep design cleaned, **privacy** should be centralized to a place, so it's have a global unique ID.
+Then we can map **membership** to **privacy** concept as simple as possible.
+
+## Action Entity
+
+**ActionEntity** is Models which defines who did the action on a Content (can be Content or User - since User was a child of Content).
+
+For example: when users do something, for example: like, share, friend request v.v..., Those Models are called **ActionEntity**.
+
+
+## Role & Permissions
+
+Think **role** as **user_group** in phpFox V4
+
+Think **permissions** as **user_group_params** in phpFox V4. Has two type:
+
+- Permission with boolean value
+- Permission with actual value
+
+## Policy
+
+When user posts a comment, writes a blogs, shares a content ... platform has to verify **role** & **permission** to see if the user is allowed to perform such actions
+
+When a user posts on others profile pages, platform also have to check **membership** and **privacy** of the profile owner.
+
+To reduce duplicated and keep code cleaned, in platform we will centralize all checking of **permission** and **privacy** to **Policy**.
+
+In Policy, every action we have 5 privacy layers:
+
+- Role/Permission
+
+```php
+$user->hasPermissionTo('resource.view'); // return bool.
+```
+
+- Privacy Owner
+
+```php
+use MetaFox\Platform\Support\Facades\PrivacyPolicy;
+
+PrivacyPolicy::checkPermissionOwner($user, $owner); // return bool.
+```
+
+- User Privacy Setting of Owner
+
+```php
+use MetaFox\User\Support\Facades\UserPrivacy;
+
+UserPrivacy::hasAccess($user->entityId(), $owner->entityId(), 'blog.view_browse_blogs'); // return bool.
+```
+
+- Resource Setting: consider to use it on which level depends on context.
+
+```php
+use MetaFox\Platform\Facades\Settings;
+
+Settings::get('blog.privacy_enabled'); // return mixed (your module is free to define var type).
+
+```
+
+- Privacy Resource
+
+```php
+use MetaFox\Platform\Support\Facades\PrivacyPolicy;
+
+PrivacyPolicy::checkPermission($user, $resource); // return bool.
+```
+
+## Event
+
+Laravel's **Event** is a implementation of [Observer Pattern](https://en.wikipedia.org/wiki/Observer_pattern)
+
+**Event** is simple way to decouple package dependencies and extends platform features. It can be thought as a replacement of MetaFox plugins.
+
+### Using Event to notify an action
+
+When a new user is registered, we can notify an action `user_created` with `$user` data.
+
+```php
+events()->dispatch('user_created', $user);
+```
+
+All listeners registered to the action `user_registered` will handle the action as below
+
+```php
+class UserCreatedListener
+{
+  public function handle($user){
+      // put your code here
+  }
+}
+```
+
+### Using Event to interact
+
+```php
+$response = event()->dispatch('get_package_settings');
+```
+
+```php
+class PackageSettingListener
+{
+  function handle()
+  {
+    return ['add_new_setting'=>['database_down']];
+  }
+}
+```
+
+### Using Event to call APIs of other Apps
+
+```php
+event()->dispatch('create_new_feed', $action);
+```
+
+```php
+class CreateFeedActionHandler
+{
+  public function handle($action)
+  {
+      $feedService->createAction($action);
+  }
+}
+```
+
+## Model Observer
+
+**Model Observer** is the integration of `Eloquent` Model and **Event** system with events of `creating`, `created`, `updating`, `updated`, `deleting`, `deleted`.
+
+```php
+class PostObserver
+{
+
+  public function creating($post)
+  {
+    // this method is invoked automatically when Blog is created
+  }
+
+
+  public function created($post)
+  {
+    // this method is invoked automatically when Blog is created
+  }
+
+  // others
+}
+```
+
+## Feed & Stream
+
+When a user post blogs, video, photo, ... platform will centralize these actions into feed, and other users can see and interact with.
+
+To keep feed in as simple as possible, the platform will organize feed item as below:
+
+Each `feed` contains info of `item_type`, `item_id`, `user_id`, `user_type`, `owner_id`, `owner_type`, `type_id`
+Note:
+`item_type`, `item_id`: specify the item mentioned about
+`user_type`, `user_id`: specific **User** who is created item
+`owner_type`, `owner_id`: specific **User** where item is posted to (other users, on a page, on a group v.v...)
+`type_id`: to categorize feed, feed abilities: **can_comment**, **can_like**, **can_share**, **can_edit**, **can_create_feed**, **can_put_stream**.
+
+### When a feed is created, how to deliver it ?
+
+The trouble comes when feed owner set privacy to many friend lists. We can not keep many **Privacy** in single feed record, So we put **Feed** + **Privacy** to other `feed_stream` tables. It has info of `feed_id`, `privacy_id`, `owner_id` so we can deliver feed in flexible way.
+Note:
+`privacy_id`: specify who can see
+`owner_id`: specify profile page
+
+## Storage & Disk
+
+We have `core_storage_services` : currently we support **AWS S3** and **Local**. For each storage service, we can have multiple **Config** instances (`core_storage`).
+
+- Config in config/filesystems.php
+
+## Scope
+
+When you want to add custom query to Query Builder, use **Scope**. MetaFox supports:
+
+- [Global scopes](https://laravel.com/docs/8.x/eloquent#global-scopes): this way is not recommended because it will add to Model static and apply for the whole request process.
+- [Local scopes](https://laravel.com/docs/8.x/eloquent#local-scopes): written inside Model, but it isn't recommended to write too much in Model, should only create **Scope** that will always be used.
+
+### How to apply Scope: 
+
+When we build query, we can create a **Scope** and apply it into current Query.
+
+Example:
+
+```php
+
+$exampleScope = new ExampleScope();
+$exampleScope->setSomeAttribute('123');
+
+$model = new Model();
+$query = $model->newQuery()->applyScope($exampleScope);
+$data = $query->get();
+
+```

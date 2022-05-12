@@ -1,0 +1,304 @@
+---
+route: /backend/content
+name: Content
+menu: Backend
+---
+
+# Content
+
+This is an interface of a `Contract` content. Example: Blog, Photo v.v...
+
+A `Contract` content always has `user_id`, `user_type`, `owner_id`, and `owner_type`.
+
+```php
+
+namespace MetaFox\Platform\Contracts;
+
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Support\Collection;
+
+interface Content extends Entity
+{
+    /**
+     * @return int
+     */
+    public function userId(): int;
+
+    /**
+     * @return string
+     */
+    public function userType(): string;
+
+    /**
+     * @return int
+     */
+    public function ownerId(): int;
+
+    /**
+     * @return string
+     */
+    public function ownerType(): string;
+
+    /**
+     * @return User|MorphTo
+     */
+    public function user();
+
+    /**
+     * @return UserEntity|BelongsTo
+     */
+    public function userEntity();
+
+    /**
+     * @return User|MorphTo
+     */
+    public function owner();
+
+    /**
+     * @return UserEntity|BelongsTo
+     */
+    public function ownerEntity();
+}
+
+```
+
+## Category
+
+For example, you want to organize `Note` items into categories, you need to have 2 schemas `note_categories` and `note_category_data` to keep many-to-many relationship of `notes` and `categories`
+
+### Schema
+
+```php
+
+class NoteMigration extends Migration{
+
+  public function up (){
+    DbTableHelper::categoryTable('note_categories', true);
+    DbTableHelper::categoryDataTable('blog_category_data');
+  }
+
+  public function down(){
+    Schema::dropIfExists('note_categories');
+    Schema::dropIfExists('note_category_data');
+  }
+}
+
+```
+
+Category DDL
+
+```sql
+-- auto-generated definition
+CREATE TABLE note_categories
+(
+    id         serial CONSTRAINT note_categories_pkey PRIMARY KEY,
+    parent_id  integer,
+    name       varchar(255)                   NOT NULL,
+    name_url   varchar(255),
+    is_active  smallint DEFAULT '1'::smallint NOT NULL,
+    ordering   integer  DEFAULT 0             NOT NULL,
+    total_item integer  DEFAULT 0             NOT NULL,
+    created_at timestamp(0),
+    updated_at timestamp(0)
+);
+```
+
+Category Data DDL
+
+```sql
+-- auto-generated definition
+CREATE TABLE note_category_data
+(
+    id          bigserial CONSTRAINT blog_category_data_pkey PRIMARY KEY,
+    item_id     bigint  NOT NULL,
+    category_id integer NOT NULL
+);
+```
+
+## Tags
+
+Each content supports **hashtag** and **tags**
+
+- **hashtag** is tagged words starting by `#` in description of content.
+- **tag** (sometimes named as **topics**) is separated word/label attached to a content
+
+In order to support tags and search in MetaFox app
+
+### Step 1:
+
+Add `*_tag_data` relation to migration
+
+```php
+DbTableHelper::createTagDataTable('blog_tag_data');
+
+```
+
+### Step 2:
+
+Modify content table to have `tags`
+
+```php
+class CreateBlogTables extends Migration{
+
+    function up(){
+        // add this line to up() method
+        DbTableHelper::tagsColumns($table);
+    }
+}
+```
+
+Add `*TagData` table class, etc
+
+```php
+<?php
+
+namespace MetaFox\Blog\Models;
+
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\Pivot;
+
+/**
+ * Class BlogTagData.
+ * @mixin Builder
+ * @property int    $id
+ * @property int    $item_id
+ * @property int    $tag_id
+ * @property string $tag_text
+ */
+class BlogTagData extends Pivot
+{
+    /**
+     * @var bool
+     */
+    public $timestamps = false;
+
+    /**
+     * @var string
+     */
+    protected $table = 'blog_tag_data';
+
+    /**
+     * @var string[]
+     */
+    protected $fillable = [
+        'item_id',
+        'tag_id',
+    ];
+}
+```
+
+### Step 3
+
+```php
+class Blog {
+  /**
+   * @return BelongsToMany
+   */
+  public function tagData(): BelongsToMany
+  {
+      return $this->belongsToMany(
+          Tag::class,
+          'blog_tag_data',
+          'item_id',
+          'tag_id'
+      )->using(BlogTagData::class);
+  }
+  // ... other method
+}
+```
+
+### Step 4
+
+Add tag scope to associated query to filter content by tag.
+
+```php
+  if ($searchTag != '') {
+       $query = $query->addScope(new TagScope($searchTag));
+  }
+```
+
+### Step 5
+
+On the Search form, there are no **tag** fields, users can type "#" in search field to search with tags.
+
+```php
+
+class IndexRequest{
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function validated(): array
+    {
+        $data = parent::validated();
+
+        // .. other process
+
+        if (Str::startsWith($data['q'], '#')) {
+            $data['tag'] = Str::substr($data['q'], 1);
+            $data['q'] = MetaFoxConstant::EMPTY_STRING;
+        }
+
+        return $data;
+    }
+}
+```
+
+## Policy
+
+This is the main interface for all Policies.
+
+```php
+namespace MetaFox\Platform\Contracts\Policy;
+
+use MetaFox\Platform\Contracts\User;
+use MetaFox\Platform\Contracts\Content;
+
+interface ResourcePolicyInterface
+{
+    public function viewAny(User $user, ?User $owner = null): bool;
+
+    public function view(User $user, Content $resource): bool;
+
+    public function viewOwner(User $user, User $owner): bool;
+
+    public function create(User $user, ?User $owner = null): bool;
+
+    public function update(User $user, ?Content $resource = null): bool;
+
+    public function delete(User $user, ?Content $resource = null): bool;
+
+    public function deleteOwn(User $user, ?Content $resource = null): bool;
+}
+
+```
+
+### Global Policy
+
+When you want to set a global policy to every Resource, you should createc classes in `packages/[company]/[app_name]/src/Policies/Handlers` folder
+
+In the below example, `CanComment` will add a "comment" policy to all Policy classes
+
+```php
+
+namespace MetaFox\Comment\Policies\Handlers;
+
+use MetaFox\Platform\Contracts\Content;
+use MetaFox\Platform\Contracts\HasTotalComment;
+use MetaFox\Platform\Contracts\User;
+use MetaFox\Platform\Support\Facades\PrivacyPolicy;
+
+class CanComment
+{
+    public function check(string $entityType, User $user, Content $resource): bool
+    {
+        // Code here
+    }
+}
+
+```
+
+If your policy has its own "comment" method, it will override global policy method.

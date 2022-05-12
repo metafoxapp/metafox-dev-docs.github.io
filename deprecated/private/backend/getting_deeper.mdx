@@ -1,0 +1,286 @@
+---
+route: /getting-deeper
+name: Getting Deeper
+hidden: true
+---
+
+# Getting Deeper
+
+## UserEntity vs ContentEntity
+
+UseEntity bao gồm: User, Page, Group, etc... ContentEntity bao gồm: Blog, Photo, Album, Video, Poll, Quiz, ...
+
+### UseEntity
+
+phpFox có nhiều loại đối tượng User, Page, Group, ... những đối tượng này có một số tính năng chung. tuỳ vào ngữ cảnh
+thì user, page, group chứa vai trò _`user`_ hoặc _`owner`_
+
+Ví dụ:
+
+`User A` post blog vào profile của `Group B` khi đó `User A` là _`user`_ còn `Group B` là _`owner`_
+
+`User A` post blog vào profile của `User A`, khi đó `User A` vừa là _`user`_ và vừa là _`owner`_
+
+`User A` tạo `Group C`, thì `Group C` thì `User A` là _`owner`_ của _`Group C`_.
+
+Một số chức năng đáng chú ý:
+
+- Cho phép User sử dụng chức năng "Login As" với Page, Group.
+- Mỗi User, Page, Group có một Profile Page
+- Mỗi User, Page, Group có một trang quản lý privacy mặc định, khi một user post nội dung lên Profile khác, thì privacy
+  mặc định được sử dụng, _`user`_ không được thiết lập/thay đổi privacy mà nội dung mà mình sẽ post.
+
+Như chúng ta thấy, có nhiều loại _`user`_ khác nhau, sẽ không hợp lý khi lưu toàn bộ dữ liệu và tổng quát nó thành một
+models, giải pháp ở đây là:
+
+- Lưu chúng ở nhiều cấp bảng tuỳ theo module, để phân biệt và dễ dàng quản lý, chúng ta sẽ cấp cho mỗi _`user`_ một
+  unique id number.
+- Các Model cài đặt sẽ được kết hợp interface `UseEntity` để phân biệt.
+- Redudant một số dữ liệu quan trong lên một bảng trung gian `user_resources` cho phép lấy nhanh thông tin.
+
+### ContentEntity
+
+Những đối tượng như Photo, Video sẽ có một số thông tin chung như sau:
+
+- resourceType/resourceId giúp tìm kiếm nhanh chóng thông qua đa hình trong laravel.
+- privacy: owner thiết lập những user nào có thể access để xem.
+- ownerType/ownerId/owner giúp xác định chủ sở hữu của resource.
+- userType/userId/user giúp xác định người post.
+
+## Privacy vs Network
+
+### Privacy
+
+Privacy là gì?
+
+Trên phpFox, `privacy` là dùng để giới hạn quyền access của một user vào resources. Giá trị privacy thể
+hiện `relationship` của user và owner của resource cần access.
+
+phpFox v4 sử dụng hệ thống privacy bao gồm 4 cấp:
+
+- public: không giới hạn quyền access.
+- friends: chỉ có friends được quyền access.
+- friends of friends: cho phép friends và `friends of friends` được access.
+- private: Không cho phép ai khác quyền access.
+- customs: Dựa trên một nhóm các friends
+
+Cách tiếp cận này giới hạn privacy trên quan hệ `relationship` được lưu trên "friends", làm mất đi sự linh hoạt khi mô
+tả các dạng "relationship" khác.
+
+Ví dụ:
+
+- Chỉ các members trong một \*private group` mới được xem các bài post trong group đó.
+- Chỉ những người đã từng mua hàng mới được quyền xem một số bài post về khuyến mãi đặc biệt.
+- ....
+
+Giải pháp ở đây là chúng ta chấp nhận các `relationship` được quản lý ở các module khác nhau, ví dụ
+
+- friendship của user lưu ở bảng `friends`, `friend_list`, `friend_list_data`
+- membership của group vẫn lưu ở `group_members`
+- membership của page vẫn lưu ở `page_members`
+
+Khi một module muốn sử dụng `relationship` như một `privacy`, nó sẽ đẩy dữ liệu sang bảng `privacy` và `privacy_members`
+và sử dụng con số `privacy_id` kiểm tra.
+
+Chúng ta mô tả các bước như sau:
+
+Ngay khi `group id=3` được tạo ra, nó muốn sử dụng `relationship` member trong bảng `group_members` làm privacy.
+
+Khi `user id=5` thành members của `group id=3`, dữ liệu từ group_members cũng được đưa sang table privacy_members.
+
+Khi một `blog id=7` được post lên groups, và dữ liệu được lưu xuống `blog_privacy_streams`
+
+table privacy
+
+| privacy_id | item_id | item_type | privacy_type |
+| ---------- | ------- | --------- | ------------ |
+| 10         | 3       | group     | group_member |
+
+table privacy_members thể hiện `user id=5` có quyền với `privacy_id = 10`, tương ứng với group_members.
+
+| id  | privacy_id | user_id | user_type |
+| --- | ---------- | ------- | --------- |
+| 1   | 10         | 5       | user      |
+
+table blog_privacy_streams
+
+| id  | privacy_id | blog_id | user_type |
+| --- | ---------- | ------- | --------- |
+| 1   | 10         | 7       | user      |
+
+Khi muốn kiểm tra một user có các quyền access các blog nào chúng ta dựa vào bảng `privacy_members`
+và `blog_privacy_streams`.
+
+Như đã thấy ở `blog_privacy_streams` một blog_id có một hoặc nhiều `privacy_id`, và user có quyền access khi nó thuộc về
+bất kỳ một privacy_id nào.
+
+_Warning:_
+
+Do độ lớn của tập dữ liệu, nó không thể mô tả các `relationship` friends of friends, nên chúng ta cần phải chấp nhận
+UNION thêm 01 lần hoặc chấp nhận một case đặc biệt cần kiểm tra/query thêm.
+
+### Network
+
+- TienLV TBD.
+
+## Activity System
+
+Trên phpFox V4, Activity được phân tán ở nhiều module, khiến chúng ta gặp khó khăn với scale và performance. Để giải
+quyết vấn đề này, chúng ta cần tập trung lại toàn bộ activity feed lại. Bao gồm:
+
+- Activity Feed: giống như v4, mô tả feed item, nhưng sẽ bao gồm feeds cả pages, groups, ...
+- Activity Privacy: Tập trung toàn bộ privacy của network.
+- Activity Subscription: Mô tả user sẽ lấy feeds từ những nguồn nào.
+- Activity Stream: Mô tả feed nào đang được deliver lên target nào và với privacy nào.
+
+## Privacy System
+
+Privacy được chia thành privacy_list và privacy_network
+
+### Privacy:
+
+- core_privacy
+- core_privacy_members
+- core_privacy_stream
+
+### Network
+
+- core_networks
+- core_network_members
+- core_stream
+
+## Authenticate
+
+Should built-in support multiple authenticate
+
+- identity/credentials (username-email/password)
+- Social Accounts: login by Facebook, Twitter, Google, Apple.
+- LDAP
+
+Platform provides an event to verify that user can pass authentication follow
+by `app('events')->until('user.auth_pass');`
+
+## Authorization Policy
+
+Multiple authorization layers: `Privacy`, `Permission`, `Network`
+
+### Privacy Layer
+
+Resource privacy is assigned by resource owner, it checks who can access resources.
+
+```php
+namespace App\Contracts\Authorization;
+
+use App\Contracts\ContentResource as Content;use App\Contracts\UserResource as User;use Exception;
+
+interface PrivacyService {
+    /**
+    * @param User|null $user
+    * @param Content $resource
+    * @param string|null $ability
+    * @return boolean
+    */
+    public function check(?User $user, Content $resource, string $ability=null);
+
+    /**
+    * @param User|null $user
+    * @param Content $resource
+    * @param string|null $ability
+    * @return boolean
+    * @throws Exception
+    */
+    public function has(?User $user, Content $resource, string $ability=null);
+}
+```
+
+### Permission
+
+Defining via (auth_roles, auth_permissions, ... )
+
+Architects:
+
+- permissions: Define available abilities - roles: Each user has a single role, preserved roles are:
+- Super Admin - Admin - Staff - Registered - Ban - Guest - user_roles: define roles will be assigned to a users
+
+```php
+namespace App\Contracts\Authorization;
+
+use App\Contracts\ContentResource as Content;use App\Contracts\UserResource as User;
+
+interface PermissionService{
+
+    /**
+    * @param User|null $user
+    * @param Content $resource
+    * @param string|null $ability
+    * @return boolean
+    */
+    public function check(?User $user, Content $resource, string $ability=null);
+
+    /**
+    * @param User|null $user
+    * @param Content $resource
+    * @param string|null $ability
+    * @return boolean
+    * @throws Exception
+    */
+    public function has(?User $user, Content $resource, string $ability=null);
+}
+```
+
+### Network Layer
+
+```php
+namespace App\Contracts\Authorization;
+
+use App\Contracts\ContentResource as Content;use App\Contracts\UserResource as User;
+
+interface NetworkService{
+
+    /**
+    * @param User|null $user
+    * @param Content $resource
+    * @param string|null $ability
+    * @return mixed
+    */
+    public function check(?User $user, Content $resource, string $ability=null);
+
+    /**
+    * @param User|null $user
+    * @param Content $resource
+    * @param string|null $ability
+    * @return boolean
+    */
+    public function has(?User $user, Content $resource, string $ability=null);
+}
+```
+
+### Gate and Policies
+
+References:
+
+- [Gate](https://laravel.com/docs/8.x/authorization#gates)
+- [Policies](https://laravel.com/docs/8.x/authorization#creating-policies)
+
+Để tích hợp mọi thứ chúng ta dùng mô hình Gate - Policy cho việc kiểm tra Authorization:
+
+Cấu trúc thư mục.
+
+- Example/
+  - Policies
+    - PostPolicy.php
+    - CategoryPolicy.php
+
+Examples:
+
+```php
+
+namespace Modues\Example\Policies;
+
+class PostPolicy {
+
+    public function create(?User $user, Content $content){
+
+    }
+}
+```

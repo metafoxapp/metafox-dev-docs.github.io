@@ -1,0 +1,177 @@
+---
+name: Routing
+menu: Backend
+route: /backend/routing
+---
+
+# Basic Routing
+
+MetaFox platform support RESTful API routes.
+
+Routing defines the way platform resolve URI request info into Controller action,
+In most of cases you will begin by defining routes of your app package in `routes/api.php` file.
+
+This file re-uses Laravel Routing system in package levels, for futher information read out [laravel routing](https://laravel.com/docs/9.x/routing)
+
+```php
+<?php
+/**
+ * File name packages/metafox/blog/src/routes/api.php
+ * This file defines route that begin at /api/{ver}/ prefix
+ *
+ */
+
+// define namespace of main controller api gateway
+namespace MetaFox\Blog\Http\Controllers\Api;
+
+// use laravel routing
+use Illuminate\Support\Facades\Route;
+
+/*
+ * --------------------------------------------------------------------------
+ *  API Routes
+ * --------------------------------------------------------------------------
+ *
+ *  This file will be loaded by @link \MetaFox\Platform\PackageManager::getApiRoutes()
+ */
+
+Route::group([
+    'namespace'  => __NAMESPACE__, // define all of controller
+    'middleware' => 'auth:api',
+], function () {
+
+    Route::patch('blog/sponsor/{id}', 'BlogController@sponsor');
+    Route::patch('blog/feature/{id}', 'BlogController@feature');
+    Route::patch('blog/approve/{id}', 'BlogController@approve');
+    Route::put('blog/publish/{id}', 'BlogController@publish');
+
+    Route::resource('blog', 'BlogController');
+});
+```
+
+## Route Method
+
+```php
+<?php
+// define route with http GET request
+Route::get($uri, $callback);
+
+//define route with http POST request
+Route::post($uri, $callback);
+
+//define route with http PUT request
+Route::put($uri, $callback);
+
+// define route with http PATCH request
+Route::patch($uri, $callback);
+
+ //define route with http POST request
+Route::delete($uri, $callback);
+
+//define route with http OPTION request
+Route::options($uri, $callback);
+```
+
+In above source code, naming convention of `\$callback` is `ControllerClassName@methodName`
+
+For example `Route::patch('blog/sponsor/{id}', 'BlogController@sponsor');` will dispatch the specified route to controller `BlogController` in namespace `MetaFox\Blog\Http\Controllers\Api` with method `sponsor`.
+
+## Route Group
+
+To organize api routes for more readable, laravel support group of routes, using `Route::group` method.
+
+For examples, all route in the group have the same controller namespace, middleware and prefix.
+
+```php
+<?php
+Route::group([
+    'namespace'  => __NAMESPACE__, // define all of controller
+    'middleware' => 'auth:api',
+    'prefix'=> 'blog'
+], function () {
+  // all sub route have namespace
+});
+```
+
+## Route Resource
+
+Routing for RESTful api request has a short method Route::resouce($uri, $callback)
+
+```php
+<?php
+
+Route::resource('blog', 'BlogController');
+
+```
+
+// it is the same to
+
+```php
+<?php
+
+Route::get('blog', 'BlogController@index');
+Route::get('blog/{id}', 'BlogController@show');
+Route::delete('blog/{id}', 'BlogController@destroy');
+Route::post('blog/{id}', 'BlogController@store');
+Route::put('blog/{id}', 'BlogController@update');
+```
+
+## Route Cache
+
+For optimizing performance, laravel framework keep all routes in route caches. To affected new routes run artisan
+
+```bash
+
+# clear routes cache
+php artisan route:cache
+
+# checkout routes
+
+php artisan route:list
+```
+
+## Route Parameters
+
+Sometimes you will need to capture segments of the URI within your route. For example, you may need to capture a user's ID from the URL. You may do so by defining route parameters within `{id}`, if the parameters is optional and question mark '?' after id.
+
+For example
+
+```php
+<?php
+// api.php
+Route::get('/user/{id}', 'UserController@show');
+
+Route::get('/user/info/{id?}', 'UserController@info');
+
+// UserController.php
+
+<?php
+
+class UserController {
+
+  // get id=1 for /user/1
+  function show(int $id){
+    //
+  }
+
+  // get id=1 for /user/info/1
+  // id=null for /user/info
+  function info(?int $id){
+
+  }
+}
+
+```
+
+For complex example with required parameter `postId` and optional parameter `commentId`
+
+```php
+<?php
+Route::get('/user/{postId}/comments/{comemntId?}', 'CommentController@view');
+```
+
+## API Versioning
+
+In real world, when you have a long time project with multiple released version, the platform wraps all routes define in `api.php` within a prefix=`/api/{ver}`, parameter `{ver}` will be passed to controller action to help us define correct response base on version.
+
+[Next Chapter](/backend/controller)

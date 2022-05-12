@@ -1,0 +1,160 @@
+---
+route: /test-e2e/writing-good-gherkin
+name: Writing Good Gherkin
+menu: Tests E2E
+---
+
+> Writing Gherkin is easy, but writing good Gherkin is hard.
+
+## Testing process
+
+### Write test scenarios at early stages
+
+Write test scenarios before you start creating test code or at the early stages of development. The scenarios help you define software behavior and understand possible problems in a better way. Once a scenario is ready and your teammates agree with it, you can start implementing the functionality. This will save time and effort and remove uncertainty later, during the development or when your team will run acceptance tests.
+
+### Don’t write in isolation, work as a team
+
+If a business analyst or a product owner writes test scenarios on their own, they can miss input from other team members, and the resulting scenarios will not represent the common understanding of application behavior.
+
+Also, often, it’s difficult to automate test scenarios written by non-technical team members without modification. And after modification, these scenarios might become significantly different from the original idea.
+
+On the other hand, test scenarios written only by developers or QA engineers often have lots of unimportant details that make it difficult to understand the core test idea.
+
+Involving different types of specialists in scenario creation will help people with different perspectives share their vision and help you create well-defined descriptions.
+
+### Remove unneeded scenarios
+
+When you start creating your software product, you can create scenarios that test some basic functionality. A typical example is as follows –
+
+```gherkin
+Given the user is logged in
+And their bank account is empty
+When the user checks the balance
+Then the balance should be zero
+```
+
+Most of the time, these kinds of tests are obvious and exist because you needed something to start the implementation. As the time progresses, you create more and more scenarios, and it is likely that basic functionality is covered by some other tests. So, keeping old simple scenarios will not add any significant value to helping your teammates understand how the product works. Delete these scenarios or rephrase them to something more valuable.
+
+## Scenario content
+
+### Describe the core and avoid insufficient details
+
+Many specialists tend to write scenarios the same way they write tests ("I click this button and enter this value when I run a manual test, so why shouldn’t I add this to the scenario?"). As a result, they get scenarios with incidental details that hide the main story. A simple example of this looks as follows:
+
+```gherkin
+Given I sign up as "JohnSmith"
+And my password is "password"
+And my password confirmation is "password"
+And I have deposited "$60" in my account
+And I have deposited "$40" in my account
+When I check my bank balance
+Then my bank balance is "$100"
+```
+
+The purpose of the scenario is to check the bank balance, not to verify the passwords.
+
+To avoid such scenarios, try focusing on the core idea and avoid details that don’t contribute much. For the example above, a possible correction would be as follows:
+
+```gherkin
+Given a user signed up as "JohnSmith"
+And has deposited "$60" in their account
+And has deposited "$40" in their account
+When that user checks their bank balance
+Then the balance should be "$100"
+```
+
+### Avoid creating too high-level scenarios
+
+This problem is contrary to the one described above. Too abstract scenarios make the described idea complex for understanding. Look at this Gherkin code –
+
+```gherkin
+Given I have an account
+When I withdraw some money
+Then the balance should be the original balance minus the amount withdrawn
+```
+
+This scenario has no example data in it. It doesn’t say what the balance was or how much a user withdraws. In some cases, details help better understand what is happening under the cover. You need to find a reasonable balance between too-detailed and too-abstract scenarios.
+
+### Don’t test several rules at a time
+
+1. One Scenario, One Behavior!
+2. Given-When-Then steps must appear in order and cannot repeat.
+3. Avoid hard to tell what you are testing
+4. Lots of user interface details
+
+```gherkin
+Feature: Google Searching
+  #BAD
+  Scenario: Google Image search shows pictures
+    Given the user opens a web browser
+    And the user navigates to "https://www.google.com/"
+    When the user enters "panda" into the search bar
+    Then links related to "panda" are shown on the results page
+    When the user clicks on the "Images" link at the top of the results page
+    Then images related to "panda" are shown on the results page
+```
+
+```gherkin
+Feature: Google Searching
+  Scenario: Search from the search bar
+    Given a web browser is at the Google home page
+    When the user enters "panda" into the search bar
+    Then links related to "panda" are shown on the results page
+
+  Scenario: Image search
+    Given Google search results for "panda" are shown
+    When the user clicks on the "Images" link at the top of the results page
+    Then images related to "panda" are shown on the results page
+```
+
+### Don’t write procedure-driven scenarios
+
+Don’t write a scenario the same way you create UI test script. Don’t link to button names or text box captions where possible. This often hides the core idea, and if the UI changes, your tests become misleading, and you need to update them.
+
+### Avoid “I” in step definitions
+
+**Write all steps in third-person point of view**
+
+There are two approaches to writing test steps: first-person and third-person. Using the personal pronoun “I” might help you put yourself in the users’ shoes. However, most of the modern applications are multi-user, and putting “I” in a scenario can be confusing as it might be unclear what exact user you are speaking about.
+
+We’d recommend writing steps in third person. This will remind you about the user role in the application, avoid misleading assumptions, and help you provide info in more structured way. Use narrative sentences and clearer definitions. Don’t use both first-person and third-person pronouns in one scenario.
+
+```gherkin
+#BAD
+Scenario: Google Image search shows pictures
+  Given I am at the Google search page
+  When I search for “panda”
+  Then I see web page links for “panda”
+
+# Good
+Scenario: Google Image search shows pictures
+  Given the browser is at the Google search page
+  When the user searches for “panda”
+  Then web page links for “panda” are shown
+```
+
+### Use meaningful scenario titles and descriptions
+
+**Write steps as a subject-predicate action phrase**
+
+Scenario titles help you quickly understand the scenario essence. Titles like “Scenario1” or “YesAnotherScenario” are unclear, and it will be difficult to recall what they do even for the scenarios' authors. We’d also suggest avoiding non-specific scenario names like “Sign Up, open the Balance Screen, check balance, log off”. Consider using more descriptive names like “Check balance when it is positive”, “Check balance when an overdraft is on”, and so on.
+
+As for descriptions, try explaining business rules in them. A description like “As a user, I want to check my balance, so that I know my balance” gives no info on the product behavior. Think of scenarios and descriptions as of living documentation, use them to talk about business rules, to provide examples and remove uncertainty.
+
+### Use a reasonable number of scenarios in a feature file
+
+A long feature file can make it difficult to understand how a feature works. Keep some reasonable number of scenarios per file, say, a dozen. Use scenario outlines to check different cases.
+
+If you are testing some complex functionality that requires lots of tests, think of dividing it into subfeatures and create a file for each subfeature.
+
+### Connect as a real user
+
+Connect to the system the same way as your users will connect to it - verifying that it is possible to start and use the system is extremely important. A system where every piece is perfect but not properly assembled is useless.
+
+At the end of the day, it is how your users use the program that matters. Make sure you know that they will not find a surprise. A surprise that is a surprise for all involved, including you and your team.
+
+## More
+
+- https://automationpanda.com/2021/03/08/solving-how-to-write-good-ui-interaction-tests-givenwhenthenwithstyle/
+- http://www.thinkcode.se/blog/2017/12/20/finding-the-unknown-unknown
+- http://www.thinkcode.se/blog/2016/06/22/cucumber-antipatterns

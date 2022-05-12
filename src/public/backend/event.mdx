@@ -1,0 +1,88 @@
+---
+route: /backend/event
+name: Event
+menu: Backend
+---
+
+# Event
+
+> Laravel's events provide a simple observer pattern implementation, allowing you to subscribe and listen for various events that occur within your application. Event classes are typically stored in the app/Events directory, while their listeners are stored in app/Listeners. Don't worry if you don't see these directories in your application as they will be created for you as you generate events and listeners using Artisan console commands.
+
+> Events serve as a great way to decouple various aspects of your application, since a single event can have multiple listeners that do not depend on each other. For example, you may wish to send a Slack notification to your user each time an order has shipped. Instead of coupling your order processing code to your Slack notification code, you can raise an App\Events\OrderShipped event which a listener can receive and use to dispatch a Slack notification.
+
+## Dispatch Event
+
+For example, dispatch an event named `search.updated`, passing `$model` argurment. All registered class will receive
+
+```php
+<?php
+
+app('events')->dispatch('search.updated', [$model]);
+
+```
+
+## Listeners
+
+Define Event Listener
+
+```php
+<?php
+// file packages/metafox/blog/src/Listeners/SearchUpdatedListener.php
+
+namespace  MetaFox\Blog\Listeners;
+
+class SearchUpdatedListener
+{
+   /**
+    * Handle event
+    */
+   public function handle($model)
+   {
+      return 1;
+   }
+}
+
+```
+
+For improve performane, MetaFox required manual event listener register via PackageSettingListener class.
+
+```php
+<?php
+namespace MetaFox\ToDo\Listeners;
+
+class PackageSettingListener extends BasePackageSettingListener {
+
+    /**
+     * Get array of events
+     */
+    public function getEvents()
+    {
+        return [
+            'search.updated'          => [
+                SearchUpdatedListener::class,
+            ],
+        ];
+    }
+}
+```
+
+## Response
+
+**TBD**
+
+For futher information, read out [Laravel Event](https://laravel.com/docs/9.x/events#main-content)
+
+## Bail
+
+Sometimes, developers need dispatcher to stopping whenever listener return not-null value.
+
+```php
+<?php
+
+$response = app('events')->dispatch('search.updated', [$model], $bail=true);
+
+```
+
+The first time listener return not null value will be skip and return to \$response value.
+
+[Next Chapter](/backend/content)

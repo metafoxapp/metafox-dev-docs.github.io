@@ -1,0 +1,211 @@
+---
+menu: Frontend
+route: /frontend/form
+name: Form
+---
+# Form
+
+Metafox includes the most popular React Form library `formik` and validation with `yup`, wraps theme in `FormBuilder` in order to help build, configure flexible logic from AdminCP without modifying source code.
+
+The Form mechanism on MetaFox is based on `formik` + `material-ui`. It can build a Form with certain fields & structure with JSON schema. Let's take a look at the below example.
+
+## Schema
+
+```tsx
+import { Form } from '@metafox/form';
+
+const ExampleLoginForm = () => {
+  const loginFormSchema = {
+    container: true,
+    component: 'form',
+    elements: {
+      email: {
+        label: 'Email',
+        component: 'text',
+        type: 'email',
+        variant: 'outlined'
+      },
+      password: {
+        label: 'Password',
+        component: 'Email',
+        type: 'password',
+        variant: 'outlined'
+      },
+      buttons: {
+        container: true,
+        component: 'html',
+        elements: {
+          submit: {
+            label: 'Login',
+            type: 'submit'
+          }
+        }
+      }
+    }
+  };
+  const initialValues = {
+    email: 'jack@MetaFox.com',
+    password: ''
+  };
+
+  return <Form schema={loginFormSchema} initialValues={initialValues} />;
+};
+```
+
+## Elements
+
+Here is the list of Supported Form elements
+
+- [text](#Text)
+- [switch](#Switch)
+- [checkbox](#Checkbox)
+- [checkboxGroup](#CheckboxGroup)
+- [radio](#Radio)
+- [radioGroup](#RadioGroup)
+- [select](#RadioGroup)
+- [date](#Date)
+- [datetime](#Datetime)
+- [time](#Time)
+- [slider](#Slider)
+- [markSlider](#MarkSlider)
+- [category](#Slider)
+- [tags](#Tags)
+- [privacy](#PrivacySelect)
+- [button](#Button)
+- [buttonGroup](#ButtonGroup)
+- [hidden](#Hidden)
+- [editor](#Editor)
+- [link](#Link)
+- [typo](#Typography)
+- [container](#Container)
+- [dialogHeader](#DialogHeader)
+- [dialogFooter](#DialogFooter)
+- [dialogContent](#DialogContent)
+
+### Text
+
+Definition
+
+```tsx
+export type TextFieldProps = {
+  name: string;
+  component: 'text';
+  label: string;
+  placeholder: string;
+  readOnly?: boolean;
+  disabled?: boolean;
+  required?: boolean;
+  maxLength?: number;
+  variant?: 'outlined' | 'filled';
+  type?: 'text' | 'email' | 'password' | 'number' | 'date' | 'time';
+};
+```
+
+Example to create a Text element
+
+```tsx
+const Field = {
+  name: 'title',
+  component: 'text',
+  label: 'Title',
+  placeholder: 'Enter an title for this blog',
+  readOnly: false, // optional
+  disabled: false, // optional
+  required: false, // optional
+  maxLength: 250, // optional
+  autoComplete: true, //optional,
+  variant: 'outlined'
+};
+```
+
+### Switch
+
+TBD
+
+### Checkbox
+
+TBD
+
+### CheckboxGroup
+
+TBD
+
+### Radio
+
+TBD
+
+### RadioGroup
+
+TBD
+
+### Date
+
+TBD
+
+### Datetime
+
+TBD
+
+### Time
+
+TBD
+
+### Slider
+
+TBD
+
+### MarkSlider
+
+TBD
+
+### Tags
+
+TBD
+
+### PrivacySelect
+
+TBD
+
+### Button
+
+TBD
+
+### ButtonGroup
+
+TBD
+
+### Hidden
+
+TBD
+
+### Editor
+
+TBD
+
+### Link
+
+TBD
+
+### Slider
+
+TBD
+
+### Container
+
+TBD
+
+### DialogHeader
+
+TBD
+
+### DialogFooter
+
+TBD
+
+### DialogContent
+
+TBD
+
+## Custom Elements
+
+TBD

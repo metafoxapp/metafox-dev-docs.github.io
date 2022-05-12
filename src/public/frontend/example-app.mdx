@@ -1,0 +1,134 @@
+---
+route: /frontend/example-app
+name: Basic
+menu: Frontend
+---
+
+# Intro
+
+In this article, we will guide you how to develop a new app which allows user to share notes. End users are able to post new notes, edit their notes, share their own notes to Activity Feed, etc.
+
+**Table Of Contents**
+
+- Create a landing page of Note app
+- Add an existing page to the Main Menu
+- Add a new portable block
+- Work with `apiClient`
+- Display listing of items.
+
+## Skeleton
+
+Firstly, we are going to create a app skeleton. Let's open Terminal and move to the root of your workbox where the Frontend source code is located, then execute
+
+```shell script
+yarn create-app --package=@example/module-note --item=note
+```
+
+After running the above command, the skeleton of your Notes app will be created under `packages/example-notes` folder
+
+## Directory Structure
+
+```text
+module-note/
+  package.json
+    src/
+      components/
+      containers/
+      reducers/
+      sagas/
+      pages/
+```
+
+## Landing Page
+
+Now, we will guide you step-by-step to add the Landing page at route `/note`.
+
+**Step 1**: Create page components
+
+```tsx
+/**
+ * @type: route
+ * path: /note
+ * pageName: note.langing
+ */
+
+#file pages/HomePage/HomePage.tsx
+
+import * as React from 'react';
+import { Page } from '@metafox/framework';
+
+const HomePage = props => {
+  return (
+    <Page pageName="note.home"  pageLayout={{}} />
+  );
+};
+
+export default HomePage;
+```
+
+**Step 02**: Declare layouts
+
+Add new file `src/pages/HomePage/package.json`
+
+```json
+{ "main": "HomePage.tsx" }
+```
+
+**Step 03**: Verify
+
+Reload browser and redirect to `/note` to verify result.
+
+## Configure Layout
+
+Add new file `pages/HomePage/layout.json` with the below content
+
+```tsx
+{
+  blocks: [
+  ],
+}
+```
+
+Then, we will configure blocks in next section
+
+## Block
+
+Create custom block, to view simple featured notes.
+
+**Step 01**: Create a Block
+
+Add new file `components/BlockFeatureNotes.tsx` with the below content
+
+```tsx
+/**
+ * @type: block
+ * name: note.block.featuredNotes
+ */
+
+import * as React from 'react';
+
+import {createBlock} from '@metafox/framework';
+
+// Implement base component
+const BlockFeatureNotes = ({
+  title = 'Featured Notes',
+}: Props) => {
+  return (
+    <div>
+      <h4>{title}</h4>
+      <div>Display Featured Notes</div>
+    </div>
+  );
+};
+
+
+export default createBlock({
+  extendBlock: BlockFeatureNotes
+});
+```
+
+**Step 02**: Verify
+
+Open live edit mode, click on `Add new block`, you will see the `Featured Notes` block here.
+
+You can choose the block to add and then export layout to other pages.

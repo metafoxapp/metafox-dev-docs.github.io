@@ -1,0 +1,95 @@
+---
+route: /appendix/compare-privacy-approach
+name: Privacy Approach
+hidden: true
+---
+
+# Privacy
+
+- Platform cung cấp một số interface, các model sẽ implements các interface để đẩy dữ liệu lên database lưu một cách
+  abstract
+- Mỗi loại content sẽ quyết định có cài đặt privacy hay không. Nếu không có thì privacy sẽ là 0.
+
+etc: browse contents cho user_id=1
+
+**Solution 1. Centralize all privacy data of contents?**
+
+Browse all
+
+```sql
+SELECT x.*
+FROM blogs AS x
+         JOIN core_network_stream AS ns ON (x.blog_id = ns.item_id AND ns.item_type = "blog")
+         JOIN core_network_members AS nm ON (ns.network_id = nm.network_user AND nm.user_id = 1)
+         JOIN core_privacy_stream AS ps ON (x.blog_id = ps.item_id AND x.item_type = "blog")
+         JOIN core_privacy_members AS pm ON (ps.privacy_id = pm.privacy_id AND pm.user_id = 1)
+WHERE 1
+```
+
+Browse profile content of owner_id=2
+
+```sql
+SELECT x.*
+FROM blogs AS x
+         JOIN core_network_stream AS ns ON (x.blog_id = ns.item_id AND ns.item_type = "blog")
+         JOIN core_network_members AS nm ON (ns.network_id = nm.network_user AND nm.user_id = 1)
+         JOIN core_privacy_stream AS ps ON (x.blog_id = ps.item_id AND x.item_type = "blog")
+         JOIN core_privacy_members AS pm ON (ps.privacy_id = pm.privacy_id AND pm.user_id = 1)
+WHERE x.owner_id = 2
+```
+
+Browse posted by user_id=2
+
+```sql
+SELECT x.*
+FROM blogs AS x
+         JOIN core_network_stream AS ns ON (x.blog_id = ns.item_id AND ns.item_type = "blog")
+         JOIN core_network_members AS nm ON (ns.network_id = nm.network_user AND nm.user_id = 1)
+         JOIN core_privacy_stream AS ps ON (x.blog_id = ps.item_id AND x.item_type = "blog")
+         JOIN core_privacy_members AS pm ON (ps.privacy_id = pm.privacy_id AND pm.user_id = 1)
+WHERE x.user_id = 2
+```
+
+Browse friend's blogs
+
+```sql
+SELECT x.*
+FROM blogs AS x
+         JOIN core_network_stream AS ns ON (x.blog_id = ns.item_id AND ns.item_type = "blog")
+         JOIN core_network_members AS nm ON (ns.network_id = nm.network_user AND nm.user_id = 1)
+         JOIN core_privacy_stream AS ps ON (x.blog_id = ps.item_id AND x.item_type = "blog")
+         JOIN core_privacy_members AS pm ON (ps.privacy_id = pm.privacy_id AND pm.user_id = 1)
+WHERE x.user_id = 2
+  AND x.privacy = 2
+```
+
+Centralize all privacy data of contents?
+
+**Solution 2. Separate privacy/network by contents?**
+
+```sql
+SELECT x.*
+FROM blogs AS x
+         JOIN blog_network_stream AS ns ON (x.blog_id = ns.item_id)
+         JOIN core_network_members AS nm ON (ns.network_id = nm.network_user AND nm.user_id = 1)
+         JOIN blog_privacy_stream AS ps ON (x.blog_id = ps.item_id)
+         JOIN core_privacy_members AS pm ON (ps.privacy_id = pm.privacy_id AND pm.user_id = 1)
+WHERE 1
+```
+
+**Props**
+
+- Query/thêm/xoá/sửa đơn giản hơn
+- Giảm tập dữ liệu theo từng loại content.
+
+**Cons**
+
+- số lượng schema tăng lên
+
+Project sẽ có 1 số privacy global (privacy network tương ứng với public, member), ở mỗi module sẽ define 1 số privacy
+khác, ví dụ như module Friend sẽ có 2 privacy là user_friends và user_privacy, group thì sẽ có group_admins,
+group_members. Các privacy này sẽ được thêm vào bảng activity_privacy. Khi User (hoặc Page, Group) được tạo, những
+entity này owner những privacy nào thì sẽ được thêm vào bảng activity_privacy_data dựa theo privacy_id và user_id của
+owner đó.
+
+### Privacy

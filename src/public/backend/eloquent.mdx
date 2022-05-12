@@ -1,0 +1,213 @@
+---
+name: Eloquent
+menu: Backend
+route: /backend/eloquent
+---
+
+## Eloquent
+
+[Eloquent ORM ](https://laravel.com/docs/9.x/eloquent)
+
+## Migrations
+
+Migrations are like version control for your database, allowing your team to define and share the application's database schema definition. If you have ever had to tell a teammate to manually add a column to their local database schema after pulling in your changes from source control, you've faced the problem that database migrations solve.
+
+Package migrations folder is under `src/Database/Migrations` directory.
+
+```text
+packages/metafox/blog/src/: Package source root
+  Database/
+    Migrations/
+      2021_02_04_034457_CreateBlogTables.php  : Migrations for blog schema
+      2021_02_05_034457_CreateCategoryTables.php  : Migrations for category schema
+```
+
+Each migrations class is child of `Illuminate\Database\Migrations\Migration`, contains `up` and `down` methods.
+
+```php
+<?php
+
+use MetaFox\Platform\Support\DbTableHelper;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateBlogTables extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        if (!Schema::hasTable('blogs')) {
+            Schema::create('blogs', function (Blueprint $table) {
+                $table->bigIncrements('id');
+
+                // other columns
+            });
+        }
+
+        // setup other table
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        DbTableHelper::dropStreamTables('blog');
+    }
+}
+```
+
+The platform shipped with [DbTableHelper](/php-api/classes/MetaFox-Platform-Support-DbTableHelper.html), to provider create platform schema without repeat your self.
+
+For more information, read out [Laravel migrations](https://laravel.com/docs/9.x/migrations)
+
+## Seeders
+
+Each package includes the ability to seed your database with data using seed classes.
+All package seed classes are stored in the `src/Database/Seeders` directory. By default, a DatabaseSeeder class is defined for you. From this class, you may use the call method to run other seed classes, allowing you to control the seeding order.
+
+```php
+<?php
+
+namespace MetaFox\Blog\Database\Seeders;
+use Illuminate\Database\Seeder;
+
+class PackageSeeder extends Seeder {
+
+  public function run()
+  {
+    // seed data to database
+  }
+}
+```
+
+## Factories
+
+[Define Laravel Model Factories](https://laravel.com/docs/9.x/database-testing#defining-model-factories)
+
+## Observers
+
+If you are listening for many events on a given model, you may use observers to group all of your listeners into a single class.
+Observer classes have method names which reflect the Eloquent events you wish to listen for. Each of these methods receives the affected model as their only argument.
+
+```php
+<?php
+// file name packages/metafox/blog/src/Observers/BlogObserver.php
+namespace MetaFox\Blog\Observers;
+
+use Exception;
+use MetaFox\Blog\Models\Blog;
+
+/**
+ * Class BlogObserver.
+ */
+class BlogObserver
+{
+
+    /**
+     * Invoked when a model is creating
+     *
+     * @param  Model  $model
+     */
+    public function creating(Model $model)
+    {
+
+    }
+
+    /**
+     * Invoked when a model created
+     *
+     * @param  Model  $model
+     */
+    public function created(Model $model)
+    {
+
+    }
+
+    /**
+     * Invoked when a model is updating
+     *
+     * @param  Model  $model
+     */
+    public function updating(Model $model)
+    {
+
+    }
+
+    /**
+     *Invoked when a model is updated
+     *
+     * @param  Model  $model
+     */
+    public function updated(Model $model)
+    {
+
+    }
+
+    /**
+     * Invoked when a model is deleting
+     *
+     * @param  Model  $model
+     */
+    public function deleting(Model $model)
+    {
+
+    }
+
+    /**
+     * Invoked when a model deleted
+     *
+     * @param  Model  $model
+     */
+    public function deleted(Model $model): void
+    {
+
+    }
+}
+
+```
+
+For performance optimization, MetaFox does not support automatic discover observer, develoepers must register observer
+within PackageServiceProvider class.
+
+```php
+<?php
+
+namespace MetaFox\Blog\Providers;
+
+use MetaFox\Platform\Support\EloquentModelObserver;
+use Illuminate\Support\ServiceProvider;
+use MetaFox\Blog\Models\Blog;
+use MetaFox\Blog\Observers\BlogObserver;
+
+class BlogServiceProvider extends ServiceProvider
+{
+
+    /**
+     * Boot the application events.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        Blog::observe([EloquentModelObserver::class, BlogObserver::class]);
+    }
+}
+```
+
+For more information, visit [Laravel Model Observers](https://laravel.com/docs/9.x/eloquent#observers)
+
+For event list, visit [appendix/event-list](/backend/event-list)
+
+## Repository
+
+Repository Pattern
+
+[Next Chapter](/backend/event)

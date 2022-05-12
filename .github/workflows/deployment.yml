@@ -1,0 +1,50 @@
+name: publish
+
+on:
+  push:
+    branches: [develop]
+
+env:
+  NODE_VER: 16.14.0
+  DIR: metafox-dev-docs-master
+  MAIN_REPO: github.com/metafoxapp/metafox-dev-docs.git
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - uses: actions/cache@v2
+        id: cache-yarn
+        with:
+          path: node_modules
+          key: |
+            ${{ runner.os }}-${{ env.NODE_VER }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ env.NODE_VER }}-yarn-${{ hashFiles('**/yarn.lock') }}
+
+      - run: yarn
+      - run: yarn build
+
+      # rebuild frontend documentation
+      - name: push to doc repo
+        uses: actions/checkout@v3
+        with:
+          ref: main
+          path: ${{ env.DIR }}
+
+      - run: |
+          cd ${{ env.DIR }}
+          cp -rf ./../.docz/dist/* ./docs
+          date > docs/date.txt
+          git add .
+          git config user.email "namnv@younetgroup.com"
+          git config user.name "jacky158"
+          git commit -m "ci updated"
+          git push --force

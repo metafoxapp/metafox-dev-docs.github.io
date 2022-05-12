@@ -1,0 +1,67 @@
+---
+route: /backend/advanced/userable
+name: Userable
+menu: Backend
+---
+
+# Userable
+
+## Contract User
+
+This is an interface of an **User**. **Contract User** is a child of **Contract Content**, and has more abilities.
+
+```php
+
+namespace MetaFox\Platform\Contracts;
+
+interface User extends Content, BigNumberId
+{
+    /**
+     * Result must contain entity_type, user_name, user_image, name.
+     *
+     * @return array<string, mixed>
+     */
+    public function toUserResource(): array;
+
+    /**
+     * Determine if resource can be blocked.
+     *
+     * @return bool
+     */
+    public function canBeBlocked(): bool;
+}
+
+```
+
+A special ability of a **Contract User** is that it uses `BigNumberId` to `setEntityId` to entities table (global and unique id for all resources).
+
+```php
+
+namespace MetaFox\Platform\Contracts;
+
+interface BigNumberId
+{
+    public function entityId();
+
+    public function setEntityId(int $id);
+
+    public function entityType();
+}
+
+```
+
+And to define which details should be stored in entities table, we has `toUserResource()`. Example in User, you can define the function as below:
+
+```php
+
+public function toUserResource()
+{
+    return [
+        'entity_type' => $this->entityType(),
+        'user_name'   => $this->user_name,
+        'user_image'  => $this->profile != null ? $this->profile->user_image : null,
+        'name'        => $this->full_name,
+    ];
+}
+
+```

@@ -1,0 +1,166 @@
+---
+route: /advanced/root-context
+name: Root Context
+menu: Getting Deeper
+hidden: true
+---
+
+# Technical Review: Sharing Context To Redux Sagas
+
+> @metafox
+>
+> For many reason, redux-sagas is our side effects library.
+>
+> When develop a new React component, there are many dependencies lib like internalization, SEO, networking tool, layout render layout. In React component tree, it's easy to implementation using their context and hooks. But how to develop redux-sagas interacting to React context and how to writting test its function.
+
+**Singleton Pattern**
+
+When choosing singleton pattern, it's require to import dependencies to redux-sagas file, and mocking various test library is not muturity.
+
+Examples
+
+```tsx
+import networking from './network-tool'
+import i18n from './internalization-tool'
+import alerts from './alert-tools'
+import settings from './setting-repository-container'
+import localStore from './localStorage'
+import {history} from './react-router-dom-utils'
+
+function * mySaga(){
+  // put your code heres.
+  ....
+}
+```
+
+It's code is hard to refactor, hard to test. I want to be able to write sagas without having to implicitly import any statically-declared singletons.
+
+There are also a few library work deferently on browsers, nodejs environment. If one of these browser-only modules ends up in an import chain, suddenly my tests start failing for bad reasons. At worst, I have to rethink my testing strategy to include a mock browser environment. I’m lazy and hate testing, and I think mocks are a gross awful code smell that should be avoided at all costs.
+
+**Sagas Context For Rescue**
+
+At first, redux-sagas support context api to put a service/lib/object to its saga tree.
+
+Examples
+
+**Configure Store**
+
+```js
+// when cofigure redux store.
+// the context is added here is access from all sagas branches.
+const saga = createSagaMiddleware({ context: { api } });
+```
+
+**Update Context On Demand**
+
+```js
+// when components is build
+function InternationalProvider({children}){
+  const i18n = createInternationalSupport()
+  dispatch({type: 'MyAction/updateSagaContext', {i18n}})
+  return children;
+}
+
+```
+
+**Usage sagas context**
+
+```js
+//
+// When Using in Saga Context
+//
+import { getContext } from 'redux-saga/effects';
+
+// Update new saga value
+function* updateNewSagaContext() {}
+
+// Retry Saga context
+function* mySagaWithContext() {
+  const api = yield getContext('api');
+  const i18n = yield getContext('i18n');
+  const alerts = yield getContext('alerts');
+  /// etc ...
+}
+```
+
+As example above, context api, i18n, alerts is sharing from React component tree and saga context. But how to access saga context in saga tree. Maybe your root sagas is organize as below.
+
+```javascript
+export default function* rootSaga() {
+  yield spawn(saga1);
+  yield spawn(saga2);
+  yield spawn(saga3);
+}
+```
+
+It's mean if you set **i18n** context at **saga1** branch, you only can retry i18n from `saga1` and its children, similar to React component tree context. If you put i18n to every its branch, it's may keep diferences value at others branches at runtime. It's unpredictable and hard to testing. It's better to sharing the same value at the runtime.
+
+**Service Handler Pattern**
+
+```typescript
+// Declare interface
+interface RootContainerInterface {
+  // put handler to declare value
+  public inject(name:string,value:any);
+}
+
+// Implement Interface
+class AtRootContainer implements AtRootContainerInterface {
+  ....
+}
+
+// Declare Context
+const RootContext  = React.createContext<RootContainerInterface>(new AtRootContainer({}))
+
+// Declear custom hook.
+// file atRoots.js
+const atRoots = React.useContext(RootContext)
+
+// at configureStore.js
+const rootContainer = new AtRootContainer({api });
+
+// create saga context, remember the key is "atRoots"
+const saga = createSagaMiddleware({  context: { atRoots: rootContainer  } })
+
+// At RootComponents.
+const App = ({children})=>{
+  return <RootContext.Provider value={rootContainer}>
+			{children}
+    </RootContext.Provider>
+}
+
+```
+
+Now we are able to get context at any saga branches.
+
+```typescript
+function mySagaWithContext(){
+  const {api, i18n, ....} = yield getContext('atRoots')
+}
+```
+
+This pattern allow you to inject new value to container and sharing the same instance at any saga branchs at any time. You also use `atRoots` hook to retry dependencies at React Components.
+
+```tsx
+function MyComponent() {
+  const { i18n, api } = atRoots();
+
+  // do something with api.
+  // useEffect(()=>{
+  //	api.report('component/is/mounted')
+  // },[]);
+
+  return <div>{i18n.formatMessage({ id: 'Hello Word' })}</div>;
+}
+```
+
+You also inject new value to root container.
+
+```tsx
+function PushNotificationProvider() {
+  // inject pusher service.
+  atRoots().inject('pusher', new Pusher({}));
+
+  return <div>....</div>;
+}
+```

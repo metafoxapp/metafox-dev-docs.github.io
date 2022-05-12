@@ -1,0 +1,45 @@
+---
+route: /frontend/local-store
+name: Local Storage
+menu: Frontend
+---
+# Local Storage
+
+## get
+
+Get the item with specific name in `localStore`
+
+```tsx
+// get string value
+localStore.get('dump name');
+
+// get int value
+localStore.getInt('dump name');
+
+// get JSON object
+localStore.getJSON('dump name');
+```
+
+## set
+
+Set an item in `localStore`
+
+```tsx
+localStore.set('dump name', 'dump value');
+```
+
+## remove
+
+Remove the item with specific name in `localStore`.
+
+```tsx
+localStore.remove('dump name');
+```
+
+## clear
+
+Remove all items in `localStore`
+
+```tsx
+localStore.clear();
+```

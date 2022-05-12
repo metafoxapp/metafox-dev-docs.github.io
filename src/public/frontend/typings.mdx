@@ -1,0 +1,56 @@
+---
+name: Typescript
+menu: Frontend
+---
+
+# Typescript
+
+## Declaration Merging
+
+Please read the [Declaration Merging](https://www.typescriptlang.org/docs/handbook/declaration-merging.html)
+
+#### types.ts
+
+```typescript
+// file blog/src/types.ts
+
+interface BlogItemShape {}
+
+export interface AppState {
+  entities: {
+    blog: Record<string, BlogItemShape>;
+  };
+}
+```
+
+#### module.d.ts
+
+The **module.d.ts** file in all apps is loaded automatically by Typescript
+
+Extend global service manager
+
+```typescript
+// file blog/src/module.d.ts
+import '@metafox/framework/Manager';
+import { BlogList } from './types';
+
+declare module '@metafox/framework/Manager' {
+  interface Manager {
+    BlogList?: React.FC<{}>;
+  }
+}
+```
+
+Extend global state
+
+```typescript
+// file blog/src/module.d.ts
+import '@metafox/framework/Manager';
+import { AppState } from './types';
+
+declare module '@metafox/framework/Manager' {
+  interface GlobalState {
+    blog?: AppState;
+  }
+}
+```

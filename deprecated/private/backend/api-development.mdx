@@ -1,0 +1,123 @@
+---
+route: /api-development.
+name: Api Development
+hidden: true
+---
+
+## Code Generator
+
+```bash
+    php artisan normalize ToDoModule
+```
+
+```php
+<?php
+
+// filename Todo/config/config.php
+
+return [
+    'name'    => 'Todo',
+    'models'  => [
+        'Video'         => [
+            'table'       => 'todos', // required,
+            'entity_type' => 'todo', // required
+            'graphql'     => true,  // optional, default: false
+            'version'     => ['v1', 'v2'], // default: ['v1']
+            'resource'    => true, // optional, default: false
+            'actions'     => true, // should generate http request class, listing actions as string[] or "true" = ['index', 'store', 'update']
+        ],
+        'Category'      => [
+            'resource'    => true,
+            'table'       => 'todo_categories',
+            'entity_type' => 'todo_category',
+            'graphql'     => true,
+        ],
+        'CategoryData'  => [
+            'table' => 'todo_category_data',
+        ],
+        'PrivacyStream' => [
+            'table' => 'todo_privacy_streams',
+        ],
+    ],
+    'graphql' => [
+        'mutations' => [
+
+        ],
+        'queries'   => [
+
+        ],
+        'types'     => [
+
+        ],
+    ],
+];
+```
+
+### Routing
+
+Putting routes to "Todo/routes/api.php"
+
+You register action to `Api/TodoController` then its resolve `versioning to Api/v1/TodoController or
+Api/v2/TodoController by checking request version.
+
+```php
+<?php
+
+namespace Modules\Todo\Http\Controllers\Api;
+
+use Illuminate\Support\Facades\Route;
+
+
+Route::group([
+    'namespace'  => __NAMESPACE__,
+    'middleware' => 'auth:api',
+], function () {
+
+    // Put your routes
+    Route::get('todo/{id}', 'TodoController@show');
+
+});
+
+
+```
+
+### Structure
+
+- ModuleName/
+  - Http/
+    - Controllers/
+      - Api/
+        - v1/
+          - VideoController.php
+        - v2/
+          - VideoController.php
+        - VideoController.php
+    - Resources
+      - v1/
+        - TodoItem.php
+        - TodoItemCollection.php
+      - v2/
+
+### Register Policy
+
+```php
+<?php
+
+namespace Modules\Todo\Listeners;
+
+use Phpfox\Core\Support\BaseModuleSettingListener;
+
+class ModuleSettingListener extends BaseModuleSettingListener
+{
+    public function getPolicies(){
+        return [
+            // Model::class => ModelPolicy::class,
+        ];
+    }
+
+    // ... others methods.
+}
+
+```
+
+###

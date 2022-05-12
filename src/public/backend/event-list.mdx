@@ -1,0 +1,537 @@
+---
+name: Event List
+menu: Backend
+---
+
+# Event List
+
+Here is the list of events supported on MetaFox
+
+```text
++---------------------------------------------------------+------------------------------------------------------------------------+
+| Event                                                   | Listeners                                                              |
++---------------------------------------------------------+------------------------------------------------------------------------+
+| activity.count_feed_pending_on_owner                    | MetaFox\Activity\Listeners\CountFeedPendingOnOwnerListener             |
+| activity.delete_feed                                    | MetaFox\Activity\Listeners\DeleteFeedListener                          |
+| activity.get_feed                                       | MetaFox\Activity\Listeners\GetFeedListener                             |
+| activity.get_feed_by_item_id                            | MetaFox\Activity\Listeners\GetFeedByItemIdListener                     |
+| activity.get_feed_id                                    | MetaFox\Activity\Listeners\GetFeedIdListener                           |
+| activity.push_feed_on_top                               | MetaFox\Activity\Listeners\PushFeedOnTopListener                       |
+| activity.redundant                                      | MetaFox\Activity\Listeners\FeedRedundantListener                       |
+| activity.sponsor_in_feed                                | MetaFox\Activity\Listeners\SponsorInFeedListener                       |
+| activity.update_feed_item_privacy                       | MetaFox\Activity\Listeners\UpdateFeedItemPrivacy                       |
+| album.get_album_item                                    | MetaFox\Photo\Listeners\GetAlbumItemListener                           |
+| background-status.get_bg_status_image                   | MetaFox\BackgroundStatus\Listeners\GetBgStatusImageListener            |
+| comment.related_comments                                | MetaFox\Comment\Listeners\RelatedCommentsListener                      |
+| comment.related_comments.item_detail                    | MetaFox\Comment\Listeners\RelatedCommentsItemDetailListener            |
+| core.check_privacy_list                                 | MetaFox\Core\Listeners\CheckPrivacyListListener                        |
+| core.get_privacy_id                                     | MetaFox\Core\Listeners\GetPrivacyIdListener                            |
+| core.parse_content                                      | MetaFox\Friend\Listeners\ParseFeedContentListener                      |
+| core.privacy.check_privacy_member                       | MetaFox\Core\Listeners\CheckPrivacyMember                              |
+| core.total_view                                         | MetaFox\Activity\Listeners\FeedRedundantListener                       |
+| core.user_privacy.get_privacy_id                        | MetaFox\Core\Listeners\GetPrivacyIdForUserPrivacyListener              |
+| feed.composer                                           | MetaFox\Core\Listeners\FeedComposerListener                            |
+| feed.composer.edit                                      | MetaFox\Core\Listeners\FeedComposerEditListener                        |
+| friend.can_add_friend                                   | MetaFox\Friend\Listeners\CanAddFriendListener                          |
+| friend.count_total_friend                               | MetaFox\Friend\Listeners\CountTotalFriendListener                      |
+| friend.count_total_mutual_friend                        | MetaFox\Friend\Listeners\CountTotalMutualFriendListener                |
+| friend.create_tag_friends                               | MetaFox\Friend\Listeners\CreateTagFriendsListener                      |
+| friend.delete_tag_friend                                | MetaFox\Friend\Listeners\DeleteTagFriendListener                       |
+| friend.friend_ids                                       | MetaFox\Friend\Listeners\GetFriendIdsListener                          |
+| friend.get_count_new_friend_request                     | MetaFox\Friend\Listeners\CountNewFriendRequestListener                 |
+| friend.get_friend_ship                                  | MetaFox\Friend\Listeners\GetFriendShipListener                         |
+| friend.get_photo_tag_friends                            | MetaFox\Friend\Listeners\GetPhotoTagFriendsListener                    |
+| friend.get_suggestion                                   | MetaFox\Friend\Listeners\GetSuggestionListener                         |
+| friend.get_tag_friend_by_id                             | MetaFox\Friend\Listeners\GetTagFriendByIdListener                      |
+| friend.get_tag_friends                                  | MetaFox\Friend\Listeners\GetTagFriendsListener                         |
+| friend.is_friend                                        | MetaFox\Friend\Listeners\IsFriendListener                              |
+| friend.is_friend_of_friend                              | MetaFox\Friend\Listeners\IsFriendOfFriendListener                      |
+| friend.update_tag_friends                               | MetaFox\Friend\Listeners\UpdateTagFriendsListener                      |
+| friendList.check_privacy_list                           | MetaFox\Friend\Listeners\CheckPrivacyListListener                      |
+| group.get_privacy_for_setting                           | MetaFox\Group\Listeners\PrivacyForSetting                              |
+| group.get_search_resource                               | MetaFox\Group\Listeners\GetSearchResourceListener                      |
+| group.get_user_preview                                  | MetaFox\Group\Listeners\UserPreviewListener                            |
+| group.update_cover                                      | MetaFox\Group\Listeners\UpdateGroupCover                               |
+| hashtag.create_hashtag                                  | MetaFox\Hashtag\Listeners\ItemTagAwareListener                         |
+| hashtag.update_total_item                               | MetaFox\Hashtag\Listeners\UpdateTotalItemListener                      |
+| like.is_liked                                           | MetaFox\Like\Listeners\IsLikedListener                                 |
+| like.most_reactions                                     | MetaFox\Like\Listeners\MostReactionsListener                           |
+| like.user_reacted                                       | MetaFox\Like\Listeners\UserReactedListener                             |
+| models.notify.created                                   | MetaFox\Core\Listeners\ModelCreatedListener                            |
+| models.notify.creating                                  | MetaFox\Core\Listeners\ModelCreatingListener                           |
+| models.notify.deleted                                   | MetaFox\Core\Listeners\ModelDeletedListener                            |
+| models.notify.updated                                   | MetaFox\Core\Listeners\ModelUpdatedListener                            |
+| models.notify.updating                                  | MetaFox\Core\Listeners\ModelUpdatingListener                           |
+| packages.installed                                       | MetaFox\Sticker\Listeners\PackageInstalledListener                      |
+| packages.scan                                            | MetaFox\Core\Listeners\PackageScanListener                              |
+| packages.updated                                         | MetaFox\User\Listeners\PackageUpdatedListener                           |
+| notification.delete_notification_by_type_and_notifiable | MetaFox\Notification\Listeners\DeleteNotifyByTypeAndNotifiableListener |
+| notification.getEmailNotificationSettings               | MetaFox\Notification\Listeners\GetEmailNotificationSettingsListener    |
+| notification.get_count_new_notification                 | MetaFox\Notification\Listeners\GetNewNotificationCount                 |
+| notification.updateEmailNotificationSettings            | MetaFox\Notification\Listeners\UpdateEmailNotificationSettingsListener |
+| packages.deleting                                       | MetaFox\Core\Listeners\PackageDeletingListener                         |
+| page.get_privacy_for_setting                            | MetaFox\Page\Listeners\PrivacyForSetting                               |
+| page.get_search_resource                                | MetaFox\Page\Listeners\GetSearchResourceListener                       |
+| page.get_user_preview                                   | MetaFox\Page\Listeners\UserPreviewListener                             |
+| page.update_cover                                       | MetaFox\Page\Listeners\UpdatePageCover                                 |
+| photo.create                                            | MetaFox\Photo\Listeners\PhotoCreateListener                            |
+| photo.media_remove                                      | MetaFox\Photo\Listeners\MediaRemoveListener                            |
+| photo.media_update                                      | MetaFox\Photo\Listeners\MediaUpdateListener                            |
+| photo.media_upload                                      | MetaFox\Photo\Listeners\MediaUploadListener                            |
+| photo.update_avatar_path                                | MetaFox\Photo\Listeners\UpdateAvatarPathListener                       |
+| search.created                                          | MetaFox\Search\Listeners\ModelCreatedListener                          |
+| search.deleted                                          | MetaFox\Search\Listeners\ModelDeletedListener                          |
+| search.updated                                          | MetaFox\Search\Listeners\ModelUpdatedListener                          |
+| site_settings.updated                                   | MetaFox\ChatPlus\Listeners\SiteSettingUpdated                          |
+| sticker.get_sticker_image                               | MetaFox\Sticker\Listeners\GetStickerImageListener                      |
+| tag.get_search_resource                                 | MetaFox\Hashtag\Listeners\GetSearchResourceListener                    |
+| user.blocked                                            | MetaFox\Friend\Listeners\UserBlockedListener                           |
+| user.get_mentions                                       | MetaFox\User\Listeners\UserGetMentions                                 |
+| user.get_privacy_for_setting                            | MetaFox\User\Listeners\PrivacyForSetting                               |
+| user.get_search_resource                                | MetaFox\User\Listeners\GetSearchResourceListener                       |
+| user.get_user_preview                                   | MetaFox\User\Listeners\UserPreviewListener                             |
+| user.social_account.callback                            | MetaFox\Facebook\Listeners\UserSocialAccountCallbackListener         |
+| user.social_account.request                             | MetaFox\Facebook\Listeners\UserSocialAccountRequestListener          |
+| video.mux.webhook_callback                              | MetaFox\Video\Listeners\MuxWebhookCallback                             |
++---------------------------------------------------------+------------------------------------------------------------------------+
+```
+
+# Event Details
+Now, we are going to dive into deeper about all supported events
+
+## Model Events
+
+These are events that were called in EloquentModelObserver: packages/platform/src/Support/EloquentModelObserver.php
+
+### Model Creating Event
+
+- Event name: models.notify.creating
+- Example:
+
+```php
+    /**
+     * @var Model $model
+     */
+    app('events')->dispatch('models.notify.creating', [$model]);
+```
+
+### Model Created Event
+
+- Event name: models.notify.created
+- Example:
+
+```php
+    /**
+     * @var Model $model
+     */
+    app('events')->dispatch('models.notify.created', [$model]);
+```
+
+### Model Updating Event
+
+- Event name: models.notify.updating
+- Example:
+
+```php
+    /**
+     * @var Model $model
+     */
+    app('events')->dispatch('models.notify.updating', [$model]);
+```
+
+### Model Updated Event
+
+- Event name: models.notify.updated
+- Example:
+
+```php
+    /**
+     * @var Model $model
+     */
+    app('events')->dispatch('models.notify.updated', [$model]);
+```
+
+### Model Deleted Event
+
+- Event name: models.notify.deleted
+- Example:
+
+```php
+    /**
+     * @var Model $model
+     */
+    app('events')->dispatch('models.notify.deleted', [$model]);
+```
+
+## Package Events
+
+### Package installed Event
+
+This event will be called after run install command
+
+- Event name: packages.installed
+
+### Package updated Event
+
+This event will be called after run updated command
+
+- Event name: packages.updated
+
+### Package scan Event
+
+Scan all module folders and metafox config file to update into a module table
+
+- Event name: packages.scan
+
+### Package Export Menu Event
+
+This event will be called when export module
+
+- Event name: packages.export_menu
+
+### Package Export Phrase Event
+
+This event will be called when exporting module
+
+- Event name: modules.export_phrase
+
+### Package Deleting Event
+
+This event will be called when uninstalling module
+
+- Event name: packages.deleting
+
+## Core Package Events
+
+### Check Privacy List Event
+
+- Check user has owner privacy list
+
+- Event name: core.check_privacy_list
+
+### Parse content Event
+
+- Parse content: convert mention, tag,.. in text
+
+- Event name: core.parse_content
+
+### Check Privacy member Event
+
+- Check user has privacy member
+
+- Event name: core.privacy.check_privacy_member
+
+### Total View Event
+
+- Redundant total view from content to feed
+
+- Event name: core.total_view
+
+### Get Privacy Id Event
+
+- Privacy id form user_id and privacy
+
+- Event name: core.user_privacy.get_privacy_id
+
+## Activity Package Events
+
+### Count Pending Feed On Owner Event
+
+- Get count pending feed
+
+- Event name: activity.count_feed_pending_on_owner
+
+### Delete Feed Event
+
+- Event name: activity.delete_feed
+
+### Get Feed Event
+
+- Event name: activity.get_feed
+
+### Get Feed By Item Id Event
+
+- Event name: activity.get_feed_by_item_id
+
+### Get Feed By Id Event
+
+- Event name: activity.get_feed_id
+
+### Push Feed On Top Event
+
+- Event name: activity.push_feed_on_top
+
+### Push Feed On Top Event
+
+- Event name: activity.push_feed_on_top
+
+### Redundant Data Event
+
+- Update total comment, total like, total view,... from resource content to feed
+
+- Event name: activity.redundant
+
+### Sponsor Feed Event
+
+- Event name: activity.sponsor_in_feed
+
+### Update feed item privacy Event
+
+- When update privacy on feed, also update on item
+
+- Event name: activity.update_feed_item_privacy
+
+### Feed Composer Event
+
+- Support create item when create feed by feed form
+
+- Event name: feed.composer
+
+### Edit Feed Composer Event
+
+- Support create item when create feed by feed form
+
+- Event name: feed.composer.edit
+
+## Friend Package Events
+
+### Check Can Add Friend Event
+
+- Event name: friend.can_add_friend
+
+### Count Total Friend Event
+
+- Event name: friend.count_total_friend
+
+### Count Total Mutual Friend Event
+
+- Event name: friend.count_total_mutual_friend
+
+### Create Tag Friend Event
+
+- Event name: friend.create_tag_friends
+
+### Delete Tag Friend Event
+
+- Event name: friend.delete_tag_friend
+
+### Get Friend Ids Event
+
+- Event name: friend.friend_ids
+
+### Get Friendship Event
+
+- Event name: friend.get_friend_ship
+
+### Count New Friend Request Event
+
+- Event name: friend.get_count_new_friend_request
+
+### Get Tagged Friend In Photo Event
+
+- Event name: friend.get_photo_tag_friends
+
+### Get Friend Suggestion Event
+
+- Event name: friend.get_suggestion
+
+### Get Tagged Friend By Tag Id Event
+
+- Event name: friend.get_tag_friend_by_id
+
+### Get Tagged Friend By Tag Id Event
+
+- Event name: friend.get_tag_friend_by_id
+
+### Get Tagged Friends Event
+
+- Event name: friend.get_tag_friends
+
+### Check Is Friend Of Friend Event
+
+- Event name: friend.is_friend_of_friend
+
+### Update Tagged Friend Event
+
+- Event name: friend.update_tag_friends
+
+## Comment Package Events
+
+### Get Related Comments Event
+
+- Event name: comment.related_comments
+
+### Get Related Comments For Item Detail Event
+
+- Event name: comment.related_comments.item_detail
+
+## Background Status Package Events
+
+### Get Background Status By Id Event
+
+- Event name: background-status.get_bg_status_image
+
+## Group Package Events
+
+### Get Privacy For Setting Event
+
+- Event name: group.get_privacy_for_setting
+
+### Get Search Resource Event
+
+- Event name: group.get_search_resource
+
+### Get User Preview Event
+
+- Event name: group.get_user_preview
+
+### Update Cover Event
+
+- Event name: group.update_cover
+
+## HashTag Package Events
+
+### Create HashTag Event
+
+- Event name: hashtag.create_hashtag
+
+### Update Total Item Event
+
+- Event name: hashtag.update_total_item
+
+### Get Search Resource Event
+
+- Event name: tag.get_search_resource
+
+## Like Package Events
+
+### Check Is Liked Event
+
+- Event name: like.is_liked
+
+### Get Most Reactions Event
+
+- Event name: like.most_reactions
+
+### Get User Reacted Event
+
+- Event name: like.user_reacted
+
+## Notification Package Events
+
+### Delete Notification Event
+
+- When deleting an item, also delete notification of an item
+
+- Event name: notification.delete_notification_by_type_and_notifiable
+
+### Get Email Notification Settings Event
+
+- Event name: notification.getEmailNotificationSettings
+
+### Count New Notification Settings Event
+
+- Event name: notification.get_count_new_notification
+
+### Update Notification Settings Event
+
+- Event name: notification.updateEmailNotificationSettings
+
+## Page Package Events
+
+### Get Privacy For Setting Event
+
+- Event name: page.get_privacy_for_setting
+
+### Get Search Resource Event
+
+- Event name: page.get_search_resource
+
+### Get User Preview Event
+
+- Event name: page.get_user_preview
+
+### Update Cover Event
+
+- Event name: page.update_cover
+
+## Photo Package Events
+
+### Create Photo Event
+
+- Event name: photo.create
+
+### Remove Media Event
+
+- Event name: photo.media_remove
+
+### Update Media Event
+
+- Event name: photo.media_update
+
+### Upload Media Event
+
+- Event name: photo.media_upload
+
+### Update Avatar Path Event
+
+- Event name: photo.update_avatar_path
+
+## Search Package Events
+
+### Create Search Record Event
+
+- This event will be called after Content was created
+- Event name: search.created
+
+### Update Search Record Event
+
+- This event will be called after content was updated
+- Event name: search.updated
+
+### Delete Search Record Event
+
+- This event will be called after content was deleted
+- Event name: search.deleted
+
+## Sticker Package Events
+
+### Get Sticker Image Event
+
+- Event name: sticker.get_sticker_image
+
+## User Package Events
+
+### Block User Event
+
+- Event name: user.blocked
+
+### Get Mentions Event
+
+- Event name: user.get_mentions
+
+### Get Privacy For Setting Event
+
+- Event name: user.get_privacy_for_setting
+
+### Get Search Resource Event
+
+- Event name: user.get_search_resource
+
+### Get User Preview Event
+
+- Event name: user.get_user_preview
+
+### Social Account Request Event
+
+- Event name: user.social_account.request
+
+### Social Account Callback Event
+
+- Event name: user.social_account.callback
+
+## Video Package Events
+
+### Mux Webhook Callback Event
+
+- Event name: video.mux.webhook_callback

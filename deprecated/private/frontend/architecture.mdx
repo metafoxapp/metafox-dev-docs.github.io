@@ -1,0 +1,315 @@
+---
+route: /architecture
+name: Architecture Concepts
+hidden: true
+---
+
+# Architecture Concepts
+
+## Modular
+
+Anytime you want to extend framework capability, you develop and and encapsule it in a standard node package.
+
+The correct place to put the package source code is under `packages/apps` directory.
+
+All phpfox packages must be written by `typescript`.
+
+A package directory structure:
+
+```text
+  src/
+    actions/          : contain redux actions
+    blocks/           : contain layout blocks
+    components/       : contain pure components
+    containers/       : contain smart components
+    pages/            : contain routing pages
+    reducers/         : contain redux reducers
+    sagas/            : contain redux sagas
+    messages.json     : contain translation messages
+    types.ts          : declares typings
+    module.d.ts       : declares typing to integrate with others packages.
+  package.json        : npm package info
+  tsconfig.json       : typescript configuration
+  tsconfig.build.json : typescript configuration for development
+```
+
+## Router
+
+At first, How normal app handle the request using react-router, coomponent tree look like.
+
+ref: https://reactrouter.com/web/example/basic
+
+```jsx
+<BrowserRouter>
+    <Switch>
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <Route path="/about">
+        <About />
+      </Route>
+      <Route path="/dashboard">
+        <Dashboard />
+      </Route>
+    </Switch>
+  </div>
+</BrowseRouter>
+```
+
+Let consume that application have some content types user, page, group, each content has unique id and profile name.
+
+path mapping
+
+| content | id  | profile name | url        | better url       |
+| ------- | --- | ------------ | ---------- | ---------------- |
+| user    | 1   | jane         | /user/1    | /user/jane       |
+| pages   | 155 | cocacola     | /pages/155 | /pages/cocacola  |
+| groups  | 7   | football     | /groups/7  | /groups/football |
+
+Component tree looking like
+
+```jsx
+<BrowserRouter>
+    <Switch>
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <Route exact path="/user/:id">
+        <UserProfile />
+      </Route>
+      <Route exact path="/page/:id">
+        <PageProfile />
+      </Route>
+      <Route exact path="/group/:id">
+        <GroupProfile />
+      </Route>
+      <Route path="/about">
+        <About />
+      </Route>
+      <Route path="/dashboard">
+        <Dashboard />
+      </Route>
+    </Switch>
+  </div>
+</BrowseRouter>
+```
+
+The trouble comes when user prefers `/jane` than `/user/jane` and `/football` than `/groups/football`
+
+url mapping looking like
+
+| content | id  | profile name | old url    | url       |
+| ------- | --- | ------------ | ---------- | --------- |
+| user    | 1   | jane         | /user/1    | /jane     |
+| pages   | 155 | cocacola     | /pages/155 | /cocacola |
+| groups  | 7   | football     | /groups/7  | /football |
+
+How to solve `/jane`, `/cocacola`, `/football` with `BrowserRouter`, image that we have hundered of thousands users, pages, groups.
+
+Client app can not resolve without server help.
+
+The solution looking like
+
+```text
+Router get `/jane` --> /url-mapping?origin=/jane
+                   --> get response canonical url is /user/jane
+                   --> using /user/jane to update app state.
+```
+
+#### Declare Route
+
+At the top file of associate component handle rendering, using annotations
+
+```text
+/**
+ * @type: route
+ *
+ * name: user.profile
+ * path: /user/:user_id(\d+)/:tab?
+ */
+```
+
+Build scripts is going to collect annotations to the bundle result.
+
+### Modal Route
+
+Whenever you need to freeze last creeen and present new screen as a modal, you declare a model route instead of route.
+
+Use `@type: modalRoute` instead of `@type: route`, etc
+
+```text
+/**
+ * @type: modalRoute
+ *
+ * name: photo.viewModal
+ * path: /photo/view/:photo_id, /photo/view/:photo_set/:photo_id
+ */
+```
+
+**Why we need modal route?**
+
+[TBD]
+
+## Layouts
+
+Table Of Contents
+
+- Layout Organization
+- Layout and Code splitting
+- Layout and React Router
+- Layout and transition
+
+In phpfox v4, layout system handle by a master template and configrable locations(block 1, block 3, etc ...). Administrator can configure block, add block to location to change site contents.
+
+Disadvantages
+
+- It does not allows admins configure master layout (etc background, ) and location (etc width, ) per specific pages.
+- It has not a visual layout editor to allow admin edit and preview on front-end.
+- Choose theme per sepecific pages ?
+
+`HomePage` layout
+
+```text
+|---------------------------------------------------|
+|                       HEADER                      |
+|---------------------------------------------------|
+|        |         Status Composer     |            |
+|        |         Activity Feeds      |            |
+|        |                             |            |
+|        |                             |            |
+|  Menu  |                             |   Side2    |
+|        |                             |            |
+|        |                             |            |
+|        |                             |            |
+|---------------------------------------------------|
+|                       FOOTER                      |
+|---------------------------------------------------|
+|              Permanent Dock (chat,...)            |
+|---------------------------------------------------|
+```
+
+`UserProfilePage` layout
+
+```text
+|---------------------------------------------------|
+|                       HEADER                      |
+|---------------------------------------------------|
+|                                      |            |
+|            Profile Header            |            |
+|                                      |            |
+|--------------------------------------|            |
+|            |                         |            |
+|   Photos   |     Status Composer     |            |
+|   Videos   |                         |            |
+|   Friends  |     Activity Feeds      |   Side2    |
+|   Blogs    |                         |            |
+|            |                         |            |
+|            |                         |            |
+|---------------------------------------------------|
+|                       FOOTER                      |
+|---------------------------------------------------|
+|              Permanent Dock (chat,...)            |
+|---------------------------------------------------|
+```
+
+In real-word, layout may be more complex, each layouts maybe has other background color, images, width of location can be difference.
+
+In V5, front end logic control is move to Page component, following code declares a simple UserProfilePage.
+
+When user navigates from "/" to "/profile/jack", React component tree move from "HomePage" to "UserProfilePage", Because of code splitting, a loading screen will appear between two of screens.
+It's better to keep Header/Footer until `UserProfilePage` ready.
+
+Phpfox team split layout to `MasterLayout` and `Content Layout`
+
+- Template contain Header + Footer + Layout.
+
+Component Tree
+
+```text
+<BrowserRouter>
+  <LayoutProvider>
+    <MainSwitch />
+  </LayoutProvider>
+  <ModalSwitch />
+</BrowserRouter>
+```
+
+etc:
+
+```jsx
+import Page from '@metafox/framework/page';
+
+export const UserProfile = () => {
+  // Get user data from api
+  const user = await getUserFromApi({username: 'jack'})
+
+  return <Page layout="user.profile">display name: {user.name}</Page>;
+};
+```
+
+As explain, UserProfile uses layout configured named "user.profile". But what happend when the result of getUserFromApi is not found or error.
+
+```jsx
+import Page from '@metafox/framework/page';
+
+export const UserProfile = () => {
+  // Get user data from api
+  const user = await getUserFromApi({username: 'jack'})
+
+  if(user){
+      return (<Page layout="user.profile">
+        <div>display name: {user.name}</div>
+      </Page>);
+  }
+
+  return <Page layout="error.notfound">
+      <div>
+      </div>
+  </Page>;
+};
+```
+
+## Service Container
+
+Global services keep instance of common services translation (i18n), api request (apiClient), settings (settingBackend), ...etc.
+
+You can add new service instance into global service container.
+
+There are 02 ways to access service container
+
+**Hook**
+
+```tsx
+import { useGlobal } from '@metafox/framework/app';
+
+const MyComponent = () => {
+  const { settingBackend, i18n, apiClient } = useGlobal();
+  return <div>{i18n.formatMessage({ id: 'hello_word' })}</div>;
+};
+```
+
+**Context**
+
+```tsx
+import { getContext } from 'redux-saga/effects';
+
+function* mySagas() {
+  const { i18n, settingBackend, i18n, apiClient } = yield* getContext('global');
+}
+```
+
+**Add new service **
+
+```tsx
+const { addService, useService } = useGlobal();
+
+addService({
+  myService: new MyService({})
+});
+// or simplier
+useService('myService', new MyService());
+```
+
+## Theming
+
+phpfox theme is based on Material-UI, its provides a global `<ThemeProvider>` regularly. Developers are able to to access material-ui theme api to get variables, apis, and others.

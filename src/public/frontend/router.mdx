@@ -1,0 +1,105 @@
+---
+route: /frontend/router
+name: Router
+menu: Frontend
+---
+
+# Router
+
+## Table of Contents
+In this document, we are going to go through the following topics:
+- Dynamic/Async Routing
+- Router and Code Splitting
+- Router and Transition
+- Router and Loading progress
+- Router and Modal
+
+Firstly, let's take a look at MetaFox's URL structure
+
+- `/`: Display `home` page or `user.home` page based on the user authentication state.
+- `/blog`: Display `user.browse` page.
+- `/blog/my`: Display `user.browse.my` page.
+- `/user`: Display `user.browse` page.
+- `/user/profile/1`: Display profile of user
+- `/pages/profile/14`: Display profile of pages
+- `/groups/profile/12`: Display profile of groups
+- `/jack`: Display `user.profile` page, alias of `/user/profile/1`
+- `/jack/photo`: Display `user.profile.photo` page, alias of `/user/profile/1/photo`
+- `/barca`: Display `pages.profile` as alias of `/pages/profile/14`
+- `/barca/groups`: Display `pages.profile.groups` as alias of `/pages/profile/14/photo`
+- `/nancy-club`: Display private `groups.profile` as alias of `/group/profile/12`
+
+By using `react-router-dom` and `React.lazy`, we can structure React components:
+
+```javascript
+<Router>
+  <Switch>
+    <Route path="/" component={HomePage} />
+    <Route path="/blog" component={BlogPage} />
+    <Route path="/blog/my" component={MyBlogPage} />
+    <Route path="/user/profile/:userId" component={UserProfilePage} />
+    <Route
+      path="/user/profile/:userId/photo"
+      component={UserProfilePhotoPage}
+    />
+    <Route path="/pages/profile/:pageId" component={PageProfilePage} />
+    <Route
+      path="/pages/profile/:pageId/photo"
+      component={PageProfilePhotoPage}
+    />
+    <Route path="/groups/profile/:groupId" component={GroupProfilePage} />
+    ... Others Routes
+    <NoMatchRoute />
+  </Switch>
+</Router>
+```
+
+As you see `/`, `blog`,`blog/my` are static regex URLs, they can be solved easily by using regex or literal string.
+
+While `/jack`, `jack/photo`, `/barca`, `/barca/groups` is more difficult, we have to query database to check if terms of `jack`, `barca` are for  usernames or page slugs.
+
+```text
+ 1. Router got /jack/photo pathname
+ 2. Check router path but no matched
+ 3. Keep previous matched Route, showing loading progress bar.
+ 4. Send async request to get canonical pathname of url "/jack/photo" 
+ 5. If getting /user/profile/1/photo => replace current location state, keep location pathname.
+ 6. Router try to re-run with /user/profile/1/photo pathname.
+```
+
+### Best Practices:
+
+- Application can be configured to use either Loading progress bar or Empty waiting screen
+- Should use nested route in user/pages/event profile page. TBD.
+- Not base on browse location. Instead, when developing UI, should use `$PageContext` to ask the context to query content instead of location.
+
+## Code Splitting
+
+Because of app sizing, we have to split code of every Page components. [read more](/technical/code-splitting)
+
+At the first time visiting `/user` page, the associated chunk file is not ready. Thus, if network speed is around 1 seconds, end users may see a flash animation.
+
+## Modal Route
+
+Here is the sample code for a Modal
+
+```text
+{
+  sampleModalDialog: {
+    modal: true,
+    path: '/m/example/simple-modal',
+    component: loadable(() => import('./pages/ExampleModal')),
+  },
+  sampleModalPage: {
+    path: '/m/example/simple-modal',
+    component: loadable(() => import('./pages/ExampleModalPage')),
+  },
+}
+```
+
+You have to create two routes, the first route is for Modal Route, and the seconds is Page Route. You can declare them in 'routes.ts' file, with the same path but add property "modal".
+
+#### How to disable modal dialog on mobile device? 
+TBD
+
+

@@ -1,0 +1,64 @@
+---
+route: /backend/category
+name: Category
+menu: Backend
+---
+
+# Category
+
+App items such as blogs, events, etc., can be organized into categories. In this topic, we are going to walk you through steps to support Categories in the sample Notes app.
+
+In the Notes app, we are going to define 2 database schemas `note_categories` and `note_category_data` to keep `many-to-many` relationship between `notes` and `categories`
+
+### Build Schema
+
+We will define a Migration class with 2 methods `up` and `down` as below:
+
+```php
+
+class NoteMigration extends Migration{
+
+  public function up (){
+    DbTableHelper::categoryTable('note_categories', true);
+    DbTableHelper::categoryDataTable('note_category_data');
+  }
+
+  public function down(){
+    Schema::dropIfExists('note_categories');
+    Schema::dropIfExists('note_category_data');
+  }
+}
+
+```
+
+In result, the database schemes will be generated automatically as below
+
+### Category DDL
+
+```sql
+-- auto-generated definition
+CREATE TABLE note_categories
+(
+    id         serial CONSTRAINT note_categories_pkey PRIMARY KEY,
+    parent_id  integer,
+    name       varchar(255)                   NOT NULL,
+    name_url   varchar(255),
+    is_active  smallint DEFAULT '1'::smallint NOT NULL,
+    ordering   integer  DEFAULT 0             NOT NULL,
+    total_item integer  DEFAULT 0             NOT NULL,
+    created_at timestamp(0),
+    updated_at timestamp(0)
+);
+```
+
+### Category Data DDL
+
+```sql
+-- auto-generated definition
+CREATE TABLE note_category_data
+(
+    id          bigserial CONSTRAINT blog_category_data_pkey PRIMARY KEY,
+    item_id     bigint  NOT NULL,
+    category_id integer NOT NULL
+);
+```

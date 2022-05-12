@@ -1,0 +1,198 @@
+---
+route: /frontend/service
+name: service
+menu: Frontend
+---
+
+# Service Manager
+
+Service can be a class instance, a function or a React component to handle some pieces of your app logic.
+
+In MetaFox, platform has a Service Manager called `globalContext` to manage all services. You can not access the global `manager` directly but via hooks or saga context instead.
+
+A service after passed to global service manager can be accessible in React components or Saga functions.
+
+In React component:
+
+```tsx
+import {useGlobal} from '@metafox/framework'
+
+const MyComponent (){
+  const manager = useGlobal();
+  const {apiClient} =  manager
+
+  // or simplier
+  // const {apiClient} =  useGlobal();
+}
+```
+
+In saga functions:
+
+```ts
+import { getContext } from 'redux-saga/effects';
+
+export function mySagas() {
+  const { apiClient } = yield * getGlobalContext();
+}
+```
+
+> `globalContext` is mutable, changeble. Its service members will be affected by others without being changed or updated.
+
+## Class Services
+
+A standard Service class must have `bootstrap` method, DO NOT define `bootstrap` as an arrow function.
+
+Let's create the `LogService` by adding the `src/manager/LogService.ts` with the following content
+
+```tsx
+/**
+ * @type: service
+ * name: logService
+ **/
+
+import {Manager} from '@metafox/manager'
+
+type LogServiceProps {
+  // any property here
+}
+
+class LogService {
+  options: LogServiceProps;
+  constructor(config: LogServiceProps){
+    this.config = LogServiceProps
+  }
+
+  bootstrap(manager: Manager){
+    // to do something here.
+    // return this or void
+  }
+  info(message: string){
+    console.log(message)
+  }
+}
+```
+
+Restart dev server, then you can use the `LogService` with `useGlobal` hook as the below example:
+
+```tsx
+import useGlobal from '@metafox/framework';
+
+const LoginForm (){
+  const { logService } = useGlobal();
+  logService.info('This message is passed by logService')
+}
+```
+
+## Configuration
+
+In the above example, you have created a service named `logService`. You can pass configuration from root app by adding a section with the same name in `manifest.json` as below
+
+```json
+{
+  "logService": {
+    "level": "warn"
+  }
+}
+```
+
+Service Manager will pass this configuration to `LogService` constructor.
+
+If you want to access global configuration in `LogService`, just use `manager.options` accesstor.
+
+## Functional Service
+
+Sometimes, you would like to declare general functions which can be used anywhere in React components and Sagas. And, you don't want to declare `import` dependencies everywhere. The good solution is to inject them into Service Manager.
+
+In the next example, we will define a function to generate random string
+
+```tsx
+export default function randomId(): string {
+  return Math.random()
+    .toString(36)
+    .replace(/[^a-z]+/g, '')
+    .substr(0, 5);
+}
+```
+
+Now, pass the function to Service Manager
+
+```tsx
+# file src/manager.tsx
+
+const manager = {
+  logService: LogService,
+  randomId,
+  // other manager here
+}
+
+export default manager
+```
+
+```tsx
+import {useGlobal} from '@metafox/framework';
+
+const LoginForm (){
+  const { logService, randomId } = useGlobal();
+  logService.info('This message is passed by logService')
+  logService.info('test message id:', randomId());
+}
+```
+
+## React Component Service
+
+In order to inject a React Component across apps without declaration for dependencies, the best way is to inject components into the global Service Manager by using `inject` method
+
+```tsx
+/**
+ * @type: service
+ * name: CommentList
+ */
+
+export default function CommentList() {}
+```
+
+Next, we will declare typings
+
+Create `./src/module.d.ts` with the following content
+
+```tsx
+import '@metafox/framework/Manager';
+declare module '@metafox/framework/Manager' {
+  interface Manager {
+    CommentList?: React.FC<{}>;
+  }
+}
+```
+
+Now, you can get CommentList from other component. For example:
+
+```tsx
+import { useGlobal } from '@metafox/framework';
+
+function MyComponent() {
+  const { CommentList } = useGlobal();
+
+  return <CommentList />;
+}
+```
+
+## Core Services
+
+- apiClient
+- usePopover
+- cookieBackend
+- normalization
+- preferenceBackend
+- dialogBackend
+- intl
+- createPageParams
+- localStore
+- compactUrl
+- slugify
+- copyToClipboard
+- useActionControl
+- useSession
+- useGetItem
+- useLoggedIn
+- useIsMobile
+- usePageParams

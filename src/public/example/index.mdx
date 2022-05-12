@@ -1,0 +1,141 @@
+---
+name: Example App
+menu: Example
+route: /example/
+---
+
+# Sample Notes app
+
+> In this section we create new package "note" of company `company`. The Notes app will allow users to post notes and sharing with others users.
+
+## Create New App
+
+**Frontend**
+In other create new app skeleton for Frontend, you can open Terminal, go to the source folder of Frontend and run the following command:
+
+```bash
+yarn metafox create-new-app --package=@company/note --item=note
+
+```
+
+You will see that the default skeleton for Notes app will be generated as below:
+
+```text
+packages/
+  company/
+    note/
+      package.json
+      tsconfig.json
+      types.ts: define typings
+      index.tsx: general export
+      module.d.ts: integrate typing
+      actions/: define actions
+        noteItemActions.tsx
+      sagas/: define redux sagas actions
+        note.tsx
+      reducers/: define reducers
+        index.tsx
+      components/: define components
+      blocks/: define blocks
+        BrowseNotes/
+          Block.tsx
+       ProfileNotes/
+          Block.tsx
+       ViewNote/
+          Block.tsx
+      pages/: define pages
+        NoteHome/
+          Page.tsx
+          layouts.json
+
+
+```
+
+**Backend**
+
+For Backend, you can go to **AdminCP > Installed > Apps** or (use direct URL `/admincp/apps`)
+
+Press "Create New App" button. Then, fill info of company and app name to generate new app skeleton.
+
+In app options, press "Code Generator", and fill "note" in others to generate item type `note` skeleton.
+
+The Skeleton for Backend of Notes app will be generated as below:
+
+[Directory structure](backend/package#structure)
+
+```text
+packages/
+ company/
+    example/
+      routes/
+        api.php
+      resources/
+        lang/: define supported languages
+          en/
+            phrase.php: define message translation
+            validation.php: define message phrases
+          menu/
+            items.php: define menu items
+            menus.php: define menus
+      src/
+        Database/
+          Factories/
+          Migrations/
+          Seeders/
+        Http/
+         Controllers/
+         Requests/
+         Resources/
+        Listeners/
+        Models/
+        Notifications/
+        Obsevers/
+        Policies/
+        Providers/
+        Repositories/
+        tests/
+          Unit/: Unit test source root
+          Features/: Feature test source root
+```
+
+## Add Apis
+TBD
+
+## Transalation
+TBD
+
+## WebSettings
+TBD
+
+## Resource Settings
+TBD
+
+## Add New Menu
+TBD
+
+## Creation Form
+TBD
+
+## Flash Messages
+TBD
+
+## Editing Form
+TBD
+
+## Validation
+TBD
+
+## Page Browsing
+TBD
+
+## Page Search
+TBD
+
+## Global Search
+TBD
+
+## Feed Integrations
+TBD
+
+## Notifications
+TBD

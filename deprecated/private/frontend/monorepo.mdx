@@ -1,0 +1,34 @@
+---
+route: /advanced/monorepo
+name: Monorepo
+menu: Getting Deeper
+hidden: true
+---
+
+# Monorepo
+
+In revision control systems, a monorepo is a software development strategy where code for many projects is stored in the same repository.
+As of 2017 some forms of this software engineering practice were over a decade old, but the general concept had only recently been named.[1] Many attempts have been made to differentiate between monolithic applications and other, newer forms of monorepos
+
+**Pros**
+
+There are a number of potential advantages to a monorepo over individual repositories:[5][10]
+
+- Ease of code reuse – Similar functionality or communication protocols can be abstracted into shared libraries and directly included by projects, without the need of a dependency package manager.
+- Simplified dependency management – In a multiple repository environment where multiple projects depend on a third-party dependency, that dependency might be downloaded or built multiple times. In a monorepo the build can be easily optimized, as referenced dependencies all exist in the same codebase.
+- Atomic commits – When projects that work together are contained in separate repositories, releases need to sync which versions of one project work with the other. And in large enough projects, managing compatible versions between dependencies can become dependency hell.[8] In a monorepo this problem can be negated, since developers may change multiple projects atomically.[11]
+- Large-scale code refactoring – Since developers have access to the entire project, refactors can ensure that every piece of the project continues to function after a refactor.
+- Collaboration across teams – In a monorepo that uses source dependencies (dependencies that are compiled from source),[9] teams can improve projects being worked on by other teams. This leads to flexible code ownership.
+
+**Cons**
+
+- Loss of version information – Although not required, some monorepo builds use one version number across all projects in the repository. This leads to a loss of per-project semantic versioning.[12]
+- Lack of per-project security – With split repositories, access to a repository can be granted based upon need. A monorepo allows read access to all software in the project, possibly presenting new security issues.[13]
+- More storage needed – With split repositories, you can fetch only the project you are interested in. With a monorepo, you might need to fetch all projects.
+- Top most popular monorepo tools for javascript projects as [lerna](https://github.com/lerna/lerna), [nx](https://github.com/nrwl/nx), and [bit](https://github.com/teambit/bit)
+
+We choose `lerna` because it is most popular and used by many famous opensource projects as well.
+
+As our framework, we will have many packages etc: networking, translations, settings managements, layout buider, root context, sagas combine, and many more, It's is difficult to format code style, refactor new code and check dependencies if we use multiple repos.
+
+In our development we combine lerna + yarn workspaces to help link local developent, run integration test, document generation and more.

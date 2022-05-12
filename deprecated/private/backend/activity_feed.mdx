@@ -1,0 +1,81 @@
+---
+route: /activity-feed
+name: Activity Feed
+hidden: true
+---
+
+# Activity Feed
+
+Sử dụng Event hay APIs
+
+phpFox v5 gồm nhiều modules, để giảm tối đa dependencies trong việc khai báo các modules,
+chúng ta sẽ dùng Laravel Event thay vì gọi trực tiếp APIs.
+
+## Publish Events
+
+### activity.updateFeedItemPrivacy
+
+When feed's privacy changed, it will trigger this event.
+
+```php
+// Fire event to modules to change item's privacy.
+app('events')->dispatch('activity.updateFeedItemPrivacy', [
+    $activityFeed->item_id,
+    $activityFeed->item_type,
+    $privacy,
+    $privacyList,
+]);
+```
+
+If you want to change your resource's privacy, you need to define an listener. Example in Module Blog:
+
+```php
+class UpdateFeedItemPrivacyListener
+{
+    public function handle(int $itemId, string $itemType, int $privacy, $list = [])
+    {
+        if ($itemType != Blog::ENTITY_TYPE) {
+            return;
+        }
+
+        /** @var Blog $blog */
+        $item = resolve(BlogRepositoryInterface::class)->find($itemId);
+        $item->privacy = $privacy;
+        $item->setPrivacyListAttribute($list);
+        $item->save();
+    }
+}
+```
+
+## Activity Feed Setting.
+
+Resource will need to have a permission to create/comment/like/share an activity feed. In per module need to define this settings.
+
+```php
+<?php
+
+namespace Modules\MyModule\Listeners;
+
+use Phpfox\Core\Support\BaseModuleSettingListener;
+
+class ModuleSettingsListener extends BaseModuleSettingListener
+{
+    public function getActivityTypes()
+    {
+        return [
+            [
+                'type_id' => 'my_module',
+                'module_id' => 'my_module',
+                'title'=> '',
+                'description'=> null,
+                'is_active' => true,
+                'can_share' => true,
+                'can_comment' => true,
+                'can_edit' => false,
+                'is_system' => false,
+            ]
+        ];
+    }
+}
+
+```

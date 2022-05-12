@@ -1,0 +1,191 @@
+---
+name: Package
+menu: Backend
+route: /backend/package
+---
+
+# App Package
+
+MetaFox Backend utilizes [Laravel Service Providers](https://laravel.com/docs/9.x/packages#service-providers) to provide a robust, re-useable, and flexible way to extend platform features.
+
+## App Directory Structure
+
+The `packages` directory contains all packages and is organized as below convention:
+
+```text
+packages/
+    [vendor_name]/
+        package-1/
+        package-2/
+```
+`vendor_name` should be your company name to avoid duplication with others.
+
+In the next section we will look into details of app directory structure.
+
+```text
+composer.json                : Package infomration and composer dependencies
+config/                      :
+  config.php                 : Contain package configuration
+resources/                   :
+  langs/
+    en/                      : Language file for `en` locale
+      phrase.php             : Define phrases for group `phrase`
+      validator.php          : Define phrases for group `validator`
+  menu/                      :
+    menus.php                :
+    menuitems.php            :
+  routes/                    :
+     api.php                 : Define RESTful API routes
+     web.php                 : Define web routes
+  src/
+    Contracts/               : Contains basic interface defination
+    Database/                :
+      Factories              : Contain database model [factories](https://laravel.com/docs/9.x/database-testing#defining-model-factories)
+      Migrations             : Contain database [migrations](https://laravel.com/docs/9.x/migrations#main-content)
+      Seeders                : Contain database [seeders](https://laravel.com/docs/9.x/seeding#introduction)
+        PackageSeeder.php    : Entry point for database seeder
+  Http/
+    Controllers/             :
+    Requests/                :
+    Resources/               :
+  Jobs/                      :
+  Listeners/                 :
+  Mail/                      :
+  Notification/              :
+  Models/                    :
+  Observers/                 :
+  Policies/                  :
+  Providers/                 :
+  Repositories/              :
+  Rules/                     :
+  tests/                     :
+    Features/                :
+    Unit/                    :
+```
+
+## composer.json
+
+```json
+{
+  "name": "metafox/blog",
+  "version": "1.0.0",
+  "description": "Allows user posting blogs for MetaFox platform.",
+  "authors": [
+    {
+      "name": "MetaFox",
+      "email": "dev@phpfox.com",
+      "homepage": "https://www.phpfox.com/"
+    }
+  ],
+  "extra": {
+    "metafox": {
+      "path": "packages/metafox/blog",
+      "nameAlias": "blog",
+      "nameStudly": "Blog",
+      "namespace": "MetaFox\\Blog",
+      "internalUrl": "/blog",
+      "internalAdminUrl": "/admincp/setting/edit/blog",
+      "providers": ["MetaFox\\Blog\\Providers\\BlogServiceProvider"],
+      "aliases": {}
+    }
+  },
+  "require": {},
+  "require-dev": {},
+  "autoload": {
+    "psr-4": {
+      "MetaFox\\Blog\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "MetaFox\\Blog\\Tests\\": "tests/"
+    }
+  }
+}
+```
+
+**name**: The `name` of the app package. It consists of vendor name and project name, separated by /. For examples:
+
+- metafox/platform
+- metafox/blog
+
+The name must be lowercase and consist of words separated by -, . or _. The complete name should match ^[a-z0-9]([_.-]?[a-z0-9]+)_/[a-z0-9](<([_.]?|-{0,2})[a-z0-9]+>)\_\$.
+
+**description**: A short description of the app package. Shoule be one-line message.
+
+**version**: a string specifing the version of the app package. In most cases this is not required and should be omitted (see below).
+
+For example: Here are some valid versions
+
+- 1.0.0
+- 1.0.2
+- 1.1.0
+- 0.2.5
+- 1.0.0-dev
+- 1.0.0-alpha3
+- 1.0.0-beta2
+
+**authors**: Info of the authors of the package. You can specify multiple `author` objects here. An `author` object can have following properties:
+
+- `name`: The author's name. Usually their real name.
+- `email`: The author's email address.
+- `homepage`: URL to the author's website.
+
+**require**: Map of packages required by this package. The app package will not be installed unless all requirements are met.
+
+**require-dev**: Map of packages required for developing this package, or running tests, etc. The dev requirements of the root package are installed by default. Both `install` and `update` commands support the `--no-dev` option to prevent dev dependencies from being installed.
+
+**autoload.psr-4**
+
+Under the psr-4 key you can define a mapping from namespaces to paths relative to the package root. When autoloading a class like `Foo\\Bar\\Baz`, and a namespace prefix `Foo\\` are pointed to a directory `src/`, the autoloader will look for a file named `src/Bar/Baz.php` and include it if existing. Note that as opposed to the older PSR-0 style, the prefix `(Foo\\)` is not present in the file path.
+
+Namespace prefixes must end in `\\` to avoid conflicts between similar prefixes. For example: Foo would match classes in the `FooBar` namespace. Thus, we use the trailing backslashes to solve the problem: Foo\\ and FooBar\\ are distinct.
+
+The PSR-4 references are all combined, during installation or update, into a single key => value array which may be found in the generated file `vendor/composer/autoload_psr4.php`.
+
+**autoload.files**
+
+If you want to require certain files explicitly on every request then you can use the file autoloading mechanism. This is very useful if your app package need to include PHP functions that cannot be autoloaded by PHP
+
+```json
+{
+  "autoload": {
+    "files": ["src/MyLibrary/functions.php"]
+  }
+}
+```
+
+**autoload-dev**
+
+This section allows to define autoload rules for development purposes.
+
+Classes needed to run for testing purposes only should not be included in the main autoload rules to avoid polluting the autoloader in production and when others use your app package as a dependency.
+
+Therefore, it is a good idea to rely on a dedicated path for your unittests and add it within the `autoload-dev` section.
+
+Example:
+
+```json
+{
+  "autoload": {
+    "psr-4": { "MyLibrary\\": "src/" }
+  },
+  "autoload-dev": {
+    "psr-4": { "MyLibrary\\Tests\\": "tests/" }
+  }
+}
+```
+
+**extra.metafox.path**: The package source under root application. For example: `packages/metafox/blog`
+
+**extra.metafox.alias**: The alias name of your app package. For example, you may prefer to use an alias name `blog` rather than fully name `metafox/blog`.
+
+**extra.metafox.namespace**: The root namespace of the package. It must use trailing backslashes with "\\". For example: `MetaFox\\Blog`
+
+**extra.metafox.internalUrl**: In most cases, it is home page of the app package in Frontend site.
+
+**extra.metafox.internalAdminUrl**: Similar to `internalUrl` but for AdminCP
+
+**extra.metafox.providers**: The array of fully Laravel provider classes, for futher information read out [Service Provider](https://laravel.com/docs/9.x/providers)
+
+[Next Chapter](/backend/routing)

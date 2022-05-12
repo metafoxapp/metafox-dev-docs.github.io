@@ -1,0 +1,47 @@
+---
+name: Notification
+route: /notification
+hidden: true
+---
+
+# Notification
+
+Laravel Notification limitation:
+
+- Can not push a single notification to multiple users in single requests
+- Can not send an email to multiple users in single requests
+- Write down database where & when
+- Configure by admin settings & user settings.
+
+## Create
+
+`php artisan module:make-notification [ClassName] [ModuleName]`
+
+```bash
+php artisan module:make-notification FriendAccepted Friend
+```
+
+```php
+<?php
+
+namespace Modules\MyModule\Notifications;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Notification;
+
+
+class FriendAccepted extends Notification
+{
+    use Queueable;
+
+    // ... content table
+}
+
+```
+
+## Support APIs
+
+- markAsRead
+- markAllAsRead
+- markAsSeen
+- markAllAsSeen
