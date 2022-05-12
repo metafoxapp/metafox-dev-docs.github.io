@@ -44,7 +44,7 @@ jobs:
           cp -rf ./../.docz/dist/* ./docs
           date > docs/date.txt
           git add .
-          git config user.email "namnv@younetgroup.com"
+          git config user.email "oversky@phpfox.com"
           git config user.name "jacky158"
           git commit -m "ci updated"
           git push --force
