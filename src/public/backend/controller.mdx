@@ -5,11 +5,11 @@ route: /backend/controller
 ---
 
 
-## Controller
+# Controller
 
-Controllers can help group related request handling logic into a single class. Controller classes are located under `src\Http\Controllers` folder within your package directory. 
+Controllers can help group related request handling logic into a single class. *Controller* classes are located under `src\Http\Controllers` directory within your package directory. 
 
-Here is folder structure of the package `metafox\blog`
+Here is the directory structure of the `metafox\blog` app
 
 ```text
 packages/
@@ -29,7 +29,7 @@ packages/
              
 ```
 
-Now, we are going to take a closer look into the Gateway class of BlogController at `src/Http/Controllers/Api/BlogController.php` which is extended from the abstract class `GatewayController`,
+Next step, we are going to take a deeper look into the *Gateway* class, the `BlogController` at `src/Http/Controllers/Api/BlogController.php`, which is extended from the abstract class `GatewayController`,
 
 ```php
 <?php
@@ -64,26 +64,25 @@ class BlogController extends GatewayController
 }
 ```
 
-The `BlogController` class defined its property `controllers` to associate 2 versions with 2 different BlogController classes.
+The `BlogController` class defines its property `controllers` to associate 2 versions with 2 different `BlogController` classes.
 
-`GatewayController` support parsing the `ver` parameter from [routing](/backend/routing#api-versioning) and invoke the respective Controller class of that version
+`GatewayController` class supports parsing the `ver` parameter from [routing](/backend/routing#api-versioning) and invoking the respective *Controller* class associated with that version
 
-For example, with the route `/api/v1/blog/18`, routing resolves to `MetaFox\Blog\Http\Controllers\Api\BlogController::show` with parameters `ver=v1` and `id=18`,
-`GatewayController` is dispatched with the same method `show`, then forward the dispatched call to method `v1/BlogController::show`.
+For example, with the route `/api/v1/blog/18`, routing resolves to `MetaFox\Blog\Http\Controllers\Api\BlogController::show` with parameters `ver=v1` and `id=18`, `GatewayController` class is dispatched with the same `show` method, then forward the dispatched call to `v1/BlogController::show` method.
 
 ## API Fallback
 
-If a method isn't defined in the Controller class of certain version, the call will be dispatched to the class method of the previous version.
+If a method isn't defined in the *Controller* class of certain version, the call will be dispatched to the class method of the previous version.
 
 For example with the route `/api/v2/blog/18`, routing resolves `MetaFox\Blog\Http\Controllers\Api\BlogController::show` with parameters `ver=v2` and `id=18`.
 
-`GatewayController` will try to dispatch the call with the same method `show` with `ver=v2` and `id=18` in Controller class `v2\BlogController` as normal. But if there are no `show` methods in class `v2\BlogController`, the call will be forwarded to `v1\BlogController:show`.
+`GatewayController` class will try to dispatch the call with the same `show` method with parameters of `ver=v2` and `id=18` in `v2\BlogController` class as normal. But if there are no `show` methods in `v2\BlogController` class, the call will be forwarded to `v1\BlogController::show` method.
 
-## Api Controller
+## API Controller
 
-Now, we will move to see how the Controller classes of certain API version are defined for main action controllers. 
+In this section, we will see how the *Controller* classes of certain API version are defined for main action controllers. 
 
-Below is the sample Blog Controller of version `v1`. This class is located under `src/Http/Controllers/Api/v1/BlogController.php`
+Below is the sample `BlogController` class of version `v1`. This class is located under `src/Http/Controllers/Api/v1/BlogController.php`
 
 ```php
 <?php
@@ -120,7 +119,7 @@ class BlogController
 
 ## HTTP Request
 
-HTTP Request classes of an app are located under `src/Http/Requests` folder. Here is the folder structure of the `metafox\blog` package
+*HTTP Request* classes of an app are located under `src/Http/Requests` directory. Here is the directory structure of the `metafox\blog` app
 
 ```text
 packages/

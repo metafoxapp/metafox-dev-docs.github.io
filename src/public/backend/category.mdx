@@ -8,11 +8,11 @@ menu: Backend
 
 App items such as blogs, events, etc., can be organized into categories. In this topic, we are going to walk you through steps to support Categories in the sample Notes app.
 
-In the Notes app, we are going to define 2 database schemas `note_categories` and `note_category_data` to keep `many-to-many` relationship between `notes` and `categories`
+In the *Notes* app, we are going to define 2 database schemas `note_categories` and `note_category_data` to keep *many-to-many* relationship between `notes` and `categories`
 
 ### Build Schema
 
-We will define a Migration class with 2 methods `up` and `down` as below:
+We will define a *Migration* class with 2 methods `up` and `down`
 
 ```php
 

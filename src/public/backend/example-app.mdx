@@ -4,36 +4,36 @@ name: Writing First App
 menu: Backend
 ---
 
-> In this part, you will learn how to create new note package,
-> package vendor is `company` then full package name should be `company/note`
+> In this part, you will learn how to create new *Notes* package,
+> package vendor is `company` then the full package name should be `company/note`
 
 ## Generate Files Skeleton
 
-The simple way to init a module is using admincp.
-visit admincp at "/admin/app" then follow the winzard to create your first module
+The simple way to initialize a app package is using MetaFox AdminCP.
+Visit AdminCP at "/admincp/app" on your browser, click on Create App button and then follow the Wizard to create your first app
 
-Let start by init schema structure
+Let's start by initialize the schema structure
 
 ## Generate Database Schema
 
+Open terminal and run the following command
+
 ```bash
 # create migration file
-php artisan package:make-migration company/blog create_blog_schema
+php artisan package:make-migration company/note create_note_schema
 ```
 
-enter directory company/blog/src/Database/Migrations, open php file
+Go to the `company/blog/src/Database/Migrations` directory, open php file
 
-You'll see a class with two method `up` and `down`.
-
-Put create schema to `up()` and destroy schema to `down()`.
+You'll see a class with two method `up` and `down`. We will add code to create schema in `up()` method and destroy schema to `down()` method.
 
 ```php
 class CreateBlogTables extends Migration
 {
     public function up()
     {
-        if (!Schema::hasTable('blogs')) {
-            Schema::create('blogs', function (Blueprint $table) {
+        if (!Schema::hasTable('notes')) {
+            Schema::create('notes', function (Blueprint $table) {
                 // Create table structure.
             });
         }
@@ -41,14 +41,14 @@ class CreateBlogTables extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('blogs');
+        Schema::dropIfExists('notes');
     }
 }
 ```
 
 ## Code Generator
 
-To generate example code to a resource, access /admin/apps.
+To generate example code to a *Resource*, access /admin/apps.
 
 ### Type:
 

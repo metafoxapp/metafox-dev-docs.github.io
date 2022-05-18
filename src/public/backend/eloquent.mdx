@@ -4,15 +4,15 @@ menu: Backend
 route: /backend/eloquent
 ---
 
-## Eloquent
+# Eloquent
 
-[Eloquent ORM ](https://laravel.com/docs/9.x/eloquent)
+Eloquent is an object-relational mapper (ORM) supported by default in Laravel framework to make it enjoyable when interacting with your database. For more info, you may like to read [Eloquent ORM ](https://laravel.com/docs/9.x/eloquent) first.
 
 ## Migrations
 
-Migrations are like version control for your database, allowing your team to define and share the application's database schema definition. If you have ever had to tell a teammate to manually add a column to their local database schema after pulling in your changes from source control, you've faced the problem that database migrations solve.
+Migrations, like version control for your database, allow your team to define and share the application's database schema definitions. With database migrations, you no longer have to tell teammates to manually update required changes in their local database schema after pulling certain commits from source control.
 
-Package migrations folder is under `src/Database/Migrations` directory.
+*Migrations* classes are under `src/Database/Migrations` directory.
 
 ```text
 packages/metafox/blog/src/: Package source root
@@ -22,7 +22,7 @@ packages/metafox/blog/src/: Package source root
       2021_02_05_034457_CreateCategoryTables.php  : Migrations for category schema
 ```
 
-Each migrations class is child of `Illuminate\Database\Migrations\Migration`, contains `up` and `down` methods.
+Each *Migrations* class is child of `Illuminate\Database\Migrations\Migration` class, and contains 2 `up` and `down` methods. Let's see the *Migration* `CreateBlogTables` class below
 
 ```php
 <?php
@@ -64,14 +64,14 @@ class CreateBlogTables extends Migration
 }
 ```
 
-The platform shipped with [DbTableHelper](/php-api/classes/MetaFox-Platform-Support-DbTableHelper.html), to provider create platform schema without repeat your self.
+**MetaFox** platform is shipped with [DbTableHelper](/php-api/classes/MetaFox-Platform-Support-DbTableHelper.html), to support creating platform schema easily and quickly.
 
-For more information, read out [Laravel migrations](https://laravel.com/docs/9.x/migrations)
+For more info, please read [Laravel migrations](https://laravel.com/docs/9.x/migrations)
 
 ## Seeders
 
-Each package includes the ability to seed your database with data using seed classes.
-All package seed classes are stored in the `src/Database/Seeders` directory. By default, a DatabaseSeeder class is defined for you. From this class, you may use the call method to run other seed classes, allowing you to control the seeding order.
+Each package includes the ability to seed your database with default data using *Seeder* classes.
+All package *Seeder* classes are stored in the `src/Database/Seeders` directory. By default, a `DatabaseSeeder` class is defined for you. With this class, you may use the `call` method to run other *Seeder* classes. It will allow you to control the seeding order.
 
 ```php
 <?php
@@ -90,12 +90,12 @@ class PackageSeeder extends Seeder {
 
 ## Factories
 
-[Define Laravel Model Factories](https://laravel.com/docs/9.x/database-testing#defining-model-factories)
+Please read [Define Laravel Model Factories](https://laravel.com/docs/9.x/database-testing#defining-model-factories)
 
 ## Observers
 
-If you are listening for many events on a given model, you may use observers to group all of your listeners into a single class.
-Observer classes have method names which reflect the Eloquent events you wish to listen for. Each of these methods receives the affected model as their only argument.
+If your app is listening for many events on a given *Model*, you may use *Observer* to group all of your listeners into a single class.
+*Observer* classes have method names reflecting on the *Eloquent* events you wish to listen to. Each of these methods receives the affected *Model* as their only one argument.
 
 ```php
 <?php
@@ -174,8 +174,8 @@ class BlogObserver
 
 ```
 
-For performance optimization, MetaFox does not support automatic discover observer, develoepers must register observer
-within PackageServiceProvider class.
+For performance optimization, **MetaFox** does not support automatically discovering *Observers*, you must register *Observers*
+within the package *ServiceProvider* class. Below is the sample `BlogServiceProvider` class
 
 ```php
 <?php
@@ -202,9 +202,9 @@ class BlogServiceProvider extends ServiceProvider
 }
 ```
 
-For more information, visit [Laravel Model Observers](https://laravel.com/docs/9.x/eloquent#observers)
+For more info about *Observers*, please visit [Laravel Model Observers](https://laravel.com/docs/9.x/eloquent#observers)
 
-For event list, visit [appendix/event-list](/backend/event-list)
+For *Events* list, please read [Appendix - Event list](/backend/event-list)
 
 ## Repository
 

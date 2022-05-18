@@ -5,7 +5,7 @@ menu: Backend
 
 # Event List
 
-Here is the list of events supported on MetaFox
+Here is the list of *Events* supported on **MetaFox**
 
 ```text
 +---------------------------------------------------------+------------------------------------------------------------------------+
@@ -97,15 +97,15 @@ Here is the list of events supported on MetaFox
 ```
 
 # Event Details
-Now, we are going to dive into deeper about all supported events
+Next, we are going to dive into deeper about all supported *Events*
 
 ## Model Events
 
-These are events that were called in EloquentModelObserver: packages/platform/src/Support/EloquentModelObserver.php
+These are events that were called in `EloquentModelObserver` class located at `packages/platform/src/Support/EloquentModelObserver.php`
 
 ### Model Creating Event
 
-- Event name: models.notify.creating
+- Event name: `models.notify.creating`
 - Example:
 
 ```php
@@ -117,7 +117,7 @@ These are events that were called in EloquentModelObserver: packages/platform/sr
 
 ### Model Created Event
 
-- Event name: models.notify.created
+- Event name: `models.notify.created`
 - Example:
 
 ```php
@@ -129,7 +129,7 @@ These are events that were called in EloquentModelObserver: packages/platform/sr
 
 ### Model Updating Event
 
-- Event name: models.notify.updating
+- Event name: `models.notify.updating`
 - Example:
 
 ```php
@@ -141,7 +141,7 @@ These are events that were called in EloquentModelObserver: packages/platform/sr
 
 ### Model Updated Event
 
-- Event name: models.notify.updated
+- Event name: `models.notify.updated`
 - Example:
 
 ```php
@@ -153,7 +153,7 @@ These are events that were called in EloquentModelObserver: packages/platform/sr
 
 ### Model Deleted Event
 
-- Event name: models.notify.deleted
+- Event name: `models.notify.deleted`
 - Example:
 
 ```php
@@ -167,71 +167,71 @@ These are events that were called in EloquentModelObserver: packages/platform/sr
 
 ### Package installed Event
 
-This event will be called after run install command
+This *Event* will be called after running the `install` command
 
-- Event name: packages.installed
+- Event name: `packages.installed`
 
 ### Package updated Event
 
-This event will be called after run updated command
+This *Event* will be called after running the `updated` command
 
-- Event name: packages.updated
+- Event name: `packages.updated`
 
 ### Package scan Event
 
-Scan all module folders and metafox config file to update into a module table
+Scan all package directories and **MetaFox** config files to update database
 
-- Event name: packages.scan
+- Event name: `packages.scan`
 
 ### Package Export Menu Event
 
-This event will be called when export module
+This event will be called when exporting package
 
-- Event name: packages.export_menu
+- Event name: `packages.export_menu`
 
 ### Package Export Phrase Event
 
-This event will be called when exporting module
+This event will be called when exporting phrase
 
-- Event name: modules.export_phrase
+- Event name: `modules.export_phrase`
 
 ### Package Deleting Event
 
-This event will be called when uninstalling module
+This event will be called when uninstalling package
 
-- Event name: packages.deleting
+- Event name: `packages.deleting`
 
 ## Core Package Events
 
 ### Check Privacy List Event
 
-- Check user has owner privacy list
+Called when checking if user has owner privacy list
 
-- Event name: core.check_privacy_list
+- Event name: `core.check_privacy_list`
 
 ### Parse content Event
 
-- Parse content: convert mention, tag,.. in text
+Called when parsing *Content*. Can be use when converting mention, tag,.. in text
 
-- Event name: core.parse_content
+- Event name: `core.parse_content`
 
 ### Check Privacy member Event
 
-- Check user has privacy member
+Called when checking user has privacy member
 
-- Event name: core.privacy.check_privacy_member
+- Event name: `core.privacy.check_privacy_member`
 
 ### Total View Event
 
-- Redundant total view from content to feed
+Called when getting total view on a *Content* to feed
 
-- Event name: core.total_view
+- Event name: `core.total_view`
 
 ### Get Privacy Id Event
 
 - Privacy id form user_id and privacy
 
-- Event name: core.user_privacy.get_privacy_id
+- Event name: `core.user_privacy.get_privacy_id`
 
 ## Activity Package Events
 
@@ -239,183 +239,181 @@ This event will be called when uninstalling module
 
 - Get count pending feed
 
-- Event name: activity.count_feed_pending_on_owner
+- Event name: `activity.count_feed_pending_on_owner`
 
 ### Delete Feed Event
 
-- Event name: activity.delete_feed
+- Event name: `activity.delete_feed`
 
 ### Get Feed Event
 
-- Event name: activity.get_feed
+- Event name: `activity.get_feed`
 
 ### Get Feed By Item Id Event
 
-- Event name: activity.get_feed_by_item_id
+- Event name: `activity.get_feed_by_item_id`
 
 ### Get Feed By Id Event
 
-- Event name: activity.get_feed_id
+- Event name: `activity.get_feed_id`
 
 ### Push Feed On Top Event
 
-- Event name: activity.push_feed_on_top
+- Event name: `activity.push_feed_on_top`
 
 ### Push Feed On Top Event
 
-- Event name: activity.push_feed_on_top
+- Event name: `activity.push_feed_on_top`
 
 ### Redundant Data Event
 
-- Update total comment, total like, total view,... from resource content to feed
+Called when updating info of total comment, total like, total view,... from resource *Content* to feed
 
-- Event name: activity.redundant
+- Event name: `activity.redundant`
 
 ### Sponsor Feed Event
 
-- Event name: activity.sponsor_in_feed
+- Event name: `activity.sponsor_in_feed`
 
 ### Update feed item privacy Event
 
-- When update privacy on feed, also update on item
+Called when update privacy on feed, also update on item
 
-- Event name: activity.update_feed_item_privacy
+- Event name: `activity.update_feed_item_privacy`
 
 ### Feed Composer Event
 
-- Support create item when create feed by feed form
+Called when create feed by feed form
 
-- Event name: feed.composer
+- Event name: `feed.composer`
 
 ### Edit Feed Composer Event
 
-- Support create item when create feed by feed form
-
-- Event name: feed.composer.edit
+- Event name: `feed.composer.edit`
 
 ## Friend Package Events
 
 ### Check Can Add Friend Event
 
-- Event name: friend.can_add_friend
+- Event name: `friend.can_add_friend`
 
 ### Count Total Friend Event
 
-- Event name: friend.count_total_friend
+- Event name: `friend.count_total_friend`
 
 ### Count Total Mutual Friend Event
 
-- Event name: friend.count_total_mutual_friend
+- Event name: `friend.count_total_mutual_friend`
 
 ### Create Tag Friend Event
 
-- Event name: friend.create_tag_friends
+- Event name: `friend.create_tag_friends`
 
 ### Delete Tag Friend Event
 
-- Event name: friend.delete_tag_friend
+- Event name: `friend.delete_tag_friend`
 
 ### Get Friend Ids Event
 
-- Event name: friend.friend_ids
+- Event name: `friend.friend_ids`
 
 ### Get Friendship Event
 
-- Event name: friend.get_friend_ship
+- Event name: `friend.get_friend_ship`
 
 ### Count New Friend Request Event
 
-- Event name: friend.get_count_new_friend_request
+- Event name: `friend.get_count_new_friend_request`
 
 ### Get Tagged Friend In Photo Event
 
-- Event name: friend.get_photo_tag_friends
+- Event name: `friend.get_photo_tag_friends`
 
 ### Get Friend Suggestion Event
 
-- Event name: friend.get_suggestion
+- Event name: `friend.get_suggestion`
 
 ### Get Tagged Friend By Tag Id Event
 
-- Event name: friend.get_tag_friend_by_id
+- Event name: `friend.get_tag_friend_by_id`
 
 ### Get Tagged Friend By Tag Id Event
 
-- Event name: friend.get_tag_friend_by_id
+- Event name: `friend.get_tag_friend_by_id`
 
 ### Get Tagged Friends Event
 
-- Event name: friend.get_tag_friends
+- Event name: `friend.get_tag_friends`
 
 ### Check Is Friend Of Friend Event
 
-- Event name: friend.is_friend_of_friend
+- Event name: `friend.is_friend_of_friend`
 
 ### Update Tagged Friend Event
 
-- Event name: friend.update_tag_friends
+- Event name: `friend.update_tag_friends`
 
 ## Comment Package Events
 
 ### Get Related Comments Event
 
-- Event name: comment.related_comments
+- Event name: `comment.related_comments`
 
 ### Get Related Comments For Item Detail Event
 
-- Event name: comment.related_comments.item_detail
+- Event name: `comment.related_comments.item_detail`
 
 ## Background Status Package Events
 
 ### Get Background Status By Id Event
 
-- Event name: background-status.get_bg_status_image
+- Event name: `background-status.get_bg_status_image`
 
 ## Group Package Events
 
 ### Get Privacy For Setting Event
 
-- Event name: group.get_privacy_for_setting
+- Event name: `group.get_privacy_for_setting`
 
 ### Get Search Resource Event
 
-- Event name: group.get_search_resource
+- Event name: `group.get_search_resource`
 
 ### Get User Preview Event
 
-- Event name: group.get_user_preview
+- Event name: `group.get_user_preview`
 
 ### Update Cover Event
 
-- Event name: group.update_cover
+- Event name: `group.update_cover`
 
 ## HashTag Package Events
 
 ### Create HashTag Event
 
-- Event name: hashtag.create_hashtag
+- Event name: `hashtag.create_hashtag`
 
 ### Update Total Item Event
 
-- Event name: hashtag.update_total_item
+- Event name: `hashtag.update_total_item`
 
 ### Get Search Resource Event
 
-- Event name: tag.get_search_resource
+- Event name: `tag.get_search_resource`
 
 ## Like Package Events
 
 ### Check Is Liked Event
 
-- Event name: like.is_liked
+- Event name: `like.is_liked`
 
 ### Get Most Reactions Event
 
-- Event name: like.most_reactions
+- Event name: `like.most_reactions`
 
 ### Get User Reacted Event
 
-- Event name: like.user_reacted
+- Event name: `like.user_reacted`
 
 ## Notification Package Events
 
@@ -423,115 +421,118 @@ This event will be called when uninstalling module
 
 - When deleting an item, also delete notification of an item
 
-- Event name: notification.delete_notification_by_type_and_notifiable
+- Event name: `notification.delete_notification_by_type_and_notifiable`
 
 ### Get Email Notification Settings Event
 
-- Event name: notification.getEmailNotificationSettings
+- Event name: `notification.getEmailNotificationSettings`
 
 ### Count New Notification Settings Event
 
-- Event name: notification.get_count_new_notification
+- Event name: `notification.get_count_new_notification`
 
 ### Update Notification Settings Event
 
-- Event name: notification.updateEmailNotificationSettings
+- Event name: `notification.updateEmailNotificationSettings`
 
 ## Page Package Events
 
 ### Get Privacy For Setting Event
 
-- Event name: page.get_privacy_for_setting
+- Event name: `page.get_privacy_for_setting`
 
 ### Get Search Resource Event
 
-- Event name: page.get_search_resource
+- Event name: `page.get_search_resource`
 
 ### Get User Preview Event
 
-- Event name: page.get_user_preview
+- Event name: `page.get_user_preview`
 
 ### Update Cover Event
 
-- Event name: page.update_cover
+- Event name: `page.update_cover`
 
 ## Photo Package Events
 
 ### Create Photo Event
 
-- Event name: photo.create
+- Event name: `photo.create`
 
 ### Remove Media Event
 
-- Event name: photo.media_remove
+- Event name: `photo.media_remove`
 
 ### Update Media Event
 
-- Event name: photo.media_update
+- Event name: `photo.media_update`
 
 ### Upload Media Event
 
-- Event name: photo.media_upload
+- Event name: `photo.media_upload`
 
 ### Update Avatar Path Event
 
-- Event name: photo.update_avatar_path
+- Event name: `photo.update_avatar_path`
 
 ## Search Package Events
 
 ### Create Search Record Event
 
-- This event will be called after Content was created
-- Event name: search.created
+This event will be called after Content was created
+
+- Event name: `search.created`
 
 ### Update Search Record Event
 
-- This event will be called after content was updated
-- Event name: search.updated
+This event will be called after content was updated
+
+- Event name: `search.updated`
 
 ### Delete Search Record Event
 
-- This event will be called after content was deleted
-- Event name: search.deleted
+This event will be called after content was deleted
+
+- Event name: `search.deleted`
 
 ## Sticker Package Events
 
 ### Get Sticker Image Event
 
-- Event name: sticker.get_sticker_image
+- Event name: `sticker.get_sticker_image`
 
 ## User Package Events
 
 ### Block User Event
 
-- Event name: user.blocked
+- Event name: `user.blocked`
 
 ### Get Mentions Event
 
-- Event name: user.get_mentions
+- Event name: `user.get_mentions`
 
 ### Get Privacy For Setting Event
 
-- Event name: user.get_privacy_for_setting
+- Event name: `user.get_privacy_for_setting`
 
 ### Get Search Resource Event
 
-- Event name: user.get_search_resource
+- Event name: `user.get_search_resource`
 
 ### Get User Preview Event
 
-- Event name: user.get_user_preview
+- Event name: `user.get_user_preview`
 
 ### Social Account Request Event
 
-- Event name: user.social_account.request
+- Event name: `user.social_account.request`
 
 ### Social Account Callback Event
 
-- Event name: user.social_account.callback
+- Event name: `user.social_account.callback`
 
 ## Video Package Events
 
 ### Mux Webhook Callback Event
 
-- Event name: video.mux.webhook_callback
+- Event name: `video.mux.webhook_callback`
