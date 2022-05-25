@@ -6,11 +6,11 @@ route: /backend/package
 
 # App Package
 
-MetaFox Backend utilizes [Laravel Service Providers](https://laravel.com/docs/9.x/packages#service-providers) to provide a robust, re-useable, and flexible way to extend platform features.
+*MetaFox Backend* utilizes [Laravel Service Providers](https://laravel.com/docs/9.x/packages#service-providers) to provide a robust, re-useable, and flexible way to extend platform features.
 
 ## App Directory Structure
 
-The `packages` directory contains all packages and is organized as below convention:
+The `packages` directory contains all packages and is organized as below:
 
 ```text
 packages/
@@ -20,7 +20,7 @@ packages/
 ```
 `vendor_name` should be your company name to avoid duplication with others.
 
-In the next section we will look into details of app directory structure.
+In the next section, we will look into details of app directory structure.
 
 ```text
 composer.json                : Package infomration and composer dependencies
@@ -104,18 +104,20 @@ resources/                   :
 }
 ```
 
-**name**: The `name` of the app package. It consists of vendor name and project name, separated by /. For examples:
+`name`: The name of the app package. It consists of vendor name and project name, separated by a slash (/) 
 
-- metafox/platform
-- metafox/blog
+For examples:
 
-The name must be lowercase and consist of words separated by -, . or _. The complete name should match ^[a-z0-9]([_.-]?[a-z0-9]+)_/[a-z0-9](<([_.]?|-{0,2})[a-z0-9]+>)\_\$.
+- `metafox/platform`
+- `metafox/blog`
 
-**description**: A short description of the app package. Shoule be one-line message.
+The app name MUST be *lowercase* and consist of words separated by `-`, `.` or `_`. The complete name should match the regular expression `^[a-z0-9]([_.-]?[a-z0-9]+)_/[a-z0-9](<([_.]?|-{0,2})[a-z0-9]+>)\_\$`.
 
-**version**: a string specifing the version of the app package. In most cases this is not required and should be omitted (see below).
+`description`: A short description of the app package. Shoule be a one-line message.
 
-For example: Here are some valid versions
+`version`: a string specifing the version of the app package. In most cases, this field is not required and can be omitted (see below).
+
+Here are some examples of valid values for `versions`
 
 - 1.0.0
 - 1.0.2
@@ -125,27 +127,23 @@ For example: Here are some valid versions
 - 1.0.0-alpha3
 - 1.0.0-beta2
 
-**authors**: Info of the authors of the package. You can specify multiple `author` objects here. An `author` object can have following properties:
+`authors`: Info of the authors of the package. You can specify multiple `author` objects here. An `author` object can have following properties:
 
 - `name`: The author's name. Usually their real name.
 - `email`: The author's email address.
 - `homepage`: URL to the author's website.
 
-**require**: Map of packages required by this package. The app package will not be installed unless all requirements are met.
+`require`: Map of packages required by this package. The app package will not be installed unless all requirements are met.
 
-**require-dev**: Map of packages required for developing this package, or running tests, etc. The dev requirements of the root package are installed by default. Both `install` and `update` commands support the `--no-dev` option to prevent dev dependencies from being installed.
+`require-dev`: Map of packages required for developing this package, or running tests, etc. The dev requirements of the root package are installed by default. Both `install` and `update` commands support the `--no-dev` option to prevent dev dependencies from being installed.
 
-**autoload.psr-4**
+`autoload.psr-4`: Under the psr-4 key you can define a mapping from namespaces to paths relative to the package root. When autoloading a class like `Foo\\Bar\\Baz`, and a namespace prefixed `Foo\\` are pointed to a directory `src/`, the autoloader will look for a file named `src/Bar/Baz.php` and include it if existing. Note that as opposed to the older PSR-0 style, the prefix `(Foo\\)` is not present in the file path.
 
-Under the psr-4 key you can define a mapping from namespaces to paths relative to the package root. When autoloading a class like `Foo\\Bar\\Baz`, and a namespace prefix `Foo\\` are pointed to a directory `src/`, the autoloader will look for a file named `src/Bar/Baz.php` and include it if existing. Note that as opposed to the older PSR-0 style, the prefix `(Foo\\)` is not present in the file path.
+Namespace prefixes must end in `\\` to avoid conflicts between similar prefixes. For example: Prefix `Foo` would match classes in the `FooBar` namespace. Thus, we use the trailing backslashes to solve the problem: `Foo\\` and `FooBar\\` are distinct.
 
-Namespace prefixes must end in `\\` to avoid conflicts between similar prefixes. For example: Foo would match classes in the `FooBar` namespace. Thus, we use the trailing backslashes to solve the problem: Foo\\ and FooBar\\ are distinct.
+The PSR-4 references are all combined, during installation or update, into a single key which may be found in the generated file `vendor/composer/autoload_psr4.php`.
 
-The PSR-4 references are all combined, during installation or update, into a single key => value array which may be found in the generated file `vendor/composer/autoload_psr4.php`.
-
-**autoload.files**
-
-If you want to require certain files explicitly on every request then you can use the file autoloading mechanism. This is very useful if your app package need to include PHP functions that cannot be autoloaded by PHP
+`autoload.files`: If you want to require certain files explicitly on every request then you can use the file autoloading mechanism. This is very useful if your app package needs to include PHP functions that cannot be autoloaded by PHP
 
 ```json
 {
@@ -155,15 +153,13 @@ If you want to require certain files explicitly on every request then you can us
 }
 ```
 
-**autoload-dev**
+`autoload-dev`: This section allows to define autoload rules for development purposes.
 
-This section allows to define autoload rules for development purposes.
+Classes only running for testing purposes should not be included in the main autoload rules to optimize the autoloader in production or for others to use your app package as a dependency.
 
-Classes needed to run for testing purposes only should not be included in the main autoload rules to avoid polluting the autoloader in production and when others use your app package as a dependency.
+Therefore, it is a good solution to rely on a dedicated path for your unittests and add it within the `autoload-dev` section.
 
-Therefore, it is a good idea to rely on a dedicated path for your unittests and add it within the `autoload-dev` section.
-
-Example:
+For example:
 
 ```json
 {
@@ -176,16 +172,16 @@ Example:
 }
 ```
 
-**extra.metafox.path**: The package source under root application. For example: `packages/metafox/blog`
+`extra.metafox.path`: The package source under root application. For example: `packages/metafox/blog`
 
-**extra.metafox.alias**: The alias name of your app package. For example, you may prefer to use an alias name `blog` rather than fully name `metafox/blog`.
+`extra.metafox.alias`: The alias name of your app package. For example, you may prefer to use an alias name `blog` rather than fully name `metafox/blog`.
 
-**extra.metafox.namespace**: The root namespace of the package. It must use trailing backslashes with "\\". For example: `MetaFox\\Blog`
+`extra.metafox.namespace`: The root namespace of the package. It must use trailing backslashes with `\\`. For example: `MetaFox\\Blog`
 
-**extra.metafox.internalUrl**: In most cases, it is home page of the app package in Frontend site.
+`extra.metafox.internalUrl`: In most cases, it is home page of the app package in *Frontend* site.
 
-**extra.metafox.internalAdminUrl**: Similar to `internalUrl` but for AdminCP
+`extra.metafox.internalAdminUrl`: Similar to `internalUrl` but for *AdminCP* 
 
-**extra.metafox.providers**: The array of fully Laravel provider classes, for futher information read out [Service Provider](https://laravel.com/docs/9.x/providers)
+`extra.metafox.providers`: The array of fully Laravel provider classes, for futher information read out [Service Provider](https://laravel.com/docs/9.x/providers)
 
 [Next Chapter](/backend/routing)

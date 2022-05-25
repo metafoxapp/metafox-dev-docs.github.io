@@ -8,27 +8,27 @@ menu: Backend
 
 ## System Requirements
 
-On the Development environment: since we have to build MetaFox Frontend, your server will need to have at least 4G RAM as the [Recommendation for React](https://reacts.com/system-requirements/)
+On the Development environment: since we have to build MetaFox Frontend, your server will need to have at least **4G RAM** as the [Recommendation for React](https://reacts.com/system-requirements/)
 
-MetaFox can be installed with docker or standalone. 
+MetaFox can be installed with `docker` or standalone. 
 
 ## Installation with Docker
 
-MetaFox is going to support MySQL and Postgres. For Development environment, we highly recommend using Postgres
+MetaFox is going to support *MySQL* and *Postgres*. For Development environment, we highly recommend using *Postgres*
 
-The fastest way to install MetaFox Backend is via `docker-compose`. Your server will need to have `docker` and `docker-compose` installed first. Please refer to [Docker Installation Guide](https://docs.docker.com/engine/install/). 
+The fastest way to install the *MetaFox Backend* is using `docker-compose`. Your server will need to have `docker` and `docker-compose` installed first. Please refer to [Docker Installation Guide](https://docs.docker.com/engine/install/). 
 
 ### Installation Steps
 
-1. Download MetaFox package in Client Area and extract the package on your server. For example, all source file will be uploaded to your server under `home/metafox` folder
+1. Download MetaFox package in Client Area and extract the package on your server. For example, all source files will be uploaded to your server under `home/metafox` folder
 
-2. Open Terminal and log in SSH to your server. It is necessary to note that you will need to log in with SSH user having permissions to run docker
+2. Open Terminal and log in SSH to your server. It is necessary to note that you will need to log in with SSH user having permissions to run `docker`
 
-3. Copy the `/home/metafox/backend/.env.example` to `/home/metafox/backend/.env` . There are many environments supported by MetaFox that you may want to take a look. However, we can use the default configuration at this time.
+3. Copy the `/home/metafox/backend/.env.example` file to `/home/metafox/backend/.env`. There are many environments supported by MetaFox that you may want to take a look. However, we can just use the default configuration at this time.
 
 4. Copy `/home/metafox/backend/.env` to `/home/metafox/.env`
 
-5. Run the following commands:
+5. Run the following commands to start and install MetaFox:
 
 ```bash
 # Configure the owner of source folder to daemon
@@ -42,42 +42,42 @@ docker-compose up -d
 
 ```
 
-The MetaFox should be running at "http://your_server_IP" or "http://your_domain"
+After starting successfully, you can check the MetaFox site at `http://your_server_IP` or `http://your_domain`
 
 ## Standalone Installation
 
-In this case, follow step by step to install MetaFox Backend standalone.
+In this section, we are going to guide you to install the *MetaFox Backend* in the standalone way.
 
 In order for MetaFox to work properly, please check to make sure that your server meets the following software requirements: 
-- OS: Linux is recommended
-- Web server: Apache or NginX
-- Database: Postgres or MySQL. Postgres is recommended
-- PHP >= 7.4
-- PHP Extensions:
-    - ext-curl
-    - ext-dom
-    - ext-json
-    - ext-pdo
-    - ext-zip
-    - sodium
-    - pcov
-    - php-redis
-    - php-imgclick
-    - php-memcached
-    - php-pgsql or php-mysql
-    - php-ffmpeg
+- *OS*: Linux is recommended
+- *Web server*: Apache or NginX
+- *Database*: Postgres or MySQL. Postgres is recommended
+- *PHP* >= 7.4
+- *PHP Extensions*:
+    - `ext-curl`
+    - `ext-dom`
+    - `ext-json`
+    - `ext-pdo`
+    - `ext-zip`
+    - `sodium`
+    - `pcov`
+    - `php-redi`
+    - `php-imagick`
+    - `php-memcached`
+    - `php-pgsql` or `php-mysql`
+    - `php-ffmpeg`
 
 ### Installation Steps
 
 1. Download source package in [Client Area](https://clients.phpfox.com/) and extract it to a temporary folder on your server
 
-2. The MetaFox source includes 2 main folders: `frontend` and `backend`. You can copy all source files under `backend` folder to the web root folder fo web server.
+2. The MetaFox source includes 2 main folders: `frontend` and `backend`. You can copy all source files under `backend` folder to the web root folder (for example: `public_html`) of web server.
 
 3. Go to the web root folder of web server, copy `.env.example` to `.env` and update environment variables for:
   - Database
   - Cache
 
-4. Go to Terminal, go to the web root folder and run the following command:
+4. Log in SSH to your server with Terminal, then go to the web root folder and run the following command:
 
 ```bash
 ./scripts/install.sh
