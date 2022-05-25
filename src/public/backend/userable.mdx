@@ -8,7 +8,7 @@ menu: Backend
 
 ## Contract User
 
-This is an interface of an **User**. **Contract User** is a child of **Contract Content**, and has more abilities.
+This is an *Interface* of an **User**. **Contract User** is a child of **Contract Content**, and has more abilities.
 
 ```php
 
@@ -33,7 +33,7 @@ interface User extends Content, BigNumberId
 
 ```
 
-A special ability of a **Contract User** is that it uses `BigNumberId` to `setEntityId` to entities table (global and unique id for all resources).
+A special ability of a **Contract User** is that it uses `BigNumberId` to set ID (with `setEntityId` method) for *entities* tables ( to support global and unique ID for all resources).
 
 ```php
 
@@ -50,7 +50,7 @@ interface BigNumberId
 
 ```
 
-And to define which details should be stored in entities table, we has `toUserResource()`. Example in User, you can define the function as below:
+To define which details are stored in *entities* table, we can use the `toUserResource()` method. For example: in *User*, you can define this method as below:
 
 ```php
 
