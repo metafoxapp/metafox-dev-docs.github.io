@@ -23,9 +23,9 @@ Open terminal and run the following command
 php artisan package:make-migration company/note create_note_schema
 ```
 
-Go to the `company/blog/src/Database/Migrations` directory, open php file
+Go to the `company/blog/src/Database/Migrations` directory, open a PHP file
 
-You'll see a class with two method `up` and `down`. We will add code to create schema in `up()` method and destroy schema to `down()` method.
+You'll see a class with two methods `up` and `down`. Next step, we will add some code to create table schema in `up()` method and destroy table schema to `down()` method.
 
 ```php
 class CreateBlogTables extends Migration
@@ -48,34 +48,34 @@ class CreateBlogTables extends Migration
 
 ## Code Generator
 
-To generate example code to a *Resource*, access /admin/apps.
+To generate an example code to a *Resource*, access **AdminCP > Installed > Apps** or use the direct URL */admin/apps*.
 
-### Type:
+### Type
 
-If Model is Content, implement:
+If *Model* is *Content*, you need to implement:
 
 - interface: **MetaFox\Platform\Contracts\Content**
 - trait: **MetaFox\Platform\Support\HasContent**.
 
-If Model is User, implement:
+If *Model* is *User*,  you need to implement:
 
 - interface: **MetaFox\Platform\Contracts\User**
 - trait: **MetaFox\Platform\Support\HasUser**.
 
-### Define Model User/Owner:
+### Define Model User/Owner
 
-If Model has user_id, user_type => use trait **MetaFox\Platform\Traits\Eloquent\Model\HasUserMorph**.
+If *Model* has `user_id`, `user_type`, use trait **MetaFox\Platform\Traits\Eloquent\Model\HasUserMorph**.
 
-If Model has owner_id, owner_type => use trait **MetaFox\Platform\Traits\Eloquent\Model\HasOwnerMorph**.
+If *Model* has `owner_id`, `owner_type`, use trait **MetaFox\Platform\Traits\Eloquent\Model\HasOwnerMorph**.
 
 ### Privacy
 
-If Model has privacy and MUST has custom privacy (if not, skip this step), implement:
+If *Model* has privacy and MUST has custom privacy (if not, skip this step),  you need to implement:
 
 - interface: **MetaFox\Platform\Support\Eloquent\Appends\Contracts\AppendPrivacyList**
 - trait: **MetaFox\Platform\Support\Eloquent\Appends\AppendPrivacyListTrait**.
 
-This will give model two method **setPrivacyListAttribute** and **getPrivacyListAttribute** to set/get privacy list. Example:
+This will give *model* two methods, **setPrivacyListAttribute** and **getPrivacyListAttribute**, to set/get privacy list. For example:
 
 ```php
 $blog = new Blog();
@@ -83,17 +83,17 @@ $blog->setPrivacyListAttribute([1, 2, 3]);
 var_dump($blog->getPrivacyListAttribute()); // print 1, 2, 3. If privacy != 4, it will return null.
 ```
 
-### Create Feed:
+### Create Feed
 
-If Model is Content, and Model can create Feed => implement interface **MetaFox\Platform\Contracts\ActivityFeedSource**.
+If *Model* is *Content*, and *Model* can create Feed, you will need to implement interface `MetaFox\Platform\Contracts\ActivityFeedSource`
 
-=> Method _toActivityFeed_ will return a _FeedAction_ instance, this is feed data before creating a feed. Making sure type_id is correct (see Settings)
+Method `_toActivityFeed_` will return a `_FeedAction_` instance, this is feed data before creating a feed. Making sure `type_id` is correct (see *Settings*)
 
 ### Stream
 
-If Model can create Resource Stream (using for browse), implement interface **MetaFox\Platform\Contracts\HasResourceStream**
+If *Model* can create *Resource Stream* (using for browsing), you can implement the interface `MetaFox\Platform\Contracts\HasResourceStream`
 
-First, we will define Blog Stream Model:
+Firstly, we will define *Blog* `PrivacyStream` class as below:
 
 ```php
 namespace MetaFox\Blog\Models;
@@ -113,7 +113,7 @@ class PrivacyStream extends Model
 }
 ```
 
-Then in Blog Model, we define this relation:
+Next, in `Blog` model class, we define its relation:
 
 ```php
 public function privacy_streams(): HasMany
@@ -122,7 +122,7 @@ public function privacy_streams(): HasMany
 }
 ```
 
-Finally we will have a Blog Model looks like this:
+The `Blog` Model class now looks like this:
 
 ```php
 
@@ -165,7 +165,7 @@ class Blog extends Model implements Content, ActivityFeedSource, AppendPrivacyLi
 
 ### Use Entity Name
 
-Default Laravel will use class name: MetaFox\Blog\Models\Blog. To use "blog" only, go to company/blog/src/Providers/PackageServiceProvider and define in boot method.
+By default, Laravel will use the classname `MetaFox\Blog\Models\Blog`. To use **blog** only, go to `company/blog/src/Providers/PackageServiceProvider` and define in the `boot` method
 
 ```php
 public function boot()
@@ -176,11 +176,11 @@ public function boot()
 }
 ```
 
-## Model observer
+## Model Observer
 
-Go to company/blog/src/Providers/PackageServiceProvider, define in boot method.
+You can define Model Observer in the `boot` method of the `company/blog/src/Providers/PackageServiceProvider` class.
 
-Note if model is User or Content Type, you must register with global observer. Depend on abilities of Interface, Model will listen differently with platform process.
+Note if model is *User* or *Content* Type, you must register with *global* observer. Depending on abilities of Interface, Model will listen differently with platform process.
 
 ```php
 class BlogServiceProvider extends ServiceProvider
@@ -195,9 +195,9 @@ class BlogServiceProvider extends ServiceProvider
 }
 ```
 
-## Package Settings
+## App Settings
 
-All app settings will be defined in company/blog/src/Listeners/PackageSettingListener.php.
+All app settings will be defined in `company/blog/src/Listeners/PackageSettingListener.php`
 
 ### Define Package Name
 
@@ -213,7 +213,7 @@ class PackageSettingListener extends BasePackageSettingListener
 
 ### Setting to create Feed
 
-To make a Content Model can able to create Feed, define activity type below:
+To make a *Content* Model have ability to create Feed, you can define *activity type* as below:
 
 ```php
 class PackageSettingListener extends BasePackageSettingListener
@@ -244,7 +244,7 @@ class PackageSettingListener extends BasePackageSettingListener
 
 ### Add Resource to Activity Form
 
-In fox4 there is only Photo, Activity Post, Video. In fox5, we have this quick setting to add a resource to Activity Feed Form.
+In MetaFox, you can add default settings quickly when adding a *resource* to Activity Feed Form.
 
 ```php
 class PackageSettingListener extends BasePackageSettingListener
@@ -263,7 +263,7 @@ class PackageSettingListener extends BasePackageSettingListener
 
 ```
 
-### Setting Policy.
+### Setting Policy
 
 ```php
 class PackageSettingListener extends BasePackageSettingListener
@@ -280,9 +280,9 @@ class PackageSettingListener extends BasePackageSettingListener
 }
 ```
 
-### Setting User Permissions.
+### Setting User Permissions
 
-In fox5, we assign permissions to role in "tree". Example if you define UserRole::LEVEL_REGISTERED, then all roles from user register to all higher roles will have that permissions.
+In MetaFox, we assign permissions to role in *tree*. For example, if you define a certain permission with a `UserRole::LEVEL_REGISTERED` role, then users in higher roles will have such permission also.
 
 ```php
 class PackageSettingListener extends BasePackageSettingListener
@@ -306,7 +306,7 @@ class PackageSettingListener extends BasePackageSettingListener
 }
 ```
 
-If you only want to assign role to specific role:
+If you just want to assign a permission to a specific role:
 
 ```php
 
@@ -338,10 +338,12 @@ class PackageSettingListener extends BasePackageSettingListener
 
 ### Setting User Privacy
 
-- getUserPrivacy: define all profile settings.
-- getUserPrivacyResource: define all settings (defined in getUserPrivacy methods) are used by resources. Example: you create setting Blog-A, then you want to apply it to page, group v.v... then you just define those in this method. You can set it own phrase too.
-- getDefaultPrivacy: set default privacy of a resource.
-- getProfileMenu: set sections can be viewed on user profile.
+You can define following methods for User Privacy
+
+- `getUserPrivacy`: define all profile settings.
+- `getUserPrivacyResource`: define all settings (defined in `getUserPrivacy` methods) used by resources. For example: you create a setting *Blog-A*, then you want to apply it to page, group v.v... you have to define them in this method only. And, you can set its phrases too.
+- `getDefaultPrivacy`: define default privacy of a *resource*.
+- `getProfileMenu`: define sections which can be viewed on user profile.
 
 ```php
 
@@ -427,12 +429,11 @@ class PackageSettingListener extends BasePackageSettingListener
 
 ## Repository
 
-Repository can be extended from MetaFox\Platform\Repositories\AbstractRepository, in some case it may not. But a repository always need a repository interface.
+*Repository* can be extended from the abstract class `MetaFox\Platform\Repositories\AbstractRepository` if needed. But a *repository* is always required to implement the `Repository` interface.
 
-- Location for repository interfaces: company/blog/src/Repositories;
-- Location for repository class: company/blog/src/Repositories/Eloquent;
-
-Example:
+For example, in the *Blog* app:
+- Location for `repository` interfaces: `company/blog/src/Repositories`
+- Location for `repository` class: `company/blog/src/Repositories/Eloquent`
 
 ```php
 namespace MetaFox\Blog\Repositories\Eloquent;
@@ -449,7 +450,7 @@ class BlogRepository extends AbstractRepository implements BlogRepositoryInterfa
 }
 ```
 
-Go to company/blog/src/Providers/BlogServiceProvider and register (For detail please read about Repository Pattern).
+Go to `company/blog/src/Providers/BlogServiceProvider` class and add some code to the `register` method
 
 ```php
 use MetaFox\Blog\Repositories\BlogRepositoryInterface;
@@ -463,18 +464,24 @@ class BlogServiceProvider extends ServiceProvider
     }
 }
 ```
+For detail, please read about *Laravel Repository* pattern
 
 ## Translation
 
-Each folder is a language pack.
+Each app will have a folder `company/blog/resources/lang` for its language pack. For example, in the *Blog* app:
 
-company/blog/resources/lang - en
-phrase.php - vi
-phrase.php
+```text
+company/
+    blog/
+        resources/
+            lang/
+                en/
+                    phrase.php
+```
 
-Note: we did not support json file yet (will implement soon).
+> Note: JSON file hasn't been supported yet.
 
-Example: company/blog/resources/lang/en/phrase.php
+Language phrases can be added or modified in the respective `phrase.php` file. For example, to add/modify English phrases, we will update the  `company/blog/resources/lang/en/phrase.php` file
 
 ```php
 return [
@@ -486,13 +493,14 @@ return [
 
 ```
 
-After change language, run:
+After changing language phrases in `phrase.php` file, you can run the following `php artisan` command to update:
 
 ```bash
 php artisan MetaFox:update
 ```
 
-Usage: to use call module_name + file name + key (+ n key level)
+### Usage
+To apply translation for phrases, call `_p` method with phrase variable. Phrase variable is the combination of *app name*, *file name* and *phrase key (+ n key level)*. Use dots (.) as separators. Here are some examples to print above *Blog* phrases
 
 ```php
 echo __p('blog.phrase.example_text'); // it will print 'Example text'.
@@ -501,21 +509,21 @@ echo __p('blog.phrase.group.example_text'); // it will print 'Group Example text
 
 ## Resource
 
-Like Fox4 Resource, go to company/src/Http/Resources/v1/Blog. You will see:
+Go to `company/src/Http/Resources/v1/Blog`, you will see following classes:
 
-- BlogDetail: is resource when view detail.
-- BlogEmbed: is embed object when view feed.
-- BlogEmbedCollection: BlogEmbed list.
-- BlogItem: is resource when view listing.
-- BlogItemCollection: BlogItem list.
+- `BlogDetail`: is a resource when viewing `Blog` detail.
+- `BlogEmbed`: is an embedded Blog object when viewing feed.
+- `BlogEmbedCollection`: list of `BlogEmbed` resources.
+- `BlogItem`: is a resource when viewing listing.
+- `BlogItemCollection`: is a list of `BlogItem` resources.
 
-Example for BlogDetail:
+Example for `BlogDetail`:
 
-We give you 3 trait helper:
+We support 3 trait Helpers:
 
-- HasStatistic: give you method getStatistic()
-- HasExtra: give you method getExtra()
-- HasFeedParam: give you method getFeedParams()
+- `HasStatistic`: support method `getStatistic()`
+- `HasExtra`: support method `getExtra()`
+- `HasFeedParam`: support method `getFeedParams()`
 
 ```php
 
@@ -549,7 +557,7 @@ class BlogDetail extends JsonResource
 
 ## Form Request
 
-Like Fox4 Form, go to company/src/Http/Requests/v1/Blog. You will see some default request like IndexRequest, StoreRequest, UpdateRequest.
+Go to `company/src/Http/Requests/v1/Blog`, you will see some default `FormRequest` classes such as `IndexRequest`, `StoreRequest`, `UpdateRequest`
 
 ```php
 
@@ -572,7 +580,7 @@ class StoreRequest extends FormRequest
         ];
     }
 
-    // If you want to custom attributes after validated success, use this method.
+    // If you want to custom attributes after validated successfully, use this method.
     public function validated()
     {
         $data = parent::validated();
@@ -590,9 +598,9 @@ class StoreRequest extends FormRequest
 }
 ```
 
-## Api
+## API
 
-Go to company/blog/src/Http/Controllers/Api, you will see some Controller. It's Gateway Controller for multiple API versions.
+Go to `company/blog/src/Http/Controllers/Api`, you will see some *Controller* classes. They are extended from `GatewayController` classes for multiple API versions.
 
 ```php
 
@@ -625,11 +633,11 @@ class BlogController extends GatewayController
 
 ```
 
-In each version, example v1, you will create a folder v1 and create a BlogController.
+For each version, example `v1`, you can create a folder `v1` and create a `BlogController` class in it
 
-You MUST extend from Platform's ApiController.
+You MUST extend from Platform's `ApiController`.
 
-You need to create a repository instance, must create by interface. For detail please read Dependence Injection.
+If you need to create a *Repository* instance, you have to create by interface as below
 
 ```php
 namespace MetaFox\Blog\Http\Controllers\Api\v1;
@@ -668,12 +676,13 @@ class BlogController extends ApiController
 }
 
 ```
+For more details, please read *Dependence Injection*.
 
 ## Scope
 
-If you want to query Blog by custom query, how to implement? Do not write any custom query inside Blog Model.
+If you want to query *Blog* by custom query, please do not write any custom query inside `Blog` Model class.
 
-Go to company/blog/src/Scopes and create ExampleScope
+Instead, go to `company/blog/src/Scopes` and create `ExampleScope` class as below
 
 ```php
 
@@ -703,7 +712,7 @@ class ExampleScope implements BaseScope
 
 ```
 
-Usage:
+### Usage
 
 ```php
 
@@ -719,9 +728,12 @@ $data = $query->get();
 
 ### Platform Scopes
 
-- MetaFox\Platform\Support\Browse\Scopes\PrivacyScope
+Now we will look into some built-in platform scopes
 
-This scope will help you query blog with blog stream.
+#### PrivacyScope
+- Class: `MetaFox\Platform\Support\Browse\Scopes\PrivacyScope`
+
+This scope will help you query items with stream.
 
 ```php
 
@@ -729,12 +741,12 @@ $privacyScope = new PrivacyScope();
 $privacyScope->setUserId(1);
 
 ```
+#### SortScope
+- Class: `MetaFox\Platform\Support\Browse\Scopes\SortScope`
 
-- MetaFox\Platform\Support\Browse\Scopes\SortScope
+This scope will help you sort your items
 
-This scope will help you sort your Blog.php
-
-Support: recent, most_viewed, most_liked, most_discussed.
+Supported *Sort* options: `recent`, `most_viewed`, `most_liked`, `most_discussed`
 
 ```php
 $sortScope = new SortScope();
@@ -742,11 +754,12 @@ $sortScope->setSort('recent') // Or use constant \MetaFox\Platform\Support\Brows
     ->setSortType('desc'); // asc or desc.
 ```
 
-- MetaFox\Platform\Support\Browse\Scopes\WhenScope
+#### WhenScope
+- Class: `MetaFox\Platform\Support\Browse\Scopes\WhenScope`
 
-This scope will help you query your Blog by time.
+This scope will help you query your items by time.
 
-Support: all, this_month, this_week, today. Default: all.
+Supported options: `all`, `this_month`, `this_week`, `today`. Default: `all`.
 
 ```php
 
@@ -755,7 +768,8 @@ $whenScope->setWhen('this_month'); // Or use constant \MetaFox\Platform\Support\
 
 ```
 
-- If you want override platform Scope:
+#### Customize platform scopes
+- If you want to override a certain platform Scope, for example, customize the `SortScope` in the *Photo* app, you can add the `SortScope` class as below
 
 ```php
 namespace MetaFox\Photo\Support\Browse\Scopes\Album;
@@ -781,8 +795,9 @@ class SortScope extends \MetaFox\Platform\Support\Browse\Scopes\SortScope
 
 ```
 
-Usage:
+### Usage
 
+Here is the sample code to use the customized `SortScope` in *Photo* app
 ```php
 
 $sortScope = new  \MetaFox\Photo\Support\Browse\Scopes\Album\SortScope();
@@ -800,36 +815,35 @@ Auth::user()->hasPermissionTo('blog.create');
 
 ## Privacy
 
-To check privacy, you should rely on:
+To check privacy, you should rely on the following database tables:
 
-- core_privacy:
+- `core_privacy`:
 
-  - Everyone: privacy_id = 1. It's privacy of sitewide. It's like a constant. Use directly is ok.
-  - Friends: per User will have a privacy with privacy_type = user_friends and privacy = 1
-  - Only Me: per User will have a privacy with privacy_type = user_private and privacy = 3
-  - Custom Privacy: an User can have unlimited custom privacy. Example if you created a friend list id = 1.
-    You will have a privacy record with: item_id = 1, item_type = friend_list, privacy = 4, privacy_type = user_friend_list.
+  - *Everyone*: `privacy_id` is **1**. It's generic privacy. You can use it directly as a constant.
+  - *Friends*: each User will have a privacy with `privacy_type = user_friends` and `privacy = 1`
+  - *Only Me*: each User will have a privacy with `privacy_type = user_private` and `privacy = 3`
+  - *Custom Privacy*: an User can have unlimited custom privacy. Example: if you created a *friend list* `id = 1`, you will have a *Privacy* record with: `item_id = 1, item_type = friend_list, privacy = 4, privacy_type = user_friend_list`.
 
-- core_privacy_members: user_id, privacy_id
+- `core_privacy_members`: `user_id`, `privacy_id`
 
-  - To define user_id = 1 can see privacy Friends of user 2 or not:
-    - Find privacy_id of User 2 with user_private = user_friends, example privacy_id = 100. If we have record user_id = 1, privacy_id = 100 => user 1 has ability to view privacy_id 100.
-  - Note: owner of a privacy will always has a record in this table.
+  - User B adds a certain item with *Friends* privacy. To verify if a user A (having `user_id` = 1 for example) can see that item or not:
+    - Query `privacy_id` of User B with `user_private = user_friends`. For example, we got the `privacy_id` = 100. Then, if we have record with `user_id = 1` and `privacy_id = 100` => User A can view that item
+  - Note: owner of a privacy always has a record in this table.
 
-- core_privacy_streams: id, privacy_id, item_id, item_type
+- `core_privacy_streams`: `id`, `privacy_id`, `item_id`, `item_type`
 
   - Stored privacy of items.
-  - If Item have x privacy custom friend list, Item will have x stream records.
+  - If an item has *X* privacy custom friend list, it will have *X* stream records.
 
-- blog_privacy_streams: your module stream. It's a children of core_privacy_streams.
+- `[app_name]_privacy_streams`: your app stream. Need to replace the `[app_name]` with your actual app name, such as `blog_privacy_streams`. It's a children of `core_privacy_streams`.
 
 ### Easier way: browse stream.
 
-As mentioned above, MetaFox\Platform\Support\Browse\Scopes\PrivacyScope can take this logic, just feel free to use it.
+As mentioned above, using `MetaFox\Platform\Support\Browse\Scopes\PrivacyScope` can handle this logic easily. Just feel free to use it.
 
 ## UserPrivacy
 
-It's user privacy settings.
+It's user privacy setting.
 
 ```php
 UserPrivacy::hasAccess($user->entityId(), $owner->entityId(), 'profile.view_profile')
@@ -837,11 +851,11 @@ UserPrivacy::hasAccess($user->entityId(), $owner->entityId(), 'profile.view_prof
 
 ## Policy
 
-Policy is AccessControl in Fox4. Go to company/blog/src/Policies you will see something like BlogPolicy
+*Policy* is similar to *Access Control* in **phpFox V4**. Going to `company/blog/src/Policies`, you will see some *Policy* classes, such as `BlogPolicy` class
 
-Example to check can able to create Blog, we will combine Permission, Privacy, User Privacy.
+For example: to check if a user can create Blog, we will combine *Permission*, *Privacy*, *User Privacy*. 
 
-Always check 5 levels.
+And, always check 5 levels as below
 
 ```php
 use MetaFox\Platform\Support\Facades\PrivacyPolicy;
@@ -898,7 +912,7 @@ class BlogPolicy
 
 ## Feature, Sponsor, Approve
 
-Model
+### Model
 
 ```php
 use MetaFox\Platform\Contracts\HasApprove;
@@ -911,7 +925,7 @@ class Photo extends Model implements Content, HasFeature, HasSponsor,HasApprove
 }
 ```
 
-RepositoryInterface
+### RepositoryInterface
 
 ```php
 use MetaFox\Platform\Contracts\HasApprove;
@@ -980,7 +994,7 @@ interface PhotoRepositoryInterface
 }
 ```
 
-Repository
+### Repository
 
 ```php
 namespace MetaFox\Photo\Repositories\Eloquent;
@@ -998,7 +1012,7 @@ class PhotoRepository extends AbstractRepository implements PhotoRepositoryInter
 }
 ```
 
-Policy
+### Policy
 
 ```php
 class PhotoPolicy
@@ -1082,15 +1096,13 @@ class PhotoPolicy
 
 ## Text
 
-Separate Content Model with Content Model's Text. Example: Blog and BlogText (blog_id, text, text_parsed).
+Separate *Content* Model with Content Model's *Text*. For example: `Blog` and `BlogText` (blog_id, text, text_parsed).
 
 ### Verify content before saving to database
 
-MetaFox\Platform\Support\Parse\Input
+You can use the `MetaFox\Platform\Support\Parse\Input` class with supported methods:
 
-Feel free to improve this class.
-
-- prepare(string \$text):
+- `prepare(string \$text)`:
 
 ```php
 parse_input()->prepare('text');
@@ -1098,7 +1110,7 @@ parse_input()->prepare('text');
 resolve(Input::class)->prepare('text');
 ```
 
-- clean(string $string, int $limit)
+- `clean(string $string, int $limit)`
 
 ```php
 parse_input()->clean('text', 2);
@@ -1108,8 +1120,8 @@ resolve(Input::class)->clean('text', 2);
 
 ## Categorize
 
-A Content sometimes has category .... [TBD]
+A *Content* sometimes has category .... [TBD]
 
 ## Unit Test
 
-- All tests MUST be in company/blog/tests/Unit.
+- All tests MUST be in `company/blog/tests/Unit`.
