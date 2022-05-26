@@ -44,7 +44,7 @@ For example:
 
 ## Boolean
 
-Converting a string `type` JSON schema to a yup object will return an equivalent object of `yup.boolean()` with all of the additional validation configurations.
+Converting a string `type` JSON schema to a `yup` object will return an equivalent object of `yup.boolean()` with all of the additional validation configurations.
 
 ```typescript
 import { toYup, BooleanTypeSchema } from '@metafox/json2yup';
@@ -92,7 +92,7 @@ type BooleanTypeSchema = YupTypeSchema & {
 
 ## Array
 
-Converting a string `type` JSON schema to a yup object will return an equivalent object of `yup.array()` with all of the additional validation configurations.
+Converting a string `type` JSON schema to a `yup` object will return an equivalent object of `yup.array()` with all of the additional validation configurations.
 
 ```typescript
 import { toYup, ArrayTypeSchema } from '@metafox/json2yup';
@@ -146,7 +146,7 @@ type ArrayTypeSchema = YupTypeSchema & {
 
 ## Date
 
-Converting a string `type` JSON schema to a yup object will return an equivalent object of `yup.date()` with all of the additional validation configurations.
+Converting a string `type` JSON schema to a `yup` object will return an equivalent object of `yup.date()` with all of the additional validation configurations.
 
 ```typescript
 import { toYup, DateTypeSchema } from '@metafox/json2yup';
@@ -203,7 +203,7 @@ type DateTypeSchema = YupTypeSchema & {
 
 ## Number
 
-Converting a string `type` JSON schema to a yup object will return an equivalent object of `yup.number()` with all of the additional validation configurations.
+Converting a string `type` JSON schema to a `yup` object will return an equivalent object of `yup.number()` with all of the additional validation configurations.
 
 For more advanced usage, check out the [number type test suite](../src/tests/types/number).
 
@@ -268,9 +268,9 @@ type NumberTypeSchema = YupTypeSchema & {
 
 ### Ref
 
-`ref` is very helpful in case you want to compare values of dependent fields. Currently, `ref` supports min, max, lessThan, moreThan
+`ref` is very helpful in case you want to compare values of dependent fields. Currently, `ref` supports `min`, `max`, `lessThan`, `moreThan`
 
-etc:
+For example:
 
 ```typescript
 const json = {
@@ -291,7 +291,7 @@ const json = {
 
 ## Object
 
-Converting a string `type` JSON schema to a yup object will return an equivalent object of `yup.object()` with all of the additional validation configurations.
+Converting a string `type` JSON schema to a `yup` object will return an equivalent object of `yup.object()` with all of the additional validation configurations.
 
 ```typescript
 import { toYup, ObjectTypeSchema } from '@metafox/json2yup';
@@ -374,7 +374,7 @@ Object property keys containing dots (.) will be automatically converted and nes
 - [Basic Keypath Example](../src/tests/types/object/withKeypaths.test.ts).
 - [Advanced Keypath Example](../src/tests/types/object/withNestedKeypaths.test.ts).
 
-The following example demonstrates how an object definition will be validated once it is converted to a YUP object. It's important to note that this dot notation can be done at any level of an object type validation schema.
+The following example demonstrates how an object definition will be validated once it is converted to a `yup` object. It's important to note that this dot notation can be done at any level of an object type validation schema.
 
 ```typescript
 import { ObjectTypeSchema } from '@metafox/json2yup';
@@ -442,7 +442,7 @@ const schema: ObjectTypeSchema = {
 
 ## String
 
-Converting a string `type` JSON schema to a yup object will return an equivalent object of `yup.string()` with all of the additional validation configuration.
+Converting a string `type` JSON schema to a `yup` object will return an equivalent object of `yup.string()` with all of the additional validation configuration.
 
 ```typescript
 import { toYup, StringTypeSchema } from '@metafox/json2yup';
@@ -524,7 +524,7 @@ type StringTypeSchema = YupTypeSchema & {
 
 `Yup` allows you to alter the validation on your data based on other values within the validated data payload by using the `when()` method.
 
-The test suite contains examples of how `when` validation configuration can be used with all the different data types.
+The test suite contains examples of how `when` validation can be used with all the different data types.
 
 ### Type
 
@@ -539,7 +539,7 @@ type WhenSchema<T extends YupTypeSchema> = {
 
 ## Custom Errors
 
-Every schema type has an optional Error objects that allow you to override the default `YUP` generated error messages for specific failure reasons.
+Every schema type has an optional Error objects that allow you to override the default `YUP` error messages for specific failure reasons.
 
 For example, these are the [StringTypeSchema](../src/types/index.ts) error message options:
 
@@ -562,7 +562,7 @@ For example, these are the [StringTypeSchema](../src/types/index.ts) error messa
 
 ### Example
 
-In this example we will set and retrieve our custom `Yup` error messages, for the `minLength` and `required` rules. This can be applied for all schema types and all schema type rules. We will use `console.log()` to check the schema type's custom error messages.
+In this example, we will set and retrieve our custom `Yup` error messages, for the `minLength` and `required` rules. This can be applied for all schema types and all schema type rules. We will use `console.log()` to check the schema type's custom error messages.
 
 ```typescript
 import { toYup, StringTypeSchema } from '@metafox/json2yup';

@@ -7,7 +7,7 @@ menu: Frontend
 # Router
 
 ## Table of Contents
-In this document, we are going to go through the following topics:
+In this document, we will go through the following topics:
 - Dynamic/Async Routing
 - Router and Code Splitting
 - Router and Transition
@@ -54,30 +54,30 @@ By using `react-router-dom` and `React.lazy`, we can structure React components:
 </Router>
 ```
 
-As you see `/`, `blog`,`blog/my` are static regex URLs, they can be solved easily by using regex or literal string.
+As you see `/`, `blog`,`blog/my` are static regex URLs, they can be solved easily by using regex or literal strings.
 
 While `/jack`, `jack/photo`, `/barca`, `/barca/groups` is more difficult, we have to query database to check if terms of `jack`, `barca` are for  usernames or page slugs.
 
-```text
- 1. Router got /jack/photo pathname
- 2. Check router path but no matched
- 3. Keep previous matched Route, showing loading progress bar.
- 4. Send async request to get canonical pathname of url "/jack/photo" 
- 5. If getting /user/profile/1/photo => replace current location state, keep location pathname.
- 6. Router try to re-run with /user/profile/1/photo pathname.
-```
+
+1. Router gets a request with the pathname `/jack/photo`
+2. Check router path but no matched
+3. Keep previous matched Route, showing loading progress bar.
+4. Send async request to get canonical pathname of url `/jack/photo` 
+5. If getting the canonical pathname `/user/profile/1/photo`, replace current location state, keep location pathname.
+6. Router tries to re-run with `/user/profile/1/photo` pathname.
+
 
 ### Best Practices:
 
 - Application can be configured to use either Loading progress bar or Empty waiting screen
 - Should use nested route in user/pages/event profile page. TBD.
-- Not base on browse location. Instead, when developing UI, should use `$PageContext` to ask the context to query content instead of location.
+- Do not base on the browser location. Instead, when developing UI, use `$PageContext` to ask the context to query content instead of browser location.
 
 ## Code Splitting
 
 Because of app sizing, we have to split code of every Page components. [read more](/technical/code-splitting)
 
-At the first time visiting `/user` page, the associated chunk file is not ready. Thus, if network speed is around 1 seconds, end users may see a flash animation.
+At the first time visiting `/user` page, the associated chunk file is not ready. Thus, if the network speed is around 1 second, end users may see a flash animation.
 
 ## Modal Route
 
@@ -97,7 +97,7 @@ Here is the sample code for a Modal
 }
 ```
 
-You have to create two routes, the first route is for Modal Route, and the seconds is Page Route. You can declare them in 'routes.ts' file, with the same path but add property "modal".
+You have to create two routes, the first route is for Modal Route, and the seconds is Page Route. You can declare them in `routes.ts` file, with the same path but add property `modal`.
 
 #### How to disable modal dialog on mobile device? 
 TBD

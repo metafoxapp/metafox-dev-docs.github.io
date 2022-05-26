@@ -33,21 +33,21 @@ MetaFox will scan the `comment` code for layout declaration when building. Below
 
 File types:
 
-- messages.json: Declare translation objects.
-- layouts.json: Declare layout configuration objects.
+- `messages.json`: Declare translation objects.
+- `layouts.json`: Declare layout configuration objects.
 
 ## Naming
 
 Export Component Naming
 
-- Item view: [resource_type].itemView.\*, etc: blog.itemView.mainCard, blog.itemView.smallFlat
-- Embed item view: [resource_type].embedView.\*, etc: blog.embedItem.basic
-- Form Field: form.field.[name]: etc: form.field.text, form.field.upload
-- Block Component: [module_name].block.[name], etc: core.block.listview
+- Item view: [resource_type].itemView.\*, etc: `blog.itemView.mainCard`, `blog.itemView.smallFlat`
+- Embed item view: [resource_type].embedView.\*, etc: `blog.embedItem.basic`
+- Form Field: form.field.[name]: etc: `form.field.text`, `form.field.upload`
+- Block Component: [module_name].block.[name], etc: `core.block.listview`
 
 ## Layout Size
 
-Layout configrations are seprarated by viewport sizes:
+Layout configrations are seprarated by *viewport* sizes:
 
 - <=375: xxsmall
 - <=480 : xsmall
@@ -58,8 +58,8 @@ Layout configrations are seprarated by viewport sizes:
 
 ### How to detect layout variants
 
-Imagine that users is view `user.profile` page in `medium` viewport size, but administrator haven't defined layout configuration for such viewport size yet.
-In this case, Layout service will check size variants and apply layout configuration in the order of up-to-down size: `medium`, `small`, `xsmall`, `xxsmall`, `large`, `xlarge`.
+Imagine that user is viewing the `user.profile` page in `medium` viewport size, but administrator hasn't defined the layout configuration for such viewport size yet.
+In this case, the Layout service will check size variants and apply layout configuration in the order of up-to-down sizes: `medium`, `small`, `xsmall`, `xxsmall`, `large`, `xlarge`.
 
 Check detail of selection:
 
@@ -72,13 +72,13 @@ Check detail of selection:
 
 ### When to detect layout size variants
 
-For performance reasons, layout size variants will be checked and applied when page is started rendering. It means layout won't be updated when user resizes viewport.
+For performance reasons, layout size variants will be checked and applied when page is started rendering. It means that layout won't be updated when user resizes viewport.
 
 ## Layout Elements
 
 ### Block
 
-A Block is a React component that Administrator can add/remove/configure/drag-drop to layout `slot`
+A Block is a React component that Administrator can add, remove, configure, and drag-and-drop to layout *slot*
 
 ### Slot:
 
@@ -86,32 +86,32 @@ A slot is an area where Administrators can put blocks into. Slot can contain oth
 
 #### Actions:
 
-Let's take a look on available actions on Slot
+Let's take a look at available actions on Slot
 ##### Resize
-Resize a slot for responsive viewport size as small, medium, and more.
+Resize a slot for responsive viewport size as `small`, `medium`, and more.
 
 ##### Split
-Split a slot into vertical direction. It's is not usually but requiredment to build complex layout.
+Split a slot into vertical direction. It's not usually but sometimes required to build complex layouts.
 
 ##### Add Slot
-Add others siblings slot in start/end of current slot.
+Add other siblings slot at the start/end of the current slot.
 
 ### Section
-Section similar to material-ui Container component, it's define a row in layouts.
+Section similar to `material-ui` Container component, it defines rows in layouts.
 
 #### Actions:
 
-Let's take a look on available actions on Section
+Let's take a look at available actions on Section
 
 ##### Settings
 
-** maxWidth **
+`maxWidth`
 
-Values: 'lg'| 'md'| 'sm'| 'xl'| 'xs'| false
+Values: `lg`| `md`| `sm`| `xl`| `xs`| `false`
 
-Determine the `max-width` of the container. The container width grows relatively with the size of the screen. Set to `false` to disable maxWidth.
+Determine the `max-width` of the container. The container width grows relatively with the size of the screen. Set to `false` to disable `maxWidth`.
 
-**disableGutters**: If `true`, the left and right padding is removed.
+`disableGutters`: If `true`, the left and right paddings are removed.
 
 ##### Remove
 TBD
@@ -121,7 +121,7 @@ TBD
 
 ### Item View
 
-Item View is a component that implements UI for a single item in a listing block, etc: featured members, activity feeds:
+Item View is a component that implements UI for a single item in a listing block, etc. For example: featured members, activity feeds:
 
 ```tsx
 // file blog/src/components/BlogItemView.tsx
@@ -209,7 +209,7 @@ export default BlogItemView;
 
 ## Listing Block
 
-In most case, You will create new block components by extends other block
+You can create new block components by extending other blocks
 
 ```tsx
 import createBlock from '@metafox/framework/createBlock';

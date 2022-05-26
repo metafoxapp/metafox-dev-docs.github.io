@@ -8,9 +8,9 @@ menu: Frontend
 
 Service can be a class instance, a function or a React component to handle some pieces of your app logic.
 
-In MetaFox, platform has a Service Manager called `globalContext` to manage all services. You can not access the global `manager` directly but via hooks or saga context instead.
+MetaFox platform has a Service Manager called `globalContext` to manage all services. You can not access the global `manager` directly but via hooks or saga context.
 
-A service after passed to global service manager can be accessible in React components or Saga functions.
+After passed to the global service manager, a service can be accessible in React components or Saga functions.
 
 In React component:
 
@@ -140,7 +140,7 @@ const LoginForm (){
 
 ## React Component Service
 
-In order to inject a React Component across apps without declaration for dependencies, the best way is to inject components into the global Service Manager by using `inject` method
+In order to inject a React Component across apps without declaration for dependencies, you just need to inject components into the global Service Manager by using `inject` method
 
 ```tsx
 /**
@@ -164,7 +164,7 @@ declare module '@metafox/framework/Manager' {
 }
 ```
 
-Now, you can get CommentList from other component. For example:
+Now, you can get `CommentList` from other components. For example:
 
 ```tsx
 import { useGlobal } from '@metafox/framework';
