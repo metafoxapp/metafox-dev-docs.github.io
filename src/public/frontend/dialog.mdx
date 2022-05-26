@@ -9,7 +9,7 @@ We wrap it in a Controller and `dialogBackend` services so you can work with `Di
 
 ## Create Dialog
 
-Here is the sample declaration of a simple dialog. Note that annotations must be at the beginning of the source file.
+Here is the sample declaration of a simple dialog. Note that annotations MUST be at the beginning of the source file.
 
 ```tsx
 /**
@@ -54,7 +54,7 @@ export default function ExampleDialog({
 
 ## Export Dialog
 
-We are going to use MetaFox annotations syntax for the created dialog.
+We are going to use *MetaFox* annotations syntax for the created dialog.
 
 For example: this source defines a dialog named `sampleModalDialog`
 
@@ -78,7 +78,7 @@ const value = await dialogBackend.present({
 });
 ```
 
-In order to present dialog, assign `compnent` with value of "sampleModalDialog" to `dialogBackend`.
+In order to present dialog `dialogBackend`, assign `component` with value of 'sampleModalDialog'.
 
 ```tsx
 dialogBackend
@@ -117,7 +117,7 @@ dialogBackend.alert({
 
 ### Message Component
 
-Content of message should be wrapped in <DialogContentText/> to keep consistent look and feel.
+Content of `message` should be wrapped in <DialogContentText/> to keep a consistent look and feel.
 
 ```tsx
 dialogBackend.alert({
@@ -166,4 +166,4 @@ dialogBackend.dismiss(true);
 
 ### Dialog Form
 
-Use `setDialogValue` to set value for current promise call.
+Use `setDialogValue` to set value for the current promise call.

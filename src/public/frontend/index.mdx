@@ -4,12 +4,12 @@ route: /frontend
 name: Getting Started
 ---
 
-> This documentation is guide to `Frontend` and `ReactJs` developer setup development environment.
+> This documentation is mainly for `Frontend` and `ReactJs` developer to set up the development environment.
 > If you are looking for `testers` or `backend` development, reading this docs is not neccessary.
 
 ## Prerequisites
 
-The MetaFox **Frontend** is developed with ReactJS. Thus, in this documentation, we assume that you are already familiar with Frontend Development with ReactJS. If you aren't still confident with Frontend Development with ReactJS, you may want to take a look at the following docs before continuing:
+The MetaFox **Frontend** is developed with ReactJS. Thus, in this documentation, we assume that you are already familiar with Frontend Development with ReactJS. If you are still not confident with Frontend Development with ReactJS, you may want to take a look at the following docs before continuing:
 
 - [ReactJs](https://reactjs.org/)
 - [Typescript](https://www.typescriptlang.org/)
@@ -22,13 +22,13 @@ The MetaFox **Frontend** is developed with ReactJS. Thus, in this documentation,
 
 ## System Requirements for Development Environment
 
-- Software
+### Software
   - Node 16+
     - If you are using Linux/MacOS, You should install node via [Node Version Manager](https://github.com/nvm-sh/nvm).
   - PHP 7.x or later
   - Database: MySQL, Postgres
   - OS: Linux is recommended
-- Hardware: 
+### Hardware: 
   - RAM at least 4GB
 
 
@@ -53,7 +53,7 @@ nvm alias default 16.14.0
 
 ## Environment
 
-location: app/.env
+Location: app/.env
 
 ```conf
 ;--------------------------------------------------------------------
@@ -100,11 +100,11 @@ yarn start
 yarn start:admin
 ```
 
-By default, deverlopment server will start at `http://localhost:3000`
+By default, the development server will start at `http://localhost:3000` after starting successfully
 
 ## Directory Structure
 
-Workbox contains all libraries, tools and extensions of MetaFox Frontend. We use `lerna` to organize many packages into a single repository. Let's look overall to the top level of directory strucrure.
+Workbox contains all libraries, tools and extensions of MetaFox Frontend. We use `lerna` to organize many packages into a single repository. Let's look overall to the top level of directory structure.
 
 ```text
 workbox/
@@ -119,13 +119,13 @@ workbox/
   package.json
 ```
 
-**packages/framework/**: This directory contains metafox core libraries.
+`packages/framework/`: This directory contains metafox core libraries.
 
-**packages/apps/**: It contains modules, themes, and other extensions.
+`packages/apps/`: It contains modules, themes, and other extensions.
 
-**packages/app**: It contains configuration.
+`packages/app`: It contains configuration.
 
-Look deeper to `app/` directory
+Let's look inside to the `app/` directory
 
 ```text
 app/
@@ -142,15 +142,15 @@ app/
   package.json
 ```
 
-**app/dist/**: It contains bundled code for deployment.
+`app/dist/`: It contains bundled code for the production deployment.
 
-**app/public/**: It contains static resources to build React app.
+`app/public/`: It contains static resources to build React app.
 
-**app/src/**: It contains source code of `frontend` app.
+`app/src/`: It contains source code of the `frontend` app.
 
 ### Site Configurations
 
-Many site configurations are declared in `app/settings.json`
+Many site configurations are declared in `app/settings.json` file
 
 - Packages are listed in `packages`
 
@@ -196,7 +196,7 @@ Many site configurations are declared in `app/settings.json`
 
 ## IDE Tools
 
-There are many IDE tools supporting React Development and you can choose one IDE that you are familiar with. If you haven't got a idea about IDE for developing React, one of the most popular and powerful IDE tools that we would like to recommend to you is [VSCode](https://code.visualstudio.com/) since it has well-support for React Development with many good extensions
+Many IDE tools are supporting React Development and you can choose one IDE that you are familiar with. If you haven't got an idea about IDE for developing React, one of the most popular and powerful IDE tools that we would like to recommend to you is [VSCode](https://code.visualstudio.com/) since it has well-support for React Development with many good extensions.
 
 ### Recommended Extensions
 
