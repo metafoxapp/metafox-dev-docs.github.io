@@ -1,65 +1,33 @@
 ---
 name: Example App
-menu: Example
-route: /example/
+route: /example-app/
 ---
 
-# Sample Notes app
+## Introduce
 
-> In this section we create new package "note" of company `company`. The Notes app will allow users to post notes and sharing with others users.
+Assume that you can install the MetaFox site on your local machine or server.
+
+In this acticle, we will create a new package `note` of company `company`. The _Notes_ app will support following features:
+
+- Allow user to post/share notes with attachments, privacy.
+- Configure settings including title, description, tags, category, etc.
+- Configure permissions: admin can assign permissions based on user roles.
+- View notes of user's friends on their activity streams.
+- Get notifications when others comment, like notes.
 
 ## Create New App
 
-**Frontend**
-In other create new app skeleton for Frontend, you can open Terminal, go to the source folder of Frontend and run the following command:
+Generally, developing a new MetaFox app includes 2 parts: _Frontend_ and _Backend_. We will create app skeleton for both Frontend and Backend first.
 
-```bash
-yarn metafox create-new-app --package=@company/note --item=note
+### Backend
 
-```
+Go to **AdminCP > Installed > Apps** or use the direct URL `/admincp/apps` on your browser
 
-You will see that the default skeleton for Notes app will be generated as below:
+Press **Create New App** button. Then, fill info of company and app name to generate new app skeleton.
 
-```text
-packages/
-  company/
-    note/
-      package.json
-      tsconfig.json
-      types.ts: define typings
-      index.tsx: general export
-      module.d.ts: integrate typing
-      actions/: define actions
-        noteItemActions.tsx
-      sagas/: define redux sagas actions
-        note.tsx
-      reducers/: define reducers
-        index.tsx
-      components/: define components
-      blocks/: define blocks
-        BrowseNotes/
-          Block.tsx
-       ProfileNotes/
-          Block.tsx
-       ViewNote/
-          Block.tsx
-      pages/: define pages
-        NoteHome/
-          Page.tsx
-          layouts.json
+In app options, press **Code Generator**, and fill "note" in others to generate item type `note` skeleton.
 
-
-```
-
-**Backend**
-
-For Backend, you can go to **AdminCP > Installed > Apps** or (use direct URL `/admincp/apps`)
-
-Press "Create New App" button. Then, fill info of company and app name to generate new app skeleton.
-
-In app options, press "Code Generator", and fill "note" in others to generate item type `note` skeleton.
-
-The Skeleton for Backend of Notes app will be generated as below:
+The Skeleton for the _Backend_ of _Notes_ app will be generated as below:
 
 [Directory structure](backend/package#structure)
 
@@ -71,6 +39,7 @@ packages/
         api.php
       resources/
         lang/: define supported languages
+          drivers.php: define drivers
           en/
             phrase.php: define message translation
             validation.php: define message phrases
@@ -88,7 +57,6 @@ packages/
          Resources/
         Listeners/
         Models/
-        Notifications/
         Obsevers/
         Policies/
         Providers/
@@ -98,44 +66,896 @@ packages/
           Features/: Feature test source root
 ```
 
-## Add Apis
-TBD
+### Frontend
 
-## Transalation
-TBD
+We assume that you have downloaded the _MetaFox_ source package and extract it on your local machine or server. The _MetaFox_ package includes 2 main folders: `backend` and `frontend`. 
 
-## WebSettings
-TBD
+To create app skeleton for the _Frontend_ of _Notes_ app, you can open Terminal, go to the `frontend` folder mentioned above and run the following commands:
 
-## Resource Settings
-TBD
+```bash
+yarn metafox create-app company/note
+
+# Reload project settings
+yarn bootstrap
+
+#Restart dev server again
+yarn start
+
+```
+
+You will see that the default skeleton for the _Frontend_ of _Notes_ app will be generated as below:
+
+```text
+packages/
+  company/
+    note/
+      package.json
+      tsconfig.json
+      types.ts: define typings
+      index.tsx: general export
+      module.d.ts: integrate typing
+      components/: define components
+      pages/: define pages
+        HomePage/
+          Page.tsx
+          layouts.json
+```
+
+## Add New Schema
+
+Go to **AdminCP > Installed > Apps** or use the direct URL `/admincp/apps` on your browser
+Press **Code Generator** -> **Migration**. Fill schema name with "notes" 
+A new _Migration_ file is created under `src/Database/Migrations` folder. Its file name will be prefixed by info of datetime, for example:`2022_05_23_101328_migrate_notes_table.php`
+
+The datetime prefix helps migration scripts execute Migration files in chronological order.
+
+For more info, you can read [Laravel Migration](/backend/eloquent#migrations).
+
+In the _Notes_ app, data is stored in `notes` table, including the following columns
+
+```text
+id                 : Primary key
+module_id          :
+user_id            :
+user_type          : user_type and user_id is morph columns to this note creator.
+owner_id           :
+owner_type         : owner_id and owner_type is morph columns to this note owner.
+privacy            : Who can see this note.
+total_view         :
+total_like         :
+total_comment      :
+total_reply        :
+total_share        :
+total_attachment   :
+title              : Note title
+is_approved        :
+is_draft           : Is this note post as draft ?
+is_sponsor         :
+sponsor_in_feed    :
+is_featured        : Is this note mark as featured ?
+featured_at        :
+image_path         :
+server_id          : Disk id to storage image
+tags               : Contains notes tags
+created_at         :
+updated_at         :
+```
+
+## Add New Model
+
+### Backend
+
+Go to **AdminCP > Installed > Apps** or use the direct URL `/admincp/apps` on your browser 
+Press **Code Generator** -> **Model**. Fill your package name and previous schemas with "notes".
+
+_MetaFox_ generates somes classes based on what features you have chosen on the previous form.
+
+**Has Repository?**
+
+Generate files for _Repository_ associated with the model. The pattern is based on [l5-repository](https://github.com/andersao/l5-repository)
+
+**Has Model Factory?**
+
+Generate files for [Model Factory](https://laravel.com/docs/9.x/database-testing#defining-model-factories).
+
+**Has Authorization ?**
+
+Add permissions for the model based on [laravel-permission](https://spatie.be/docs/laravel-permission/v5/introduction)
+
+**Has Text Data?**
+
+Separate text to the second schema. It's helpful to reduce size of the main schema.
+
+**Has Category Data**
+
+Create a pivot model associated with the main schema to store relationships between the main schema and a category schema.
+
+**Has Tags Data**
+
+Create a pivot schema associated with the main schema to store relationships between the main schema and a tags data.
+
+**Has Activity Feed?**
+
+Create a pivot schema to publish a _Note_ item to activity stream.
+
+**Has Model Observer?**
+
+Create [Observer](/backend/eloquent#observers) to listen events on the main schema
+
+> **Code Generator** will generate all necessary source files of the model based on the chosen options. It saves you much time.
+
+## Add APIs
+
+Go to **AdminCP > Installed > Apps** or use the direct URL `/admincp/apps` on your browser 
+Press **Code Generator** -> **APIs**, choose package and model name then submit.
+
+To create skeleton of _Frontend_ resource.
+
+1. Open Terminal.
+2. Go to the `frontend` folder
+3. Run command: 
+```bash
+
+yarn metafox create-resource company/hello Note
+
+```
+
+You can use the command `yarn metafox --help` to list commands and options.
+
+[To update api routes](/backend/routing)
+
+Next, we will edit `packages/company/note/routes/api.php` file to add routes:
+
+```php
+<?php
+
+namespace Company\Note\Http\Controllers\Api;
+
+use Illuminate\Support\Facades\Route;
+
+/**
+ * --------------------------------------------------------------------------
+ *  API Routes
+ * --------------------------------------------------------------------------
+ *
+ *  This file will be loaded by @link \MetaFox\Platform\ModuleManager::getApiRoutes()
+ *
+ *  stub: app/Console/Commands/stubs/routes/api.stub
+ */
+
+Route::group([
+    'namespace'  => __NAMESPACE__,
+    'middleware' => 'auth:api', // logged in required
+], function () {
+    // put your routes
+    Route::resource('note', 'BlogController');
+});
+```
+
+Now, you can open the URL `http://localhost:3000/note` on your browser to view result.
+
+MetaFox framework supports API versioning,
+
+Http requests are forwarded to `Company\Note\Http\Controllers\Api\NoteController`, validated for versioning and then forwarded to `Company\Note\Http\Controllers\Api\v1\NoteController`.
+
+### Add WebSetting
+
+Then _Frontend_ loads all site settings, permissions and all resource settings via the _Settings API_ `/api/core/web-settings`. This API collects all data defined in the `WebSetting` classes of all app packages. Follow this guide step by step to register app settings into the _Settings API_.
+
+After adding a new API, edit `packages/company/hello/src/Http/Resources/v1/WebSetting.php` file as below
+
+```php
+<?php
+/**
+ * @author  developer@phpfox.com
+ * @license phpfox.com
+ */
+
+namespace Company\Hello\Http\Resources\v1;
+
+use MetaFox\Platform\Support\Resource\WebAppSetting as Setting;
+
+class WebSetting extends Setting
+{
+    /**
+     * @var array<string,string>
+     */
+    protected $resources = [
+        'note' => Note\WebSetting::class, // <- add this line to define WebSetting.
+    ];
+}
+```
+
+Edit `packages/company/note/src/Http/Resources/v1/Note/WebSetting.php` file
+
+```php
+<?php
+/**
+ * @author  developer@phpfox.com
+ * @license phpfox.com
+ */
+
+namespace MetaFox\Note\Http\Resources\v1\Note;
+
+use MetaFox\Platform\Support\Resource\WebSetting as ResourceSetting;
+
+/**
+ *--------------------------------------------------------------------------
+ * Note Web Resource Setting
+ *--------------------------------------------------------------------------
+ * stub: /packages/resources/resource_setting.stub
+ * Add this class name to resources config gateway.
+ */
+
+/**
+ * Class BlogWebSetting
+ * Inject this class into property $resources.
+ * @link \MetaFox\Note\Http\Resources\v1\WebSetting::$resources;
+ * @SuppressWarnings(PHPMD.ExcessiveClassLength)
+ * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+ */
+class WebSetting extends ResourceSetting
+{
+    /**
+     * Defines frontend redux actions
+     */
+    protected function initActions(): void
+    {
+        $this->addActions([
+            'searchItem'         => [
+                'apiUrl'=> '/note',
+                'pageUrl'     => '/note/search',
+                'placeholder' => 'Search blogs',
+            ],
+            'homePage'           => [
+                'pageUrl' => '/note',
+            ],
+            'viewAll'            => [
+                'apiUrl'   => '/note',
+                'apiRules' => [],
+            ],
+            'viewItem'           => [ // view item detail action.
+                'apiUrl'  => '/note/:id',
+            ],
+            'deleteItem'         => [
+                'apiUrl'  => '/note/:id',
+                'confirm' => [
+                    'title'   => 'Confirm',
+                    'message' => 'Are you sure you want to delete this item permanently?',
+                ],
+            ],
+            'editItem'           => [
+                'pageUrl' => '/note/edit/:id',
+            ],
+            'addItem'            => [
+                'pageUrl' => '/note/add',
+                'apiUrl'  => '/note/form',
+            ],
+        ]);
+    }
+
+    /**
+     * Define forms json should return in web-settings.
+     */
+    protected function initForms(): void
+    {
+        $this->addForms([
+            'filter' => new SearchBlogForm(),
+        ]);
+    }
+}
+```
+
+## Home Page
+
+Let's open the `note/src/pages/HomePage/Page.tsx` file and look into some annotations at the top of file
+
+```tsx
+/**
+ * @type: route
+ * name: note.home
+ * path: /note
+ */
+
+import { createLandingPage } from "@metafox/framework";
+
+export default createLandingPage({
+  appName: "note",
+  pageName: "note.home",
+  resourceName: "note",
+});
+```
+
+`@type: route`
+
+Define this source code is a route, MetaFox bundle tool collects this info and separate to bundle.
+
+`name: note.home`
+
+Define a global unique key for route, it can be overwritten by another page when you want to customize logic.
+
+`path: /note`
+
+This is a pattern string to define a route path, based on [path-to-regexp](https://www.npmjs.com/package/path-to-regexp)
 
 ## Add New Menu
-TBD
 
-## Creation Form
-TBD
+### App Menu
 
-## Flash Messages
-TBD
+Visit **AdminCP** > **Appearance** > **Menus** to browse all site menus.
 
-## Editing Form
-TBD
+MetaFox framework contains built-in menus
+
+- `core.primaryMenu`: Left side menu of home page
+- `core.adminSidebarMenu`: Left side menu of the AdminCP
+- `core.headerSubMenu`: Header top-right menu
+- `core.accountMenu`: Header account menu
+
+Also, each app may contain menus on sidebar, admin. For example, in _Notes_ app can have following menus:
+
+- `note.sidebarMenu`: sidebar menu of _Notes_ on home page.
+- `note.admin`: admin menu of _Notes_ app in AdminCP
+
+When an app is created, its menu is automatically inserted into `core.primaryMenu` and `core.adminSidebarMenu`.
+
+Admin can manuapulate menus in AdminCP, such as: adding new menu item **+ Add Note** with URL `/note/add` to the menu `note.sidebarMenu`
+
+### Resource Menu
+
+Each resource has 2 action menus in contexts of listing item and viewing item detail.
+For example:
+
+- `note.note.itemActionMenu`
+- `note.note.detailActionMenu`
+
+The name of action menus MUST be followed the convention: [appName].[resourceName].[context]
+
+## Add Forms
+
+### Backend
+
+Visit **AdminCP** > **Code Generator** > **Forms**
+
+Put forms with _"store, update, search"_ to create `StoreNoteForm`, `UpdateNoteForm`, `SearchNoteForm`.
+
+Edit `packages/company/note/routes/api.php` file to add routes for form requests.
+
+Dive into `StoreNoteForm.php`
+
+```php
+<?php
+
+namespace Company\Note\Http\Controllers\Api;
+
+use Illuminate\Support\Facades\Route;
+
+/**
+ * --------------------------------------------------------------------------
+ *  API Routes
+ * --------------------------------------------------------------------------
+ *
+ *  This file will be loaded by @link \MetaFox\Platform\ModuleManager::getApiRoutes()
+ *
+ *  stub: app/Console/Commands/stubs/routes/api.stub
+ */
+
+Route::group([
+    'namespace'  => __NAMESPACE__,
+    'middleware' => 'auth:api', // logged in required
+], function () {
+    // routes to form
+    Route::get('note/form', 'NoteController@getStoreForm');
+    Route::get('note/form/:id', 'NoteController@getUpdateForm');
+    Route::get('note/form/search', 'NoteController@getSearchForm');
+
+    // routes for note resource
+    Route::get('note', 'NoteController');
+
+});
+```
+
+Edit `Company\Note\Http\Controllers\Api\v1\NoteController` file, add following methods
+
+```php
+<?php
+
+namespace Company\Note\Http\Controllers\Api\v1;
+
+// import use method
+
+class NoteController extends ApiController
+{
+    /**
+     * @var NoteRepositoryInterface
+     */
+    private NoteRepositoryInterface $repository;
+
+    // other method and properties
+
+    /**
+     * Get updating form
+     *
+     * @param  int  $id
+     *
+     * @return UpdateNoteForm
+     */
+    public function getUpdateForm(int $id): UpdateNoteForm
+    {
+        $resource = $this->repository->find($id);
+
+        return new UpdateNoteForm($resource);
+    }
+
+    /**
+     * Get updating form
+     *
+     * @param  int  $id
+     *
+     * @return SearchNoteForm
+     */
+    public function getSearchForm(int $id): SearchNoteForm
+    {
+        $resource = $this->repository->find($id);
+
+        return new SearchNoteForm($resource);
+    }
+
+
+    /**
+     * Get updating form
+     *
+     * @param  int  $id
+     *
+     * @return DestroyNoteForm
+     */
+    public function getDestroyForm(int $id): DestroyNoteForm
+    {
+        $resource = $this->repository->find($id);
+
+        return new DestroyNoteForm($resource);
+    }
+}
+```
+
+```php
+<?php
+
+namespace Company\Note\Http\Resources\v1\Note;
+
+use MetaFox\Platform\MetaFoxForm;
+use MetaFox\Platform\Support\Form\AbstractForm;
+use MetaFox\Platform\Support\Form\Field\CancelButton;
+use MetaFox\Platform\Support\Form\Field\Submit;
+use MetaFox\Platform\Support\Form\Field\Text;
+use Company\Note\Models\Note as Model;
+
+class StoreNoteForm extends AbstractForm
+{
+  /**
+   * Prepare title, method, action, value of form object
+   */
+    protected function prepare(): void
+    {
+        $this->config([
+            'title'  => __p('core.phrase.edit'),
+            'action' => '/note',    // target api url
+            'method' => 'POST', // use "POST" method
+            'value'  => [
+                // default value.
+            ],
+        ]);
+    }
+
+  /**
+   * Define form structure.
+   */
+    protected function initialize(): void
+    {
+        $basic = $this->addBasic();
+
+        // add form fields.
+        $basic->addFields(
+            new Text([
+                'name'          => 'title',
+                'required'      => true,
+                'returnKeyType' => 'next',
+                'label'         => 'Title',
+                'validation'    => [ // add client validation rules
+                  'required' => true,
+                  'nullable' => false,
+                  'errors'=>[
+                    'required'=> __p('validation.this_is_required_field'),
+                  ]
+                ]
+            ])
+        );
+
+
+        // add cancel buttons
+        $footer = $this->addFooter();
+        $footer->addFields(
+            new CancelButton([]),
+            new Submit([
+                'label' => ($this->resource && $this->resource->id) ?
+                    __p('core.phrase.save_changes') :
+                    __p('core.phrase.create'),
+            ]),
+        );
+    }
+}
+```
+
+| Field               | Note                                           |     |
+| ------------------- | ---------------------------------------------- | --- |
+| Attachment          | Multiple file picker to attachment             |     |
+| Autocomplete        | Autocomplete text field                        |     |
+| Birthday            | Date picker                                    |     |
+| ButtonField         | Basic Button                                   |     |
+| CancelButton        | Button for cancel action                       |     |
+| CaptchaField        | Captcha field                                  |     |
+| CategoryField       | Category picker                                |     |
+| CheckboxField       | Multiple Checkbox field                        |     |
+| Choice              | Combobox Field                                 |     |
+| CountryState        | Choose country and state                       |     |
+| CustomGenders       | Choose custom gender                           |     |
+| Datetime            | Datetime picker                                |     |
+| DescriptionField    | Textarea for description                       |     |
+| Email               | Text field with email format                   |     |
+| File                | Single file picker                             |     |
+| FilterCategoryField | CategoryField for filter form                  |     |
+| FriendPicker        | Friend picker                                  |     |
+| Hidden              | Hidden input                                   |     |
+| Language            | Language picker field                          |     |
+| LinkButtonField     | Button with href                               |     |
+| Location            | Location picker field                          |     |
+| Password            | Input password field                           |     |
+| Privacy             | Privacy picker field                           |     |
+| Radio               | Radio Field                                    |     |
+| SearchBoxField      | Text field support search                      |     |
+| SinglePhotoField    | Single photo picker field                      |     |
+| SingleVideoField    | Single video picker field                      |     |
+| Submit              | Submit button                                  |     |
+| SwitchField         | Alternate checkbox                             |     |
+| TagsField           | Multiple tags input field                      |     |
+| Text                | Single text input field                        |     |
+| TextArea            | Textarea input                                 |     |
+| Timezone            | Timezone picker field                          |     |
+| TitleField          | Single title field                             |     |
+| TypeCategoryField   | Type-category field for 02 level type category |     |
+
+You can check all form fields supported at [MetaFox built-in fields support](https://dev-docs.metafoxapp.com/php-api/namespaces/metafox-platform-support-form-field.html)
+
+### Frontend
+
+_MetaFox Frontend_ supports built-in dynamic form builder to transform JSON-based responses into ReactJS Form element, For example 
+
+Below is the sample Form response in JSON format
+
+```json
+{
+  "status": "success",
+  "data": {
+    "component": "form",     // define ReactJs render component
+    "title": "Add New Note", // form title
+    "action": "/note",       // target api for http request when form submit.
+    "method": "POST",        // http method for http request when form submit.
+    "value": {               // initial values.
+      "module_id": "note",
+      "privacy": 0,
+      "draft": 0,
+      "tags": [],
+      "owner_id": 0,
+      "attachments": []
+    },
+    "validation": {         // define validation object, based on https://www.npmjs.com/package/yup
+      "type": "object",
+      "properties": {
+        "title": {
+          "label": "Title",
+          "type": "string",
+          "required": true,
+          "minLength": 3,
+          "maxLength": 255,
+          "errors": {
+            "maxLength": "Title must be at most 255 characters"
+          },
+        }
+      }
+    },
+    "elements": {         // define form structure
+      "basic": {          // basic form section
+        "name": "basic",
+        "component": "container",
+        "testid": "field basic",
+        "elements": {
+          "title": {                 // form field
+            "component": "text",     // Define react render component to form.element.[component]
+            "returnKeyType": "next",
+            "maxLength": 255,
+            "fullWidth": true,
+            "margin": "normal",
+            "size": "medium",
+            "variant": "outlined",
+            "name": "title",
+            "required": true,
+            "label": "Title",
+            "placeholder": "Fill in a title for your note",
+            "description": "Maximum 255 of characters",
+            "testid": "field title"
+          },
+          "text": {
+            "fullWidth": true,
+            "variant": "outlined",
+            "returnKeyType": "default",
+            "name": "text",
+            "required": true,
+            "label": "Post",
+            "placeholder": "Add some content to your note",
+            "component": "RichTextEditor",
+            "testid": "field text"
+          },
+      },
+    }
+  },
+}
+```
+
+Look into `packages/framework/metafox-form/src/elements/TextField.tsx` file
+
+```tsx
+/**
+ * @type: formElement
+ * name: form.element.textarea
+ */
+import MuiTextField from "@mui/material/TextField";
+import { useField } from "formik";
+import { camelCase } from "lodash";
+import { createElement } from "react";
+import { FormFieldProps } from "../types";
+
+const TextAreaField = ({
+  config,
+  disabled: forceDisabled,
+  name,
+  formik,
+}: FormFieldProps) => {
+  const [field, meta] = useField(name ?? "TextField");
+  const {
+    label,
+    disabled,
+    labelProps,
+    placeholder,
+    variant,
+    margin = "normal",
+    fullWidth,
+    type = "text",
+    rows = 5,
+    description,
+    autoFocus,
+    required,
+    maxLength,
+  } = config;
+
+  // fix: A component is changing an uncontrolled input
+  if (!field.value) {
+    field.value = config.defaultValue ?? "";
+  }
+
+  const haveError = Boolean(meta.error && (meta.touched || formik.submitCount));
+
+  return createElement(MuiTextField, {
+    ...field,
+    required,
+    multiline: true,
+    disabled: disabled || forceDisabled || formik.isSubmitting,
+    variant,
+    label,
+    "data-testid": camelCase(`field ${name}`),
+    autoFocus,
+    inputProps: { "data-testid": camelCase(`input ${name}`), maxLength },
+    rows,
+    InputLabelProps: labelProps,
+    placeholder,
+    margin,
+    error: haveError ? meta.error : false,
+    fullWidth,
+    type,
+    helperText: haveError ? meta.error : description,
+  });
+};
+
+export default TextAreaField;
+```
+
+`@type: formElement`
+
+This annotation determines the file defines a form field component, build tool collects the info to bundle all files into a chunks.
+
+`name: form.element.textarea`
+
+When the form is returned by a API, form builder will detect and use this component to render elements having `"component": "textarea"` key-value pair.
 
 ## Validation
-TBD
+
+Form supports validation both _Frontend_ and _Backend_
+
+### Backend
+
+Dive into `packages/company/hello/src/Http/Requests/v1/Note/StoreRequest.php` file
+
+```php
+<?php
+
+namespace Company\Hello\Http\Requests\v1\Note;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class StoreRequest extends FormRequest
+{
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, mixed>
+     */
+    public function rules()
+    {
+        // Getting validation rules.
+        return [
+            'title'=> ['string', 'required']
+        ];
+    }
+}
+```
+
+The main method `rules` returns an array of [validation rules](https://laravel.com/docs/9.x/validation#creating-form-requests)
+
+### Frontend
+
+[Frontend validation](/frontend/validation) is based on [yup](https://www.npmjs.com/package/yup). _MetaFox_ dynamic form builder transforms JSON object to a `yup` validation object.
+
+## Translation
+
+_MetaFox_ Localization follows [laravel-localization](https://laravel.com/docs/5.0/localization#introduction)
+
+### Add Phrases
+
+The simplest way to add translation phrases is via AdminCP, visit **AdminCP** > **Globalization** > **Phrases** > **+ Add New Phrase**
+
+Fill form input and submit.
+
+### Use Phrases
+
+```php
+<?php
+echo __p('core.phrase.name'); // output Name
+
+```
 
 ## Page Browsing
-TBD
+
+Dive deeper into `packages/company/note/src/pages/BrowseNotes/Page.tsx` file
+
+```tsx
+/**
+ * @type: route
+ * name: note.browse
+ * path: /note/:tab(friend|all|pending|feature|spam|draft)
+ */
+import { createBrowseItemPage } from "@metafox/framework";
+
+export default createBrowseItemPage({
+  appName: "note",
+  resourceName: "note",
+  pageName: "note.browse",
+  categoryName: "note_category",
+});
+```
+
+`@type: route`: Define this file must export default route component.
+
+`name: note.browse`: Define page name
+
+`path: /note/:tab(friend|all|pending|feature|spam|draft)`
+
+[path-to-regexp](https://github.com/pillarjs/path-to-regexp) pattern to match route.
+
+`appName`: Define app name
+
+`resourceName`: Define browsing resource name
+
+`pageName`: Define layout page name
+
+`categoryName`: Define link to category resource type
 
 ## Page Search
-TBD
+
+### Backend
+
+You can [define search form](/example-app/#add-forms) and then add to the WebSetting
 
 ## Global Search
-TBD
 
-## Feed Integrations
-TBD
+Global search system is centralized search system in MetaFox. In order for your app to integrate with global search system, you must define which content is searchable by implementing `MetaFox\Platform\Contracts\HasGlobalSearch` interface in your main modal. In this example, we will update the `Note` model to implement `HasGlobalSearch` interface
 
-## Notifications
-TBD
+```php
+<?php
+
+namespace MetaFox\Note\Models;
+
+// declares php "uses" directive.
+
+class Note extends Model implements HasGlobalSearch // , and other interfaces
+{
+
+    // others property and method
+    public function toSearchable(): ?array
+    {
+        // A draft blog is not allowed to be searched
+        return [
+            'title' => $this->title,
+            'text'  => 'content of your text',
+            'category' => '',
+            // others data.
+        ];
+    }
+}
+```
+
+Search system has event listener listening on modification of _Note_ data and update its data in queue worker.
+
+## Activity Feed
+
+To support activity feed system, the `Note` model will need to implement the `MetaFox\Platform\Contracts\ActivityFeedSource` and `MetaFox\Platform\Contracts\HasResourceStream` interfaces as below
+
+```php
+<?php
+
+namespace MetaFox\Note\Models;
+use MetaFox\Platform\Support\FeedAction;
+
+// declares php "uses" directive.
+
+class Note extends Model implements ActivityFeedSource // , and other interfaces
+{
+    /**
+     * Define content of feed action put to activity streams
+     *
+     * @return FeedAction
+     */
+    public function toActivityFeed(): ?FeedAction
+    {
+        if ($this->isDraft()) {
+            return null;
+        }
+
+        return new FeedAction([
+            'user_id'    => $this->userId(),
+            'user_type'  => $this->userType(),
+            'owner_id'   => $this->ownerId(),
+            'owner_type' => $this->ownerType(),
+            'item_id'    => $this->entityId(),
+            'item_type'  => $this->entityType(),
+            'type_id'    => $this->entityType(),
+            'privacy'    => $this->privacy,
+        ]);
+    }
+
+    /**
+     * Define morph map to privacy streams.
+     */
+    public function privacyStreams(): HasMany
+    {
+        return $this->hasMany(PrivacyStream::class, 'item_id', 'id');
+    }
+}
+```
+
+## Event Listeners
+
+To track model modification, you can use [Event Listener](/backend/event) and [build-in event list](/backend/event-list).
+
+To list full events your site, you can open terminal and run the command `php artisan event:list`
+
+## Model Observer
+
+In order to track model modification, checkout [Eloquent Observer](/backend/eloquent#observers)
