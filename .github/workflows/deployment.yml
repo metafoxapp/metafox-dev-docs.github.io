@@ -42,6 +42,7 @@ jobs:
       - run: |
           cd ${{ env.DIR }}
           cp -rf ./../.docz/dist/* ./docs
+          cp -rf ./../static/* ./docs
           date > docs/date.txt
           git add .
           git config user.email "oversky@phpfox.com"

@@ -8,7 +8,7 @@ route: /backend/routing
 
 MetaFox platform supports RESTful API routes.
 
-Routing defines the way how platform resolve URI request info into *Controller* action,
+Routing defines the way how platform resolve URI request info into _Controller_ action,
 Generally, you can define routes of your app package in the `routes/api.php` file.
 
 This file re-uses Laravel Routing system at package-level, for futher information read out [laravel routing](https://laravel.com/docs/9.x/routing)
@@ -80,7 +80,7 @@ For example `Route::patch('blog/sponsor/{id}', 'BlogController@sponsor');` will 
 
 To organize API routes for better readibility, Laravel supports group of routes, using `Route::group` method.
 
-For examples, all routes in the route group have the same *Controller* namespace, middleware and prefix.
+For examples, all routes in the route group have the same _Controller_ namespace, middleware and prefix.
 
 ```php
 <?php
@@ -172,6 +172,6 @@ Route::get('/user/{postId}/comments/{comemntId?}', 'CommentController@view');
 
 ## API Versioning
 
-In real world, when you have a long-time project with multiple versions released, the platform wraps all routes defined in `api.php` within a prefix `/api/{ver}`. Parameter `{ver}` will be passed to *Controller* action to help us define correct response base on the given version.
+In real world, when you have a long-time project with multiple versions released, the platform wraps all routes defined in `api.php` within a prefix `/api/{ver}`. Parameter `{ver}` will be passed to _Controller_ action to help us define correct response base on the given version.
 
 [Next Chapter](/backend/controller)

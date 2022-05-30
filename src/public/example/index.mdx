@@ -1,7 +1,6 @@
 ---
-name: Getting Started
-menu: Example
-route: /example-app/
+name: Example
+route: /example/
 ---
 
 ## Introduction
@@ -69,7 +68,7 @@ packages/
 
 ### Frontend
 
-We assume that you have downloaded the _MetaFox_ source package and extract it on your local machine or server. The _MetaFox_ package includes 2 main folders: `backend` and `frontend`. 
+We assume that you have downloaded the _MetaFox_ source package and extract it on your local machine or server. The _MetaFox_ package includes 2 main folders: `backend` and `frontend`.
 
 To create app skeleton for the _Frontend_ of _Notes_ app, you can open Terminal, go to the `frontend` folder mentioned above and run the following commands:
 
@@ -105,7 +104,7 @@ packages/
 ## Add New Schema
 
 Go to **AdminCP > Installed > Apps** or use the direct URL `/admincp/apps` on your browser
-Press **Code Generator** -> **Migration**. Fill schema name with "notes" 
+Press **Code Generator** -> **Migration**. Fill schema name with "notes"
 A new _Migration_ file is created under `src/Database/Migrations` folder. Its file name will be prefixed by info of datetime, for example:`2022_05_23_101328_migrate_notes_table.php`
 
 The datetime prefix helps migration scripts execute Migration files in chronological order.
@@ -146,7 +145,7 @@ updated_at         :
 
 ### Backend
 
-Go to **AdminCP > Installed > Apps** or use the direct URL `/admincp/apps` on your browser 
+Go to **AdminCP > Installed > Apps** or use the direct URL `/admincp/apps` on your browser
 Press **Code Generator** -> **Model**. Fill your package name and previous schemas with "notes".
 
 _MetaFox_ generates somes classes based on what features you have chosen on the previous form.
@@ -187,14 +186,15 @@ Create [Observer](/backend/eloquent#observers) to listen events on the main sche
 
 ## Add APIs
 
-Go to **AdminCP > Installed > Apps** or use the direct URL `/admincp/apps` on your browser 
+Go to **AdminCP > Installed > Apps** or use the direct URL `/admincp/apps` on your browser
 Press **Code Generator** -> **APIs**, choose package and model name then submit.
 
 To create skeleton of _Frontend_ resource.
 
 1. Open Terminal.
 2. Go to the `frontend` folder
-3. Run command: 
+3. Run command:
+
 ```bash
 
 yarn metafox create-resource company/hello Note
@@ -628,7 +628,7 @@ You can check all form fields supported at [MetaFox built-in fields support](htt
 
 ### Frontend
 
-_MetaFox Frontend_ supports built-in dynamic form builder to transform JSON-based responses into ReactJS Form element, For example 
+_MetaFox Frontend_ supports built-in dynamic form builder to transform JSON-based responses into ReactJS Form element, For example
 
 Below is the sample Form response in JSON format
 
