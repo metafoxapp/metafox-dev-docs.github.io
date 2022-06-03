@@ -895,6 +895,84 @@ The simplest way to add translation phrases is via AdminCP, visit **AdminCP** â†
 
 Follow the phrase creation winzard to creat phrase.
 
+### Frontend
+
+MetaFox frontend provides translations feature in the messages.json files. It contains key/value translations. ect:
+
+```json
+{
+  "toggle_layout_preview": "Toggle Device Preview",
+  "total_like": "{ value, plural, =0{No likes} =1{# like} other{# likes} }",
+  "total_photo": "{ value, plural, =0{No photos} =1{# photo} other{# photos} }",
+  "total_video": "{ value, plural, =0{No videos} =1{# video} other{# videos} }",
+  "total_post": "{ value, plural, =0{No posts} =1{# post} other{# posts} }",
+  "total_view": "{ value, plural, =0{No views} =1{# view} other{# views} }",
+  "total_vote": "{ value, plural, =0{No votes} =1{# vote} other{# votes} }",
+  "total_play": "{ value, plural, =0{No plays} =1{# play} other{# plays} }",
+  "total_comment": "{ value, plural, =1{# comment} other{# comments} }",
+  "total_share": "{ value, plural, =1{# share} other{# shares} }",
+  "total_track": "{ value, plural, =1{# track} other{# tracks} }",
+  "event_start_date": "start {date}",
+  "text_direction": "Text Direction",
+  "edit_block_name": "Edit Block {name}",
+  "ok": "OK",
+  "copy": "Copy",
+  "close": "Close",
+  "cancel": "Cancel",
+  "add_layout_block": "Add New Block"
+}
+```
+
+To translate message in the component, use i18n helper.
+
+```tsx
+import { useGlobal } from "@metafox/framework";
+import React from "react";
+
+function MyComponent() {
+  // use i18n helper
+  const { i18n } = useGlobal();
+
+  return <div>{i18n.formatMessage({ id: "toggle_layout_preview" })}</div>;
+  // output: <div>Toggle Device Preview</div>
+}
+```
+
+To translate message in the saga function
+
+```tsx
+function * saga(){
+  const { i18n } = yield* getGlobalContext();
+
+  console.log({i18n.formatMessage({id: 'toggle_layout_preview'})});
+  // output: Toggle Device Preview
+}
+```
+
+In order to support complex message translation, frontend translation support icu syntax, allows developer formats plurals, number, date, time, select, selectordinal. For more information checkout [icu-syntax]([icu syntax](https://formatjs.io/docs/core-concepts/icu-syntax))
+
+To support multiple language, frontend load custom language translation using api `/core/translations/web/{language}`. The api reponse all messages in the translation group `web`.
+
+```json
+{
+  "status": "success",
+  "data": {
+    "accepted": "The :attribute must be accepted.",
+    "active_url": "The :attribute is not a valid URL.",
+    "after": "The :attribute must be a date after :date.",
+    "after_or_equal": "The :attribute must be a date after or equal to :date.",
+    "alpha": "The :attribute may only contain letters.",
+    "alpha_dash": "The :attribute may only contain letters, numbers, dashes and underscores.",
+    "alpha_num": "The :attribute may only contain letters and numbers.",
+    "array": "The :attribute must be an array.",
+    "before": "The :attribute must be a date before :date.",
+    "before_or_equal": "The :attribute must be a date before or equal to :date."
+  },
+  "message": null,
+  "error": null
+}
+```
+
 ## Page Browsing
 
 Dive deeper into `packages/company/note/src/pages/BrowseNotes/Page.tsx` file
