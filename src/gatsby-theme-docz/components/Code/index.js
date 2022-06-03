@@ -3,7 +3,6 @@
 import Highlight, { defaultProps } from "prism-react-renderer";
 import { jsx, Styled } from "theme-ui";
 import Prism from "prism-react-renderer/prism";
-
 import { usePrismTheme } from "~utils/theme";
 // dracula
 // duotoneDark

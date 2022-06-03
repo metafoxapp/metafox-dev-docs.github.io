@@ -1,0 +1,47 @@
+---
+route: /language
+name: Language
+---
+
+## Create Language
+
+Follow this guide step by step to create a new language package.
+
+Login into admincp -> Apps -> Add Language. Follow winzard and fill your language code is "fr" example, Vendor name "Company" and App Name "FranceSupport".
+
+Go to directory `./packages/company/france-support/language/fr`. The subdirectory contains namespaced and groups translations, and directory `_root` contains no namespaced translations.
+
+Dive deeper into file `./activity/permisson.php`.
+
+```php
+<?php
+ /* this is auto generated file */
+ return [
+    'can_can_purchase_sponsor_feed' => 'Activity Feed Can Purchase Sponsor Permission',
+    'can_can_sponsor_feed_feed' => 'Activity Feed Can Sponsor Feed Permission',
+    'can_create_activity_post' => 'Activity Post Create Permission',
+    'can_create_activity_snooze' => 'Activity Snooze Create Permission',
+    'can_create_feed' => 'Activity Feed Create Permission',
+    'can_delete_activity_post' => 'Activity Post Delete Permission',
+    'can_delete_activity_snooze' => 'Activity Snooze Delete Permission',
+    'can_delete_feed' => 'Activity Feed Delete Permission',
+    'can_hide_feed' => 'Activity Feed Hide Permission',
+    'can_moderate_activity_post' => 'Activity Post Moderate Permission',
+    'can_moderate_activity_snooze' => 'Activity Snooze Moderate Permission',
+    'can_moderate_feed' => 'Activity Feed Moderate Permission',
+    'can_update_activity_post' => 'Activity Post Update Permission',
+    'can_update_activity_snooze' => 'Activity Snooze Update Permission',
+    'can_update_feed' => 'Activity Feed Update Permission',
+    'can_view_activity_post' => 'Activity Post View Permission',
+    'can_view_activity_snooze' => 'Activity Snooze View Permission',
+    'can_view_feed' => 'Activity Feed View Permission'
+];
+```
+
+Update every phrase value to france language. For more information, checkout [Example Translation](/example/#translation).
+
+To keep your package easily to maintain, does not add multiple languages in to single package.
+
+## Export Package
+
+After update translation phrases you can export package and upload to MetaFox store.

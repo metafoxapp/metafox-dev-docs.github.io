@@ -31,5 +31,8 @@ export default {
     {
       name: "Example",
     },
+    {
+      name: "Language",
+    },
   ],
 };
