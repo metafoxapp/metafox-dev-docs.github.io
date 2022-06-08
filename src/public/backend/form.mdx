@@ -1,0 +1,217 @@
+---
+route: /backend/form
+name: Forms
+menu: Backend
+---
+
+## Create Form
+
+MetaFox provide form configuration feature to define JSON structure that frontend can be rendered via RestFul api.
+
+```php
+<?php
+
+namespace MetaFox\Core\Http\Resources\v1\Admin;
+
+use MetaFox\Platform\Support\Form\AbstractForm;
+
+class GeneralSiteSettingForm extends AbstractForm
+{
+  protected function prepare():void
+  {
+
+    // add form configuration
+  }
+
+  protected funciton initialize():void
+  {
+      // add fields structure
+  }
+}
+```
+
+Show form api in controller.
+
+```php
+<?php
+
+use MetaFox\Core\Http\Resources\v1\Admin\GeneralSiteSettingForm;
+
+class ApiController{
+
+  public function showForm()
+  {
+    return new GeneralSiteSettingForm();
+  }
+}
+
+```
+
+## Form Fields
+
+AbstractForm group related fields in sections, each section contains FormFields, AbstractForm add form fields in `initialize()` method. There are 02 sections
+`basic` and `footer` are support.
+
+```php
+<?php
+
+use MetaFox\Platform\Support\Form\Field\Submit;
+use MetaFox\Platform\Support\Form\Field\Text;
+
+class GeneralSiteSettingForm extends AbstractForm
+{
+
+  protected funciton initialize():void
+  {
+      // section basic
+      $basic = $this->addBasic();
+
+      // add field
+      $basic->addField(
+          Text::create('general.site_name') // Create Text field with name "general.site_name"
+              ->label('Name Of Site') // Add label
+              ->description('Name of your site.') // Add description
+      );
+
+      // add field
+      $basic->addField(
+          Text::create('general.site_title')  // Create Text field with name "general.site_title"
+              ->label('Name Title') // Add label
+              ->description('Fill your site title') // Add description
+      );
+
+      // add footer structure
+      $this->addFooter()
+            ->addField(
+                Submit::create()  // Add "submit", field use default name="_submit"
+                  ->label(__p('core::phrase.save_changes'))
+            );
+  }
+}
+```
+
+MetaFox comes with a list of build-in suppor form fields. Fore more information [checkout](/php-api/namespaces/metafox-platform-support-form-field.html)
+
+## Form Validation
+
+Validation configuration defines JSON structure to
+
+```php
+<?php
+Text::create('general.site_title')  // Create Text field with name "general.site_title"
+   ->label('Name Title') // Add label
+   ->yup( // add validation
+    Yup::string() // Add yup string at https://dev-docs.metafox.com/frontend/validation#string
+      ->required(__p('core::validation.site_title_could_not_be_blank')) // set required
+   )
+```
+
+MetaFox comes with a list of build-in suppor form validation. Fore more information [checkout](/php-api/namespaces/metafox-platform-yup.html)
+
+## Yup::string()
+
+Add yup string at https://dev-docs.metafox.com/frontend/validation#string
+
+```php
+<?php
+Text::create('general.site_title')
+   ->yup( // add validation
+      Yup::string()
+        ->required(__p('core::validation.site_title_could_not_be_blank')) // set required
+        ->minLength(5) // Set min length rule
+        ->maxLength(64) // Set max length
+        ->matches('^\w+$')  // set regex match pattern
+        ->lowercase() // Require lowercase format
+        // ->uppercase() // Require uppercase format
+        ->email() // Require email format
+        // ->url() // Require full url format
+   )
+```
+
+## Yup::number()
+
+Add yup string at https://dev-docs.metafox.com/frontend/validation#number
+
+```php
+<?php
+Text::create('general.site_title')
+   ->yup( // add validation
+      Yup::string()
+        ->required(__p('core::validation.site_title_could_not_be_blank')) // set required
+        ->min(5) // Set ">=" compare
+        ->max(64) // Set "<=" compare
+        // ->lessThan(100)  // Set "<" compare
+        // ->moreThan() // Set ">" compare
+        // ->int()
+        ->unint() // Require unsigned int
+        // ->positive() //  Require positive number
+        // ->negative() // Require negative number
+   )
+```
+
+## Yup::date()
+
+Add yup string at https://dev-docs.metafox.com/frontend/validation#date
+
+```php
+<?php
+Text::create('event.start_date')
+   ->yup( // add validation
+      Yup::string()
+        ->required(__p('core::validation.this_is_required_field')) // set required
+        ->min('2022-10-10') // Set min length rule
+        ->max('2026-10-10') // Set max length
+   )
+```
+
+## Yup::boolean()
+
+Add yup string at https://dev-docs.metafox.com/frontend/validation#boolean
+
+```php
+<?php
+Text::create('event.enable_close')
+   ->yup( // add validation
+      Yup::boolean()
+        ->required(__p('core::validation.this_is_required_field')) // set required
+   )
+```
+
+## Yup::array()
+
+Add yup string at https://dev-docs.metafox.com/frontend/validation#array
+
+```php
+<?php
+QuestionsField::create('questions')
+   ->yup( // add validation
+      Yup::array()
+        ->of(Yup::string()) // define validator for each array
+        ->min(2)
+        ->max(5)
+   )
+```
+
+## Yup::object()
+
+Add yup string at https://dev-docs.metafox.com/frontend/validation#object
+
+```php
+<?php
+JobField::create('person')
+   ->yup( // add validation
+      Yup::object()
+        ->addProperty( // add property
+          'firstName',
+          Yup:string()->required()
+        )
+        ->addProperty(
+          'lastName',
+          Yup:string()->required()
+        )
+        ->addProperty(
+          'email',
+          Yup::string()->required()->email()
+        );
+   )
+```

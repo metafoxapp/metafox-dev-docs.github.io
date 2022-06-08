@@ -2,15 +2,16 @@
 route: /frontend/example-app
 name: Basic
 menu: Frontend
+hidden: true
 ---
 
 # Intro
 
-In this article, we will guide you to develop a new *Notes* app that allows users to share notes. End users can post new notes, edit their notes, share their notes to Activity Feed, etc.
+In this article, we will guide you to develop a new _Notes_ app that allows users to share notes. End users can post new notes, edit their notes, share their notes to Activity Feed, etc.
 
 **Table Of Contents**
 
-- Create a landing page of *Notes* app
+- Create a landing page of _Notes_ app
 - Add an existing page to the Main Menu
 - Add a new portable block
 - Work with `apiClient`
@@ -18,13 +19,13 @@ In this article, we will guide you to develop a new *Notes* app that allows user
 
 ## Skeleton
 
-Firstly, we are going to create a app skeleton. Let's open Terminal and move to the root of your workbox where the *Frontend* source code is located, then execute the following command
+Firstly, we are going to create a app skeleton. Let's open Terminal and move to the root of your workbox where the _Frontend_ source code is located, then execute the following command
 
 ```shell script
 yarn create-app --package=@example/module-note --item=note
 ```
 
-After running the above command, the skeleton of your *Notes* app will be created under `packages/example-notes` folder
+After running the above command, the skeleton of your _Notes_ app will be created under `packages/example-notes` folder
 
 ## Directory Structure
 
@@ -103,14 +104,12 @@ Add new file `components/BlockFeatureNotes.tsx` with the below content
  * name: note.block.featuredNotes
  */
 
-import * as React from 'react';
+import * as React from "react";
 
-import {createBlock} from '@metafox/framework';
+import { createBlock } from "@metafox/framework";
 
 // Implement base component
-const BlockFeatureNotes = ({
-  title = 'Featured Notes',
-}: Props) => {
+const BlockFeatureNotes = ({ title = "Featured Notes" }: Props) => {
   return (
     <div>
       <h4>{title}</h4>
@@ -119,9 +118,8 @@ const BlockFeatureNotes = ({
   );
 };
 
-
 export default createBlock({
-  extendBlock: BlockFeatureNotes
+  extendBlock: BlockFeatureNotes,
 });
 ```
 
