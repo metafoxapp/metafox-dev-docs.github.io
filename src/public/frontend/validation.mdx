@@ -47,30 +47,30 @@ For example:
 Converting a string `type` JSON schema to a `yup` object will return an equivalent object of `yup.boolean()` with all of the additional validation configurations.
 
 ```typescript
-import { toYup, BooleanTypeSchema } from '@metafox/json2yup';
-import * as yup from 'yup';
+import { toYup, BooleanTypeSchema } from "@metafox/json2yup";
+import * as yup from "yup";
 
 const schema: BooleanTypeSchema = {
-  type: 'boolean',
+  type: "boolean",
   strict: true,
   required: true,
   errors: {
-    required: 'MY custom required message'
-  }
+    required: "MY custom required message",
+  },
 };
 
 const yupSchema = toYup(schema);
 
 console.log(yupSchema.isValidSync(true)); //true
 console.log(yupSchema.isValidSync(false)); //true
-console.log(yupSchema.isValidSync('true')); //false
-console.log(yupSchema.isValidSync('false')); //false
+console.log(yupSchema.isValidSync("true")); //false
+console.log(yupSchema.isValidSync("false")); //false
 
 // Equivalent to
 
 const yupBooleanSchema = yup
   .boolean()
-  .required('My custom required message')
+  .required("My custom required message")
   .strict(true);
 ```
 
@@ -78,7 +78,7 @@ const yupBooleanSchema = yup
 
 ```typescript
 type BooleanTypeSchema = YupTypeSchema & {
-  type: 'boolean';
+  type: "boolean";
   oneOf?: boolean[];
   notOneOf?: boolean[];
   nullable?: boolean;
@@ -95,31 +95,31 @@ type BooleanTypeSchema = YupTypeSchema & {
 Converting a string `type` JSON schema to a `yup` object will return an equivalent object of `yup.array()` with all of the additional validation configurations.
 
 ```typescript
-import { toYup, ArrayTypeSchema } from '@metafox/json2yup';
-import * as yup from 'yup';
+import { toYup, ArrayTypeSchema } from "@metafox/json2yup";
+import * as yup from "yup";
 
 const schema: ArrayTypeSchema = {
-  type: 'array',
+  type: "array",
   strict: true,
   required: true,
   min: 2,
   errors: {
-    min: 'My custom min length message',
-    required: 'My custom required message'
-  }
+    min: "My custom min length message",
+    required: "My custom required message",
+  },
 };
 
 const yupSchema = toYup(schema);
 
-console.log(yupSchema.isValidSync(['Good', 'Morning'])); //true
-console.log(yupSchema.isValidSync('Hello')); //false
+console.log(yupSchema.isValidSync(["Good", "Morning"])); //true
+console.log(yupSchema.isValidSync("Hello")); //false
 
 // Equivalent to
 
 const yupArraySchema = yup
   .array()
-  .min(2, 'My custom min length message')
-  .required('My custom required message')
+  .min(2, "My custom min length message")
+  .required("My custom required message")
   .strict(true);
 ```
 
@@ -127,7 +127,7 @@ const yupArraySchema = yup
 
 ```typescript
 type ArrayTypeSchema = YupTypeSchema & {
-  type: 'array';
+  type: "array";
   of?: TypeSchemas;
   min?: number;
   max?: number;
@@ -149,31 +149,31 @@ type ArrayTypeSchema = YupTypeSchema & {
 Converting a string `type` JSON schema to a `yup` object will return an equivalent object of `yup.date()` with all of the additional validation configurations.
 
 ```typescript
-import { toYup, DateTypeSchema } from '@metafox/json2yup';
-import * as yup from 'yup';
+import { toYup, DateTypeSchema } from "@metafox/json2yup";
+import * as yup from "yup";
 
 const schema: DateTypeSchema = {
-  type: 'date',
+  type: "date",
   strict: true,
   required: true,
-  min: '2020-01-01',
+  min: "2020-01-01",
   errors: {
-    min: 'MY custom min date message',
-    required: 'MY custom required message'
-  }
+    min: "MY custom min date message",
+    required: "MY custom required message",
+  },
 };
 
 const yupSchema = toYup(schema);
 
-console.log(yupSchema.isValidSync('2020-01-02')); //true
-console.log(yupSchema.isValidSync('2019-12-31')); //false
+console.log(yupSchema.isValidSync("2020-01-02")); //true
+console.log(yupSchema.isValidSync("2019-12-31")); //false
 
 // Equivalent to
 
 const yupDateSchema = yup
   .date()
-  .min(2, 'My custom min date message')
-  .required('My custom required message')
+  .min(2, "My custom min date message")
+  .required("My custom required message")
   .strict(true);
 ```
 
@@ -181,7 +181,7 @@ const yupDateSchema = yup
 
 ```typescript
 type DateTypeSchema = YupTypeSchema & {
-  type: 'date';
+  type: "date";
 
   /**
    * number: as a unix timestamp in seconds
@@ -208,18 +208,18 @@ Converting a string `type` JSON schema to a `yup` object will return an equivale
 For more advanced usage, check out the [number type test suite](../src/tests/types/number).
 
 ```typescript
-import { toYup, NumberTypeSchema } from '@metafox/json2yup';
-import * as yup from 'yup';
+import { toYup, NumberTypeSchema } from "@metafox/json2yup";
+import * as yup from "yup";
 
 const schema: NumberTypeSchema = {
-  type: 'number',
+  type: "number",
   strict: true,
   required: true,
   min: 5,
   errors: {
-    min: 'My custom min value message',
-    required: 'My custom required message'
-  }
+    min: "My custom min value message",
+    required: "My custom required message",
+  },
 };
 
 const yupSchema = toYup(schema);
@@ -231,8 +231,8 @@ console.log(yupSchema.isValidSync(1)); //false
 
 const yupNumberSchema = yup
   .number()
-  .min(5, 'My custom min value message')
-  .required('My custom required message')
+  .min(5, "My custom min value message")
+  .required("My custom required message")
   .strict(true);
 ```
 
@@ -240,16 +240,16 @@ const yupNumberSchema = yup
 
 ```typescript
 type NumberTypeSchema = YupTypeSchema & {
-  type: 'number';
+  type: "number";
   min?: number | Reference<number>;
   max?: number | Reference<number>;
   lessThan?: number | Reference<number>;
   moreThan?: number | Reference<number>;
-  sign?: 'positive' | 'negative';
+  sign?: "positive" | "negative";
   integer?: boolean;
   oneOf?: number[];
   notOneOf?: number[];
-  round?: 'floor' | 'ceil' | 'trunc' | 'round';
+  round?: "floor" | "ceil" | "trunc" | "round";
   nullable?: boolean;
   errors?: YupTypeErrors & {
     min?: string;
@@ -274,18 +274,18 @@ For example:
 
 ```typescript
 const json = {
-  type: 'object',
+  type: "object",
   properties: {
     min_length: {
-      type: 'number',
+      type: "number",
       min: 1,
-      max: 255
+      max: 255,
     },
     max_length: {
-      type: 'number',
-      min: { ref: 'min_length' }
-    }
-  }
+      type: "number",
+      min: { ref: "min_length" },
+    },
+  },
 };
 ```
 
@@ -294,49 +294,49 @@ const json = {
 Converting a string `type` JSON schema to a `yup` object will return an equivalent object of `yup.object()` with all of the additional validation configurations.
 
 ```typescript
-import { toYup, ObjectTypeSchema } from '@metafox/json2yup';
-import * as yup from 'yup';
+import { toYup, ObjectTypeSchema } from "@metafox/json2yup";
+import * as yup from "yup";
 
 const schema: ObjectTypeSchema = {
-  type: 'object',
+  type: "object",
   strict: true,
   properties: {
     firstName: {
-      type: 'string',
+      type: "string",
       minLength: 2,
       strict: true,
       required: true,
       errors: {
-        minLength: 'first name too short',
-        required: 'first name required'
-      }
+        minLength: "first name too short",
+        required: "first name required",
+      },
     },
     lastName: {
-      type: 'string',
+      type: "string",
       minLength: 2,
       strict: true,
       required: true,
       errors: {
-        minLength: 'last name too short',
-        required: 'last name required'
-      }
-    }
-  }
+        minLength: "last name too short",
+        required: "last name required",
+      },
+    },
+  },
 };
 
 const yupSchema = toYup(schema);
 
 console.log(
   yupSchema.isValidSync({
-    firstName: 'Bob',
-    lastName: 'Jones'
+    firstName: "Bob",
+    lastName: "Jones",
   })
 ); //true
 
 console.log(
   yupSchema.isValidSync({
-    firstName: 'Bobby',
-    lastName: 'W'
+    firstName: "Bobby",
+    lastName: "W",
   })
 ); //false
 
@@ -346,14 +346,14 @@ const yupBooleanSchema = yup
   .object({
     firstName: yup
       .string()
-      .min(2, 'first name too short')
-      .required('first name required')
+      .min(2, "first name too short")
+      .required("first name required")
       .strict(true),
     lastName: yup
       .string()
-      .min(2, 'last name too short')
-      .required('last name required')
-      .strict(true)
+      .min(2, "last name too short")
+      .required("last name required")
+      .strict(true),
   })
   .strict(true);
 ```
@@ -361,8 +361,8 @@ const yupBooleanSchema = yup
 ### Type
 
 ```typescript
-type ObjectTypeSchema = Omit<YupTypeSchema, 'required'> & {
-  type: 'object';
+type ObjectTypeSchema = Omit<YupTypeSchema, "required"> & {
+  type: "object";
   properties: Record<string, TypeSchemas>;
 };
 ```
@@ -377,42 +377,42 @@ Object property keys containing dots (.) will be automatically converted and nes
 The following example demonstrates how an object definition will be validated once it is converted to a `yup` object. It's important to note that this dot notation can be done at any level of an object type validation schema.
 
 ```typescript
-import { ObjectTypeSchema } from '@metafox/json2yup';
+import { ObjectTypeSchema } from "@metafox/json2yup";
 
 // Property names with dot notation keypaths
 
 const objectSchema: ObjectTypeSchema = {
-  type: 'object',
+  type: "object",
   strict: true,
   properties: {
-    'user.details.firstName': {
-      type: 'string',
-      required: true
-    }
-  }
+    "user.details.firstName": {
+      type: "string",
+      required: true,
+    },
+  },
 };
 
 // Will actually be converted into this object before being 'YUP-ified'
 
 const actualObjectSchema: ObjectTypeSchema = {
-  type: 'object',
+  type: "object",
   strict: true,
   properties: {
     user: {
-      type: 'object',
+      type: "object",
       properties: {
         details: {
-          type: 'object',
+          type: "object",
           properties: {
             firstName: {
-              type: 'string',
-              required: true
-            }
-          }
-        }
-      }
-    }
-  }
+              type: "string",
+              required: true,
+            },
+          },
+        },
+      },
+    },
+  },
 };
 ```
 
@@ -445,31 +445,31 @@ const schema: ObjectTypeSchema = {
 Converting a string `type` JSON schema to a `yup` object will return an equivalent object of `yup.string()` with all of the additional validation configuration.
 
 ```typescript
-import { toYup, StringTypeSchema } from '@metafox/json2yup';
-import * as yup from 'yup';
+import { toYup, StringTypeSchema } from "@metafox/json2yup";
+import * as yup from "yup";
 
 const schema: StringTypeSchema = {
-  type: 'string',
+  type: "string",
   strict: true,
   required: true,
   minLength: 5,
   errors: {
-    minLength: 'My custom min length message',
-    required: 'My custom required message'
-  }
+    minLength: "My custom min length message",
+    required: "My custom required message",
+  },
 };
 
 const yupSchema = toYup(schema);
 
-console.log(yupSchema.isValidSync('Hello')); //true
-console.log(yupSchema.isValidSync('Hi')); //false
+console.log(yupSchema.isValidSync("Hello")); //true
+console.log(yupSchema.isValidSync("Hi")); //false
 
 // Equivalent to
 
 const yupStringSchema = yup
   .string()
-  .min(5, 'My custom min length message')
-  .required('My custom required message')
+  .min(5, "My custom min length message")
+  .required("My custom required message")
   .strict(true);
 ```
 
@@ -477,17 +477,17 @@ Support `ref` to other fields
 
 ```typescript
 const schema = {
-  type: 'object',
+  type: "object",
   properties: {
     min_password_length: {
-      type: 'number',
-      required: true
+      type: "number",
+      required: true,
     },
     password: {
-      type: 'string',
-      minLength: { ref: 'min_password_length' }
-    }
-  }
+      type: "string",
+      minLength: { ref: "min_password_length" },
+    },
+  },
 };
 ```
 
@@ -495,13 +495,13 @@ const schema = {
 
 ```typescript
 type StringTypeSchema = YupTypeSchema & {
-  type: 'string';
+  type: "string";
   minLength?: number;
   maxLength?: number;
-  case?: 'lowercase' | 'uppercase';
+  case?: "lowercase" | "uppercase";
   uppercase?: number;
   matches?: { regex: string; excludeEmptyString?: boolean };
-  format?: 'email' | 'url';
+  format?: "email" | "url";
   oneOf?: string[];
   notOneOf?: string[];
   nullable?: boolean;
@@ -525,6 +525,44 @@ type StringTypeSchema = YupTypeSchema & {
 `Yup` allows you to alter the validation on your data based on other values within the validated data payload by using the `when()` method.
 
 The test suite contains examples of how `when` validation can be used with all the different data types.
+
+```tsx
+const schema: ObjectTypeSchema = {
+  type: "object",
+  strict: true,
+  properties: {
+    shareName: {
+      type: "boolean",
+      strict: true,
+      required: true,
+    },
+    name: {
+      type: "string",
+      strict: true,
+      when: [
+        {
+          fields: "shareName",
+          is: true,
+          then: {
+            type: "string",
+            minLength: 1,
+            errors: {
+              minLength: "Must fill name in when shareName is true",
+            },
+          },
+          otherwise: {
+            type: "string",
+            maxLength: 0,
+            errors: {
+              maxLength: "Must not fill name in when shareName is true",
+            },
+          },
+        },
+      ],
+    },
+  },
+};
+```
 
 ### Type
 
@@ -565,23 +603,23 @@ For example, these are the [StringTypeSchema](../src/types/index.ts) error messa
 In this example, we will set and retrieve our custom `Yup` error messages, for the `minLength` and `required` rules. This can be applied for all schema types and all schema type rules. We will use `console.log()` to check the schema type's custom error messages.
 
 ```typescript
-import { toYup, StringTypeSchema } from '@metafox/json2yup';
-import to from 'await-to-js';
+import { toYup, StringTypeSchema } from "@metafox/json2yup";
+import to from "await-to-js";
 
 const schema: StringTypeSchema = {
-  type: 'string',
+  type: "string",
   strict: true,
   required: true,
   minLength: 5,
   errors: {
-    minLength: 'My custom min length message',
-    required: 'My custom required message'
-  }
+    minLength: "My custom min length message",
+    required: "My custom required message",
+  },
 };
 
 const yupSchema = toYup(schema);
 
-const [error] = await to(yupSchema.validate('Hi'));
+const [error] = await to(yupSchema.validate("Hi"));
 console.log(error.errors); //["My custom min length message"]
 
 const [error2] = await to(yupSchema.validate(undefined));

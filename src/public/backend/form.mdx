@@ -52,11 +52,33 @@ class ApiController{
 AbstractForm group related fields in sections, each section contains FormFields, AbstractForm add form fields in `initialize()` method. There are 02 sections
 `basic` and `footer` are support.
 
+Supported fields configuration is located at `./config/form.php`.
+
+Create text field directory
+
 ```php
 
+$text = new TextField(['name'=>'firstName']);
 
-use MetaFox\Platform\Support\Form\Field\Submit;
-use MetaFox\Platform\Support\Form\Field\Text;
+```
+
+Create via static creator
+
+```php
+
+$text = TextField::create('firstName'); // get TextField instance
+
+```
+
+Create via builder service
+
+```
+$text = Field::text('firstName'); // get TextField instance
+```
+
+```php
+
+use MetaFox\Platform\Form\Creator as Field;
 
 class GeneralSiteSettingForm extends AbstractForm
 {
@@ -68,14 +90,14 @@ class GeneralSiteSettingForm extends AbstractForm
 
       // add field
       $basic->addField(
-          Text::create('general.site_name') // Create Text field with name "general.site_name"
+          Field::text('general.site_name') // Create Text field with name "general.site_name"
               ->label('Name Of Site') // Add label
               ->description('Name of your site.') // Add description
       );
 
       // add field
       $basic->addField(
-          Text::create('general.site_title')  // Create Text field with name "general.site_title"
+          Field::text('general.site_title')  // Create Text field with name "general.site_title"
               ->label('Name Title') // Add label
               ->description('Fill your site title') // Add description
       );
@@ -83,7 +105,7 @@ class GeneralSiteSettingForm extends AbstractForm
       // add footer structure
       $this->addFooter()
             ->addField(
-                Submit::create()  // Add "submit", field use default name="_submit"
+                Field::submit()  // Add "submit", field use default name="_submit"
                   ->label(__p('core::phrase.save_changes'))
             );
   }
@@ -98,7 +120,7 @@ Validation configuration defines JSON structure to
 
 ```php
 
-Text::create('general.site_title')  // Create Text field with name "general.site_title"
+Creator::text('general.site_title')  // Create Text field with name "general.site_title"
    ->label('Name Title') // Add label
    ->yup( // add validation
     Yup::string() // Add yup string at https://dev-docs.metafox.com/frontend/validation#string
@@ -114,7 +136,7 @@ Add yup string at https://dev-docs.metafox.com/frontend/validation#string
 
 ```php
 
-Text::create('general.site_title')
+Creator::text('general.site_title')
    ->yup( // add validation
       Yup::string()
         ->required(__p('core::validation.site_title_could_not_be_blank')) // set required
@@ -134,7 +156,7 @@ Add yup string at https://dev-docs.metafox.com/frontend/validation#number
 
 ```php
 
-Text::create('general.site_title')
+Creator::text('general.site_title')
    ->yup( // add validation
       Yup::string()
         ->required(__p('core::validation.site_title_could_not_be_blank')) // set required
@@ -155,7 +177,7 @@ Add yup string at https://dev-docs.metafox.com/frontend/validation#date
 
 ```php
 
-Text::create('event.start_date')
+Creator::text('event.start_date')
    ->yup( // add validation
       Yup::string()
         ->required(__p('core::validation.this_is_required_field')) // set required
@@ -170,7 +192,7 @@ Add yup string at https://dev-docs.metafox.com/frontend/validation#boolean
 
 ```php
 
-Text::create('event.enable_close')
+Creator::checkbox('event.enable_close')
    ->yup( // add validation
       Yup::boolean()
         ->required(__p('core::validation.this_is_required_field')) // set required
@@ -183,7 +205,7 @@ Add yup string at https://dev-docs.metafox.com/frontend/validation#array
 
 ```php
 
-QuestionsField::create('questions')
+Creator::questions('questions')
    ->yup( // add validation
       Yup::array()
         ->of(Yup::string()) // define validator for each array
