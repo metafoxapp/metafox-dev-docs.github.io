@@ -9,7 +9,7 @@ menu: Backend
 MetaFox provide form configuration feature to define JSON structure that frontend can be rendered via RestFul api.
 
 ```php
-<?php
+
 
 namespace MetaFox\Core\Http\Resources\v1\Admin;
 
@@ -33,7 +33,7 @@ class GeneralSiteSettingForm extends AbstractForm
 Show form api in controller.
 
 ```php
-<?php
+
 
 use MetaFox\Core\Http\Resources\v1\Admin\GeneralSiteSettingForm;
 
@@ -53,7 +53,7 @@ AbstractForm group related fields in sections, each section contains FormFields,
 `basic` and `footer` are support.
 
 ```php
-<?php
+
 
 use MetaFox\Platform\Support\Form\Field\Submit;
 use MetaFox\Platform\Support\Form\Field\Text;
@@ -97,7 +97,7 @@ MetaFox comes with a list of build-in suppor form fields. Fore more information 
 Validation configuration defines JSON structure to
 
 ```php
-<?php
+
 Text::create('general.site_title')  // Create Text field with name "general.site_title"
    ->label('Name Title') // Add label
    ->yup( // add validation
@@ -113,7 +113,7 @@ MetaFox comes with a list of build-in suppor form validation. Fore more informat
 Add yup string at https://dev-docs.metafox.com/frontend/validation#string
 
 ```php
-<?php
+
 Text::create('general.site_title')
    ->yup( // add validation
       Yup::string()
@@ -133,7 +133,7 @@ Text::create('general.site_title')
 Add yup string at https://dev-docs.metafox.com/frontend/validation#number
 
 ```php
-<?php
+
 Text::create('general.site_title')
    ->yup( // add validation
       Yup::string()
@@ -154,7 +154,7 @@ Text::create('general.site_title')
 Add yup string at https://dev-docs.metafox.com/frontend/validation#date
 
 ```php
-<?php
+
 Text::create('event.start_date')
    ->yup( // add validation
       Yup::string()
@@ -169,7 +169,7 @@ Text::create('event.start_date')
 Add yup string at https://dev-docs.metafox.com/frontend/validation#boolean
 
 ```php
-<?php
+
 Text::create('event.enable_close')
    ->yup( // add validation
       Yup::boolean()
@@ -182,7 +182,7 @@ Text::create('event.enable_close')
 Add yup string at https://dev-docs.metafox.com/frontend/validation#array
 
 ```php
-<?php
+
 QuestionsField::create('questions')
    ->yup( // add validation
       Yup::array()
@@ -197,7 +197,7 @@ QuestionsField::create('questions')
 Add yup string at https://dev-docs.metafox.com/frontend/validation#object
 
 ```php
-<?php
+
 JobField::create('person')
    ->yup( // add validation
       Yup::object()
