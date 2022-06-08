@@ -1,0 +1,172 @@
+---
+route: /backend/datagrid
+name: DataGrid
+menu: Backend
+---
+
+MetaFox provides feature data grid builder to configure a JSON structure to render data grid in the frontend.
+
+![Mange Phrase Data Grid](https://dev-docs.metafoxapp.com/images/phrase-datagrid.png)
+
+## Define DataGrid
+
+```php
+<?php
+
+namespace MetaFox\Core\Http\Resources\v1\Phrase\Admin;
+
+use MetaFox\Platform\Resource\Actions;
+use MetaFox\Platform\Resource\BatchActionMenu;
+use MetaFox\Platform\Resource\GridConfig as Grid;
+use MetaFox\Platform\Resource\ItemActionMenu;
+use MetaFox\Platform\Resource\GridColumn;
+use MetaFox\Platform\Resource\ActionItem;
+
+/**
+ * Class DataGrid.
+ * @codeCoverageIgnore
+ * @ignore
+ */
+class DataGrid extends Grid
+{
+    protected function initialize(): void
+    {
+        $this->enableCheckboxSelection(true);
+
+        $this->setSearchForm(new SearchPhraseForm());
+        $this->setDataSource('/admincp/phrase', ['q' => ':q','limit'=>50]);
+
+        $this->addColumn('id')
+            ->header('ID')
+            ->width(80);
+
+        $this->addColumn('key')
+            ->header(__p('core::locale.key_name'))
+            ->width(200);
+
+        $this->addColumn('namespace')
+            ->header(__p('core::locale.namespace'))
+            ->width(200);
+
+        $this->addColumn('group')
+            ->header(__p('core::locale.group'))
+            ->width(120);
+
+        $this->addColumn('package_id')
+            ->header(__p('core::locale.module_name'))
+            ->width(120);
+
+        $this->addColumn('text')
+            ->header(__p('core::locale.translation'))
+            ->flex(1);
+
+        /*
+         * Add default actions
+         */
+        $this->withActions(function (Actions $actions) {
+            $actions->addDefaults('admincp/phrase');
+        });
+
+        /*
+         * with batch menu actions
+         */
+        $this->withBatchMenu(function (BatchActionMenu $menu) {
+            $menu->asButton();
+            $menu->withDelete();
+            $menu->withCreate(__p('core::phrase.add_new_phrase'));
+        });
+
+        /*
+         * with item action menus
+         */
+        $this->withItemMenu(function (ItemActionMenu $menu) {
+            $menu->withEdit();
+            $menu->withDelete();
+        });
+    }
+}
+
+```
+
+Example Reponse from data grid api.
+
+```json
+{
+  "status": "success",
+  "data": {
+    "checkboxSelection": true,
+    "dataSource": {
+      "apiUrl": "/admincp/phrase",
+      "apiParams": { "q": ":q", "limit": 50 }
+    },
+    "itemActionMenu": {
+      "variant": null,
+      "items": [
+        {
+          "name": "editItem",
+          "icon": "ico-pencil-o",
+          "value": "row/edit",
+          "label": "Edit",
+          "params": { "action": "editItem" }
+        },
+        {
+          "name": "deleteItem",
+          "icon": "ico-trash",
+          "value": "row/remove",
+          "label": "Delete",
+          "params": { "action": "deleteItem" },
+          "showWhen": []
+        }
+      ]
+    },
+    "batchActionMenu": {
+      "variant": "IconLabel",
+      "items": [
+        {
+          "name": "deleteItem",
+          "icon": "ico-trash",
+          "value": "row/batchRemove",
+          "label": "Delete",
+          "style": "danger",
+          "params": { "action": "deleteItems" }
+        },
+        {
+          "name": "addItem",
+          "icon": "ico-plus",
+          "value": "row/add",
+          "label": "Add New Phrase",
+          "disabled": false,
+          "params": { "action": "addItem" }
+        }
+      ]
+    },
+    "actions": {
+      "deleteItems": { "apiUrl": "admincp/phrase" },
+      "deleteItem": { "apiUrl": "admincp/phrase/:id" },
+      "addItem": { "apiUrl": "admincp/phrase/form" },
+      "editItem": { "apiUrl": "admincp/phrase/form/:id" },
+      "activeItem": { "apiUrl": "admincp/phrase/active/:id" }
+    },
+    "columns": [
+      { "field": "id", "headerName": "ID", "width": 80 },
+      { "field": "key", "headerName": "Translation Key", "width": 200 },
+      { "field": "namespace", "headerName": "Namespace", "width": 200 },
+      { "field": "group", "headerName": "Group", "width": 120 },
+      {
+        "field": "package_id",
+        "headerName": "Package",
+        "width": 120
+      },
+      { "field": "text", "headerName": "Translation", "flex": 1 }
+    ]
+  },
+  "message": null,
+  "error": null
+}
+```
+
+## Configuration
+
+### enableCheckboxSelection
+
+Enable checkbox for the first item data grid.
