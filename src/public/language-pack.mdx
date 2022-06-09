@@ -3,15 +3,17 @@ route: /language
 name: Language
 ---
 
-## Create Language
+# Language
 
-Follow this guide step by step to create a new language package.
+## Create a new Language pack
 
-Login into admincp -> Apps -> Add Language. Follow winzard and fill your language code is "fr" example, Vendor name "Company" and App Name "FranceSupport".
+In this article, we will guide you step by step to create a new language pack.
 
-Go to directory `./packages/company/france-support/language/fr`. The subdirectory contains namespaced and groups translations, and directory `_root` contains no namespaced translations.
+Firstly, please go to **AdminCP > Apps** and click on the **Add Language** button. The, follow wizard and fill the info of your language pack. For example, to create a French language pack, you can use the language code as `fr` , Vendor name as "Company" and App Name as "French Pack".
 
-Dive deeper into file `./activity/permisson.php`.
+On the server, the `packages/company/french-pack/language/fr` directory will be generated automatically. Its subdirectories contain namespaced and grouped translations. And, `_root` directory contains no namespaced translations.
+
+Let's go to `packages/company/french-pack/language/fr` directory and dive deeper into `activity/permisson.php` file which contains phrases of _permissions_ in _Activity_ app
 
 ```php
 <?php
@@ -38,10 +40,10 @@ Dive deeper into file `./activity/permisson.php`.
 ];
 ```
 
-Update every phrase value to france language. For more information, checkout [Example Translation](/example/#translation).
+Now, you can update phrase values for _French_ language with any text editor tool. You can also refer to [Example Translation](/example/#translation) for more details.
 
-To keep your package easily to maintain, does not add multiple languages in to single package.
+To keep your language pack easy to maintain, please do not add multiple languages in to single language pack.
 
 ## Export Package
 
-After update translation phrases you can export package and upload to MetaFox store.
+After updating and saving translation phrases on `.php` files, you can export language pack in **AdminCP**.
