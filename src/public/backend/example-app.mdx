@@ -471,7 +471,7 @@ For detail, please read about _Laravel Repository_ pattern
 
 ## Translation
 
-Each app will have a folder `company/blog/resources/lang` for its language pack. For example, in the _Blog_ app:
+Each app will have a `company/blog/resources/lang` directory for its language pack. For example, in the _Blog_ app:
 
 ```text
 company/
@@ -484,7 +484,7 @@ company/
 
 > Note: JSON file hasn't been supported yet.
 
-Language phrases can be added or modified in the respective `phrase.php` file. For example, to add/modify English phrases, we will update the `company/blog/resources/lang/en/phrase.php` file
+Language phrases can be added or modified in the respective `phrase.php` file. For example, to add/modify _English_ phrases, we will update the `company/blog/resources/lang/en/phrase.php` file
 
 ```php
 return [
@@ -496,7 +496,7 @@ return [
 
 ```
 
-After changing language phrases in `phrase.php` file, you can run the following `php artisan` command to update:
+After updating language phrases in `phrase.php` file, you can run the following `php artisan` command to update:
 
 ```bash
 php artisan MetaFox:update
