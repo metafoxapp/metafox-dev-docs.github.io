@@ -9,9 +9,11 @@ route: /backend/routing
 MetaFox platform supports RESTful API routes.
 
 Routing defines the way how platform resolve URI request info into _Controller_ action,
-Generally, you can define routes of your app package in the `routes/api.php` file.
+Generally, you can define routes of your app package in the `routes/api.php` for frontend api and `routes/api-amin.php` for admincp apis.
 
 This file re-uses Laravel Routing system at package-level, for futher information read out [laravel routing](https://laravel.com/docs/9.x/routing)
+
+**routes/api.php**
 
 ```php
 <?php
@@ -27,26 +29,34 @@ namespace MetaFox\Blog\Http\Controllers\Api;
 // use laravel routing
 use Illuminate\Support\Facades\Route;
 
-/*
- * --------------------------------------------------------------------------
- *  API Routes
- * --------------------------------------------------------------------------
- *
- *  This file will be loaded by @link \MetaFox\Platform\PackageManager::getApiRoutes()
- */
-
-Route::group([
-    'namespace'  => __NAMESPACE__, // define all of controller
-    'middleware' => 'auth:api',
-], function () {
-
-    Route::patch('blog/sponsor/{id}', 'BlogController@sponsor');
-    Route::patch('blog/feature/{id}', 'BlogController@feature');
-    Route::patch('blog/approve/{id}', 'BlogController@approve');
-    Route::put('blog/publish/{id}', 'BlogController@publish');
-
-    Route::resource('blog', 'BlogController');
+Route::controller(BlogController::class) // register controller
+  ->group(function () {
+      Route::patch('blog/sponsor/{id}', 'sponsor');
+      Route::patch('blog/feature/{id}', 'feature');
+      Route::patch('blog/approve/{id}', 'approve');
+      Route::put('blog/publish/{id}', 'publish');
 });
+
+
+Route::resource('blog', BlogController::class);
+```
+
+**routes/api-admin.php**
+
+```php
+<?php
+
+namespace MetaFox\Group\Http\Controllers\Api;
+
+use Illuminate\Support\Facades\Route;
+
+Route::prefix('blog')
+    ->as('admin') // add this prefix to prevent dulicated route names with blog resource in `api.php`
+    ->resource('category', CategoryAdminController::class);
+
+Route::as('admin')
+    ->resource('blog',BlogAdminController::class);
+
 ```
 
 ## Route Method
@@ -139,9 +149,11 @@ For example
 ```php
 <?php
 // api.php
-Route::get('/user/{id}', 'UserController@show');
+Route::controller(BlogController::class)
+  ->get('/user/{id}', 'show');
 
-Route::get('/user/info/{id?}', 'UserController@info');
+Route::controller(BlogController::class)
+  ->get('/user/info/{id?}', 'info');
 
 // UserController.php
 
@@ -167,7 +179,8 @@ You can define multiple parameters, including both required and optional ones, f
 
 ```php
 <?php
-Route::get('/user/{postId}/comments/{comemntId?}', 'CommentController@view');
+Route::controller(CommentController::class)
+  ->get('/user/{postId}/comments/{comemntId?}', 'view');
 ```
 
 ## API Versioning

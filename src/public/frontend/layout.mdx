@@ -3,9 +3,202 @@ route: /frontend/layout
 name: Layouts
 menu: Frontend
 ---
+
 # Layouts
 
-## Comments
+## Layout Organization
+
+In order to support customization without modify source base, MetaFox layout system organized in to `template`, `block`
+
+- Template separates a page into multiple named slot: header, aside, content, subside
+- Block is a React component you can assign to a participant location in template
+
+Example template structure
+
+```text
+-------------------------------------------------------
+    header                                            |
+-------------------------------------------------------
+    Top                                               |
+-------------------------------------------------------
+           |                        |                 |
+    aside  |       content          |   subside       |
+           |                        |                 |
+           |                        |                 |
+-------------------------------------------------------
+   bottom                                             |
+-------------------------------------------------------
+```
+
+After that you can assign block and template using `layouts.json` file, example:
+
+```json
+{
+  "home.member": {
+    "info": {
+      "title": "Home Page for logged in users",
+      "description": "Home Page for Logged in users"
+    },
+    "large": {
+      "templateName": "three-column-fixed",
+      "blocks": [
+        {
+          "component": "feed.block.statusComposer",
+          "slotName": "main",
+          "title": "Status Composer",
+          "key": "15t1m",
+          "blockId": "15t1m",
+          "variant": "default",
+          "blockStyle": "Contained",
+          "blockLayout": "Blocker"
+        },
+        {
+          "component": "feed.block.homeFeeds",
+          "emptyPage": "core.block.no_content_with_description",
+          "slotName": "main",
+          "title": "Activity Feed",
+          "key": "mngh",
+          "blockId": "mngh",
+          "itemView": "feed.itemView.card",
+          "contentType": "feed",
+          "dataSource": {
+            "apiUrl": "/feed",
+            "apiParams": "view=latest",
+            "pagingId": "/feed"
+          },
+          "canLoadMore": true,
+          "canLoadSmooth": true,
+          "blockStyle": "Main Listings",
+          "gridStyle": "Feeds",
+          "blockLayout": "Main Listings",
+          "gridLayout": "Feeds"
+        },
+        {
+          "component": "core.block.sidebarPrimaryMenu",
+          "slotName": "side",
+          "key": "8r659",
+          "blockId": "8r659",
+          "title": "",
+          "variant": 8,
+          "displayLimit": 8,
+          "headerActions": {
+            "ml": 0,
+            "mr": 0
+          },
+          "blockLayout": "sidebar primary menu"
+        },
+        {
+          "component": "core.dividerBlock",
+          "slotName": "side",
+          "title": "",
+          "blockProps": {
+            "blockStyle": {}
+          },
+          "dividerVariant": "middle",
+          "key": "qlfp",
+          "blockId": "qlfp"
+        },
+        {
+          "component": "core.block.sidebarShortcutMenu",
+          "slotName": "side",
+          "key": "2c7hu",
+          "blockId": "2c7hu",
+          "title": "Shortcuts",
+          "itemView": "shortcut.itemView.smallCard",
+          "gridLayout": "Shortcut - Menu Items",
+          "blockLayout": "sidebar shortcut",
+          "canLoadMore": 0,
+          "canLoadSmooth": true,
+          "authRequired": true,
+          "dataSource": {
+            "apiUrl": "/user/shortcut"
+          },
+          "pagingId": "/user/shortcut",
+          "headerActions": [
+            {
+              "as": "user.ManageShortcutButton"
+            }
+          ],
+          "emptyPageProps": {
+            "noBlock": 1
+          },
+          "emptyPage": "hide"
+        },
+        {
+          "component": "announcement.block.announcementListing",
+          "slotName": "subside",
+          "title": "Announcements",
+          "key": "qea3s",
+          "blockId": "qea3s",
+          "itemProps": {
+            "mediaPlacement": "none"
+          },
+          "blockStyle": "Profile - Side Contained",
+          "blockLayout": "Side Contained"
+        },
+        {
+          "component": "chatplus.block.contactsNewFeed",
+          "slotName": "subside",
+          "title": "Contacts",
+          "key": "2312ewqe",
+          "blockId": "2312ewqe",
+          "showWhen": ["truthy", "setting.chatplus.server"]
+        }
+      ]
+    },
+    "small": {
+    }
+  }
+}
+```
+
+Then you use layout named `"home.member"` in to your page source to define layout
+
+```tsx
+/**
+ * @type: route
+ * name: core.home
+ * path: /, /home
+ */
+import { APP_FEED } from '@metafox/feed';
+import { useGlobal, useLoggedIn } from '@metafox/framework';
+import { Page } from '@metafox/layout';
+import * as React from 'react';
+
+export default function HomePage(props) {
+  const loggedIn = useLoggedIn();
+  const { createPageParams } = useGlobal();
+
+  const pageParams = createPageParams(props, prev => ({
+    module_name: APP_FEED,
+    item_type: APP_FEED
+  }));
+
+  if (loggedIn) {
+    return <Page pageName="home.member" pageParams={pageParams} />;
+  }
+
+  return <Page pageName="home.visitor" pageParams={pageParams} />;
+}
+```
+
+## pageParams
+
+Page params is a React context sharing wrapped all component in layout, its simple way to passing value without direct pass props.
+Then you get props of any block, component via `useParams` hooks
+
+
+```tsx
+
+export default function AdminAppStoreShowDetail(
+) {
+  const { useParams } = useGlobal();
+
+  const {module_name, item_type} = useParams();
+}
+```
+
+## Custom block
 
 MetaFox will scan the `comment` code for layout declaration when building. Below is the sample layout declaration
 
@@ -304,10 +497,4 @@ const SideCategoryBlock = createBlock<CategoryBlockProps>({
 });
 
 export default SideCategoryBlock;
-```
-
-## Modal
-
-```tsx
-<Link to={'/m/example/simple-modal'}>/m/example/simple-modal</Link>
 ```

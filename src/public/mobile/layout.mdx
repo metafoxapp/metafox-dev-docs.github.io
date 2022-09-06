@@ -1,0 +1,210 @@
+---
+menu: Mobile
+route: /mobile/layout
+---
+
+
+Layout Organization support mobile and tablet.
+
+A layout contain a structured location to put react component.
+
+In mobile layout, we support 5 location `header`, `top`, `left`, `right` and `content`.
+
+```text
+---------------------------------------------------------------------
+|                 header                                            |
+---------------------------------------------------------------------
+|                 top                                               |
+---------------------------------------------------------------------
+|           |                                     |                 |
+|   left    |        content                      |    right        |
+|           |                                     |                 |
+|           |                                     |                 |
+|           |                                     |                 |
+---------------------------------------------------------------------
+
+```
+
+Layout file contain json structure of React component for header, and content of layout.
+
+Custom your screens
+
+```tsx
+/**
+ * @type: route
+ * name: mymodule.home
+ * path: /blog, /blog/:tab(all|my|pending|draft|friend)
+ */
+
+import {useGlobal} from '@metafox/framework';
+interface Props {
+
+}
+
+export default function MyModuleHomeScreen(props: Props) {
+  const { createParams } = useGlobal();
+
+  const params = createParams<{ tab: string }>(props, ({ tab }) => ({
+    module_name: "my module",
+    resource_name: "my block",
+    tab,
+  }));
+
+  return (
+    <Layout
+      name={"mymodule.home"}
+      altName={}
+      params={params}
+    />
+  );
+}
+```
+
+Then create custom layout.json file
+
+file name: layouts.json
+
+```json
+{
+  "mymodule.home": {
+    "header": [
+      {
+        "component": "module_header",
+        "props": {
+          "key": "module_header",
+          "title": "notifications",
+          "back": false,
+          "rightButtons": [
+            {
+              "component": "Header.RightButton",
+              "props": {
+                "key": "listItem",
+                "icon": "list-bullet-o"
+              }
+            },
+            {
+              "component": "Header.RightButton",
+              "props": {
+                "key": "addItem",
+                "icon": "plus",
+                "value": "addItem",
+                "params": {
+                  "module_name": "blog",
+                  "resource_name": "blog"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "content": {}
+  }
+}
+```
+
+Then developer can put your custom component in location area, using [annotation](//frontend/concepts#annotation) block
+
+```tsx
+/**
+ * @type: block
+ * name: MyCustomBlock
+ */
+
+export default function() {
+  return (
+    <View>
+      <Text>your custom header</Text>
+    </View>
+  );
+}
+```
+
+Or Update Navigation Header
+
+```tsx
+/**
+ * @type: ui
+ * name: MyNavigationHeader
+ */
+import React from "react";
+import { FormStack, RenderBaseItem, useGlobal } from "@metafox/framework";
+import { View } from "react-native";
+import { IconName } from "@metafox/icons";
+import { useNavigation } from "@react-navigation/native";
+import { StackScreenParamsList } from "@metafox/framework/types";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { useParams } from "@metafox/layout";
+
+type Props = {
+  rightButtons?: RenderBaseItem[];
+};
+
+export function ModuleHomeHeader(props: Props) {
+  const { rightButtons } = props;
+  const { jsxBackend } = useGlobal();
+  const { module_name, resource_name, headerTitle } = useParams();
+  const navigation = useNavigation<
+    StackNavigationProp<StackScreenParamsList>
+  >();
+
+  const [TitleMenu] = jsxBackend.all(["Header.TitleMenu"]);
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      // @ts-ignore
+      headerTitle: () => (
+        <TitleMenu module_name={module_name} headerTitle={headerTitle} />
+      ),
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [handleAddItem, headerTitle, navigation]);
+
+  return null;
+}
+
+export default ModuleHomeHeader;
+```
+
+You can collect multiple layouts configuration in to a single file.
+
+files `blog/layouts.json`
+
+```json
+{
+  "blog.home": {
+    "header": [
+      {
+        "component": "module_header",
+        "props": {
+          "key": "module_header",
+          "title": "notifications",
+          "back": false,
+          "rightButtons": [
+            {
+              "component": "Header.RightButton",
+              "props": {
+                "key": "listItem",
+                "icon": "list-bullet-o"
+              }
+            },
+            {
+              "component": "Header.RightButton",
+              "props": {
+                "key": "addItem",
+                "icon": "plus",
+                "value": "addItem",
+                "params": {
+                  "module_name": "blog",
+                  "resource_name": "blog"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "blog.my": {}
+}
+```

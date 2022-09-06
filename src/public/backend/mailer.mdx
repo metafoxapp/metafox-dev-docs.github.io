@@ -1,0 +1,31 @@
+---
+route: /backend/mailer
+name: Mailer
+menu: Backend
+---
+
+## Add Custom Mail Transport
+
+In other to add custom storage, add new driver type="mail-transport" to drivers.php
+
+example
+```php
+<?php
+return [
+    // other drivers
+    [
+        'driver'      => 'MetaFox\\Core\\Http\\Resources\\v1\\Admin\\MailerSmtpSettingForm',
+        'type'        => 'mailer-transport',
+        'name'        => 'smtp',
+        'version'     => 'v1',
+        'package_id'  => 'metafox/core',
+        'alias'       => null,
+        'is_admin'    => 1,
+        'is_active'   => 1,
+        'is_preload'  => 0,
+        'title'       => 'SMTP Mail Transport',
+        'url'         => '',
+        'description' => '',
+    ];
+]
+```

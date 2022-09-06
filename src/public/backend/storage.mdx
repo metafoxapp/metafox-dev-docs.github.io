@@ -1,0 +1,31 @@
+---
+route: /backend/storage
+name: Storage
+menu: Backend
+---
+
+## Add Custom Storage
+
+In other to add custom storage, add new driver type="disk-driver" to drivers.php
+
+example
+```php
+<?php
+return [
+    // other drivers
+    [
+        'driver'      => 'MetaFox\\Storage\\Http\\Resources\\v1\\Admin\\UpdateS3DiskForm',
+        'type'        => 'disk-driver',
+        'name'        => 's3',
+        'version'     => 'v1',
+        'package_id'  => 'metafox/storage',
+        'alias'       => null,
+        'is_admin'    => 1,
+        'is_active'   => 1,
+        'is_preload'  => 0,
+        'title'       => 'S3, DigitalOcean Space or filesystem compatible s3',
+        'url'         => '',
+        'description' => '',
+    ];
+]
+```

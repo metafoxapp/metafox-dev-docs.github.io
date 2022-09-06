@@ -10,7 +10,6 @@ MetaFox provide form configuration feature to define JSON structure that fronten
 
 ```php
 
-
 namespace MetaFox\Core\Http\Resources\v1\Admin;
 
 use MetaFox\Platform\Support\Form\AbstractForm;
@@ -62,25 +61,17 @@ $text = new TextField(['name'=>'firstName']);
 
 ```
 
-Create via static builder
-
-```php
-
-$text = TextField::create('firstName'); // get TextField instance
-
-```
-
 Create via builder service
 
 ```
-use MetaFox\Platform\Form\Builder as Field;
+use MetaFox\Platform\Form\Builder;
 
-$text = Field::text('firstName'); // get TextField instance
+$text = Builder::text('firstName'); // get TextField instance
 ```
 
 ```php
 
-use MetaFox\Platform\Form\Builder as Field;
+use MetaFox\Platform\Form\Builder;
 
 class GeneralSiteSettingForm extends AbstractForm
 {
@@ -92,14 +83,14 @@ class GeneralSiteSettingForm extends AbstractForm
 
       // add field
       $basic->addField(
-          Field::text('general.site_name') // Create Text field with name "general.site_name"
+          Builder::text('general.site_name') // Create Text field with name "general.site_name"
               ->label('Name Of Site') // Add label
               ->description('Name of your site.') // Add description
       );
 
       // add field
       $basic->addField(
-          Field::text('general.site_title')  // Create Text field with name "general.site_title"
+          Builder::text('general.site_title')  // Create Text field with name "general.site_title"
               ->label('Name Title') // Add label
               ->description('Fill your site title') // Add description
       );
@@ -107,7 +98,7 @@ class GeneralSiteSettingForm extends AbstractForm
       // add footer structure
       $this->addFooter()
             ->addField(
-                Field::submit()  // Add "submit", field use default name="_submit"
+                Builder::submit()  // Add "submit", field use default name="_submit"
                   ->label(__p('core::phrase.save_changes'))
             );
   }
@@ -122,11 +113,14 @@ Validation configuration defines JSON structure to
 
 ```php
 
-Field::text('general.site_title')  // Create Text field with name "general.site_title"
+use MetaFox\Yup\Yup;
+use MetaFox\Form\Builder;
+
+Builder::text('general.site_title')  // Create Text field with name "general.site_title"
    ->label('Name Title') // Add label
    ->yup( // add validation
-    Yup::string() // Add yup string at https://dev-docs.metafox.com/frontend/validation#string
-      ->required(__p('core::validation.site_title_could_not_be_blank')) // set required
+      Yup::string() // Add yup string at https://dev-docs.metafox.com/frontend/validation#string
+       ->required(__p('core::validation.site_title_could_not_be_blank')) // set required
    )
 ```
 
@@ -138,7 +132,10 @@ Add yup string at https://dev-docs.metafox.com/frontend/validation#string
 
 ```php
 
-Field::text('general.site_title')
+use MetaFox\Yup\Yup;
+use MetaFox\Form\Builder;
+
+Builer::text('general.site_title')
    ->yup( // add validation
       Yup::string()
         ->required(__p('core::validation.site_title_could_not_be_blank')) // set required
@@ -157,8 +154,10 @@ Field::text('general.site_title')
 Add yup string at https://dev-docs.metafox.com/frontend/validation#number
 
 ```php
+use MetaFox\Yup\Yup;
+use MetaFox\Form\Builder;
 
-Field::text('general.site_title')
+Builder::text('general.site_title')
    ->yup( // add validation
       Yup::string()
         ->required(__p('core::validation.site_title_could_not_be_blank')) // set required
@@ -179,7 +178,10 @@ Add yup string at https://dev-docs.metafox.com/frontend/validation#date
 
 ```php
 
-Field::text('event.start_date')
+use MetaFox\Yup\Yup;
+use MetaFox\Form\Builder;
+
+Builder::text('event.start_date')
    ->yup( // add validation
       Yup::string()
         ->required(__p('core::validation.this_is_required_field')) // set required
@@ -193,8 +195,10 @@ Field::text('event.start_date')
 Add yup string at https://dev-docs.metafox.com/frontend/validation#boolean
 
 ```php
+use MetaFox\Yup\Yup;
+use MetaFox\Form\Builder;
 
-Field::checkbox('event.enable_close')
+Builder::checkbox('event.enable_close')
    ->yup( // add validation
       Yup::boolean()
         ->required(__p('core::validation.this_is_required_field')) // set required
@@ -207,7 +211,10 @@ Add yup string at https://dev-docs.metafox.com/frontend/validation#array
 
 ```php
 
-Field::questions('questions')
+use MetaFox\Yup\Yup;
+use MetaFox\Form\Builder;
+
+Builder::questions('questions')
    ->yup( // add validation
       Yup::array()
         ->of(Yup::string()) // define validator for each array
@@ -222,7 +229,10 @@ Add yup string at https://dev-docs.metafox.com/frontend/validation#object
 
 ```php
 
-JobField::create('person')
+use MetaFox\Yup\Yup;
+use MetaFox\Form\Builder;
+
+Builder::jobs('person')
    ->yup( // add validation
       Yup::object()
         ->addProperty( // add property

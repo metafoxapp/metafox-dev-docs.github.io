@@ -1,0 +1,60 @@
+---
+route: /frontend/sagas
+name: sagas
+menu: Frontend
+---
+
+Example saga files
+
+```tsx
+/**
+ * @type: saga
+ * name: updatedVideo
+ */
+
+import { LocalAction, viewItem } from "@metafox/framework";
+import { takeEvery } from "redux-saga/effects";
+
+function* updatedVideo({ payload: { id } }: LocalAction<{ id: string }>) {
+  yield* viewItem("video", "video", id);
+}
+
+const sagas = [takeEvery("@updatedItem/video", updatedVideo)];
+
+export default sagas;
+```
+
+metafox build/start command collect all sagas file using [annotation](/frontend/concepts#annotation) `@type: saga`  [saga root pattern](https://redux-saga.js.org/docs/advanced/RootSaga/#nesting-fork-effects-in-all-effect)
+
+Whenever a new saga file be added or removed, run `yarn metafox reload` to bundle saga file again.
+
+All sagas bundled at file `./app/src/bundle/produce.tsx`, example files
+
+```tsx
+
+import coreSagaHandleActionFeedbackSaga from
+    '@metafox/framework/sagas/handleActionFeedback';
+import CoreRequestSaga from
+    '@metafox/framework/sagas/handleRequest';
+import sagaReloadEntitySaga from
+    '@metafox/core/reducers/reloadEntity';
+import abortControllerSaga from
+    '@metafox/core/sagas/abortController';
+import coreChooseThemeSaga from
+    '@metafox/core/sagas/chooseTheme';
+import sagaCoreCloseDialogSaga from
+    '@metafox/core/sagas/closeDialog';
+
+const sagas = [
+    coreSagaHandleActionFeedbackSaga,
+    CoreRequestSaga,
+    sagaReloadEntitySaga,
+    abortControllerSaga,
+    coreChooseThemeSaga,
+    sagaCoreCloseDialogSaga
+]
+
+export default function injector(config: any) {
+    config.sagas=sagas;
+}
+```

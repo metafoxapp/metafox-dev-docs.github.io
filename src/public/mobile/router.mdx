@@ -1,0 +1,51 @@
+---
+menu: Mobile
+route: /mobile/router
+---
+
+# Router
+
+Router Structure
+
+```txt
+ RootStack.Navigator
+    RootStack.Screen group = auth, mode = modal
+    BottomTabNavigator name = MainTab
+      TabStack.Navigator name = HomeStack
+      TabStack.Navigator name = FriendStack
+      TabStack.Navigator name = ...
+    RootStack.Group mode=modal
+```
+
+# Page Screen
+
+In order to create a new screens using file [annotation](/frontend/concepts#annotation)
+
+```tsx
+/**
+ * @type: route
+ * name: blog.home
+ * path: /blog, /blog/:tab(all|my|pending|draft|friend)
+ */
+import { createModuleHomeScreen } from "@metafox/layout";
+
+export default createModuleHomeScreen({
+  appName: "blog",
+  resource: "blog",
+});
+```
+
+Support hocs to create screens
+
+- createModuleHomeScreen
+- createShowDetailScreen
+
+Metafox build service bundle this file and create a screen named 'blog.home' has path map /blog, screen name and page path can be used later to navigating between screens.
+
+```tsx
+navigation.navigate("blog.home", {});
+
+// or
+
+navigation.openLink("/blog");
+```

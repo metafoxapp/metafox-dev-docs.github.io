@@ -1,0 +1,31 @@
+---
+menu: Mobile
+route: /mobile/sagas
+---
+
+## Package Reducer
+
+
+Reducer file must be marked as `@type: reducer`, see [annotation](/frontend/concepts#annotation)
+
+```tsx
+/**
+ * @type: reducer
+ * name: blog
+*/
+
+import {
+    combineReducers,
+    createEntityReducer
+} from '@metafox/framework';
+import { APP_NAME } from '../constants';
+
+export default combineReducers({
+    entities: createEntityReducer(APP_NAME),
+});
+```
+
+metafox bundle service combine all reducers file to `./app/src/bundle/produce.tsx`.
+
+when you add/remove a new reducer file, you must run `yarn metafox reload` to update bundle file.
+
