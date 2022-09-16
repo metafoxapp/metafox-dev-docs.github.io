@@ -31,7 +31,7 @@ const Wrapper = ({ children, doc }) => {
         <link
           rel="icon"
           type="image/x-icon"
-          href="https://preview-foxsocial.phpfox.us/favicon.ico"
+          href="/static/favicon.ico"
         />
         <title>MetaFox</title>
       </Helmet>

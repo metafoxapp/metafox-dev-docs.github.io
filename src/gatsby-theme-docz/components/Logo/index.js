@@ -10,7 +10,7 @@ export const Logo = () => {
   return (
     <Flex aligmItems="center" data-testid="logo">
       <Link to="/">
-        <img src={`https://metafox-assets.s3.eu-north-1.amazonaws.com/${logo}`} alt="logo" class="sitelogo" />
+        <img src={`/static/${logo}`} alt="logo" class="sitelogo" />
       </Link>
     </Flex>
   );

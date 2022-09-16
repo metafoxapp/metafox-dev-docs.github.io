@@ -5,6 +5,7 @@ export default {
   title: "MetaFox",
   description: "MetaFox",
   src: "./src",
+  public: "./static",
   menu: [
     { name: "Getting Started" },
     {
