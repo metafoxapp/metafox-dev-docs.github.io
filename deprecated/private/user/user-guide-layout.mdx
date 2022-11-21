@@ -1,0 +1,139 @@
+---
+route: /user/layout-editor
+name: Layout Editor
+menu: User Guide
+hidden: true
+---
+
+## Layout
+
+Layout structure được chưa làm bốn cấp, `Section`, `Container`, `Slot`, dùng để phân chia màn hình thành các `Slot`
+có thể tuỳ biến được và sử dụng lại một cách linh hoạt.
+
+**Section**
+
+Toàn bộ screen được chia làm ba section header, footer và content. Mỗi Section có thể chứa nhiều `Container`.
+
+**Container**
+
+Mỗi `Container` chia `Section` thành các phần. Admin có thể thêm, xoá, sửa các `Container` chiều rộng, chiều cao, gutter cho từng container.
+
+**Slot**
+
+Mỗi Slot phân chia `Container` thành nhiều ô.
+
+Mỗi Block chứa nội dung cần hiện thị, Admin có thể cấu hình một slot chứa những `Block` nào.
+
+Ví dụ chúng ta có một tổ chức layout bao gồm 4 container header, top, content, footer như sau.
+
+```text
+|--------------------------------------------------- |
+|                          header                    |
+|--------------------------------------------------- |
+|                                                    |
+|                          top                       |
+|                                                    |
+|--------------------------------------------------- |
+|                        content                     |
+|                                                    |
+|--------------------------------------------------- |
+|                        footer                      |
+|--------------------------------------------------- |
+```
+
+Sau khi phân chia tiếp các container thành các slot.
+
+```text
+|---------------------------------------------------|
+|                       header                      |
+|---------------------------------------------------|
+|                       top                         |
+|                                                   |
+|---------------------------------------------------|
+|        |         main                |            |
+|        |                             |            |
+|        |                             |            |
+|        |                             |            |
+|  side  |                             |  subside   |
+|        |                             |            |
+|        |                             |            |
+|        |                             |            |
+|---------------------------------------------------|
+|                       footer                      |
+|---------------------------------------------------|
+```
+
+Sử dụng `Layout Editor` admin có thể tuỳ biến các `Slot`, `Container` và tạo ra các layout mới một cách linh hoạt.
+
+## Page Configuration
+
+Mỗi page bao gồm Layout và danh sách các `Block` được gắn vào các `Slot` của layout đó.
+
+Mỗi `Block` dùng để lấy dữ liệu từ backend và hiện thị một loại nội dung nào đó. ví dụ menu, banner, feed listing.
+
+Khi người dùng truy cập 02 page home ở địa chỉ `/`, và page user profile ở địa chỉ `/user/1`. hai page này có giao diện, nội dung khác nhau.
+admin thực hiện bằng cách lựa chọn các các `Layout` khác nhau và gắn các block vào các slot.
+
+Ví dụ một Page Configuration như sau.
+
+Sử dụng `Layout Editor` admin có thể thêm, bớt, sắp xếp và tuỳ biến từng block theo nhiều cách khác nhau.
+
+Tuỳ thuộc vào từng block, admin có thể tuỳ biến từng block về số lượng items được hiện thị, cách sắp xếp, giao diện của các items.
+
+```text
+|---------------------------------------------------|
+|                       appbar                      |
+|---------------------------------------------------|
+|                       banner                      |
+|                                                   |
+|---------------------------------------------------|
+|        |                             |            |
+| menu   |         feed composer       | annoucement|
+|        |                             |            |
+|        |         feed listing        |            |
+|shortcut|                             |  advertise |
+|        |                             |            |
+|        |                             |            |
+|        |                             |            |
+|---------------------------------------------------|
+|                       footer menu                 |
+|---------------------------------------------------|
+```
+
+## Theme
+
+Theme cung cấp tuỳ chỉnh về text color, background color, typography và các thiết lập chung cho các component như avatar, header menu, vvv.
+
+`Layout Editor` cho phép thực hiện thay đổi bằng chức năng `Edit Theme`.
+
+## Layout editor
+
+- For Screens: hỗ trợ responsive, chọn loại màn hình mà bạn muốn các tuỳ biến sễ áp dụng. chọn một trong hai chế độ `small` áp dụng cho màn hình nhỏ hơn 767 pixel chiều rộng, và large cho màn hình lớn hơn 767 pixel. Admin chọn `small` nếu muốn tuỳ biến cho màn hình < 767px.
+- View Ons...: Hỗ trợ xem các thay đổi trên một số màn hình nhỏ hơn.
+- Live Edit: Tuỳ biến nhanh các block trên một page.
+- Edit Page Configuration: thêm, xoá, sắp xếp, tuỳ biến các block trên một page cụ thể.
+- Edit Layout Structure: Tuỳ biến nhanh Layout Structure đang sử dụng, chú ý thay đổi trên layout sẽ áp dụng cho tất cả các Page congfiguration cùng sử dụng layout structure.
+- Change Layout Structure: Áp dụng layout structure khác cho page hiện tại.
+- Edit Theme: Tuỳ biến màu sắc, typography cho toàn bộ site.
+- Manage Styles: Tuỳ biến các thiết lập chung cho các block, xem phần `Manage Styles`
+- Toggle RTL: Kiểm tra các tuỳ biến hiện tại với direction right to left.
+- Toggle Dark Mode: Bật tắt nhanh dark mode để kiểm tra với các tuỳ biến hiện tại.
+- Save Changes: Lưu lại các tuỳ biến hiện tại.
+- Discard Changes: Reset toàn bộ các tuỳ biến hiện tại về mặc định.
+- Preview: Áp dụng các tuỳ biến hiện tại.
+- Publish layout: Yêu cầu build lại giao diện và publish đến tất cả người dùng.
+
+### Manage Styles
+
+**Manage Block Styles**
+Tuỳ biến block style, admin có thể thay đổi background, gutter, header, footer, vvv... tuỳ biến sẽ được áp dụng cho tất cả các block dùng dung styles.
+
+**Manage Grid Styles**
+
+Tuỳ biến cách xếp các items cho các block hiện thị listing các items, admin có thể tuỳ chỉnh số sượng items trên một dòng theo kích thước màn hình khoảng cách giữa chúng. Thay đổi tuỳ biến này
+sẽ áp dụng với tất các các block cùng sử dụng chung grid style.
+
+**Manage Item Styles**
+
+Item styles tuỳ biến look and feel của các các item dạng listing, tuỳ thuộc vào loại item mà block hiện thị, admin có thể tuỳ chỉnh kích kích thước của hình ảnh,
+typography (fontsize, fontweight) của title, description, cách sắp xếp của mỗi item một cách linh hoạt.

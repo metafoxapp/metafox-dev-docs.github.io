@@ -10,36 +10,28 @@ hidden: true
 Table Of Contents
 
 - Layout Organization
-- Layout and Code splitting
 - Layout and React Router
 - Layout and transition
-
-In phpfox v4, layout system handle by a master template and configrable locations(block 1, block 3, etc ...). Administrator can configure block, add block to location to change site contents.
-
-Disadvantages
-
-- It does not allows admins configure master layout (etc background, ) and location (etc width, ) per specific pages.
-- It has not a visual layout editor to allow admin edit and preview on front-end.
-- Choose theme per sepecific pages ?
 
 `HomePage` layout
 
 ```text
 |---------------------------------------------------|
-|                       HEADER                      |
+|                       header                      |
 |---------------------------------------------------|
-|        |         Status Composer     |            |
-|        |         Activity Feeds      |            |
+|                       top                         |
+|                                                   |
+|---------------------------------------------------|
+|        |         main                |            |
 |        |                             |            |
 |        |                             |            |
-|  Menu  |                             |   Side2    |
+|        |                             |            |
+|  side  |                             |  subside   |
 |        |                             |            |
 |        |                             |            |
 |        |                             |            |
 |---------------------------------------------------|
-|                       FOOTER                      |
-|---------------------------------------------------|
-|              Permanent Dock (chat,...)            |
+|                       footer                      |
 |---------------------------------------------------|
 ```
 
@@ -50,20 +42,18 @@ Disadvantages
 |                       HEADER                      |
 |---------------------------------------------------|
 |                                      |            |
-|            Profile Header            |            |
-|                                      |            |
+|            Profile Header            | annoucement|
+|                                      | sponsors   |
 |--------------------------------------|            |
 |            |                         |            |
 |   Photos   |     Status Composer     |            |
 |   Videos   |                         |            |
-|   Friends  |     Activity Feeds      |   Side2    |
+|   Friends  |     Activity Feeds      |            |
 |   Blogs    |                         |            |
 |            |                         |            |
 |            |                         |            |
 |---------------------------------------------------|
 |                       FOOTER                      |
-|---------------------------------------------------|
-|              Permanent Dock (chat,...)            |
 |---------------------------------------------------|
 ```
 
@@ -83,9 +73,9 @@ Component Tree
 ```jsx
 <BrowserRouter>
   <LayoutProvider>
-    <MainSwitch />
+    <MainRoutes />
   </LayoutProvider>
-  <ModalSwitch />
+  <ModalRoutes />
 </BrowserRouter>
 ```
 

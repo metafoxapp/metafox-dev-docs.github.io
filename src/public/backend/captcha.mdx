@@ -41,16 +41,16 @@ step 3. Add captcha to validation
 
 ```php
 <?php
-class CreateBlogForm
+/**
+ * Class StoreRequest.
+ */
+class StoreRequest extends FormRequest
 {
-    public function getCaptchaRules(): array
+    public function rules(): array
     {
-        $basic = $this->addBasic();
-        $basic->addField(
-          Builder::captcha()->actionName('blog.create_blog')
-        );
+        $rules = [
+           // other rules
+            'captcha'  => Captcha::ruleOfruleOfruleOfrruleOfr('blog.create_blog'),
+        ];
     }
-
-    // other methods
-  }
 ```
