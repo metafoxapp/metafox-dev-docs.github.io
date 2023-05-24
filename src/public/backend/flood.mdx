@@ -1,0 +1,49 @@
+---
+route: /backend/
+name: Flood
+menu: Backend
+hidden: true
+---
+
+step 1. Register flood control permissions
+
+```php
+<?php class PackageSettingListener
+{
+     public function getUserValuePermissions(): array
+    {
+        return [
+            'blog' => [
+                'flood_control' => [
+                    'type'    => MetaFoxDataType::INTEGER,
+                    'default' => 0,
+                    'roles'   => [
+                        UserRole::ADMIN_USER  => 0,
+                        UserRole::STAFF_USER  => 0,
+                        UserRole::NORMAL_USER => 0,
+                    ],
+                ],
+            ],
+        ];
+    }
+
+    // other methods
+  }
+```
+
+step 2. Check flood control at store method.
+
+```php
+<?php
+class BlogController extends ApiController
+{
+    public function store()
+    {
+        app('flood')->checkFloodControlWhenCreateItem(user(), 'blog');
+
+        //... others method.
+    }
+
+    // other methods
+  }
+```

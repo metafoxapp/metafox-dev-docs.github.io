@@ -1,0 +1,56 @@
+---
+route: /backend/captcha
+name: Captcha
+menu: Backend
+hidden: true
+---
+
+step 1. Register captcha rules
+
+```php
+<?php class PackageSettingListener
+{
+    public function getCaptchaRules(): array
+    {
+        return ['create_blog'];
+    }
+
+    // other methods
+  }
+```
+
+step 2. Add catpcha field to form which need captcha challenge
+
+```php
+<?php
+class CreateBlogForm
+{
+    public function getCaptchaRules(): array
+    {
+        $basic = $this->addBasic();
+        $basic->addField(
+          Builder::captcha()->actionName('blog.create_blog')
+        );
+    }
+
+    // other methods
+  }
+```
+
+step 3. Add captcha to validation
+
+```php
+<?php
+/**
+ * Class StoreRequest.
+ */
+class StoreRequest extends FormRequest
+{
+    public function rules(): array
+    {
+        $rules = [
+           // other rules
+            'captcha'  => Captcha::ruleOfruleOfruleOfrruleOfr('blog.create_blog'),
+        ];
+    }
+```
