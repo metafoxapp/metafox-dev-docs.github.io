@@ -1,6 +1,6 @@
 ---
 name: Installation
-route: /backend
+route: /backend/installation
 menu: Backend
 ---
 
@@ -10,24 +10,26 @@ menu: Backend
 
 On the Development environment: since we have to build MetaFox Frontend, your server will need to have at least **4G RAM** as the [Recommendation for React](https://reacts.com/system-requirements/)
 
-MetaFox Developer can be installed with `docker`. 
+MetaFox Developer can be installed with `docker`.
 
 # DEVELOPER PACKAGE
-This *MetaFox Developer* package includes the MetaFox Core and some basic apps such as `Feed`, `Photos`, `Members`, `Blogs`, `Polls`.
 
-We are going to guide you set up Local Development with `docker`. Your server will need to have `docker` and `docker-compose` installed first. 
+This _MetaFox Developer_ package includes the MetaFox Core and some basic apps such as `Feed`, `Photos`, `Members`, `Blogs`, `Polls`.
+
+We are going to guide you set up Local Development with `docker`. Your server will need to have `docker` and `docker-compose` installed first.
 
 ## Download Source
 
-You can download Developer source from Client Area, under `MetaFox Dev license`. Then, extract the package on your server. 
+You can download Developer source from Client Area, under `MetaFox Dev license`. Then, extract the package on your server.
 
 For example, all source files will be uploaded to your server under `home/metafox` folder
 
-
 # Local Development Installation Steps
+
 Open Terminal and log in SSH to your server. It is necessary to note that you will need to log in with SSH user having permissions to run `docker`
 
 Then, run the following command
+
 ```
 cd /home/metafox
 bash install.sh
