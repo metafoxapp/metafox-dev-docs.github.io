@@ -33,6 +33,7 @@ jobs:
       - run: |
           yarn
           yarn build
+          chmod -R +r out
 
       - run: |
           echo "Reset Docs"
