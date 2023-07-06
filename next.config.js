@@ -8,7 +8,6 @@ const withNextra = require("nextra")({
 const nextConfig = {
   ...withNextra(),
   output: "export",
-  distDir: "docs",
   rewrites: undefined,
   images: {
     unoptimized: true,

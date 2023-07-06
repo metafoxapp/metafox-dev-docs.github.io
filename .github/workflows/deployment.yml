@@ -38,6 +38,7 @@ jobs:
           echo "Reset Docs"
           date > docs/date.txt
           cp -rf externals/* docs
+          cp -rf out/* docs
 
       - name: Commit files
         run: |
