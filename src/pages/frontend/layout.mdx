@@ -1,9 +1,3 @@
----
-route: /frontend/layout
-name: Layouts
-menu: Frontend
----
-
 # Layouts
 
 ## Layout Organization
@@ -146,8 +140,7 @@ After that you can assign block and template using `layouts.json` file, example:
         }
       ]
     },
-    "small": {
-    }
+    "small": {}
   }
 }
 ```
@@ -160,18 +153,18 @@ Then you use layout named `"home.member"` in to your page source to define layou
  * name: core.home
  * path: /, /home
  */
-import { APP_FEED } from '@metafox/feed';
-import { useGlobal, useLoggedIn } from '@metafox/framework';
-import { Page } from '@metafox/layout';
-import * as React from 'react';
+import { APP_FEED } from "@metafox/feed";
+import { useGlobal, useLoggedIn } from "@metafox/framework";
+import { Page } from "@metafox/layout";
+import * as React from "react";
 
 export default function HomePage(props) {
   const loggedIn = useLoggedIn();
   const { createPageParams } = useGlobal();
 
-  const pageParams = createPageParams(props, prev => ({
+  const pageParams = createPageParams(props, (prev) => ({
     module_name: APP_FEED,
-    item_type: APP_FEED
+    item_type: APP_FEED,
   }));
 
   if (loggedIn) {
@@ -187,14 +180,11 @@ export default function HomePage(props) {
 Page params is a React context sharing wrapped all component in layout, its simple way to passing value without direct pass props.
 Then you get props of any block, component via `useParams` hooks
 
-
 ```tsx
-
-export default function AdminAppStoreShowDetail(
-) {
+export default function AdminAppStoreShowDetail() {
   const { useParams } = useGlobal();
 
-  const {module_name, item_type} = useParams();
+  const { module_name, item_type } = useParams();
 }
 ```
 
@@ -214,7 +204,7 @@ MetaFox will scan the `comment` code for layout declaration when building. Below
  */
 ```
 
-**@type**:
+**@type**
 
 - `itemView`: Declare grid/list item view component.
 - `embedView`: Declare embedView in feed/notification/search embed view component.
@@ -238,17 +228,6 @@ Export Component Naming
 - Form Field: form.field.[name]: etc: `form.field.text`, `form.field.upload`
 - Block Component: [module_name].block.[name], etc: `core.block.listview`
 
-## Layout Size
-
-Layout configrations are seprarated by *viewport* sizes:
-
-- <=375: xxsmall
-- <=480 : xsmall
-- <=767 : small
-- <=991 : medium
-- <=1199: large
-- <=1200: xlarge
-
 ### How to detect layout variants
 
 Imagine that user is viewing the `user.profile` page in `medium` viewport size, but administrator hasn't defined the layout configuration for such viewport size yet.
@@ -271,7 +250,7 @@ For performance reasons, layout size variants will be checked and applied when p
 
 ### Block
 
-A Block is a React component that Administrator can add, remove, configure, and drag-and-drop to layout *slot*
+A Block is a React component that Administrator can add, remove, configure, and drag-and-drop to layout _slot_
 
 ### Slot:
 
@@ -280,16 +259,21 @@ A slot is an area where Administrators can put blocks into. Slot can contain oth
 #### Actions:
 
 Let's take a look at available actions on Slot
+
 ##### Resize
+
 Resize a slot for responsive viewport size as `small`, `medium`, and more.
 
 ##### Split
+
 Split a slot into vertical direction. It's not usually but sometimes required to build complex layouts.
 
 ##### Add Slot
+
 Add other siblings slot at the start/end of the current slot.
 
 ### Section
+
 Section similar to `material-ui` Container component, it defines rows in layouts.
 
 #### Actions:
@@ -307,9 +291,11 @@ Determine the `max-width` of the container. The container width grows relatively
 `disableGutters`: If `true`, the left and right paddings are removed.
 
 ##### Remove
+
 TBD
 
 ##### Add new slot
+
 TBD
 
 ### Item View
@@ -328,10 +314,10 @@ const BlogItemView = ({ item, itemProps }: ItemViewProps<BlogItemShape>) => {
   const classes = useStyles();
   const cover = /string/i.test(typeof item.image)
     ? item.image
-    : item.image['500'];
+    : item.image["500"];
 
   const [control, state] = useActionControl<{}>(item, {
-    menuOpened: false
+    menuOpened: false,
   });
 
   return (
@@ -353,7 +339,7 @@ const BlogItemView = ({ item, itemProps }: ItemViewProps<BlogItemShape>) => {
           <p>{item.description}</p>
           <Statistic
             values={item.statistic}
-            display={'total_like,total_view'}
+            display={"total_like,total_view"}
           />
         </div>
       </div>
@@ -366,9 +352,9 @@ export default BlogItemView;
 
 ```tsx
 // file blog/src/views.tsx
-import BlogItemView from './components/BlogItemView';
+import BlogItemView from "./components/BlogItemView";
 export default {
-  'blog.itemView.card': BlogItemView
+  "blog.itemView.card": BlogItemView,
 };
 ```
 
@@ -383,7 +369,7 @@ const LoadingSkeleton = ({ itemProps }) => {
     <div className={classes.root}>
       <div className={classes.outer}>
         <div className={classes.media}>
-          <Skeleton variant="rect" height={120} component={'div'} />
+          <Skeleton variant="rect" height={120} component={"div"} />
         </div>
         <div className={classes.inner}>
           <Skeleton />
@@ -405,26 +391,26 @@ export default BlogItemView;
 You can create new block components by extending other blocks
 
 ```tsx
-import createBlock from '@metafox/framework/createBlock';
-import { ListViewBlockProps } from '@metafox/framework/types';
+import createBlock from "@metafox/framework/createBlock";
+import { ListViewBlockProps } from "@metafox/framework/types";
 
 const BlogListingBlock = createBlock<ListViewBlockProps>({
-  extendBlock: 'core.block.listview', // extend from block
-  name: 'BlogListingBlock', // based Block compoinent
+  extendBlock: "core.block.listview", // extend from block
+  name: "BlogListingBlock", // based Block compoinent
   overrides: {
     // override properties automacally merged to targed component
-    contentType: 'blog', // layout editor will load view prefix by `contentType.itemView.*` to select itemView.
-    dataSource: { apiUrl: '/blog' }
+    contentType: "blog", // layout editor will load view prefix by `contentType.itemView.*` to select itemView.
+    dataSource: { apiUrl: "/blog" },
   },
   defaults: {
     // default properties show in layout editor,
     // only property show in defaults AND NOT in overrides will be show in editor.
-    title: 'Blogs',
-    blockProps: { variant: 'contained' },
-    itemView: 'blog.itemView.mainCard',
+    title: "Blogs",
+    blockProps: { variant: "contained" },
+    itemView: "blog.itemView.mainCard",
     gridContainerProps: { spacing: 2 },
-    gridItemProps: { xs: 12, sm: 12, md: 12, lg: 12, xl: 12 }
-  }
+    gridItemProps: { xs: 12, sm: 12, md: 12, lg: 12, xl: 12 },
+  },
 });
 
 export default BlogListingBlock;
@@ -435,37 +421,37 @@ export default BlogListingBlock;
 Create a Side Menu block
 
 ```tsx
-import createBlock from '@metafox/framework/createBlock';
-import { SideMenuBlockProps as Props } from '@metafox/framework/types';
+import createBlock from "@metafox/framework/createBlock";
+import { SideMenuBlockProps as Props } from "@metafox/framework/types";
 
 const BlogSideMenuBlock = createBlock<Props>({
-  extendBlock: 'core.block.sideNavigation',
-  name: 'BlogSideMenuBlock',
-  displayName: 'Blog Menu',
-  keywords: 'blogs, navigation, menu',
-  description: '',
-  previewImage: '',
+  extendBlock: "core.block.sideNavigation",
+  name: "BlogSideMenuBlock",
+  displayName: "Blog Menu",
+  keywords: "blogs, navigation, menu",
+  description: "",
+  previewImage: "",
   overrides: {
     menuItems: [
       {
-        to: '/blog',
-        label: 'All Blogs',
-        active: true
+        to: "/blog",
+        label: "All Blogs",
+        active: true,
       },
       {
-        to: '/blog?view=my',
-        label: 'My Blogs'
+        to: "/blog?view=my",
+        label: "My Blogs",
       },
       {
-        to: '/blog?view=friend',
-        label: "Friend's Blogs"
-      }
-    ]
+        to: "/blog?view=friend",
+        label: "Friend's Blogs",
+      },
+    ],
   },
   defaults: {
-    title: 'Blogs',
-    blockProps: { variant: 'plained', noHeader: true, noFooter: false }
-  }
+    title: "Blogs",
+    blockProps: { variant: "plained", noHeader: true, noFooter: false },
+  },
 });
 
 export default BlogSideMenuBlock;
@@ -474,26 +460,26 @@ export default BlogSideMenuBlock;
 ## Side Category
 
 ```tsx
-import createBlock from '@metafox/framework/createBlock';
-import { CategoryBlockProps } from '@metafox/framework/types';
+import createBlock from "@metafox/framework/createBlock";
+import { CategoryBlockProps } from "@metafox/framework/types";
 
 const SideCategoryBlock = createBlock<CategoryBlockProps>({
-  extendBlock: 'core.categoryBlock', // based Block compoinent
-  name: 'BlogCategoryBlock', // React component name
-  displayName: 'Blog Categories', // display in layout editor
-  keywords: 'blogs, category', // keyword to search on layout editor
-  description: '', // description in layout editor
-  previewImage: '', // preview image in layout editor 200x200
+  extendBlock: "core.categoryBlock", // based Block compoinent
+  name: "BlogCategoryBlock", // React component name
+  displayName: "Blog Categories", // display in layout editor
+  keywords: "blogs, category", // keyword to search on layout editor
+  description: "", // description in layout editor
+  previewImage: "", // preview image in layout editor 200x200
   overrides: {
     // overrides properties will apply to derived blog automacally.
-    dataSource: { apiUrl: '/blog-category', apiParams: '' },
-    href: '/blog/category'
+    dataSource: { apiUrl: "/blog-category", apiParams: "" },
+    href: "/blog/category",
   },
   defaults: {
     // properties will show in edit block modal.
-    title: 'Categories',
-    blockProps: { variant: 'plained' }
-  }
+    title: "Categories",
+    blockProps: { variant: "plained" },
+  },
 });
 
 export default SideCategoryBlock;

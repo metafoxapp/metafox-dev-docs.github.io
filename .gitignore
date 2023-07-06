@@ -2,3 +2,5 @@ node_modules
 .docz
 package-lock.json
 docs
+out
+.next

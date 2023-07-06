@@ -5,71 +5,6 @@ hidden: true
 
 # Concepts
 
-In order to help you get familiar with MetaFox platform more conveniently, this document will explain to you some main platform concepts. The implementation guide won't be covered at this document.
-
-## User vs Content
-
-Each blog, video, photo, .... has a detail page. User can comment, share, like, ... on detail pages of those item.
-
-Friends list, saved items, report item, ... has no detail pages. Users can not comment on, share or like these items.
-
-User, pages, groups have profile pages, activity streams, privacy settings, and owner of other blogs, videos, ... etc
-
-To abstract types of theme into programing concepts, we categorize them into **Content** and **User**
-
-### Content
-The object will be categorized as **Content** if:
-- Have unique id in their types
-- Has its privacy value
-- Have a detail page
-- Can like, comment, share
-
-For example: blogs, videos, photos are **Content**
-
-### User
-The object will be categorized as **User** if:
-- Have a profile page
-- Can have others content (blogs, videos, ...)
-- Have their activity stream
-
-For example: users, pages, groups as **User**
-
-Thus, we can call a page, group as `page` user, `group` user.
-
-And, obviously, we can say that **User* is `child` of **Content*
-
-## Membership
-
-**membership** is relationship of two **User**. For example:
-
-After logged in, a user can:
-
-- Send friend request to become friends of others.
-- Assign his friends to a his friend lists.
-- Send member request to become group member.
-- Like a page to become members of page.
-
-When logged in as group user, a user can:
-
-- Assign a members to be group admin, etc
-
-We call these relationships are membership.
-
-A User has the following **memberships**:
-
-- his friends
-- his friend lists
-
-A `group` User has the following memberships:
-
-- group members
-- group admins
-
-A `page` User has the following memberships
-
-- page members
-- page admins
-
 ## Privacy
 
 When users post items ... on their profile pages, they can set who can see their posts with their memberships
@@ -87,7 +22,6 @@ Then we can map **membership** to **privacy** concept as simple as possible.
 **ActionEntity** is Models which defines who did the action on a Content (can be Content or User - since User was a child of Content).
 
 For example: when users do something, for example: like, share, friend request v.v..., Those Models are called **ActionEntity**.
-
 
 ## Role & Permissions
 
@@ -158,6 +92,7 @@ Laravel's **Event** is a implementation of [Observer Pattern](https://en.wikiped
 When a new user is registered, we can notify an action `user_created` with `$user` data.
 
 ```php
+<?php
 events()->dispatch('user_created', $user);
 ```
 
@@ -260,7 +195,7 @@ When you want to add custom query to Query Builder, use **Scope**. MetaFox suppo
 - [Global scopes](https://laravel.com/docs/8.x/eloquent#global-scopes): this way is not recommended because it will add to Model static and apply for the whole request process.
 - [Local scopes](https://laravel.com/docs/8.x/eloquent#local-scopes): written inside Model, but it isn't recommended to write too much in Model, should only create **Scope** that will always be used.
 
-### How to apply Scope: 
+### How to apply Scope:
 
 When we build query, we can create a **Scope** and apply it into current Query.
 

@@ -39,7 +39,6 @@ jobs:
       - run: |
           echo "Reset Docs"
           date > docs/date.txt
-          cp -rf .docz/dist/* docs
           cp -rf externals/* docs
 
       - name: Commit files

@@ -1,14 +1,8 @@
----
-name: Concepts
-route: /frontend/concepts
-menu: Frontend
----
-
 # Concepts
 
 ## Annotation
 
-Since MetaFox comes with *Modular* structure, Build tool helps solve issues of dependencies without using `import` directly. Build tool will scan all packages declared in `settings.json` file, find all components, librarys to build the bundle.
+Since MetaFox comes with _Modular_ structure, Build tool helps solve issues of dependencies without using `import` directly. Build tool will scan all packages declared in `settings.json` file, find all components, librarys to build the bundle.
 
 For example:
 
@@ -46,7 +40,7 @@ For example:
 
 For automation testing, please follow below rules:
 
-- For item view, embed view component, detail view component, all *clickable/focusable* items MUST have `data-tid` (link , ....)
+- For item view, embed view component, detail view component, all _clickable/focusable_ items MUST have `data-tid` (link , ....)
 - For menu component, all menu items MUST have `data-tid`
 
 ## ui
@@ -66,7 +60,7 @@ export default function CategoryTitle(): React.FC<{}> {
 
 ## itemView
 
-Naming convention: **{resource_name}**.itemView.**{suffix}**
+Naming convention: **resource_name**.itemView.**suffix**
 
 When rendering, declaration of React component is included in a listing/grid component.
 
@@ -88,7 +82,7 @@ export default function PhotoAlbumMainCard() {
 
 ## embedView
 
-Naming Convention: **{resource_name}**.embedView.**{parent_resource}**
+Naming Convention: **resource_name**.embedView.**parent_resource**
 
 Declaration of React component is used as the embed content of other component.
 
@@ -106,7 +100,7 @@ export default function EmbedPhotoAlbum() {
 
 ## Dialog
 
-Naming Convention: dialog.**{purpose}**
+Naming Convention: dialog.**purpose**
 
 See [dialog](/dialog)
 

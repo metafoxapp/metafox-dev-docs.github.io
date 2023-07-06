@@ -3,7 +3,6 @@ route: /mobile/layout
 hidden: true
 ---
 
-
 Layout Organization support mobile and tablet.
 
 A layout contain a structured location to put react component.
@@ -36,10 +35,8 @@ Custom your screens
  * path: /blog, /blog/:tab(all|my|pending|draft|friend)
  */
 
-import {useGlobal} from '@metafox/framework';
-interface Props {
-
-}
+import { useGlobal } from "@metafox/framework";
+interface Props {}
 
 export default function MyModuleHomeScreen(props: Props) {
   const { createParams } = useGlobal();
@@ -50,13 +47,7 @@ export default function MyModuleHomeScreen(props: Props) {
     tab,
   }));
 
-  return (
-    <Layout
-      name={"mymodule.home"}
-      altName={}
-      params={params}
-    />
-  );
+  return <Layout name={"mymodule.home"} altName={} params={params} />;
 }
 ```
 
@@ -103,7 +94,7 @@ file name: layouts.json
 }
 ```
 
-Then developer can put your custom component in location area, using [annotation](//frontend/concepts#annotation) block
+Then developer can put your custom component in location area, using [annotation](/frontend/concepts#annotation) block
 
 ```tsx
 /**
@@ -111,7 +102,7 @@ Then developer can put your custom component in location area, using [annotation
  * name: MyCustomBlock
  */
 
-export default function() {
+export default function () {
   return (
     <View>
       <Text>your custom header</Text>
@@ -144,9 +135,8 @@ export function ModuleHomeHeader(props: Props) {
   const { rightButtons } = props;
   const { jsxBackend } = useGlobal();
   const { module_name, resource_name, headerTitle } = useParams();
-  const navigation = useNavigation<
-    StackNavigationProp<StackScreenParamsList>
-  >();
+  const navigation =
+    useNavigation<StackNavigationProp<StackScreenParamsList>>();
 
   const [TitleMenu] = jsxBackend.all(["Header.TitleMenu"]);
 

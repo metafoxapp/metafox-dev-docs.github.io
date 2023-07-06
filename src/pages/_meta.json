@@ -1,0 +1,10 @@
+{
+  "index": "Getting Started",
+  "backend": "Backend",
+  "frontend": "Frontend",
+  "mobile": "Mobile",
+  "---": { "type": "separator" },
+  "new-app": "New App",
+  "new-theme": "New Theme",
+  "new-language": "New Language"
+}

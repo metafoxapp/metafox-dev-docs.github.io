@@ -1,9 +1,3 @@
----
-route: /frontend/dialog
-name: Dialog
-menu: Frontend
----
-
 MetaFox `Dialog` is based on [Material-UI Dialog](https://material-ui.com/components/dialogs/#dialog),
 We wrap it in a Controller and `dialogBackend` services so you can work with `Dialog` Component more conveniently by using `dialogBackend` service and `useDialog` hooks.
 
@@ -25,7 +19,6 @@ import {
   DialogContent,
   DialogTitle
 } from '@metafox/dialog';
-import {DialogContentText} from '@mui/material';
 import React from 'react';
 
 export default function ExampleDialog({
@@ -117,9 +110,11 @@ dialogBackend.alert({
 
 ### Message Component
 
-Content of `message` should be wrapped in <DialogContentText/> to keep a consistent look and feel.
+Content of `message` should be wrapped in `DialogContentText` to keep a consistent look and feel.
 
 ```tsx
+import { DialogContentText } from "@mui/material";
+
 dialogBackend.alert({
   message: (
     <DialogContentText>

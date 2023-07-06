@@ -1,9 +1,4 @@
----
-menu: Frontend
-route: /frontend/form
-name: Form
----
-# Form
+# Form Builder
 
 Metafox includes the most popular React Form library `formik` and validation with `yup`, wraps theme in `FormBuilder` in order to help build, configure flexible logic from AdminCP without modifying source code.
 
@@ -12,40 +7,40 @@ The Form mechanism on MetaFox is based on `formik` + `material-ui`. It can build
 ## Schema
 
 ```tsx
-import { Form } from '@metafox/form';
+import { Form } from "@metafox/form";
 
 const ExampleLoginForm = () => {
   const loginFormSchema = {
     container: true,
-    component: 'form',
+    component: "form",
     elements: {
       email: {
-        label: 'Email',
-        component: 'text',
-        type: 'email',
-        variant: 'outlined'
+        label: "Email",
+        component: "text",
+        type: "email",
+        variant: "outlined",
       },
       password: {
-        label: 'Password',
-        component: 'Email',
-        type: 'password',
-        variant: 'outlined'
+        label: "Password",
+        component: "Email",
+        type: "password",
+        variant: "outlined",
       },
       buttons: {
         container: true,
-        component: 'html',
+        component: "html",
         elements: {
           submit: {
-            label: 'Login',
-            type: 'submit'
-          }
-        }
-      }
-    }
+            label: "Login",
+            type: "submit",
+          },
+        },
+      },
+    },
   };
   const initialValues = {
-    email: 'jack@MetaFox.com',
-    password: ''
+    email: "jack@MetaFox.com",
+    password: "",
   };
 
   return <Form schema={loginFormSchema} initialValues={initialValues} />;
@@ -89,15 +84,15 @@ Definition
 ```tsx
 export type TextFieldProps = {
   name: string;
-  component: 'text';
+  component: "text";
   label: string;
   placeholder: string;
   readOnly?: boolean;
   disabled?: boolean;
   required?: boolean;
   maxLength?: number;
-  variant?: 'outlined' | 'filled';
-  type?: 'text' | 'email' | 'password' | 'number' | 'date' | 'time';
+  variant?: "outlined" | "filled";
+  type?: "text" | "email" | "password" | "number" | "date" | "time";
 };
 ```
 
@@ -105,16 +100,16 @@ Blow is the example to create a Text element
 
 ```tsx
 const Field = {
-  name: 'title',
-  component: 'text',
-  label: 'Title',
-  placeholder: 'Enter an title for this blog',
+  name: "title",
+  component: "text",
+  label: "Title",
+  placeholder: "Enter an title for this blog",
   readOnly: false, // optional
   disabled: false, // optional
   required: false, // optional
   maxLength: 250, // optional
   autoComplete: true, //optional,
-  variant: 'outlined'
+  variant: "outlined",
 };
 ```
 

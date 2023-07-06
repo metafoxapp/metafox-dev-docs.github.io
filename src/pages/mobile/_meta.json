@@ -1,0 +1,8 @@
+{
+  "flatlist": "FlatList View",
+  "layout": "Layouts",
+  "reducers": "Reducers",
+  "sagas": "Sagas",
+  "service": "Services",
+  "translation": "Translation"
+}
