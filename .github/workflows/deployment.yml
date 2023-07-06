@@ -5,19 +5,19 @@ on:
 
 env:
   NODE_VER: 16.14.0
-  DIR: metafox-dev-docs-master
-  MAIN_REPO: github.com/metafoxapp/metafox-dev-docs.git
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: main
 
       - uses: actions/setup-node@v3
         with:
-          node-version: ${{ env.NODE_VER }}
+          node-version: ${{ matrix.node-version }}
 
       - uses: actions/cache@v3
         id: cache-yarn
@@ -28,23 +28,27 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-${{ env.NODE_VER }}-yarn-${{ hashFiles('**/yarn.lock') }}
 
-      - run: yarn
-      - run: yarn build
-
-      # rebuild frontend documentation
-      - name: push to doc repo
-        uses: actions/checkout@v3
-        with:
-          ref: main
-          path: ${{ env.DIR }}
+      - run: |
+          yarn
+          yarn build
 
       - run: |
-          cd ${{ env.DIR }}
-          cp -rf ./../.docz/dist/* ./docs
-          cp -rf ./../static/* ./docs
+          echo "Reset Docs"
+          rm -rf docs && mkdir docs
+          cp -rf .docz/dist/* docs
           date > docs/date.txt
-          git add .
-          git config user.email "oversky@phpfox.com"
-          git config user.name "jacky158"
-          git commit -m "ci updated"
+          cp -rf externals/* docs
+
+      - name: Commit files
+        run: |
+          git config --local user.email "namnv@younetgroup.com"
+          git config --local user.name "jacky158"
+          git add . docs -f
+          git commit -m "ci: update docs"
           git push --force
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.PERSONAL_TOKEN }}
+          branch: ${{ github.ref }}

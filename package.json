@@ -12,7 +12,7 @@
   "scripts": {
     "start": "docz dev",
     "dev": "docz dev",
-    "prebuild": "rm -rf .docz/.cache/* && rm -rf ./.docz/dist/*",
+    "prebuild": "rm -rf .docz/.cache/* && rm -rf .docz/dist/*",
     "build": "docz build",
     "unittest": "metafox jest-unittest",
     "launch": "yarn prebuild && yarn build && yarn deploy"
@@ -29,7 +29,7 @@
     "@babel/eslint-parser": "^7.18.9",
     "@emotion/core": "^10.0.14",
     "@emotion/styled": "^10.0.14",
-    "docz": "latest",
+    "docz": "^2.4.0",
     "eslint-config-metafox": "^1.1.0",
     "eslint-plugin-jest-dom": "^4.0.2",
     "gatsby-transformer-remark": "^5.15.0",
