@@ -14,8 +14,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        with:
-          ref: main
 
       - uses: actions/setup-node@v3
         with:
@@ -30,27 +28,21 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-${{ env.NODE_VER }}-yarn-${{ hashFiles('**/yarn.lock') }}
 
-      - run: |
+      - name: "Build Documents"
+        run: |
           yarn
           yarn build
-          chmod -R +r out
 
-      - run: |
+      - name: "Clone document and externals"
+        run: |
           echo "Reset Docs"
           date > docs/date.txt
           cp -rf externals/* docs
           cp -rf out/* docs
 
-      - name: Commit files
+      - name: Deploy with gh-pages
         run: |
-          git config --local user.email "namnv@younetgroup.com"
-          git config --local user.name "jacky158"
-          git add docs -f
-          git commit -m "ci: update docs"
-          git push
-
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          npx gh-pages -d docs -b gh-pages -t true -u "github-actions-bot <support+actions@github.com>"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
