@@ -45,7 +45,7 @@ jobs:
           git config --local user.name "jacky158"
           git add . docs -f
           git commit -m "ci: update docs"
-          git push --force
+          git push
 
       - name: Push changes
         uses: ad-m/github-push-action@master
