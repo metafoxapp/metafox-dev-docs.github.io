@@ -14,8 +14,7 @@
     "dev": "docz dev",
     "prebuild": "rm -rf .docz/.cache/* && rm -rf .docz/dist/*",
     "build": "docz build",
-    "unittest": "metafox jest-unittest",
-    "launch": "yarn prebuild && yarn build && yarn deploy"
+    "launch": "yarn prebuild && yarn build"
   },
   "eslintConfig": {
     "extends": [
@@ -23,23 +22,21 @@
     ]
   },
   "resolutions": {
-    "prism-react-renderer": "1.3.3"
+    "prism-react-renderer": "1.3.3",
+    "babel-plugin-lodash/@babel/types": "~7.20.0"
   },
   "dependencies": {
-    "@babel/eslint-parser": "^7.18.9",
     "@emotion/core": "^10.0.14",
     "@emotion/styled": "^10.0.14",
     "docz": "^2.4.0",
-    "eslint-config-metafox": "^1.1.0",
-    "eslint-plugin-jest-dom": "^4.0.2",
+    "eslint-plugin-jest-dom": "^5.0.1",
     "gatsby-transformer-remark": "^5.15.0",
     "lint-staged": "^13.0.3",
     "prism": "^4.1.2",
     "prism-react-renderer": "^1.3.3",
-    "prismjs": "^1.28.0",
+    "prismjs": "^1.29.0",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "typescript-eslint": "^0.0.1-alpha.0"
+    "react-dom": "^16.8.6"
   },
   "devDependencies": {
     "@types/react": "^16.8.23",

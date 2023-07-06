@@ -19,7 +19,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ env.NODE_VER }}
 
       - uses: actions/cache@v3
         id: cache-yarn
@@ -32,13 +32,13 @@ jobs:
 
       - run: |
           yarn
+          rm -rf docs && mkdir docs
           yarn build
 
       - run: |
           echo "Reset Docs"
-          rm -rf docs && mkdir docs
-          cp -rf .docz/dist/* docs
           date > docs/date.txt
+          cp -rf .docz/dist/* docs
           cp -rf externals/* docs
 
       - name: Commit files

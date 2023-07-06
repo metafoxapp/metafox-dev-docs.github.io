@@ -23,9 +23,9 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
   DialogTitle
 } from '@metafox/dialog';
+import {DialogContentText} from '@mui/material';
 import React from 'react';
 
 export default function ExampleDialog({
@@ -54,7 +54,7 @@ export default function ExampleDialog({
 
 ## Export Dialog
 
-We are going to use *MetaFox* annotations syntax for the created dialog.
+We are going to use _MetaFox_ annotations syntax for the created dialog.
 
 For example: this source defines a dialog named `sampleModalDialog`
 
@@ -69,12 +69,12 @@ For example: this source defines a dialog named `sampleModalDialog`
 
 ```tsx
 const value = await dialogBackend.present({
-  component: 'sampleModalDialog',
+  component: "sampleModalDialog",
   props: {
-    title: 'Simple Dialog Title',
+    title: "Simple Dialog Title",
     message:
-      'This is simple dialog demo, you can extends with others function laters.'
-  }
+      "This is simple dialog demo, you can extends with others function laters.",
+  },
 });
 ```
 
@@ -83,14 +83,14 @@ In order to present dialog `dialogBackend`, assign `component` with value of 'sa
 ```tsx
 dialogBackend
   .present({
-    component: 'sampleModalDialog',
+    component: "sampleModalDialog",
     props: {
-      title: 'Simple Dialog Title',
+      title: "Simple Dialog Title",
       message:
-        'This is simple dialog demo, you can extends with others function laters.'
-    }
+        "This is simple dialog demo, you can extends with others function laters.",
+    },
   })
-  .then(value => {
+  .then((value) => {
     // your code
   });
 ```
@@ -101,8 +101,8 @@ Create a Alert Dialog with a single line message
 
 ```tsx
 dialogBackend.alert({
-  title: 'Alert',
-  messsage: 'You can not delete this content!'
+  title: "Alert",
+  messsage: "You can not delete this content!",
 });
 ```
 
@@ -111,7 +111,7 @@ Create a Alert Dialog with multiple line messages
 ```tsx
 dialogBackend.alert({
   message:
-    '- Checking the network cables, modem, and router\n- Reconnecting to Wi-Fi'
+    "- Checking the network cables, modem, and router\n- Reconnecting to Wi-Fi",
 });
 ```
 
@@ -125,17 +125,18 @@ dialogBackend.alert({
     <DialogContentText>
       Checking the network cables, modem, and router
     </DialogContentText>
-  )
+  ),
 });
 ```
 
 ### Confirm
+
 Create a Confirm Dialog
 
 ```tsx
 const ok: boolean = await dialogBackend.confirm({
-  title: 'Confirm',
-  message: 'Are you sure?'
+  title: "Confirm",
+  message: "Are you sure?",
 });
 ```
 
@@ -145,8 +146,8 @@ Add a Custom Button to Confirm Dialog
 
 ```tsx
 const ok: boolean = await dialogBackend.confirm({
-  title: 'Confirm',
-  messsage: 'Are you sure?'
+  title: "Confirm",
+  messsage: "Are you sure?",
 });
 ```
 
