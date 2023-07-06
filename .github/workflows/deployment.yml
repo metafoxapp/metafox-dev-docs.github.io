@@ -33,7 +33,6 @@ jobs:
 
       - run: |
           yarn
-          rm -rf docs && mkdir docs
           yarn build
 
       - run: |
