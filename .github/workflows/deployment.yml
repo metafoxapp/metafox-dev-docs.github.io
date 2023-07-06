@@ -45,7 +45,7 @@ jobs:
         run: |
           git config --local user.email "namnv@younetgroup.com"
           git config --local user.name "jacky158"
-          git add . docs -f
+          git add docs -f
           git commit -m "ci: update docs"
           git push
 
