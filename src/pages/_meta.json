@@ -5,6 +5,9 @@
   "mobile": "Mobile",
   "---": { "type": "separator" },
   "new-app": "New App",
-  "new-theme": "New Theme",
+  "new-theme": {
+    "title": "New Theme",
+    "display": "hidden"
+  },
   "new-language": "New Language"
 }

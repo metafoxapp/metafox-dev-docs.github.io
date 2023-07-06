@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "yarn build && mkdir -p docs && cp -rf out/* docs && cp -rf externals/* docs && gh-pages -d docs -b gh-pages -t true"
   },
   "dependencies": {
     "@types/node": "20.4.0",
@@ -20,5 +21,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }
