@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "yarn build && mkdir -p docs && rm -rf docs/_next && cp -rf out/* docs && cp -rf externals/* docs && gh-pages -d docs -b gh-pages -t true"
+    "deploy": "yarn build && mkdir -p docs && rm -rf docs/_next && cp -rf out/ docs && cp -rf externals/ docs && gh-pages -d docs -b gh-pages -t true"
   },
   "dependencies": {
     "@types/node": "20.4.0",

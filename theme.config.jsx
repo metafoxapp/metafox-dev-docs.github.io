@@ -33,7 +33,7 @@ const config = {
       <span>
         Copyright © 2023 &nbsp;
         <a href="https://phpfox.com" target="_blank">
-          YouNet Social
+          phpFox LLC
         </a>
         . All rights reserved.
       </span>
