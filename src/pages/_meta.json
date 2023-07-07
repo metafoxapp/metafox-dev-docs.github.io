@@ -3,11 +3,38 @@
   "backend": "Backend",
   "frontend": "Frontend",
   "mobile": "Mobile",
-  "---": { "type": "separator" },
+  "---1": { "type": "separator" },
   "new-app": "New App",
   "new-theme": {
     "title": "New Theme",
     "display": "hidden"
   },
-  "new-language": "New Language"
+  "new-language": "New Language",
+  "---2": { "type": "separator" },
+  "rest-api": {
+    "title": "RESTful API",
+    "href": "https://dev-docs.metafoxapp.com/rest-api",
+    "newWindow": true
+  },
+  "php-api": {
+    "title": "Class References",
+    "href": "https://dev-docs.metafoxapp.com/php-api",
+    "newWindow": true
+  },
+  "---3": { "type": "separator" },
+  "community": {
+    "title": "Community",
+    "href": "https://community.phpfox.com/forum",
+    "newWindow": true
+  },
+  "demo": {
+    "title": "Demo",
+    "href": "https://demo.metafox.app",
+    "newWindow": true
+  },
+  "store": {
+    "title": "Store",
+    "href": "https://appstore.phpfox.com",
+    "newWindow": true
+  }
 }
