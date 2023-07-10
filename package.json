@@ -10,6 +10,8 @@
     "deploy": "yarn build && mkdir -p docs && rm -rf docs/_next && cp -rf out/ docs && cp -rf externals/ docs && gh-pages -d docs -b gh-pages -t true"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@types/node": "20.4.0",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
@@ -23,6 +25,7 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
+    "@mui/material": "^5.13.7",
     "gh-pages": "^5.0.0"
   }
 }

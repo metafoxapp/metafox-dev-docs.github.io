@@ -9,6 +9,10 @@
     "title": "New Theme",
     "display": "hidden"
   },
+  "export-package": {
+    "title": "Export Package",
+    "display": "hidden"
+  },
   "new-language": "New Language",
   "---2": { "type": "separator" },
   "rest-api": {

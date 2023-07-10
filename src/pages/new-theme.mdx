@@ -1,11 +1,262 @@
-# New Theme
+# Theme
 
-## Create Theme
+MetaFox theme is based on [Material UI](https://mui.com/material-ui/), a beautiful by design and features a suite of
+customization options that make it easy to implement your own custom design system.
 
-## Custom Template
+MetaFox theme defines styles and layouts, in which styles indicate color palette, typography
 
-## Site Blocks
+## Create A New Theme
 
-## SxProps
+Using `metafox-cli` tool to create a new theme and install to front end workbox.
+
+Open terminal and navigate to frontend project root.
+
+```bash
+npx metafox-cli
+```
+
+Example to create new theme chocolate and associate package @foxtheme/chocolate.
+
+```
+✔ What do you need? · Create new app
+✔ What is vendor/company name? · foxdev
+✔ What is theme id? · chocolate
+Generating theme files ...
+Updating workspace ...
+Reloading workspace ...
+Generated theme chocolate located at ./packages/foxdev/theme-chocolate
+Restart frontend terminal to apply changes.
+```
+
+Restart frontend terminal then refresh the browser to see changes.
+
+### Customize Styling
+
+Styling is defined **src/styles.json**, includes
+- [palette](#palette) -  used to modify colors
+- [typography](#typography) - used to modify css font properties
+- [shape](#shape) - used to modify border radius system
+
+
+#### Palette
+
+**palette.primary**
+
+```json
+{
+  "primary": {
+     "main": "#2682d5",
+     "light": "#4a97dc",
+     "dark": "#0a71cd"
+  }
+}
+```
+
+Used to represent primary interface elements for a user. Modify palette primary affect to submit buttons, continue buttons, upload file button, links, selected menu items.
+
+**palette.error**
+
+Used to represent interface elements that the user should be made aware of. Modify palette error affect to error message
+
+**palette.warning**
+
+Used to represent potentially dangerous actions or important messages.
+
+**palette.success**
+
+Used to indicate the successful completion of an action that user triggered.
+
+**palette.border**
+- palette.border - border color of components
+- palette.divider - used to present color of divider component.
+
+**palette.background**
+
+```json5
+{
+  "background": {
+    "default": "#ededed",
+    "paper": "#fff",
+    "auto": "transparent"
+  }
+}
+```
+
+background.default Used to present background of your site & paper. background.default used
+
+**palette.action**
+
+**palette.text**
+
+
+#### Typography
+
+Typography indicates css font properties.
+Typography supported variant h1, h2, h3, h4, h5, h6, subtitle1, subtitle2, body1, body2, button, caption, overline.
+The following code styling for typography h1.
+
+```json
+{
+  "h1": {
+    "fontWeight": 700,
+    "fontSize": "40px",
+    "lineHeight": 1.2,
+    "letterSpacing": "0"
+  }
+}
+```
+
+#### Shape
+
+Shape indicates border radius base for styling system.
+
+```json
+{
+  "shape": {
+    "borderRadius": 0
+  }
+}
+```
+
+#### LayoutSlot
+
+Layout slots define sizes for layout slot.
+
+```json
+{
+  "layoutSlot": {
+    "background": {
+      "paper": "#f5f5f5"
+    },
+    "points": {
+      "xs1": 306,
+      "xs2": 322,
+      "xs3": 400,
+      "xs": 400,
+      "sm1": 600,
+      "sm": 720,
+      "md": 1024,
+      "lg": 1200,
+      "xl": 1920
+    }
+  }
+}
+```
+
+
+### Custom Components
+
+MetaFox theme systems allow frontend developer overrides material components by processors.
+
+#### Components.ts
+
+In order to [customize themed components](https://mui.com/material-ui/customization/theme-components/#theme-default-props). Edit `src/processors/Component.ts`
+
+The following example explain how to [customize button styles](https://mui.com/material-ui/api/button/#props)
+
+```ts
+import { Theme,ThemedProps } from '@mui/material';
+
+export default function overridesComponents(theme: Theme): void {
+  theme.components.MuiButton = {
+    defaultProps: {
+      variant: 'contained'
+    },
+    styleOverrides: {
+      root: {
+        borderRadius: 4,
+        textTransform: 'none',
+        boxShadow: 'none',
+      }
+    }
+  };
+  // other components
+}
+```
+
+
+#### CssBaseLine.ts
+
+In order to overrides [css baseline](https://mui.com/material-ui/react-css-baseline/), edit `processors/CssBaseLine.ts`
+
+```ts
+import { Theme } from '@mui/material';
+
+export default function overridesGlobalStyles(theme: Theme) {
+  if (!theme.components) {
+    theme.components = {};
+  }
+
+  theme.components.MuiCssBaseline = {
+    styleOverrides: {
+      html: {
+        WebkitFontSmoothing: 'auto',
+        fontSize: '16px'
+      },
+      body: {
+        fontFamily: theme.fontFamily,
+        overflowX: 'hidden',
+      },
+      a: {
+        color: theme.palette.primary.main
+      }
+    }
+  }
+}
+```
+
+### Custom Site Blocks
+
+Site blocks allows developers add blocks to any templates match screen size and slot name in layout. Put block you need affected to all templates
+in `layout.siteBlocks.origin.json`.
+
+```text
+{
+  [screenSize]: [
+    {
+      "blockId": [global unique id],
+      "component": [componentName],
+      "slotName": [slotName],
+      "blockOrigin": "site",
+      "blockLayout": "none"
+    }
+  ]
+}
+```
+
+Example
+
+```json
+{
+  "small": [
+    {
+      "blockId": "appbar0",
+      "component": "core.siteBarMobileBlock",
+      "slotName": "header",
+      "blockOrigin": "site",
+      "blockLayout": "none"
+    }
+  ],
+  "large": [
+    {
+      "blockOrder": -1,
+      "component": "core.block.appbar",
+      "slotName": "header",
+      "blockId": "appbar0",
+      "blockOrigin": "site",
+      "blockLayout": "none"
+    }
+  ]
+}
+```
+
+## Theme Backend
+
+In order to allow site administrator control theme, metafox theme system require a backend php package associate with the theme.
+Open your admincp, access `/admincp/layout/theme/create`
+
+![Creat Theme](/images/create-theme.png)
 
 ## Export Theme
+
+Export metafox theme as order metafox packages, follow [export metafox package](/export-package) to export theme.

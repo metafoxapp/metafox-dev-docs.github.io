@@ -1,0 +1,81 @@
+# Export Package
+
+After development complete, you need export package to upload to [appstore.phpfox.com](https://appstore.phpfox.com/manage-packages/).
+MetaFox's clients can buy/install it directly from store.
+
+`appstore.phpfox.com` require a zip file with file contents structure.
+
+## Environment
+WARN: if your package contains frontend source code, backend server have to access to frontend source code before run export.
+
+```text
+APP_ENV="local"
+MFOX_FRONTEND_ROOT="/path/to/frontend root"
+```
+
+## Filesystem
+
+```text
+|- backend
+|   |- packages
+|       |- [vendor]
+|           |- [app name]
+|               |- composer.json
+|               |- config
+|               |- src
+|- frontend
+    |- packages
+        |- [vendor]
+            |- [app name]
+                |- package.json
+                |- tsconfig.json
+                |- src
+```
+
+Example
+
+![Export theme file](/images/export-theme-structure.png)
+
+## Manual Export
+
+Export package if you can access frontend source from backend server directly.
+
+- Create a new empty directory `export`
+- Copy frontend package to `export/frontend/packages/[vendor]/[app name]
+- Copy frontend package to `export/backend/packages/[vendor]/[app name]
+- cd export && zip export.zip -r .
+
+## AdminCP Export
+
+Clean cache then access `/admincp/app/package/browse/installed`
+
+![AdminCP Export](/images/app-export-option.png)
+
+
+## Command Export
+
+**Require if export from command line**
+
+Update backend .env
+
+```bash
+MFOX_STORE_API_TOKEN="Copy from https://appstore.phpfox.com/account-settings/"
+````
+
+Export package command
+
+```bash
+php artisan package:publish foxdev/theme-chocolate
+```
+
+Release for development channel to testing
+
+```bash
+php artisan package:publish foxdev/theme-chocolate --release
+```
+
+Release for production to testing
+
+```bash
+php artisan package:publish foxdev/theme-chocolate --release --production
+```
