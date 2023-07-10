@@ -5,44 +5,45 @@ name: Language
 
 # Language
 
-## Create a new Language pack
+## Add Language pack
 
 In this article, we will guide you step by step to create a new language pack.
 
-Firstly, please go to **AdminCP > Apps** and click on the **Add Language** button. The, follow wizard and fill the info of your language pack. For example, to create a French language pack, you can use the language code as `fr` , Vendor name as _Company_ and App Name as _French Pack_.
+Firstly, please go to **AdminCP > Localize** and click on the **Add Language** button. The, follow wizard and fill the info of your language pack. For example, to create a French language pack, you can use the language code as `fr` , Vendor name as __foxdev__ and App Name as _French Pack_.
 
-On the server, the `packages/company/french-pack/language/fr` directory will be generated automatically. Its subdirectories contain namespaced and grouped translations. And, `_root` directory contains no namespaced translations.
+Fill the form as following
 
-Let's go to `packages/company/french-pack/language/fr` directory and dive deeper into `activity/permisson.php` file which contains phrases of _permissions_ in _Activity_ app
+![Add Language pack](/images/add-language-pack.png)
 
-```php
-<?php
- /* this is auto generated file */
- return [
-    'can_can_purchase_sponsor_feed' => 'Activity Feed Can Purchase Sponsor Permission',
-    'can_can_sponsor_feed_feed' => 'Activity Feed Can Sponsor Feed Permission',
-    'can_create_activity_post' => 'Activity Post Create Permission',
-    'can_create_activity_snooze' => 'Activity Snooze Create Permission',
-    'can_create_feed' => 'Activity Feed Create Permission',
-    'can_delete_activity_post' => 'Activity Post Delete Permission',
-    'can_delete_activity_snooze' => 'Activity Snooze Delete Permission',
-    'can_delete_feed' => 'Activity Feed Delete Permission',
-    'can_hide_feed' => 'Activity Feed Hide Permission',
-    'can_moderate_activity_post' => 'Activity Post Moderate Permission',
-    'can_moderate_activity_snooze' => 'Activity Snooze Moderate Permission',
-    'can_moderate_feed' => 'Activity Feed Moderate Permission',
-    'can_update_activity_post' => 'Activity Post Update Permission',
-    'can_update_activity_snooze' => 'Activity Snooze Update Permission',
-    'can_update_feed' => 'Activity Feed Update Permission',
-    'can_view_activity_post' => 'Activity Post View Permission',
-    'can_view_activity_snooze' => 'Activity Snooze View Permission',
-    'can_view_feed' => 'Activity Feed View Permission'
-];
-```
+On the server, the `packages/foxdev/lang-fr` directory will be generated automatically.
 
-Now, you can update phrase values for _French_ language with any text editor tool. You can also refer to [Example Translation](/new-app/#translation) for more details.
+## Edit Phrases
 
-To keep your language pack easy to maintain, please do not add multiple languages in to single language pack.
+Go to "Language" then choose "Export Phrase" from "French" as following image. Export phrases give you a translation file in csv format.
+
+![Edit phrases](/images/export-language-phrases.png)
+
+
+## Translate Phrase
+
+Open csv file by editor tool which support csv format Etc: Excel, Google Sheets, ...
+
+- key: the phrase id
+- locale: the locale of phrase
+- package: the package associate with phrase.
+- origin_text: Original phrase in english
+- text: actual translation you have to translate
+
+Note that you have not to change key, locale, package, and original_text. Add your translation to `text` and keep others.
+
+![Translate Phrase](/images/translate-phrases.png)
+
+
+# Import Phrases
+
+After translation, export the result to csv file then import to the server again.
+
+![Import Phrases](/images/import-phrases.png)
 
 ## Export Language
 
