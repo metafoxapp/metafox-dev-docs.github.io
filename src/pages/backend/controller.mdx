@@ -7,7 +7,7 @@ route: /backend/controller
 
 # Controller
 
-Controllers can help group related request handling logic into a single class. *Controller* classes are located under `src\Http\Controllers` directory within your package directory. 
+Controllers can help group related request handling logic into a single class. *Controller* classes are located under `src\Http\Controllers` directory within your package directory.
 
 Here is the directory structure of the `metafox\blog` app
 
@@ -17,7 +17,7 @@ packages/
     blog/
       src/
         Http/
-          Controllers/             
+          Controllers/
             Api/                   // Contains API Gateway classes
               BlogController.php
               CategoryController.php
@@ -26,7 +26,7 @@ packages/
                 CategoryController.php
               v2/                  // Contains Controller classes for certain version
                 BlogController.php
-             
+
 ```
 
 Next step, we are going to take a deeper look into the *Gateway* class, the `BlogController` at `src/Http/Controllers/Api/BlogController.php`, which is extended from the abstract class `GatewayController`,
@@ -80,7 +80,7 @@ For example with the route `/api/v2/blog/18`, routing resolves `MetaFox\Blog\Htt
 
 ## API Controller
 
-In this section, we will see how the *Controller* classes of certain API version are defined for main action controllers. 
+In this section, we will see how the *Controller* classes of certain API version are defined for main action controllers.
 
 Below is the sample `BlogController` class of version `v1`. This class is located under `src/Http/Controllers/Api/v1/BlogController.php`
 
@@ -137,4 +137,3 @@ packages/
 You can read more about Laravel Docs about [HTTP Request](https://laravel.com/docs/9.x/requests) and [HTTP Responses](https://laravel.com/docs/9.x/responses).
 
 
-[Next Chapter: Eloquent](/backend/eloquent)

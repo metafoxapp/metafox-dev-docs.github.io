@@ -85,4 +85,3 @@ $response = app('events')->dispatch('search.updated', [$model], $bail=true);
 
 In the above sample code, with `$bail=true` parameter, at the first time a listener returns not-null value, the dispatcher will stop running remaining registered *Listener* and returns to `$response` value.
 
-[Next Chapter](/backend/content)
