@@ -67,44 +67,63 @@ resources/                   :
 
 ```json
 {
-  "name": "metafox/blog",
-  "version": "1.0.0",
-  "description": "Allows user posting blogs for MetaFox platform.",
-  "authors": [
-    {
-      "name": "MetaFox",
-      "email": "dev@phpfox.com",
-      "homepage": "https://www.phpfox.com/"
+    "name": "metafox/video",
+    "version": "5.0.7",
+    "description": "",
+    "authors": [
+        {
+            "name": "phpFox",
+            "email": "dev@phpfox.com",
+            "homepage": "https://www.phpfox.com"
+        }
+    ],
+    "extra": {
+        "metafox": {
+            "core": false,
+            "alias": "video",
+            "asset": "video",
+            "namespace": "MetaFox\\Video",
+            "path": "packages/metafox/video",
+            "title": "Video",
+            "internalAdminUrl": "/video/setting",
+            "providers": [
+                "MetaFox\\Video\\Providers\\PackageServiceProvider"
+            ],
+            "frontend": {
+                "@metafox/video": "*"
+            },
+            "frontendPaths": [
+                "packages/metafox/video"
+            ],
+            "require": {
+                "metafox/core": "5.1.3 - 5.1.4"
+            },
+            "aliases": {
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "MetaFox\\Video\\": "src/"
+        }
+    },
+    "require": {
+        "php-ffmpeg/php-ffmpeg": "^1.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MetaFox\\Video\\": "",
+            "MetaFox\\Video\\Tests\\": "tests/"
+        }
     }
-  ],
-  "extra": {
-    "metafox": {
-      "path": "packages/metafox/blog",
-      "nameAlias": "blog",
-      "nameStudly": "Blog",
-      "namespace": "MetaFox\\Blog",
-      "internalUrl": "/blog",
-      "internalAdminUrl": "/admincp/setting/edit/blog",
-      "providers": ["MetaFox\\Blog\\Providers\\BlogServiceProvider"],
-      "aliases": {}
-    }
-  },
-  "require": {},
-  "require-dev": {},
-  "autoload": {
-    "psr-4": {
-      "MetaFox\\Blog\\": "src/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "MetaFox\\Blog\\Tests\\": "tests/"
-    }
-  }
 }
 ```
 
-`name`: The name of the app package. It consists of vendor name and project name, separated by a slash (/) 
+### Base Information
+
+#### Name
+
+`name`: The name of the app package. It consists of vendor name and project name, separated by a slash (/)
 
 For examples:
 
@@ -113,7 +132,10 @@ For examples:
 
 The app name MUST be *lowercase* and consist of words separated by `-`, `.` or `_`. The complete name should match the regular expression `^[a-z0-9]([_.-]?[a-z0-9]+)_/[a-z0-9](<([_.]?|-{0,2})[a-z0-9]+>)\_\$`.
 
-`description`: A short description of the app package. Shoule be a one-line message.
+#### Description
+`description`: A short description of the app package. Should be a one-line message.
+
+#### Version
 
 `version`: a string specifing the version of the app package. In most cases, this field is not required and can be omitted (see below).
 
@@ -127,15 +149,24 @@ Here are some examples of valid values for `versions`
 - 1.0.0-alpha3
 - 1.0.0-beta2
 
+#### Authors
+
 `authors`: Info of the authors of the package. You can specify multiple `author` objects here. An `author` object can have following properties:
 
 - `name`: The author's name. Usually their real name.
 - `email`: The author's email address.
 - `homepage`: URL to the author's website.
 
+#### Require
+
 `require`: Map of packages required by this package. The app package will not be installed unless all requirements are met.
 
+#### Require-Dev
+
 `require-dev`: Map of packages required for developing this package, or running tests, etc. The dev requirements of the root package are installed by default. Both `install` and `update` commands support the `--no-dev` option to prevent dev dependencies from being installed.
+
+
+#### Autoload
 
 `autoload.psr-4`: Under the psr-4 key you can define a mapping from namespaces to paths relative to the package root. When autoloading a class like `Foo\\Bar\\Baz`, and a namespace prefixed `Foo\\` are pointed to a directory `src/`, the autoloader will look for a file named `src/Bar/Baz.php` and include it if existing. Note that as opposed to the older PSR-0 style, the prefix `(Foo\\)` is not present in the file path.
 
@@ -172,16 +203,84 @@ For example:
 }
 ```
 
-`extra.metafox.path`: The package source under root application. For example: `packages/metafox/blog`
+### MetaFox
 
-`extra.metafox.alias`: The alias name of your app package. For example, you may prefer to use an alias name `blog` rather than fully name `metafox/blog`.
+MetaFox framework picks `extra.metafox` section for installation, exporting, upgrading, etc ...
 
-`extra.metafox.namespace`: The root namespace of the package. It must use trailing backslashes with `\\`. For example: `MetaFox\\Blog`
+Example of extra.metafox
 
-`extra.metafox.internalUrl`: In most cases, it is home page of the app package in *Frontend* site.
+```json
+{
+  "extra": {
+      "metafox": {
+            "core": false,
+            "alias": "video",
+            "asset": "video",
+            "namespace": "MetaFox\\Video",
+            "path": "packages/metafox/video",
+            "title": "Video",
+            "internalAdminUrl": "/video/setting",
+            "providers": [
+                "MetaFox\\Video\\Providers\\PackageServiceProvider"
+            ],
+            "frontend": {
+                "@metafox/video": "*"
+            },
+            "frontendPaths": [
+                "packages/metafox/video"
+            ],
+            "require": {
+                "metafox/core": "5.1.3 - 5.1.4"
+            },
+            "aliases": {
+            }
+        }
+  }
+}
 
-`extra.metafox.internalAdminUrl`: Similar to `internalUrl` but for *AdminCP* 
+```
 
-`extra.metafox.providers`: The array of fully Laravel provider classes, for futher information read out [Service Provider](https://laravel.com/docs/9.x/providers)
+#### metafox.path
+
+`extra.metafox.path`  is **required**. Used to indicate backend package source under root application. For example: `packages/metafox/blog`
+
+#### metafox.alias
+
+`extra.metafox.alias`  is **required**. Used to indicate the alias name of your app package. For example, you may prefer to use an alias name `blog` rather than fully name `metafox/blog`.
+
+#### metafox.namespace
+
+`extra.metafox.namespace` is **required**. Used to indicate the root namespace of the package. It must use trailing backslashes with `\\`. For example: `MetaFox\\Blog`
+
+#### metafox.internalAdminUrl
+
+`extra.metafox.internalAdminUrl`  is **required**. Used to indicate where to navigate when administrator click on the app in the AdminCP area. if this field is empty.
+
+The app will not show in the listing.
+
+#### metafox.frontend
+
+`extra.metafox.frontend` is _optional_. Used to indicate frontend end packages.
+
+#### metafox.frontendPaths
+
+`extra.metafox.frontendPaths` is _optional_. Used to indicate frontend paths when developer [export packages](/export-package)
+
+#### metafox.peerDependencies
+
+`extra.metafox.peerDependencies` is _optional_. Used to indicate peer dependencies backend packages when developer [export packages](/export-package).
+
+The packages listed in peerDependencies comes with single exported file. It's helpful for developer release a product with multiple packages dependencies.
+
+```json
+{
+  "peerDependencies": ["metafox/payment-helpers"]
+}
+```
+
+
+#### metafox.providers
+
+`extra.metafox.providers` is _optional_. The array of fully Laravel provider classes, for futher information read out [Service Provider](https://laravel.com/docs/9.x/providers)
 
 [Next Chapter](/backend/routing)
