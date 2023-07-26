@@ -1,4 +1,5 @@
 {
+  "installation": "Installation",
   "category": "Category",
   "commands": "Commands",
   "content": "Content",
@@ -8,7 +9,6 @@
   "event-list": "Support Events",
   "event": "Event",
   "form": "Form Builder",
-  "installation": "Installation",
   "mailer": "Mailer",
   "package": "Package",
   "routing": "Routing",

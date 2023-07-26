@@ -24,6 +24,16 @@
     "href": "https://dev-docs.metafoxapp.com/rest-api",
     "newWindow": true
   },
+  "postman": {
+    "title": "Postman Collection",
+    "href": "https://dev-docs.metafoxapp.com/rest-api/collection.json",
+    "newWindow": true
+  },
+  "open-api": {
+    "title": "OpenAPI Spec",
+    "href": "https://dev-docs.metafoxapp.com/rest-api/openapi.yaml",
+    "newWindow": true
+  },
   "php-api": {
     "title": "Class References",
     "href": "https://dev-docs.metafoxapp.com/php-api",
