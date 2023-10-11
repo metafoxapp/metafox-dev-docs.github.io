@@ -1,17 +1,19 @@
 {
   "installation": "Installation",
-  "category": "Category",
+  "structure": "Directory Structure",
   "commands": "Commands",
-  "content": "Content",
+  "package": "Package",
   "controller": "Controller",
-  "datagrid": "Datagrid",
   "eloquent": "Eloquent",
-  "event-list": "Support Events",
+  "datagrid": "Datagrid",
+  "content": "Content",
+  "category": "Category",
   "event": "Event",
+  "event-list": "Support Events",
   "form": "Form Builder",
   "mailer": "Mailer",
-  "package": "Package",
   "routing": "Routing",
-  "structure": "Directory Struture",
-  "interfaces": "Interfaces"
+  "interfaces": "Interfaces",
+  "load-reduce": "Load Reduce",
+  "octane": "Octane"
 }

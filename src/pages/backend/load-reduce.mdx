@@ -1,0 +1,182 @@
+# Load Reduce
+
+Reducing number of database queries using array cache (cache lifetime within request lifecycle).
+
+## Register
+
+Register reducer
+
+```php
+class PackageServiceProvider extends ServiceProvider
+{
+
+    /**
+     * Register the service provider.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->callAfterResolving('reducer', function ($reducer) {
+            $reducer->register([
+                \MetaFox\Saved\Support\LoadMissingIsSaved::class,
+            ]);
+        });
+    }
+}
+
+```
+
+## Sample
+
+Using union to pick data
+
+```php
+<?php
+
+namespace MetaFox\Saved\Support;
+
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
+use MetaFox\Platform\Contracts\HasSavedItem;
+use MetaFox\Platform\Contracts\User;
+use MetaFox\Platform\LoadReduce\Reducer;
+
+class LoadMissingIsSaved
+{
+    /**
+     * @param  User       $context
+     * @param  Reducer    $reducer
+     * @return array|null
+     */
+    public function after($context, $reducer): ?array
+    {
+        $userId = $context?->userId();
+        $items  = $reducer->entities()
+            ->filter(fn ($x) => $x instanceof HasSavedItem && $x->entityType() !== 'feed')
+            ->map(fn ($x) => [$x->entityType(), $x->entityId()]);
+
+        if ($items->isEmpty()) {
+            return null;
+        }
+
+        $key = fn ($type, $id) => sprintf('saved::exists(user:%s,%s:%s)', $userId, $type, $id);
+
+        $data = $items->reduce(function ($carry, $x) use ($key) {
+            $carry[$key($x[0], $x[1])] = false;
+
+            return $carry;
+        }, []);
+
+        /** @var Builder $query */
+        $query = $items->map(function ($x) use ($userId) {
+            return DB::table('saved_items')
+                ->select(['item_id', 'item_type'])
+                ->where([
+                    'user_id'   => $userId,
+                    'item_type' => $x[0],
+                    'item_id'   => $x[1],
+                ])->limit(1);
+        })->reduce(function ($carry, $x) {
+            return $carry ? $carry->union($x) : $x;
+        });
+
+        return $query->get()
+            ->reduce(function ($carry, $x) use ($key) {
+                $carry[$key($x->item_type, $x->item_id)] = true;
+
+                return $carry;
+            }, $data);
+    }
+}
+```
+
+Check is saved
+
+```php
+class IsSavedItem implements PolicyRuleInterface
+{
+    public function check(string $entityType, User $user, $resource, $newValue = null): ?bool
+    {
+        if (!$resource instanceof HasSavedItem) {
+            return false;
+        }
+
+        return LoadReduce::remember(
+            sprintf('saved::exists(user:%s,%s:%s)', $user->userId(), $resource->entityType(), $resource->entityId()),
+            fn () => resolve(SavedRepositoryInterface::class)->checkIsSaved(
+                $user->userId(),
+                $resource->entityId(),
+                $resource->entityType()
+            )
+        );
+    }
+}
+```
+
+## Best practise
+
+```php
+
+// DON'T use eager loading for finding one. It's can duplicate query.
+$blog = $this
+            ->with(['user', 'userEntity', 'categories', 'activeCategories', 'attachments'])
+            ->find($id);
+
+```
+
+## core_item_statstitic
+
+Sample migration total pending comments
+
+```sql
+INSERT INTO core_item_statistics (item_id, item_type)
+SELECT A.item_id, A.item_type
+FROM comments as A
+         LEFT JOIN core_item_statistics as B
+                   ON A.item_id = B.item_id AND A.item_type = B.item_type
+WHERE B.item_type is null
+GROUP BY A.item_id, A.item_type;
+```
+
+postgres
+
+```sql
+WITH B as (SELECT item_id, item_type, count(*) as aggregate
+           FROM comments
+           WHERE is_approved = 0
+             AND parent_id =0
+           GROUP BY item_id, item_type)
+UPDATE core_item_statistics as A
+SET total_pending_comment = B.aggregate
+FROM B
+WHERE B.item_id = A.item_id
+  AND B.item_type = A.item_type;
+```
+
+MySql
+
+```sql
+UPDATE core_item_statistics A
+INNER JOIN (
+    select item_id, item_type, count(*) as aggregate
+           from comments
+           where is_approved=0 and parent_id = 0
+           group by item_id, item_type
+) as B ON(B.item_id = A.item_id and B.item_type=A.item_type)
+SET A.total_pending_comment = B.aggregate
+```
+
+Depends on database driver to run migration scripts
+
+```php
+use \Illuminate\Support\Facades\DB;
+
+$driver = DB::getDriverName();
+
+if ($driver == 'pgsql') {
+  DB::statement($sql)
+} elseif ($driver == 'mysql') {
+  $sql;
+}
+```

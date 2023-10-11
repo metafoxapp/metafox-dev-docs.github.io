@@ -1,0 +1,56 @@
+# Performance
+
+MetaFox is based on laravel framework, take a look over request lifecycle. By default laravel bootstrap process
+requires two many files & services, in default packages there are ~ 1300 files and 130 services need to register and bootstrap.
+
+## Request Lifecycle
+
+![laravel request lifecycle](/images/laravel-request-lifecycle-01.png)
+
+![laravel request lifecycle](/images/laravel-request-lifecycle-02.png)
+
+![laravel request lifecycle](/images/laravel-request-lifecycle-03.png)
+
+## FPM Server
+
+![fpm container](/images/perf-fpm-container.jpeg)
+
+## Octane Server
+
+![octane server](/images/perf-octane-server.png)
+
+Compare FPM Vs Octane
+
+wrk -c100 -t4 "htttp://api.metafox.test/me"
+
+![fpm](/images/fpm-benmach.png)
+
+![octane](/images/octane-benmach.png)
+
+## Best Practise
+
+### Dependency Injection
+
+https://laravel.com/docs/10.x/octane#configuration-repository-injection
+
+### register_shutdown_function
+
+register_shutdown_function => Lifecycle::onRequestTerminated
+
+### Memory leak
+
+```php
+/**
+ * Handle an incoming request.
+ */
+public function index(Request $request): array
+{
+    Service::$data[] = Str::random(10);
+
+    return [
+        // ...
+    ];
+}
+php
+
+```
