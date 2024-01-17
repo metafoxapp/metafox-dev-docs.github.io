@@ -10,9 +10,9 @@ Eloquent is an object-relational mapper (ORM) supported by default in Laravel fr
 
 ## Migrations
 
-*Migrations*, like version control for your database, allow your team to define and share the application's database schema definitions. With database migrations, you no longer have to tell teammates to manually update required changes in their local database schema after pulling certain commits from source control.
+_Migrations_, like version control for your database, allow your team to define and share the application's database schema definitions. With database migrations, you no longer have to tell teammates to manually update required changes in their local database schema after pulling certain commits from source control.
 
-*Migrations* classes are under `src/Database/Migrations` directory.
+_Migrations_ classes are under `src/Database/Migrations` directory.
 
 ```text
 packages/metafox/blog/src/: Package source root
@@ -22,7 +22,7 @@ packages/metafox/blog/src/: Package source root
       2021_02_05_034457_CreateCategoryTables.php  : Migrations for category schema
 ```
 
-Each *Migrations* class is child of `Illuminate\Database\Migrations\Migration` class, and contains 2 `up` and `down` methods. Let's see the *Migration* `CreateBlogTables` class below
+Each _Migrations_ class is child of `Illuminate\Database\Migrations\Migration` class, and contains 2 `up` and `down` methods. Let's see the _Migration_ `CreateBlogTables` class below
 
 ```php
 <?php
@@ -32,7 +32,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBlogTables extends Migration
+return new class () extends Migration
 {
     /**
      * Run the migrations.
@@ -61,7 +61,7 @@ class CreateBlogTables extends Migration
     {
         DbTableHelper::dropStreamTables('blog');
     }
-}
+};
 ```
 
 **MetaFox** platform is shipped with [DbTableHelper](/php-api/classes/MetaFox-Platform-Support-DbTableHelper.html), to support creating platform schemas easily and quickly.
@@ -70,8 +70,8 @@ For more info, please read [Laravel migrations](https://laravel.com/docs/9.x/mig
 
 ## Seeders
 
-Each package includes the ability to seed your database with default data using *Seeder* classes.
-All package *Seeder* classes are stored in the `src/Database/Seeders` directory. By default, a `DatabaseSeeder` class is defined for you. With this class, you may use the `call` method to run other *Seeder* classes. It will allow you to control the seeding order.
+Each package includes the ability to seed your database with default data using _Seeder_ classes.
+All package _Seeder_ classes are stored in the `src/Database/Seeders` directory. By default, a `DatabaseSeeder` class is defined for you. With this class, you may use the `call` method to run other _Seeder_ classes. It will allow you to control the seeding order.
 
 ```php
 <?php
@@ -94,8 +94,8 @@ Please read [Define Laravel Model Factories](https://laravel.com/docs/9.x/databa
 
 ## Observers
 
-If your app is listening for many events on a given *Model*, you may use *Observer* to group all of your listeners into a single class.
-*Observer* classes have method names reflecting on the *Eloquent* events you wish to listen to. Each of these methods receives the affected *Model* as their only one argument.
+If your app is listening for many events on a given _Model_, you may use _Observer_ to group all of your listeners into a single class.
+_Observer_ classes have method names reflecting on the _Eloquent_ events you wish to listen to. Each of these methods receives the affected _Model_ as their only one argument.
 
 ```php
 <?php
@@ -174,8 +174,8 @@ class BlogObserver
 
 ```
 
-For performance optimization, **MetaFox** does not support automatically discovering *Observers*, you must register *Observers*
-within the package *ServiceProvider* class. Below is the sample `BlogServiceProvider` class
+For performance optimization, **MetaFox** does not support automatically discovering _Observers_, you must register _Observers_
+within the package _ServiceProvider_ class. Below is the sample `BlogServiceProvider` class
 
 ```php
 <?php
@@ -202,11 +202,10 @@ class BlogServiceProvider extends ServiceProvider
 }
 ```
 
-For more info about *Observers*, please visit [Laravel Model Observers](https://laravel.com/docs/9.x/eloquent#observers)
+For more info about _Observers_, please visit [Laravel Model Observers](https://laravel.com/docs/9.x/eloquent#observers)
 
-For *Events* list, please read [Appendix - Event list](/backend/event-list)
+For _Events_ list, please read [Appendix - Event list](/backend/event-list)
 
 ## Repository
 
 The main idea to use Repository Pattern in a Laravel is to create a bridge between models and controllers.
-

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/base.css">
             <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/template.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous" />
@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-highlight/prism-line-highlight.css">
                 <script src="https://cdn.jsdelivr.net/npm/fuse.js@3.4.6"></script>
         <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
+        <script src="js/template.js"></script>
         <script src="js/search.js"></script>
         <script defer src="js/searchIndex.js"></script>
     </head>
@@ -52,7 +53,7 @@
 <label class="phpdocumentor-sidebar__menu-icon" for="sidebar-button">
     Menu
 </label>
-<aside class="phpdocumentor-column -four phpdocumentor-sidebar">
+<aside class="phpdocumentor-column -three phpdocumentor-sidebar">
                     <section class="phpdocumentor-sidebar__category">
             <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
@@ -169,8 +170,9 @@
     </section>
 </aside>
 
-            <div class="phpdocumentor-column -eight phpdocumentor-content">
-                    <ul class="phpdocumentor-breadcrumbs">
+            <div class="phpdocumentor-column -nine phpdocumentor-content">
+                                <section>
+                                        <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/metafox.html">MetaFox</a></li>
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/metafox-core.html">Core</a></li>
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/metafox-core-support.html">Support</a></li>
@@ -197,6 +199,11 @@
     
     </h2>
 
+<div class="phpdocumentor-label-line">
+
+
+</div>
+
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php"><a href="files/packages-metafox-core-src-support-filesystem-image-plugins-resizeimage.html"><abbr title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php">ResizeImage.php</abbr></a></abbr>
     :
@@ -205,142 +212,328 @@
     </aside>
 
         
-    <section class="phpdocumentor-description"></section>
 
 
 
-
-
-
-<h3 id="interfaces_class_traits">
-    Interfaces, Classes, Traits and Enums
-    <a href="#interfaces_class_traits" class="headerlink"><i class="fas fa-link"></i></a>
-</h3>
-
-<dl class="phpdocumentor-table-of-contents">
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/MetaFox-Platform-Contracts-ResizeImageInterface.html"><abbr title="\MetaFox\Platform\Contracts\ResizeImageInterface">ResizeImageInterface</abbr></a></dt>
-        <dd></dd>
-    
-    
-    
-    </dl>
 
 
 <h3 id="toc">
     Table of Contents
-    <a href="#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+
 </h3>
 
+
+
+    <h4 id="toc-interfaces">
+        Interfaces
+        <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#toc-interfaces" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <dl class="phpdocumentor-table-of-contents">
+                    <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/MetaFox-Platform-Contracts-ResizeImageInterface.html"><abbr title="\MetaFox\Platform\Contracts\ResizeImageInterface">ResizeImageInterface</abbr></a></dt>    </dl>
+
+
+
+
+<h4 id="toc-constants">
+    Constants
+    <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#toc-constants" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
 <dl class="phpdocumentor-table-of-contents">
-                    <dt class="phpdocumentor-table-of-contents__entry -property -private">
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#constant_SIZE">SIZE</a>
+    <span>
+        &nbsp;= [&#039;75&#039;, &#039;100&#039;, &#039;150&#039;, &#039;240&#039;, &#039;500&#039;, &#039;1024&#039;]                            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#constant_SQUARE_SIZE">SQUARE_SIZE</a>
+    <span>
+        &nbsp;= [&#039;50x50&#039;, &#039;120x120&#039;, &#039;200x200&#039;]                            </span>
+</dt>
+
+    </dl>
+
+
+<h4 id="toc-properties">
+    Properties
+    <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_extra">$extra</a>
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_fileName">$fileName</a>
     <span>
                         &nbsp;: string|null            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_image">$image</a>
     <span>
                         &nbsp;: mixed            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_imageHeight">$imageHeight</a>
     <span>
                         &nbsp;: int            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_imageWidth">$imageWidth</a>
     <span>
                         &nbsp;: int            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_itemType">$itemType</a>
     <span>
                         &nbsp;: string|null            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_options">$options</a>
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_originalName">$originalName</a>
     <span>
                         &nbsp;: string|null            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_path">$path</a>
     <span>
-                        &nbsp;: string            </span>
+                        &nbsp;: mixed|string            </span>
 </dt>
 <dd>path to.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_serverId">$serverId</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: mixed|string            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_sizes">$sizes</a>
     <span>
-                        &nbsp;: array&lt;string|int, mixed&gt;            </span>
+                        &nbsp;: array&lt;string|int, int&gt;            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_squareSizes">$squareSizes</a>
     <span>
-                        &nbsp;: array&lt;string|int, mixed&gt;            </span>
+                        &nbsp;: array&lt;string|int, int&gt;            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_user">$user</a>
     <span>
                         &nbsp;: <a href="classes/MetaFox-Platform-Contracts-Entity.html"><abbr title="\MetaFox\Platform\Contracts\Entity">Entity</abbr></a>|null            </span>
 </dt>
-<dd></dd>
 
-                <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    </dl>
+
+<h4 id="toc-methods">
+    Methods
+    <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_createFile">createFile()</a>
+    <span>
+                                &nbsp;: <a href="classes/MetaFox-Storage-Models-StorageFile.html"><abbr title="\MetaFox\Storage\Models\StorageFile">StorageFile</abbr></a>    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_createThumb">createThumb()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, mixed&gt;|null    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_getFileName">getFileName()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_getPrefixPath">getPrefixPath()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_getSizes">getSizes()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, string&gt;    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_getSquareSizes">getSquareSizes()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, int&gt;    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setExtra">setExtra()</a>
+    <span>
+                                &nbsp;: <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html"><abbr title="\MetaFox\Core\Support\FileSystem\Image\Plugins\ResizeImage">ResizeImage</abbr></a>    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setFileName">setFileName()</a>
+    <span>
+                                &nbsp;: <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html"><abbr title="\MetaFox\Core\Support\FileSystem\Image\Plugins\ResizeImage">ResizeImage</abbr></a>    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setImage">setImage()</a>
+    <span>
+                                &nbsp;: static    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setItemType">setItemType()</a>
+    <span>
+                                &nbsp;: $this    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setOptions">setOptions()</a>
+    <span>
+                                &nbsp;: static    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setOriginalName">setOriginalName()</a>
+    <span>
+                                &nbsp;: $this    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setPath">setPath()</a>
+    <span>
+                                &nbsp;: static    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setServerId">setServerId()</a>
+    <span>
+                                &nbsp;: <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html"><abbr title="\MetaFox\Core\Support\FileSystem\Image\Plugins\ResizeImage">ResizeImage</abbr></a>    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setSizes">setSizes()</a>
+    <span>
+                                &nbsp;: static    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setSquareSizes">setSquareSizes()</a>
+    <span>
+                                &nbsp;: self    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setUser">setUser()</a>
+    <span>
+                                &nbsp;: $this    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_getResizeSize">getResizeSize()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;|null    </span>
 </dt>
-<dd></dd>
 
-        </dl>
+    </dl>
+
 
 
 
         
+    <section class="phpdocumentor-constants">
+        <h3 class="phpdocumentor-elements__header" id="constants">
+            Constants
+            <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h3>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_SIZE">
+        SIZE
+        <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#constant_SIZE" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php"><a href="files/packages-metafox-core-src-support-filesystem-image-plugins-resizeimage.html"><abbr title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php">ResizeImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">17</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">SIZE</span>
+    = <span class="phpdocumentor-signature__default-value">[&#039;75&#039;, &#039;100&#039;, &#039;150&#039;, &#039;240&#039;, &#039;500&#039;, &#039;1024&#039;]</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_SQUARE_SIZE">
+        SQUARE_SIZE
+        <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#constant_SQUARE_SIZE" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php"><a href="files/packages-metafox-core-src-support-filesystem-image-plugins-resizeimage.html"><abbr title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php">ResizeImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">18</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">SQUARE_SIZE</span>
+    = <span class="phpdocumentor-signature__default-value">[&#039;50x50&#039;, &#039;120x120&#039;, &#039;200x200&#039;]</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+            </section>
 
         
     <section class="phpdocumentor-properties">
         <h3 class="phpdocumentor-elements__header" id="properties">
             Properties
             <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+
         </h3>
                     <article
         class="
@@ -352,6 +545,7 @@
     <h4 class="phpdocumentor-element__name" id="property_extra">
         $extra
         <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_extra" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -369,10 +563,8 @@
     <span class="phpdocumentor-signature__name">$extra</span>
      = <span class="phpdocumentor-signature__default-value">[]</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -386,6 +578,7 @@
     <h4 class="phpdocumentor-element__name" id="property_fileName">
         $fileName
         <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_fileName" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -403,10 +596,8 @@
     <span class="phpdocumentor-signature__name">$fileName</span>
      = <span class="phpdocumentor-signature__default-value">null</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -420,6 +611,7 @@
     <h4 class="phpdocumentor-element__name" id="property_image">
         $image
         <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_image" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -452,6 +644,7 @@
     <h4 class="phpdocumentor-element__name" id="property_imageHeight">
         $imageHeight
         <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_imageHeight" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -469,10 +662,8 @@
     <span class="phpdocumentor-signature__name">$imageHeight</span>
      = <span class="phpdocumentor-signature__default-value">0</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -486,6 +677,7 @@
     <h4 class="phpdocumentor-element__name" id="property_imageWidth">
         $imageWidth
         <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_imageWidth" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -503,10 +695,8 @@
     <span class="phpdocumentor-signature__name">$imageWidth</span>
      = <span class="phpdocumentor-signature__default-value">0</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -520,6 +710,7 @@
     <h4 class="phpdocumentor-element__name" id="property_itemType">
         $itemType
         <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_itemType" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -537,10 +728,8 @@
     <span class="phpdocumentor-signature__name">$itemType</span>
      = <span class="phpdocumentor-signature__default-value">null</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -554,6 +743,7 @@
     <h4 class="phpdocumentor-element__name" id="property_options">
         $options
         <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_options" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -571,10 +761,8 @@
     <span class="phpdocumentor-signature__name">$options</span>
      = <span class="phpdocumentor-signature__default-value">[&#039;visibility&#039; =&gt; &#039;public&#039;]</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -588,6 +776,7 @@
     <h4 class="phpdocumentor-element__name" id="property_originalName">
         $originalName
         <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_originalName" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -605,10 +794,8 @@
     <span class="phpdocumentor-signature__name">$originalName</span>
      = <span class="phpdocumentor-signature__default-value">null</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -622,6 +809,7 @@
     <h4 class="phpdocumentor-element__name" id="property_path">
         $path
         <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_path" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -636,7 +824,7 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type">string</span>
+        <span class="phpdocumentor-signature__type">mixed|string</span>
     <span class="phpdocumentor-signature__name">$path</span>
      = <span class="phpdocumentor-signature__default-value">&#039;photo&#039;</span></code>
 
@@ -655,6 +843,7 @@
     <h4 class="phpdocumentor-element__name" id="property_serverId">
         $serverId
         <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_serverId" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -668,7 +857,7 @@
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">mixed|string</span>
     <span class="phpdocumentor-signature__name">$serverId</span>
      = <span class="phpdocumentor-signature__default-value">&#039;photo&#039;</span></code>
 
@@ -687,6 +876,7 @@
     <h4 class="phpdocumentor-element__name" id="property_sizes">
         $sizes
         <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_sizes" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -700,7 +890,7 @@
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
+        <span class="phpdocumentor-signature__type">array&lt;string|int, int&gt;</span>
     <span class="phpdocumentor-signature__name">$sizes</span>
      = <span class="phpdocumentor-signature__default-value">self::SIZE</span></code>
 
@@ -719,6 +909,7 @@
     <h4 class="phpdocumentor-element__name" id="property_squareSizes">
         $squareSizes
         <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_squareSizes" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -732,7 +923,7 @@
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
+        <span class="phpdocumentor-signature__type">array&lt;string|int, int&gt;</span>
     <span class="phpdocumentor-signature__name">$squareSizes</span>
      = <span class="phpdocumentor-signature__default-value">self::SQUARE_SIZE</span></code>
 
@@ -751,6 +942,7 @@
     <h4 class="phpdocumentor-element__name" id="property_user">
         $user
         <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_user" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -768,10 +960,8 @@
     <span class="phpdocumentor-signature__name">$user</span>
      = <span class="phpdocumentor-signature__default-value">null</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -781,7 +971,744 @@
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
             <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+
         </h3>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_createFile">
+        createFile()
+        <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_createFile" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php"><a href="files/packages-metafox-core-src-support-filesystem-image-plugins-resizeimage.html"><abbr title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php">ResizeImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">323</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">createFile</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/MetaFox-Storage-Models-StorageFile.html"><abbr title="\MetaFox\Storage\Models\StorageFile">StorageFile</abbr></a></span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><a href="classes/MetaFox-Storage-Models-StorageFile.html"><abbr title="\MetaFox\Storage\Models\StorageFile">StorageFile</abbr></a></span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_createThumb">
+        createThumb()
+        <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_createThumb" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php"><a href="files/packages-metafox-core-src-support-filesystem-image-plugins-resizeimage.html"><abbr title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php">ResizeImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">227</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">createThumb</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$variant</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$originalId</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$forceCreate</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Closure">Closure</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callback</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|null</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$variant</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$originalId</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$forceCreate</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$callback</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Closure">Closure</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|null</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getFileName">
+        getFileName()
+        <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_getFileName" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php"><a href="files/packages-metafox-core-src-support-filesystem-image-plugins-resizeimage.html"><abbr title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php">ResizeImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">83</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getFileName</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getPrefixPath">
+        getPrefixPath()
+        <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_getPrefixPath" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php"><a href="files/packages-metafox-core-src-support-filesystem-image-plugins-resizeimage.html"><abbr title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php">ResizeImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">121</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getPrefixPath</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getSizes">
+        getSizes()
+        <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_getSizes" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php"><a href="files/packages-metafox-core-src-support-filesystem-image-plugins-resizeimage.html"><abbr title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php">ResizeImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">67</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getSizes</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, string&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, string&gt;</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getSquareSizes">
+        getSquareSizes()
+        <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_getSquareSizes" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php"><a href="files/packages-metafox-core-src-support-filesystem-image-plugins-resizeimage.html"><abbr title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php">ResizeImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">131</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getSquareSizes</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, int&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, int&gt;</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setExtra">
+        setExtra()
+        <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setExtra" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php"><a href="files/packages-metafox-core-src-support-filesystem-image-plugins-resizeimage.html"><abbr title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php">ResizeImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">96</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setExtra</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$extra</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html"><abbr title="\MetaFox\Core\Support\FileSystem\Image\Plugins\ResizeImage">ResizeImage</abbr></a></span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$extra</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html"><abbr title="\MetaFox\Core\Support\FileSystem\Image\Plugins\ResizeImage">ResizeImage</abbr></a></span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setFileName">
+        setFileName()
+        <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setFileName" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php"><a href="files/packages-metafox-core-src-support-filesystem-image-plugins-resizeimage.html"><abbr title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php">ResizeImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">76</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setFileName</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fileName</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html"><abbr title="\MetaFox\Core\Support\FileSystem\Image\Plugins\ResizeImage">ResizeImage</abbr></a></span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$fileName</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html"><abbr title="\MetaFox\Core\Support\FileSystem\Image\Plugins\ResizeImage">ResizeImage</abbr></a></span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setImage">
+        setImage()
+        <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setImage" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php"><a href="files/packages-metafox-core-src-support-filesystem-image-plugins-resizeimage.html"><abbr title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php">ResizeImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">168</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setImage</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$imageFile</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$imageFile</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">static</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setItemType">
+        setItemType()
+        <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setItemType" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php"><a href="files/packages-metafox-core-src-support-filesystem-image-plugins-resizeimage.html"><abbr title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php">ResizeImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">316</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setItemType</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$itemType</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">$this</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$itemType</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">$this</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setOptions">
+        setOptions()
+        <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setOptions" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php"><a href="files/packages-metafox-core-src-support-filesystem-image-plugins-resizeimage.html"><abbr title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php">ResizeImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">150</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setOptions</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|array&lt;string|int, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$options</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|array&lt;string|int, string&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">static</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setOriginalName">
+        setOriginalName()
+        <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setOriginalName" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php"><a href="files/packages-metafox-core-src-support-filesystem-image-plugins-resizeimage.html"><abbr title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php">ResizeImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">302</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setOriginalName</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$clientOriginalName</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">$this</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$clientOriginalName</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">$this</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setPath">
+        setPath()
+        <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setPath" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php"><a href="files/packages-metafox-core-src-support-filesystem-image-plugins-resizeimage.html"><abbr title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php">ResizeImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">114</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setPath</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$path</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$path</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">static</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setServerId">
+        setServerId()
+        <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setServerId" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php"><a href="files/packages-metafox-core-src-support-filesystem-image-plugins-resizeimage.html"><abbr title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php">ResizeImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">161</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setServerId</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$serverId</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html"><abbr title="\MetaFox\Core\Support\FileSystem\Image\Plugins\ResizeImage">ResizeImage</abbr></a></span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$serverId</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed|string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html"><abbr title="\MetaFox\Core\Support\FileSystem\Image\Plugins\ResizeImage">ResizeImage</abbr></a></span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setSizes">
+        setSizes()
+        <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setSizes" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php"><a href="files/packages-metafox-core-src-support-filesystem-image-plugins-resizeimage.html"><abbr title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php">ResizeImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">107</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setSizes</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, int&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$sizes</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$sizes</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, int&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">static</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setSquareSizes">
+        setSquareSizes()
+        <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setSquareSizes" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php"><a href="files/packages-metafox-core-src-support-filesystem-image-plugins-resizeimage.html"><abbr title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php">ResizeImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">139</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setSquareSizes</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, int&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$squareSizes</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$squareSizes</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, int&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">self</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setUser">
+        setUser()
+        <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setUser" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php"><a href="files/packages-metafox-core-src-support-filesystem-image-plugins-resizeimage.html"><abbr title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php">ResizeImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">309</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setUser</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/MetaFox-Platform-Contracts-Entity.html"><abbr title="\MetaFox\Platform\Contracts\Entity">Entity</abbr></a>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$user</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">$this</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$user</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/MetaFox-Platform-Contracts-Entity.html"><abbr title="\MetaFox\Platform\Contracts\Entity">Entity</abbr></a>|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">$this</span>
+            </section>
+
+</article>
                     <article
         class="phpdocumentor-element
             -method
@@ -791,11 +1718,12 @@
     <h4 class="phpdocumentor-element__name" id="method_getResizeSize">
         getResizeSize()
         <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_getResizeSize" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php"><a href="files/packages-metafox-core-src-support-filesystem-image-plugins-resizeimage.html"><abbr title="packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php">ResizeImage.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">187</span>
+    <span class="phpdocumentor-element-found-in__line">193</span>
 
     </aside>
 
@@ -804,8 +1732,9 @@
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">getResizeSize</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$orgWidth</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$orgHeight</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$newWidth</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$newHeight</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|null</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    <div class="phpdocumentor-label-line">
+        </div>
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -813,109 +1742,205 @@
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$orgHeight</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$newWidth</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$newHeight</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|null</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|null</span>
+            </section>
+
 </article>
             </section>
 
-        
+        <div class="phpdocumentor-modal" id="source-view">
+    <div class="phpdocumentor-modal-bg" data-exit-button></div>
+    <div class="phpdocumentor-modal-container">
+        <div class="phpdocumentor-modal-content">
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/packages/metafox/core/src/Support/FileSystem/Image/Plugins/ResizeImage.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+        </div>
+        <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
+    </div>
+</div>
+
     <script type="text/javascript">
-        function loadExternalCodeSnippets(line) {
-            Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach((pre) => {
-                var src = pre.getAttribute('data-src').replace( /\\/g, '/');
-                var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
-                var language = 'php';
+        (function () {
+            function loadExternalCodeSnippet(el, url, line) {
+                Array.prototype.slice.call(el.querySelectorAll('pre[data-src]')).forEach((pre) => {
+                    const src = url || pre.getAttribute('data-src').replace(/\\/g, '/');
+                    const language = 'php';
 
-                var code = document.createElement('code');
-                code.className = 'language-' + language;
+                    const code = document.createElement('code');
+                    code.className = 'language-' + language;
+                    pre.textContent = '';
+                    pre.setAttribute('data-line', line)
+                    code.textContent = 'Loading…';
+                    pre.appendChild(code);
 
-                pre.textContent = '';
+                    var xhr = new XMLHttpRequest();
 
-                pre.setAttribute('data-line', line)
-                code.textContent = 'Loading…';
+                    xhr.open('GET', src, true);
 
-                pre.appendChild(code);
-
-                var xhr = new XMLHttpRequest();
-
-                xhr.open('GET', src, true);
-
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState == 4) {
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState !== 4) {
+                            return;
+                        }
 
                         if (xhr.status < 400 && xhr.responseText) {
                             code.textContent = xhr.responseText;
-
                             Prism.highlightElement(code);
+                            return;
                         }
-                        else if (xhr.status >= 400) {
+
+                        if (xhr.status === 404) {
+                            code.textContent = '✖ Error: File could not be found';
+                            return;
+                        }
+
+                        if (xhr.status >= 400) {
                             code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                            return;
                         }
-                        else {
-                            code.textContent = '✖ Error: File does not exist, is empty or trying to view from localhost';
-                        }
+
+                        code.textContent = '✖ Error: An unknown error occurred';
+                    };
+
+                    xhr.send(null);
+                });
+            }
+
+            const modalButtons = document.querySelectorAll("[data-modal]");
+            const openedAsLocalFile = window.location.protocol === 'file:';
+            if (modalButtons.length > 0 && openedAsLocalFile) {
+                console.warn(
+                    'Viewing the source code is unavailable because you are opening this page from the file:// scheme; ' +
+                    'browsers block XHR requests when a page is opened this way'
+                );
+            }
+
+            modalButtons.forEach(function (trigger) {
+                if (openedAsLocalFile) {
+                    trigger.setAttribute("hidden", "hidden");
+                }
+
+                trigger.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const modal = document.getElementById(trigger.dataset.modal);
+                    if (!modal) {
+                        console.error(`Modal with id "${trigger.dataset.modal}" could not be found`);
+                        return;
                     }
-                };
+                    modal.classList.add("phpdocumentor-modal__open");
 
-                xhr.send(null);
-            });
-        }
-
-        var modals = document.querySelectorAll("[data-modal]");
-
-        modals.forEach(function (trigger) {
-            trigger.addEventListener("click", function (event) {
-                //event.preventDefault();
-                const modal = document.getElementById(trigger.dataset.modal);
-                modal.classList.add("phpdocumentor-modal__open");
-                loadExternalCodeSnippets(trigger.dataset.line)
-                const exits = modal.querySelectorAll("[data-exit-button]");
-                exits.forEach(function (exit) {
-                    exit.addEventListener("click", function (event) {
-                        event.preventDefault();
-                        modal.classList.remove("phpdocumentor-modal__open");
+                    loadExternalCodeSnippet(modal, trigger.dataset.src || null, trigger.dataset.line)
+                    const exits = modal.querySelectorAll("[data-exit-button]");
+                    exits.forEach(function (exit) {
+                        exit.addEventListener("click", function (event) {
+                            event.preventDefault();
+                            modal.classList.remove("phpdocumentor-modal__open");
+                        });
                     });
                 });
             });
-        });
+        })();
     </script>
 
     </article>
-                <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
+                                </section>
+                <section class="phpdocumentor-on-this-page__sidebar">
+                                
+    <section class="phpdocumentor-on-this-page__content">
+        <strong class="phpdocumentor-on-this-page__title">On this page</strong>
+
+        <ul class="phpdocumentor-list -clean">
+            <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
+            <li>
+                <ul class="phpdocumentor-list -clean">
+                                        <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#toc-constants">Constants</a></li>
+                                                            <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#toc-properties">Properties</a></li>
+                                                            <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#toc-methods">Methods</a></li>
+                                    </ul>
+            </li>
+                            <li class="phpdocumentor-on-this-page-section__title">Constants</li>
+                <li>
+                    <ul class="phpdocumentor-list -clean">
+                                                    <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#constant_SIZE">SIZE</a></li>
+                                                    <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#constant_SQUARE_SIZE">SQUARE_SIZE</a></li>
+                                            </ul>
+                </li>
+            
+                            <li class="phpdocumentor-on-this-page-section__title">Properties</li>
+                <li>
+                    <ul class="phpdocumentor-list -clean">
+                                                    <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_extra">$extra<a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html"></li>
+                                                    <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_fileName">$fileName<a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html"></li>
+                                                    <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_image">$image<a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html"></li>
+                                                    <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_imageHeight">$imageHeight<a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html"></li>
+                                                    <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_imageWidth">$imageWidth<a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html"></li>
+                                                    <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_itemType">$itemType<a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html"></li>
+                                                    <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_options">$options<a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html"></li>
+                                                    <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_originalName">$originalName<a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html"></li>
+                                                    <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_path">$path<a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html"></li>
+                                                    <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_serverId">$serverId<a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html"></li>
+                                                    <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_sizes">$sizes<a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html"></li>
+                                                    <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_squareSizes">$squareSizes<a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html"></li>
+                                                    <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#property_user">$user<a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html"></li>
+                                            </ul>
+                </li>
+            
+                        <li class="phpdocumentor-on-this-page-section__title">Methods</li>
+            <li>
+                <ul class="phpdocumentor-list -clean">
+                                            <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_createFile">createFile()</a></li>
+                                            <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_createThumb">createThumb()</a></li>
+                                            <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_getFileName">getFileName()</a></li>
+                                            <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_getPrefixPath">getPrefixPath()</a></li>
+                                            <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_getSizes">getSizes()</a></li>
+                                            <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_getSquareSizes">getSquareSizes()</a></li>
+                                            <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setExtra">setExtra()</a></li>
+                                            <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setFileName">setFileName()</a></li>
+                                            <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setImage">setImage()</a></li>
+                                            <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setItemType">setItemType()</a></li>
+                                            <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setOptions">setOptions()</a></li>
+                                            <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setOriginalName">setOriginalName()</a></li>
+                                            <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setPath">setPath()</a></li>
+                                            <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setServerId">setServerId()</a></li>
+                                            <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setSizes">setSizes()</a></li>
+                                            <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setSquareSizes">setSquareSizes()</a></li>
+                                            <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_setUser">setUser()</a></li>
+                                            <li><a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#method_getResizeSize">getResizeSize()</a></li>
+                                    </ul>
+            </li>
+                    </ul>
+    </section>
+
+                </section>
+                            </div>
+            <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
     <section class="phpdocumentor-search-results__dialog">
         <header class="phpdocumentor-search-results__header">
             <h2 class="phpdocumentor-search-results__title">Search results</h2>
@@ -926,7 +1951,6 @@
         </section>
     </section>
 </section>
-            </div>
         </div>
         <a href="classes/MetaFox-Core-Support-FileSystem-Image-Plugins-ResizeImage.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 

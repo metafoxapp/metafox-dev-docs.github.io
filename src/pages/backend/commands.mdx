@@ -8,7 +8,7 @@ menu: Backend
 
 In this topic, we are going to discuss about most frequently commands which can be executed on Linux terminal.
 
-We'll assume that you are familiar with Linux terminal. Firstly, please open the terminal, log in SSH to the `Backend` server, and go to the source folder of MetaFox Backend. If the MetaFox Backend is set up  with a Docker container, you can run the ```docker exec``` command to log in to the running container.
+We'll assume that you are familiar with Linux terminal. Firstly, please open the terminal, log in SSH to the `Backend` server, and go to the source folder of MetaFox Backend. If the MetaFox Backend is set up with a Docker container, you can run the `docker exec` command to log in to the running container.
 
 Here is a list of Linux commands:
 
@@ -18,8 +18,8 @@ Here is a list of Linux commands:
 php artisan list
 
 # Install fresh MetaFox site
-bash ./scripts/install.sh
+./composer metafox:install
 
 # Update MetaFox site
-php artisan metafox:update
+./composer metafox:upgrade
 ```

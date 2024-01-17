@@ -33,10 +33,10 @@ Restart frontend terminal then refresh the browser to see changes.
 ### Customize Styling
 
 Styling is defined **src/styles.json**, includes
-- [palette](#palette) -  used to modify colors
+
+- [palette](#palette) - used to modify colors
 - [typography](#typography) - used to modify css font properties
 - [shape](#shape) - used to modify border radius system
-
 
 #### Palette
 
@@ -45,9 +45,9 @@ Styling is defined **src/styles.json**, includes
 ```json
 {
   "primary": {
-     "main": "#2682d5",
-     "light": "#4a97dc",
-     "dark": "#0a71cd"
+    "main": "#2682d5",
+    "light": "#4a97dc",
+    "dark": "#0a71cd"
   }
 }
 ```
@@ -67,6 +67,7 @@ Used to represent potentially dangerous actions or important messages.
 Used to indicate the successful completion of an action that user triggered.
 
 **palette.border**
+
 - palette.border - border color of components
 - palette.divider - used to present color of divider component.
 
@@ -74,11 +75,11 @@ Used to indicate the successful completion of an action that user triggered.
 
 ```json5
 {
-  "background": {
-    "default": "#ededed",
-    "paper": "#fff",
-    "auto": "transparent"
-  }
+  background: {
+    default: "#ededed",
+    paper: "#fff",
+    auto: "transparent",
+  },
 }
 ```
 
@@ -87,7 +88,6 @@ background.default Used to present background of your site & paper. background.d
 **palette.action**
 
 **palette.text**
-
 
 #### Typography
 
@@ -143,7 +143,6 @@ Layout slots define sizes for layout slot.
 }
 ```
 
-
 ### Custom Components
 
 MetaFox theme systems allow frontend developer overrides material components by processors.
@@ -155,32 +154,31 @@ In order to [customize themed components](https://mui.com/material-ui/customizat
 The following example explain how to [customize button styles](https://mui.com/material-ui/api/button/#props)
 
 ```ts
-import { Theme,ThemedProps } from '@mui/material';
+import { Theme, ThemedProps } from "@mui/material";
 
 export default function overridesComponents(theme: Theme): void {
   theme.components.MuiButton = {
     defaultProps: {
-      variant: 'contained'
+      variant: "contained",
     },
     styleOverrides: {
       root: {
         borderRadius: 4,
-        textTransform: 'none',
-        boxShadow: 'none',
-      }
-    }
+        textTransform: "none",
+        boxShadow: "none",
+      },
+    },
   };
   // other components
 }
 ```
-
 
 #### CssBaseLine.ts
 
 In order to overrides [css baseline](https://mui.com/material-ui/react-css-baseline/), edit `processors/CssBaseLine.ts`
 
 ```ts
-import { Theme } from '@mui/material';
+import { Theme } from "@mui/material";
 
 export default function overridesGlobalStyles(theme: Theme) {
   if (!theme.components) {
@@ -190,18 +188,18 @@ export default function overridesGlobalStyles(theme: Theme) {
   theme.components.MuiCssBaseline = {
     styleOverrides: {
       html: {
-        WebkitFontSmoothing: 'auto',
-        fontSize: '16px'
+        WebkitFontSmoothing: "auto",
+        fontSize: "16px",
       },
       body: {
         fontFamily: theme.fontFamily,
-        overflowX: 'hidden',
+        overflowX: "hidden",
       },
       a: {
-        color: theme.palette.primary.main
-      }
-    }
-  }
+        color: theme.palette.primary.main,
+      },
+    },
+  };
 }
 ```
 
@@ -260,3 +258,56 @@ Open your admincp, access `/admincp/layout/theme/create`
 ## Export Theme
 
 Export metafox theme as order metafox packages, follow [export metafox package](/export-package) to export theme.
+
+## Custom Styles
+
+### Define
+
+```typescript
+// TruncateText.tsx
+export interface TruncateTextProps extends TypographyProps {
+  component?: React.ElementType;
+  lines?: 0 | 1 | 2 | 3 | 4 | 5;
+  fontWeight?: number;
+  fixHeight?: boolean;
+  showFull?: boolean;
+  isIE?: boolean;
+}
+
+const TruncateText = styled(Box, {
+  name: "MuiTruncateText",
+  slot: "Root",
+  shouldForwardProp(prop: string) {
+    return prop !== "lines" && prop !== "fixHeight" && prop !== "showFull";
+  },
+})<TruncateTextProps>(({ theme }) => ({
+  display: "block",
+  maxWidth: "100%",
+}));
+
+export default TruncateText;
+```
+
+### Typings
+
+```typescript
+import {
+  ComponentsOverrides,
+  ComponentsProps,
+  ComponentsVariants,
+} from "@mui/material/styles";
+import "@mui/material/styles/components";
+
+declare module "@mui/material/styles/components" {
+  interface Components {
+    MuiTruncateText?: {
+      defaultProps?: ComponentsProps["MuiTruncateText"];
+    };
+    MuiItemView?: {
+      defaultProps?: ComponentsProps["MuiItemView"];
+      styleOverrides?: ComponentsOverrides["MuiItemView"];
+      variants?: ComponentsVariants["MuiItemView"];
+    };
+  }
+}
+```

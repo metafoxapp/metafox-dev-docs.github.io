@@ -166,3 +166,53 @@ Example Reponse from data grid api.
 ### enableCheckboxSelection
 
 Enable checkbox for the first item data grid.
+
+```php
+class DataGrid extends Grid
+{
+    protected function initialize(): void
+    {
+        // disable checkbox selection
+        $this->enableCheckboxSelection(false)
+
+        // enable checkbox selection
+        $this->enableCheckboxSelection(true)
+
+    }
+}
+```
+
+### setSearchForm
+
+```php
+class DataGrid extends Grid
+{
+    protected function initialize(): void
+    {
+        // ... order source code
+        // Add search form
+        $this->setSearchForm(new BuiltinAdminSearchForm());
+    }
+}
+```
+
+### addColumn
+
+```php
+class DataGrid extends Grid
+{
+    protected function initialize(): void
+    {
+        // Add ID columns
+        $this->addColumn('id')
+            ->header('ID')
+            ->width(80);
+
+        // Add order columns
+        $this->addColumn('name')
+            ->header(__p('core::phrase.name'))
+            ->linkTo('url')
+            ->flex();
+    }
+}
+```

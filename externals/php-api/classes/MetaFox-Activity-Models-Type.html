@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/base.css">
             <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/template.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous" />
@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-highlight/prism-line-highlight.css">
                 <script src="https://cdn.jsdelivr.net/npm/fuse.js@3.4.6"></script>
         <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
+        <script src="js/template.js"></script>
         <script src="js/search.js"></script>
         <script defer src="js/searchIndex.js"></script>
     </head>
@@ -52,7 +53,7 @@
 <label class="phpdocumentor-sidebar__menu-icon" for="sidebar-button">
     Menu
 </label>
-<aside class="phpdocumentor-column -four phpdocumentor-sidebar">
+<aside class="phpdocumentor-column -three phpdocumentor-sidebar">
                     <section class="phpdocumentor-sidebar__category">
             <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
@@ -169,8 +170,9 @@
     </section>
 </aside>
 
-            <div class="phpdocumentor-column -eight phpdocumentor-content">
-                    <ul class="phpdocumentor-breadcrumbs">
+            <div class="phpdocumentor-column -nine phpdocumentor-content">
+                                <section>
+                                        <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/metafox.html">MetaFox</a></li>
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/metafox-activity.html">Activity</a></li>
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/metafox-activity-models.html">Models</a></li>
@@ -197,6 +199,11 @@
                             <abbr title="\Illuminate\Database\Eloquent\Factories\HasFactory">HasFactory</abbr>                    </span>
     </h2>
 
+<div class="phpdocumentor-label-line">
+
+
+</div>
+
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
     :
@@ -210,7 +217,8 @@
 
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/MetaFox-Activity-Models-Type.html#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
@@ -240,107 +248,803 @@
 </section>
 
                                     </dd>
-                        </dl>
-
-
-
+                                            </dl>
 
 
 
 <h3 id="toc">
     Table of Contents
-    <a href="#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/MetaFox-Activity-Models-Type.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+
 </h3>
 
+
+
+
+
+
+
+<h4 id="toc-constants">
+    Constants
+    <a href="classes/MetaFox-Activity-Models-Type.html#toc-constants" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
 <dl class="phpdocumentor-table-of-contents">
-                    <dt class="phpdocumentor-table-of-contents__entry -property -public">
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Activity-Models-Type.html#constant_ACTION_ON_FEED">ACTION_ON_FEED</a>
+    <span>
+        &nbsp;= 32                            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Activity-Models-Type.html#constant_ACTION_ON_FEED_TYPE">ACTION_ON_FEED_TYPE</a>
+    <span>
+        &nbsp;= &#039;action_on_feed&#039;                            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_CHANGE_PRIVACY_FROM_FEED_TYPE">CAN_CHANGE_PRIVACY_FROM_FEED_TYPE</a>
+    <span>
+        &nbsp;= &#039;can_change_privacy_from_feed&#039;                            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_COMMENT">CAN_COMMENT</a>
+    <span>
+        &nbsp;= 1                            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_COMMENT_TYPE">CAN_COMMENT_TYPE</a>
+    <span>
+        &nbsp;= &#039;can_comment&#039;                            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_CREATE_FEED">CAN_CREATE_FEED</a>
+    <span>
+        &nbsp;= 16                            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_CREATE_FEED_TYPE">CAN_CREATE_FEED_TYPE</a>
+    <span>
+        &nbsp;= &#039;can_create_feed&#039;                            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_EDIT">CAN_EDIT</a>
+    <span>
+        &nbsp;= 8                            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_EDIT_TYPE">CAN_EDIT_TYPE</a>
+    <span>
+        &nbsp;= &#039;can_edit&#039;                            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_LIKE">CAN_LIKE</a>
+    <span>
+        &nbsp;= 2                            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_LIKE_TYPE">CAN_LIKE_TYPE</a>
+    <span>
+        &nbsp;= &#039;can_like&#039;                            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_REDIRECT_TO_DETAIL">CAN_REDIRECT_TO_DETAIL</a>
+    <span>
+        &nbsp;= 128                            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_REDIRECT_TO_DETAIL_TYPE">CAN_REDIRECT_TO_DETAIL_TYPE</a>
+    <span>
+        &nbsp;= &#039;can_redirect_to_detail&#039;                            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_SHARE">CAN_SHARE</a>
+    <span>
+        &nbsp;= 4                            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_SHARE_TYPE">CAN_SHARE_TYPE</a>
+    <span>
+        &nbsp;= &#039;can_share&#039;                            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Activity-Models-Type.html#constant_CHANGE_PRIVACY_FROM_FEED">CHANGE_PRIVACY_FROM_FEED</a>
+    <span>
+        &nbsp;= 64                            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Activity-Models-Type.html#constant_PREVENT_EDIT_FEED_ITEM">PREVENT_EDIT_FEED_ITEM</a>
+    <span>
+        &nbsp;= 256                            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Activity-Models-Type.html#constant_PREVENT_EDIT_FEED_ITEM_TYPE">PREVENT_EDIT_FEED_ITEM_TYPE</a>
+    <span>
+        &nbsp;= &#039;prevent_from_edit_feed_item&#039;                            </span>
+</dt>
+
+    </dl>
+
+
+<h4 id="toc-properties">
+    Properties
+    <a href="classes/MetaFox-Activity-Models-Type.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/MetaFox-Activity-Models-Type.html#property_description">$description</a>
     <span>
                         &nbsp;: string            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/MetaFox-Activity-Models-Type.html#property_entity_type">$entity_type</a>
     <span>
                         &nbsp;: string            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/MetaFox-Activity-Models-Type.html#property_id">$id</a>
     <span>
                         &nbsp;: int            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/MetaFox-Activity-Models-Type.html#property_is_active">$is_active</a>
     <span>
                         &nbsp;: bool            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/MetaFox-Activity-Models-Type.html#property_is_system">$is_system</a>
     <span>
                         &nbsp;: bool            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/MetaFox-Activity-Models-Type.html#property_module_id">$module_id</a>
     <span>
                         &nbsp;: string            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/MetaFox-Activity-Models-Type.html#property_params">$params</a>
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;            </span>
 </dt>
-<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/MetaFox-Activity-Models-Type.html#property_timestamps">$timestamps</a>
+    <span>
+                        &nbsp;: bool            </span>
+</dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/MetaFox-Activity-Models-Type.html#property_title">$title</a>
     <span>
                         &nbsp;: string            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/MetaFox-Activity-Models-Type.html#property_type">$type</a>
     <span>
                         &nbsp;: string            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/MetaFox-Activity-Models-Type.html#property_value_actual">$value_actual</a>
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;|null            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/MetaFox-Activity-Models-Type.html#property_value_default">$value_default</a>
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;            </span>
 </dt>
-<dd></dd>
 
-            </dl>
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/MetaFox-Activity-Models-Type.html#property_appends">$appends</a>
+    <span>
+                        &nbsp;: array&lt;string|int, string&gt;            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/MetaFox-Activity-Models-Type.html#property_casts">$casts</a>
+    <span>
+                        &nbsp;: array&lt;string|int, string&gt;            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/MetaFox-Activity-Models-Type.html#property_fillable">$fillable</a>
+    <span>
+                        &nbsp;: array&lt;string|int, string&gt;            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/MetaFox-Activity-Models-Type.html#property_table">$table</a>
+    <span>
+                        &nbsp;: mixed            </span>
+</dt>
+
+    </dl>
+
+<h4 id="toc-methods">
+    Methods
+    <a href="classes/MetaFox-Activity-Models-Type.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MetaFox-Activity-Models-Type.html#method_describe">describe()</a>
+    <span>
+                                &nbsp;: array&lt;string, mixed&gt;    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MetaFox-Activity-Models-Type.html#method_getAbilities">getAbilities()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, mixed&gt;|array&lt;string|int, int&gt;    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MetaFox-Activity-Models-Type.html#method_getSettings">getSettings()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MetaFox-Activity-Models-Type.html#method_package">package()</a>
+    <span>
+                                &nbsp;: <abbr title="\Illuminate\Database\Eloquent\Relations\BelongsTo">BelongsTo</abbr>    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/MetaFox-Activity-Models-Type.html#method_newFactory">newFactory()</a>
+    <span>
+                                &nbsp;: <abbr title="\MetaFox\Activity\Database\Factories\TypeFactory">TypeFactory</abbr>    </span>
+</dt>
+
+    </dl>
+
 
 
 
         
+    <section class="phpdocumentor-constants">
+        <h3 class="phpdocumentor-elements__header" id="constants">
+            Constants
+            <a href="classes/MetaFox-Activity-Models-Type.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h3>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_ACTION_ON_FEED">
+        ACTION_ON_FEED
+        <a href="classes/MetaFox-Activity-Models-Type.html#constant_ACTION_ON_FEED" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">42</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">ACTION_ON_FEED</span>
+    = <span class="phpdocumentor-signature__default-value">32</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_ACTION_ON_FEED_TYPE">
+        ACTION_ON_FEED_TYPE
+        <a href="classes/MetaFox-Activity-Models-Type.html#constant_ACTION_ON_FEED_TYPE" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">52</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">ACTION_ON_FEED_TYPE</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;action_on_feed&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_CAN_CHANGE_PRIVACY_FROM_FEED_TYPE">
+        CAN_CHANGE_PRIVACY_FROM_FEED_TYPE
+        <a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_CHANGE_PRIVACY_FROM_FEED_TYPE" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">53</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">CAN_CHANGE_PRIVACY_FROM_FEED_TYPE</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;can_change_privacy_from_feed&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_CAN_COMMENT">
+        CAN_COMMENT
+        <a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_COMMENT" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">37</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">CAN_COMMENT</span>
+    = <span class="phpdocumentor-signature__default-value">1</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_CAN_COMMENT_TYPE">
+        CAN_COMMENT_TYPE
+        <a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_COMMENT_TYPE" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">47</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">CAN_COMMENT_TYPE</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;can_comment&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_CAN_CREATE_FEED">
+        CAN_CREATE_FEED
+        <a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_CREATE_FEED" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">41</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">CAN_CREATE_FEED</span>
+    = <span class="phpdocumentor-signature__default-value">16</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_CAN_CREATE_FEED_TYPE">
+        CAN_CREATE_FEED_TYPE
+        <a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_CREATE_FEED_TYPE" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">51</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">CAN_CREATE_FEED_TYPE</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;can_create_feed&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_CAN_EDIT">
+        CAN_EDIT
+        <a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_EDIT" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">40</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">CAN_EDIT</span>
+    = <span class="phpdocumentor-signature__default-value">8</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_CAN_EDIT_TYPE">
+        CAN_EDIT_TYPE
+        <a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_EDIT_TYPE" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">50</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">CAN_EDIT_TYPE</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;can_edit&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_CAN_LIKE">
+        CAN_LIKE
+        <a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_LIKE" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">38</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">CAN_LIKE</span>
+    = <span class="phpdocumentor-signature__default-value">2</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_CAN_LIKE_TYPE">
+        CAN_LIKE_TYPE
+        <a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_LIKE_TYPE" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">48</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">CAN_LIKE_TYPE</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;can_like&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_CAN_REDIRECT_TO_DETAIL">
+        CAN_REDIRECT_TO_DETAIL
+        <a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_REDIRECT_TO_DETAIL" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">44</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">CAN_REDIRECT_TO_DETAIL</span>
+    = <span class="phpdocumentor-signature__default-value">128</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_CAN_REDIRECT_TO_DETAIL_TYPE">
+        CAN_REDIRECT_TO_DETAIL_TYPE
+        <a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_REDIRECT_TO_DETAIL_TYPE" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">54</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">CAN_REDIRECT_TO_DETAIL_TYPE</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;can_redirect_to_detail&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_CAN_SHARE">
+        CAN_SHARE
+        <a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_SHARE" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">39</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">CAN_SHARE</span>
+    = <span class="phpdocumentor-signature__default-value">4</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_CAN_SHARE_TYPE">
+        CAN_SHARE_TYPE
+        <a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_SHARE_TYPE" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">49</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">CAN_SHARE_TYPE</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;can_share&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_CHANGE_PRIVACY_FROM_FEED">
+        CHANGE_PRIVACY_FROM_FEED
+        <a href="classes/MetaFox-Activity-Models-Type.html#constant_CHANGE_PRIVACY_FROM_FEED" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">43</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">CHANGE_PRIVACY_FROM_FEED</span>
+    = <span class="phpdocumentor-signature__default-value">64</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_PREVENT_EDIT_FEED_ITEM">
+        PREVENT_EDIT_FEED_ITEM
+        <a href="classes/MetaFox-Activity-Models-Type.html#constant_PREVENT_EDIT_FEED_ITEM" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">45</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">PREVENT_EDIT_FEED_ITEM</span>
+    = <span class="phpdocumentor-signature__default-value">256</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_PREVENT_EDIT_FEED_ITEM_TYPE">
+        PREVENT_EDIT_FEED_ITEM_TYPE
+        <a href="classes/MetaFox-Activity-Models-Type.html#constant_PREVENT_EDIT_FEED_ITEM_TYPE" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">55</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">PREVENT_EDIT_FEED_ITEM_TYPE</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;prevent_from_edit_feed_item&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+            </section>
 
         
     <section class="phpdocumentor-properties">
         <h3 class="phpdocumentor-elements__header" id="properties">
             Properties
             <a href="classes/MetaFox-Activity-Models-Type.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+
         </h3>
                     <article
         class="
@@ -352,6 +1056,7 @@
     <h4 class="phpdocumentor-element__name" id="property_description">
         $description
         <a href="classes/MetaFox-Activity-Models-Type.html#property_description" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -370,8 +1075,7 @@
     </code>
 
     
-        <section class="phpdocumentor-description"></section>
-
+    
     
 
 </article>
@@ -385,6 +1089,7 @@
     <h4 class="phpdocumentor-element__name" id="property_entity_type">
         $entity_type
         <a href="classes/MetaFox-Activity-Models-Type.html#property_entity_type" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -403,8 +1108,7 @@
     </code>
 
     
-        <section class="phpdocumentor-description"></section>
-
+    
     
 
 </article>
@@ -418,6 +1122,7 @@
     <h4 class="phpdocumentor-element__name" id="property_id">
         $id
         <a href="classes/MetaFox-Activity-Models-Type.html#property_id" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -436,8 +1141,7 @@
     </code>
 
     
-        <section class="phpdocumentor-description"></section>
-
+    
     
 
 </article>
@@ -451,6 +1155,7 @@
     <h4 class="phpdocumentor-element__name" id="property_is_active">
         $is_active
         <a href="classes/MetaFox-Activity-Models-Type.html#property_is_active" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -469,8 +1174,7 @@
     </code>
 
     
-        <section class="phpdocumentor-description"></section>
-
+    
     
 
 </article>
@@ -484,6 +1188,7 @@
     <h4 class="phpdocumentor-element__name" id="property_is_system">
         $is_system
         <a href="classes/MetaFox-Activity-Models-Type.html#property_is_system" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -502,8 +1207,7 @@
     </code>
 
     
-        <section class="phpdocumentor-description"></section>
-
+    
     
 
 </article>
@@ -517,6 +1221,7 @@
     <h4 class="phpdocumentor-element__name" id="property_module_id">
         $module_id
         <a href="classes/MetaFox-Activity-Models-Type.html#property_module_id" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -535,8 +1240,7 @@
     </code>
 
     
-        <section class="phpdocumentor-description"></section>
-
+    
     
 
 </article>
@@ -550,6 +1254,7 @@
     <h4 class="phpdocumentor-element__name" id="property_params">
         $params
         <a href="classes/MetaFox-Activity-Models-Type.html#property_params" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -568,8 +1273,40 @@
     </code>
 
     
-        <section class="phpdocumentor-description"></section>
+    
+    
 
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_timestamps">
+        $timestamps
+        <a href="classes/MetaFox-Activity-Models-Type.html#property_timestamps" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">123</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">bool</span>
+    <span class="phpdocumentor-signature__name">$timestamps</span>
+     = <span class="phpdocumentor-signature__default-value">false</span></code>
+
+    
+    
     
 
 </article>
@@ -583,6 +1320,7 @@
     <h4 class="phpdocumentor-element__name" id="property_title">
         $title
         <a href="classes/MetaFox-Activity-Models-Type.html#property_title" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -601,8 +1339,7 @@
     </code>
 
     
-        <section class="phpdocumentor-description"></section>
-
+    
     
 
 </article>
@@ -616,6 +1353,7 @@
     <h4 class="phpdocumentor-element__name" id="property_type">
         $type
         <a href="classes/MetaFox-Activity-Models-Type.html#property_type" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -634,8 +1372,7 @@
     </code>
 
     
-        <section class="phpdocumentor-description"></section>
-
+    
     
 
 </article>
@@ -649,6 +1386,7 @@
     <h4 class="phpdocumentor-element__name" id="property_value_actual">
         $value_actual
         <a href="classes/MetaFox-Activity-Models-Type.html#property_value_actual" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -667,8 +1405,7 @@
     </code>
 
     
-        <section class="phpdocumentor-description"></section>
-
+    
     
 
 </article>
@@ -682,6 +1419,7 @@
     <h4 class="phpdocumentor-element__name" id="property_value_default">
         $value_default
         <a href="classes/MetaFox-Activity-Models-Type.html#property_value_default" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -700,78 +1438,497 @@
     </code>
 
     
-        <section class="phpdocumentor-description"></section>
+    
+    
 
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_appends">
+        $appends
+        <a href="classes/MetaFox-Activity-Models-Type.html#property_appends" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">128</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">array&lt;string|int, string&gt;</span>
+    <span class="phpdocumentor-signature__name">$appends</span>
+     = <span class="phpdocumentor-signature__default-value">[]</span></code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_casts">
+        $casts
+        <a href="classes/MetaFox-Activity-Models-Type.html#property_casts" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">112</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">array&lt;string|int, string&gt;</span>
+    <span class="phpdocumentor-signature__name">$casts</span>
+     = <span class="phpdocumentor-signature__default-value">[&#039;is_active&#039; =&gt; &#039;boolean&#039;, &#039;is_system&#039; =&gt; &#039;boolean&#039;, &#039;params&#039; =&gt; &#039;array&#039;, &#039;value_default&#039; =&gt; &#039;array&#039;, &#039;value_actual&#039; =&gt; &#039;array&#039;]</span></code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_fillable">
+        $fillable
+        <a href="classes/MetaFox-Activity-Models-Type.html#property_fillable" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">95</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">array&lt;string|int, string&gt;</span>
+    <span class="phpdocumentor-signature__name">$fillable</span>
+     = <span class="phpdocumentor-signature__default-value">[&#039;type&#039;, &#039;module_id&#039;, &#039;entity_type&#039;, &#039;title&#039;, &#039;description&#039;, &#039;is_active&#039;, &#039;system_value&#039;, &#039;is_system&#039;, &#039;value_actual&#039;, &#039;value_default&#039;, &#039;params&#039;]</span></code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_table">
+        $table
+        <a href="classes/MetaFox-Activity-Models-Type.html#property_table" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">57</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$table</span>
+     = <span class="phpdocumentor-signature__default-value">&#039;activity_types&#039;</span></code>
+
+    
+    
     
 
 </article>
             </section>
 
-        
-        
+            <section class="phpdocumentor-methods">
+        <h3 class="phpdocumentor-elements__header" id="methods">
+            Methods
+            <a href="classes/MetaFox-Activity-Models-Type.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h3>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_describe">
+        describe()
+        <a href="classes/MetaFox-Activity-Models-Type.html#method_describe" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">138</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">describe</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string, mixed&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string, mixed&gt;</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getAbilities">
+        getAbilities()
+        <a href="classes/MetaFox-Activity-Models-Type.html#method_getAbilities" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">62</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getAbilities</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|array&lt;string|int, int&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|array&lt;string|int, int&gt;</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getSettings">
+        getSettings()
+        <a href="classes/MetaFox-Activity-Models-Type.html#method_getSettings" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">77</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getSettings</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_package">
+        package()
+        <a href="classes/MetaFox-Activity-Models-Type.html#method_package" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">147</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">package</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Illuminate\Database\Eloquent\Relations\BelongsTo">BelongsTo</abbr></span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\Illuminate\Database\Eloquent\Relations\BelongsTo">BelongsTo</abbr></span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_newFactory">
+        newFactory()
+        <a href="classes/MetaFox-Activity-Models-Type.html#method_newFactory" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/activity/src/Models/Type.php"><a href="files/packages-metafox-activity-src-models-type.html"><abbr title="packages/metafox/activity/src/Models/Type.php">Type.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">130</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">newFactory</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\MetaFox\Activity\Database\Factories\TypeFactory">TypeFactory</abbr></span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\MetaFox\Activity\Database\Factories\TypeFactory">TypeFactory</abbr></span>
+            </section>
+
+</article>
+            </section>
+
+        <div class="phpdocumentor-modal" id="source-view">
+    <div class="phpdocumentor-modal-bg" data-exit-button></div>
+    <div class="phpdocumentor-modal-container">
+        <div class="phpdocumentor-modal-content">
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/packages/metafox/activity/src/Models/Type.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+        </div>
+        <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
+    </div>
+</div>
+
     <script type="text/javascript">
-        function loadExternalCodeSnippets(line) {
-            Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach((pre) => {
-                var src = pre.getAttribute('data-src').replace( /\\/g, '/');
-                var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
-                var language = 'php';
+        (function () {
+            function loadExternalCodeSnippet(el, url, line) {
+                Array.prototype.slice.call(el.querySelectorAll('pre[data-src]')).forEach((pre) => {
+                    const src = url || pre.getAttribute('data-src').replace(/\\/g, '/');
+                    const language = 'php';
 
-                var code = document.createElement('code');
-                code.className = 'language-' + language;
+                    const code = document.createElement('code');
+                    code.className = 'language-' + language;
+                    pre.textContent = '';
+                    pre.setAttribute('data-line', line)
+                    code.textContent = 'Loading…';
+                    pre.appendChild(code);
 
-                pre.textContent = '';
+                    var xhr = new XMLHttpRequest();
 
-                pre.setAttribute('data-line', line)
-                code.textContent = 'Loading…';
+                    xhr.open('GET', src, true);
 
-                pre.appendChild(code);
-
-                var xhr = new XMLHttpRequest();
-
-                xhr.open('GET', src, true);
-
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState == 4) {
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState !== 4) {
+                            return;
+                        }
 
                         if (xhr.status < 400 && xhr.responseText) {
                             code.textContent = xhr.responseText;
-
                             Prism.highlightElement(code);
+                            return;
                         }
-                        else if (xhr.status >= 400) {
+
+                        if (xhr.status === 404) {
+                            code.textContent = '✖ Error: File could not be found';
+                            return;
+                        }
+
+                        if (xhr.status >= 400) {
                             code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                            return;
                         }
-                        else {
-                            code.textContent = '✖ Error: File does not exist, is empty or trying to view from localhost';
-                        }
+
+                        code.textContent = '✖ Error: An unknown error occurred';
+                    };
+
+                    xhr.send(null);
+                });
+            }
+
+            const modalButtons = document.querySelectorAll("[data-modal]");
+            const openedAsLocalFile = window.location.protocol === 'file:';
+            if (modalButtons.length > 0 && openedAsLocalFile) {
+                console.warn(
+                    'Viewing the source code is unavailable because you are opening this page from the file:// scheme; ' +
+                    'browsers block XHR requests when a page is opened this way'
+                );
+            }
+
+            modalButtons.forEach(function (trigger) {
+                if (openedAsLocalFile) {
+                    trigger.setAttribute("hidden", "hidden");
+                }
+
+                trigger.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const modal = document.getElementById(trigger.dataset.modal);
+                    if (!modal) {
+                        console.error(`Modal with id "${trigger.dataset.modal}" could not be found`);
+                        return;
                     }
-                };
+                    modal.classList.add("phpdocumentor-modal__open");
 
-                xhr.send(null);
-            });
-        }
-
-        var modals = document.querySelectorAll("[data-modal]");
-
-        modals.forEach(function (trigger) {
-            trigger.addEventListener("click", function (event) {
-                //event.preventDefault();
-                const modal = document.getElementById(trigger.dataset.modal);
-                modal.classList.add("phpdocumentor-modal__open");
-                loadExternalCodeSnippets(trigger.dataset.line)
-                const exits = modal.querySelectorAll("[data-exit-button]");
-                exits.forEach(function (exit) {
-                    exit.addEventListener("click", function (event) {
-                        event.preventDefault();
-                        modal.classList.remove("phpdocumentor-modal__open");
+                    loadExternalCodeSnippet(modal, trigger.dataset.src || null, trigger.dataset.line)
+                    const exits = modal.querySelectorAll("[data-exit-button]");
+                    exits.forEach(function (exit) {
+                        exit.addEventListener("click", function (event) {
+                            event.preventDefault();
+                            modal.classList.remove("phpdocumentor-modal__open");
+                        });
                     });
                 });
             });
-        });
+        })();
     </script>
 
     </article>
-                <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
+                                </section>
+                <section class="phpdocumentor-on-this-page__sidebar">
+                                
+    <section class="phpdocumentor-on-this-page__content">
+        <strong class="phpdocumentor-on-this-page__title">On this page</strong>
+
+        <ul class="phpdocumentor-list -clean">
+            <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
+            <li>
+                <ul class="phpdocumentor-list -clean">
+                                        <li><a href="classes/MetaFox-Activity-Models-Type.html#toc-constants">Constants</a></li>
+                                                            <li><a href="classes/MetaFox-Activity-Models-Type.html#toc-properties">Properties</a></li>
+                                                            <li><a href="classes/MetaFox-Activity-Models-Type.html#toc-methods">Methods</a></li>
+                                    </ul>
+            </li>
+                            <li class="phpdocumentor-on-this-page-section__title">Constants</li>
+                <li>
+                    <ul class="phpdocumentor-list -clean">
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#constant_ACTION_ON_FEED">ACTION_ON_FEED</a></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#constant_ACTION_ON_FEED_TYPE">ACTION_ON_FEED_TYPE</a></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_CHANGE_PRIVACY_FROM_FEED_TYPE">CAN_CHANGE_PRIVACY_FROM_FEED_TYPE</a></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_COMMENT">CAN_COMMENT</a></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_COMMENT_TYPE">CAN_COMMENT_TYPE</a></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_CREATE_FEED">CAN_CREATE_FEED</a></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_CREATE_FEED_TYPE">CAN_CREATE_FEED_TYPE</a></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_EDIT">CAN_EDIT</a></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_EDIT_TYPE">CAN_EDIT_TYPE</a></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_LIKE">CAN_LIKE</a></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_LIKE_TYPE">CAN_LIKE_TYPE</a></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_REDIRECT_TO_DETAIL">CAN_REDIRECT_TO_DETAIL</a></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_REDIRECT_TO_DETAIL_TYPE">CAN_REDIRECT_TO_DETAIL_TYPE</a></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_SHARE">CAN_SHARE</a></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#constant_CAN_SHARE_TYPE">CAN_SHARE_TYPE</a></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#constant_CHANGE_PRIVACY_FROM_FEED">CHANGE_PRIVACY_FROM_FEED</a></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#constant_PREVENT_EDIT_FEED_ITEM">PREVENT_EDIT_FEED_ITEM</a></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#constant_PREVENT_EDIT_FEED_ITEM_TYPE">PREVENT_EDIT_FEED_ITEM_TYPE</a></li>
+                                            </ul>
+                </li>
+            
+                            <li class="phpdocumentor-on-this-page-section__title">Properties</li>
+                <li>
+                    <ul class="phpdocumentor-list -clean">
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#property_description">$description<a href="classes/MetaFox-Activity-Models-Type.html"></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#property_entity_type">$entity_type<a href="classes/MetaFox-Activity-Models-Type.html"></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#property_id">$id<a href="classes/MetaFox-Activity-Models-Type.html"></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#property_is_active">$is_active<a href="classes/MetaFox-Activity-Models-Type.html"></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#property_is_system">$is_system<a href="classes/MetaFox-Activity-Models-Type.html"></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#property_module_id">$module_id<a href="classes/MetaFox-Activity-Models-Type.html"></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#property_params">$params<a href="classes/MetaFox-Activity-Models-Type.html"></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#property_timestamps">$timestamps<a href="classes/MetaFox-Activity-Models-Type.html"></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#property_title">$title<a href="classes/MetaFox-Activity-Models-Type.html"></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#property_type">$type<a href="classes/MetaFox-Activity-Models-Type.html"></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#property_value_actual">$value_actual<a href="classes/MetaFox-Activity-Models-Type.html"></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#property_value_default">$value_default<a href="classes/MetaFox-Activity-Models-Type.html"></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#property_appends">$appends<a href="classes/MetaFox-Activity-Models-Type.html"></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#property_casts">$casts<a href="classes/MetaFox-Activity-Models-Type.html"></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#property_fillable">$fillable<a href="classes/MetaFox-Activity-Models-Type.html"></li>
+                                                    <li><a href="classes/MetaFox-Activity-Models-Type.html#property_table">$table<a href="classes/MetaFox-Activity-Models-Type.html"></li>
+                                            </ul>
+                </li>
+            
+                        <li class="phpdocumentor-on-this-page-section__title">Methods</li>
+            <li>
+                <ul class="phpdocumentor-list -clean">
+                                            <li><a href="classes/MetaFox-Activity-Models-Type.html#method_describe">describe()</a></li>
+                                            <li><a href="classes/MetaFox-Activity-Models-Type.html#method_getAbilities">getAbilities()</a></li>
+                                            <li><a href="classes/MetaFox-Activity-Models-Type.html#method_getSettings">getSettings()</a></li>
+                                            <li><a href="classes/MetaFox-Activity-Models-Type.html#method_package">package()</a></li>
+                                            <li><a href="classes/MetaFox-Activity-Models-Type.html#method_newFactory">newFactory()</a></li>
+                                    </ul>
+            </li>
+                    </ul>
+    </section>
+
+                </section>
+                            </div>
+            <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
     <section class="phpdocumentor-search-results__dialog">
         <header class="phpdocumentor-search-results__header">
             <h2 class="phpdocumentor-search-results__title">Search results</h2>
@@ -782,7 +1939,6 @@
         </section>
     </section>
 </section>
-            </div>
         </div>
         <a href="classes/MetaFox-Activity-Models-Type.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 

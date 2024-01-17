@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/base.css">
             <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/template.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous" />
@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-highlight/prism-line-highlight.css">
                 <script src="https://cdn.jsdelivr.net/npm/fuse.js@3.4.6"></script>
         <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
+        <script src="js/template.js"></script>
         <script src="js/search.js"></script>
         <script defer src="js/searchIndex.js"></script>
     </head>
@@ -52,7 +53,7 @@
 <label class="phpdocumentor-sidebar__menu-icon" for="sidebar-button">
     Menu
 </label>
-<aside class="phpdocumentor-column -four phpdocumentor-sidebar">
+<aside class="phpdocumentor-column -three phpdocumentor-sidebar">
                     <section class="phpdocumentor-sidebar__category">
             <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
@@ -169,8 +170,9 @@
     </section>
 </aside>
 
-            <div class="phpdocumentor-column -eight phpdocumentor-content">
-                    <ul class="phpdocumentor-breadcrumbs">
+            <div class="phpdocumentor-column -nine phpdocumentor-content">
+                                <section>
+                                        <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/metafox.html">MetaFox</a></li>
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/metafox-user.html">User</a></li>
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/metafox-user-http.html">Http</a></li>
@@ -201,6 +203,11 @@
                             <abbr title="\MetaFox\Form\GenderTrait">GenderTrait</abbr>                    </span>
     </h2>
 
+<div class="phpdocumentor-label-line">
+
+
+</div>
+
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
     :
@@ -214,7 +221,8 @@
 
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
@@ -253,149 +261,277 @@
 </section>
 
                                     </dd>
-                        </dl>
-
-
-
+                                            </dl>
 
 
 
 <h3 id="toc">
     Table of Contents
-    <a href="#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+
 </h3>
 
+
+
+
+
+
+
+<h4 id="toc-constants">
+    Constants
+    <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#toc-constants" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
 <dl class="phpdocumentor-table-of-contents">
-                    <dt class="phpdocumentor-table-of-contents__entry -property -public">
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#constant_MODULE_KEY">MODULE_KEY</a>
+    <span>
+        &nbsp;= &#039;module_id&#039;                            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#constant_VAR_NAME_KEY">VAR_NAME_KEY</a>
+    <span>
+        &nbsp;= &#039;var_name&#039;                            </span>
+</dt>
+
+    </dl>
+
+
+<h4 id="toc-properties">
+    Properties
+    <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#property_resource">$resource</a>
     <span>
                         &nbsp;: <a href="classes/MetaFox-User-Models-User.html"><abbr title="\MetaFox\User\Models\User">User</abbr></a>            </span>
 </dt>
-<dd></dd>
 
-                <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    </dl>
+
+<h4 id="toc-methods">
+    Methods
+    <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_boot">boot()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getCityCode">getCityCode()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, mixed&gt;|null    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_initialize">initialize()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildRoleField">buildRoleField()</a>
+    <span>
+                                &nbsp;: <abbr title="\MetaFox\Form\FormField">FormField</abbr>|null    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getPasswordValidate">getPasswordValidate()</a>
+    <span>
+                                &nbsp;: <abbr title="\MetaFox\Yup\StringShape">StringShape</abbr>    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_hasRoleField">hasRoleField()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_prepare">prepare()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildCustomField">buildCustomField()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildModuleField">buildModuleField()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildNotificationSection">buildNotificationSection()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildNotificationSections">buildNotificationSections()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildNotificationSwitchField">buildNotificationSwitchField()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildPrivacyField">buildPrivacyField()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildProfilePictureField">buildProfilePictureField()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildVarNameField">buildVarNameField()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getDefaultNotificationValue">getDefaultNotificationValue()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getDefaultNotificationValueByChannel">getDefaultNotificationValueByChannel()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getDefaultPrivacyValue">getDefaultPrivacyValue()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getDefaultValue">getDefaultValue()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getFieldNameNotification">getFieldNameNotification()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getNotificationChannel">getNotificationChannel()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getProfilePrivacy">getProfilePrivacy()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getValueNotification">getValueNotification()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd></dd>
 
-        </dl>
+    </dl>
+
 
 
 
         
+    <section class="phpdocumentor-constants">
+        <h3 class="phpdocumentor-elements__header" id="constants">
+            Constants
+            <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h3>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_MODULE_KEY">
+        MODULE_KEY
+        <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#constant_MODULE_KEY" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">41</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">MODULE_KEY</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;module_id&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_VAR_NAME_KEY">
+        VAR_NAME_KEY
+        <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#constant_VAR_NAME_KEY" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">43</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">VAR_NAME_KEY</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;var_name&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+            </section>
 
         
     <section class="phpdocumentor-properties">
         <h3 class="phpdocumentor-elements__header" id="properties">
             Properties
             <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+
         </h3>
                     <article
         class="
@@ -407,6 +543,7 @@
     <h4 class="phpdocumentor-element__name" id="property_resource">
         $resource
         <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#property_resource" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -425,8 +562,7 @@
     </code>
 
     
-        <section class="phpdocumentor-description"></section>
-
+    
     
 
 </article>
@@ -436,7 +572,268 @@
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
             <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+
         </h3>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_boot">
+        boot()
+        <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_boot" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">45</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">boot</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/MetaFox-User-Repositories-Contracts-UserRepositoryInterface.html"><abbr title="\MetaFox\User\Repositories\Contracts\UserRepositoryInterface">UserRepositoryInterface</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$repository</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$id</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$repository</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/MetaFox-User-Repositories-Contracts-UserRepositoryInterface.html"><abbr title="\MetaFox\User\Repositories\Contracts\UserRepositoryInterface">UserRepositoryInterface</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getCityCode">
+        getCityCode()
+        <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getCityCode" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">439</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getCityCode</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/MetaFox-User-Models-UserProfile.html"><abbr title="\MetaFox\User\Models\UserProfile">UserProfile</abbr></a>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$profile</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|null</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$profile</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/MetaFox-User-Models-UserProfile.html"><abbr title="\MetaFox\User\Models\UserProfile">UserProfile</abbr></a>|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|null</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_initialize">
+        initialize()
+        <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_initialize" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">85</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">initialize</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_buildRoleField">
+        buildRoleField()
+        <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildRoleField" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">412</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">buildRoleField</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\MetaFox\Form\FormField">FormField</abbr>|null</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\MetaFox\Form\FormField">FormField</abbr>|null</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getPasswordValidate">
+        getPasswordValidate()
+        <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getPasswordValidate" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">451</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">getPasswordValidate</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\MetaFox\Yup\StringShape">StringShape</abbr></span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\MetaFox\Yup\StringShape">StringShape</abbr></span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_hasRoleField">
+        hasRoleField()
+        <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_hasRoleField" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">434</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">hasRoleField</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_prepare">
+        prepare()
+        <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_prepare" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">50</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">prepare</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+    
+</article>
                     <article
         class="phpdocumentor-element
             -method
@@ -446,11 +843,12 @@
     <h4 class="phpdocumentor-element__name" id="method_buildCustomField">
         buildCustomField()
         <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildCustomField" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">391</span>
+    <span class="phpdocumentor-element-found-in__line">397</span>
 
     </aside>
 
@@ -459,15 +857,12 @@
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">buildCustomField</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    <div class="phpdocumentor-label-line">
+        </div>
     
     
+    
 
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
-            &mdash;
-        
     
 </article>
                     <article
@@ -479,11 +874,12 @@
     <h4 class="phpdocumentor-element__name" id="method_buildModuleField">
         buildModuleField()
         <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildModuleField" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">345</span>
+    <span class="phpdocumentor-element-found-in__line">351</span>
 
     </aside>
 
@@ -492,8 +888,9 @@
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">buildModuleField</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\MetaFox\Form\Section">Section</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$basic</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$setting</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    <div class="phpdocumentor-label-line">
+        </div>
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -501,25 +898,19 @@
                 : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\MetaFox\Form\Section">Section</abbr></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$setting</span>
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
-            &mdash;
-        
     
 </article>
                     <article
@@ -531,11 +922,12 @@
     <h4 class="phpdocumentor-element__name" id="method_buildNotificationSection">
         buildNotificationSection()
         <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildNotificationSection" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">312</span>
+    <span class="phpdocumentor-element-found-in__line">318</span>
 
     </aside>
 
@@ -544,8 +936,9 @@
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">buildNotificationSection</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$channel</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    <div class="phpdocumentor-label-line">
+        </div>
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -553,17 +946,12 @@
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
-            &mdash;
-        
     
 </article>
                     <article
@@ -575,11 +963,12 @@
     <h4 class="phpdocumentor-element__name" id="method_buildNotificationSections">
         buildNotificationSections()
         <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildNotificationSections" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">327</span>
+    <span class="phpdocumentor-element-found-in__line">333</span>
 
     </aside>
 
@@ -588,15 +977,12 @@
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">buildNotificationSections</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    <div class="phpdocumentor-label-line">
+        </div>
     
     
+    
 
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
-            &mdash;
-        
     
 </article>
                     <article
@@ -608,11 +994,12 @@
     <h4 class="phpdocumentor-element__name" id="method_buildNotificationSwitchField">
         buildNotificationSwitchField()
         <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildNotificationSwitchField" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">304</span>
+    <span class="phpdocumentor-element-found-in__line">310</span>
 
     </aside>
 
@@ -621,8 +1008,9 @@
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">buildNotificationSwitchField</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\MetaFox\Form\Section">Section</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$basic</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$settings</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    <div class="phpdocumentor-label-line">
+        </div>
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -630,25 +1018,19 @@
                 : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\MetaFox\Form\Section">Section</abbr></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$settings</span>
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
-            &mdash;
-        
     
 </article>
                     <article
@@ -660,11 +1042,12 @@
     <h4 class="phpdocumentor-element__name" id="method_buildPrivacyField">
         buildPrivacyField()
         <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildPrivacyField" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">373</span>
+    <span class="phpdocumentor-element-found-in__line">379</span>
 
     </aside>
 
@@ -673,15 +1056,12 @@
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">buildPrivacyField</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    <div class="phpdocumentor-label-line">
+        </div>
     
     
+    
 
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
-            &mdash;
-        
     
 </article>
                     <article
@@ -693,11 +1073,12 @@
     <h4 class="phpdocumentor-element__name" id="method_buildProfilePictureField">
         buildProfilePictureField()
         <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildProfilePictureField" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">213</span>
+    <span class="phpdocumentor-element-found-in__line">219</span>
 
     </aside>
 
@@ -706,8 +1087,9 @@
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">buildProfilePictureField</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\MetaFox\Form\Section">Section</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$basic</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    <div class="phpdocumentor-label-line">
+        </div>
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -715,17 +1097,12 @@
                 : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\MetaFox\Form\Section">Section</abbr></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
-            &mdash;
-        
     
 </article>
                     <article
@@ -737,11 +1114,12 @@
     <h4 class="phpdocumentor-element__name" id="method_buildVarNameField">
         buildVarNameField()
         <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildVarNameField" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">356</span>
+    <span class="phpdocumentor-element-found-in__line">362</span>
 
     </aside>
 
@@ -750,8 +1128,9 @@
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">buildVarNameField</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\MetaFox\Form\Section">Section</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$basic</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$setting</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    <div class="phpdocumentor-label-line">
+        </div>
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -759,25 +1138,19 @@
                 : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\MetaFox\Form\Section">Section</abbr></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$setting</span>
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
-            &mdash;
-        
     
 </article>
                     <article
@@ -789,6 +1162,216 @@
     <h4 class="phpdocumentor-element__name" id="method_getDefaultNotificationValue">
         getDefaultNotificationValue()
         <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getDefaultNotificationValue" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">259</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">getDefaultNotificationValue</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getDefaultNotificationValueByChannel">
+        getDefaultNotificationValueByChannel()
+        <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getDefaultNotificationValueByChannel" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">270</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">getDefaultNotificationValueByChannel</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$channel</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$channel</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getDefaultPrivacyValue">
+        getDefaultPrivacyValue()
+        <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getDefaultPrivacyValue" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">300</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">getDefaultPrivacyValue</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getDefaultValue">
+        getDefaultValue()
+        <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getDefaultValue" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">208</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">getDefaultValue</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getFieldNameNotification">
+        getFieldNameNotification()
+        <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getFieldNameNotification" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">340</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">getFieldNameNotification</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$setting</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$keyName</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$name</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$setting</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$keyName</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$name</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getNotificationChannel">
+        getNotificationChannel()
+        <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getNotificationChannel" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
@@ -800,18 +1383,19 @@
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">getDefaultNotificationValue</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">getNotificationChannel</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    <div class="phpdocumentor-label-line">
+        </div>
     
     
+    
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -819,43 +1403,34 @@
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_getDefaultNotificationValueByChannel">
-        getDefaultNotificationValueByChannel()
-        <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getDefaultNotificationValueByChannel" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_getProfilePrivacy">
+        getProfilePrivacy()
+        <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getProfilePrivacy" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">264</span>
+    <span class="phpdocumentor-element-found-in__line">241</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">getDefaultNotificationValueByChannel</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$channel</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">getProfilePrivacy</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$channel</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-            </dl>
-
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -863,9 +1438,10 @@
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_getDefaultPrivacyValue">
-        getDefaultPrivacyValue()
-        <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getDefaultPrivacyValue" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_getValueNotification">
+        getValueNotification()
+        <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getValueNotification" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
@@ -877,202 +1453,11 @@
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">getDefaultPrivacyValue</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -private
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_getDefaultValue">
-        getDefaultValue()
-        <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getDefaultValue" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">202</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">getDefaultValue</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -private
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_getFieldNameNotification">
-        getFieldNameNotification()
-        <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getFieldNameNotification" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">334</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">getFieldNameNotification</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$setting</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$keyName</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$name</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$setting</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$keyName</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$name</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -private
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_getNotificationChannel">
-        getNotificationChannel()
-        <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getNotificationChannel" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">247</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">getNotificationChannel</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -private
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_getProfilePrivacy">
-        getProfilePrivacy()
-        <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getProfilePrivacy" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">235</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">getProfilePrivacy</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -private
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_getValueNotification">
-        getValueNotification()
-        <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getValueNotification" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php"><a href="files/packages-metafox-user-src-http-resources-v1-user-admin-accountsettingform.html"><abbr title="packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php">AccountSettingForm.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">288</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">getValueNotification</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$params</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$values</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    <div class="phpdocumentor-label-line">
+        </div>
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -1080,101 +1465,187 @@
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$values</span>
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$key</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
-            &mdash;
-        
     
 </article>
             </section>
 
-        
+        <div class="phpdocumentor-modal" id="source-view">
+    <div class="phpdocumentor-modal-bg" data-exit-button></div>
+    <div class="phpdocumentor-modal-container">
+        <div class="phpdocumentor-modal-content">
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/packages/metafox/user/src/Http/Resources/v1/User/Admin/AccountSettingForm.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+        </div>
+        <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
+    </div>
+</div>
+
     <script type="text/javascript">
-        function loadExternalCodeSnippets(line) {
-            Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach((pre) => {
-                var src = pre.getAttribute('data-src').replace( /\\/g, '/');
-                var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
-                var language = 'php';
+        (function () {
+            function loadExternalCodeSnippet(el, url, line) {
+                Array.prototype.slice.call(el.querySelectorAll('pre[data-src]')).forEach((pre) => {
+                    const src = url || pre.getAttribute('data-src').replace(/\\/g, '/');
+                    const language = 'php';
 
-                var code = document.createElement('code');
-                code.className = 'language-' + language;
+                    const code = document.createElement('code');
+                    code.className = 'language-' + language;
+                    pre.textContent = '';
+                    pre.setAttribute('data-line', line)
+                    code.textContent = 'Loading…';
+                    pre.appendChild(code);
 
-                pre.textContent = '';
+                    var xhr = new XMLHttpRequest();
 
-                pre.setAttribute('data-line', line)
-                code.textContent = 'Loading…';
+                    xhr.open('GET', src, true);
 
-                pre.appendChild(code);
-
-                var xhr = new XMLHttpRequest();
-
-                xhr.open('GET', src, true);
-
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState == 4) {
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState !== 4) {
+                            return;
+                        }
 
                         if (xhr.status < 400 && xhr.responseText) {
                             code.textContent = xhr.responseText;
-
                             Prism.highlightElement(code);
+                            return;
                         }
-                        else if (xhr.status >= 400) {
+
+                        if (xhr.status === 404) {
+                            code.textContent = '✖ Error: File could not be found';
+                            return;
+                        }
+
+                        if (xhr.status >= 400) {
                             code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                            return;
                         }
-                        else {
-                            code.textContent = '✖ Error: File does not exist, is empty or trying to view from localhost';
-                        }
+
+                        code.textContent = '✖ Error: An unknown error occurred';
+                    };
+
+                    xhr.send(null);
+                });
+            }
+
+            const modalButtons = document.querySelectorAll("[data-modal]");
+            const openedAsLocalFile = window.location.protocol === 'file:';
+            if (modalButtons.length > 0 && openedAsLocalFile) {
+                console.warn(
+                    'Viewing the source code is unavailable because you are opening this page from the file:// scheme; ' +
+                    'browsers block XHR requests when a page is opened this way'
+                );
+            }
+
+            modalButtons.forEach(function (trigger) {
+                if (openedAsLocalFile) {
+                    trigger.setAttribute("hidden", "hidden");
+                }
+
+                trigger.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const modal = document.getElementById(trigger.dataset.modal);
+                    if (!modal) {
+                        console.error(`Modal with id "${trigger.dataset.modal}" could not be found`);
+                        return;
                     }
-                };
+                    modal.classList.add("phpdocumentor-modal__open");
 
-                xhr.send(null);
-            });
-        }
-
-        var modals = document.querySelectorAll("[data-modal]");
-
-        modals.forEach(function (trigger) {
-            trigger.addEventListener("click", function (event) {
-                //event.preventDefault();
-                const modal = document.getElementById(trigger.dataset.modal);
-                modal.classList.add("phpdocumentor-modal__open");
-                loadExternalCodeSnippets(trigger.dataset.line)
-                const exits = modal.querySelectorAll("[data-exit-button]");
-                exits.forEach(function (exit) {
-                    exit.addEventListener("click", function (event) {
-                        event.preventDefault();
-                        modal.classList.remove("phpdocumentor-modal__open");
+                    loadExternalCodeSnippet(modal, trigger.dataset.src || null, trigger.dataset.line)
+                    const exits = modal.querySelectorAll("[data-exit-button]");
+                    exits.forEach(function (exit) {
+                        exit.addEventListener("click", function (event) {
+                            event.preventDefault();
+                            modal.classList.remove("phpdocumentor-modal__open");
+                        });
                     });
                 });
             });
-        });
+        })();
     </script>
 
     </article>
-                <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
+                                </section>
+                <section class="phpdocumentor-on-this-page__sidebar">
+                                
+    <section class="phpdocumentor-on-this-page__content">
+        <strong class="phpdocumentor-on-this-page__title">On this page</strong>
+
+        <ul class="phpdocumentor-list -clean">
+            <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
+            <li>
+                <ul class="phpdocumentor-list -clean">
+                                        <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#toc-constants">Constants</a></li>
+                                                            <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#toc-properties">Properties</a></li>
+                                                            <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#toc-methods">Methods</a></li>
+                                    </ul>
+            </li>
+                            <li class="phpdocumentor-on-this-page-section__title">Constants</li>
+                <li>
+                    <ul class="phpdocumentor-list -clean">
+                                                    <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#constant_MODULE_KEY">MODULE_KEY</a></li>
+                                                    <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#constant_VAR_NAME_KEY">VAR_NAME_KEY</a></li>
+                                            </ul>
+                </li>
+            
+                            <li class="phpdocumentor-on-this-page-section__title">Properties</li>
+                <li>
+                    <ul class="phpdocumentor-list -clean">
+                                                    <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#property_resource">$resource<a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html"></li>
+                                            </ul>
+                </li>
+            
+                        <li class="phpdocumentor-on-this-page-section__title">Methods</li>
+            <li>
+                <ul class="phpdocumentor-list -clean">
+                                            <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_boot">boot()</a></li>
+                                            <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getCityCode">getCityCode()</a></li>
+                                            <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_initialize">initialize()</a></li>
+                                            <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildRoleField">buildRoleField()</a></li>
+                                            <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getPasswordValidate">getPasswordValidate()</a></li>
+                                            <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_hasRoleField">hasRoleField()</a></li>
+                                            <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_prepare">prepare()</a></li>
+                                            <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildCustomField">buildCustomField()</a></li>
+                                            <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildModuleField">buildModuleField()</a></li>
+                                            <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildNotificationSection">buildNotificationSection()</a></li>
+                                            <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildNotificationSections">buildNotificationSections()</a></li>
+                                            <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildNotificationSwitchField">buildNotificationSwitchField()</a></li>
+                                            <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildPrivacyField">buildPrivacyField()</a></li>
+                                            <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildProfilePictureField">buildProfilePictureField()</a></li>
+                                            <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_buildVarNameField">buildVarNameField()</a></li>
+                                            <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getDefaultNotificationValue">getDefaultNotificationValue()</a></li>
+                                            <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getDefaultNotificationValueByChannel">getDefaultNotificationValueByChannel()</a></li>
+                                            <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getDefaultPrivacyValue">getDefaultPrivacyValue()</a></li>
+                                            <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getDefaultValue">getDefaultValue()</a></li>
+                                            <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getFieldNameNotification">getFieldNameNotification()</a></li>
+                                            <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getNotificationChannel">getNotificationChannel()</a></li>
+                                            <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getProfilePrivacy">getProfilePrivacy()</a></li>
+                                            <li><a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#method_getValueNotification">getValueNotification()</a></li>
+                                    </ul>
+            </li>
+                    </ul>
+    </section>
+
+                </section>
+                            </div>
+            <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
     <section class="phpdocumentor-search-results__dialog">
         <header class="phpdocumentor-search-results__header">
             <h2 class="phpdocumentor-search-results__title">Search results</h2>
@@ -1185,7 +1656,6 @@
         </section>
     </section>
 </section>
-            </div>
         </div>
         <a href="classes/MetaFox-User-Http-Resources-v1-User-Admin-AccountSettingForm.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 

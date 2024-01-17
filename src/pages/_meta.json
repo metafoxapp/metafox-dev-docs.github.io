@@ -8,8 +8,7 @@
   },
   "new-app": "New App",
   "new-theme": {
-    "title": "New Theme",
-    "display": "hidden"
+    "title": "New Theme"
   },
   "export-package": {
     "title": "Export Package",

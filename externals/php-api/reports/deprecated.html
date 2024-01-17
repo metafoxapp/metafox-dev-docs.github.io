@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/base.css">
             <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/template.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous" />
@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-highlight/prism-line-highlight.css">
                 <script src="https://cdn.jsdelivr.net/npm/fuse.js@3.4.6"></script>
         <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
+        <script src="js/template.js"></script>
         <script src="js/search.js"></script>
         <script defer src="js/searchIndex.js"></script>
     </head>
@@ -53,7 +54,7 @@
 <label class="phpdocumentor-sidebar__menu-icon" for="sidebar-button">
     Menu
 </label>
-<aside class="phpdocumentor-column -four phpdocumentor-sidebar">
+<aside class="phpdocumentor-column -three phpdocumentor-sidebar">
                     <section class="phpdocumentor-sidebar__category">
             <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
@@ -170,212 +171,608 @@
     </section>
 </aside>
 
-            <div class="phpdocumentor-column -eight phpdocumentor-content">
-                    <ul class="phpdocumentor-breadcrumbs">
-        <li><a href="">Home</a></li>
-    </ul>
+            <div class="phpdocumentor-column -nine phpdocumentor-content">
+                                        <section>
+        <ul class="phpdocumentor-breadcrumbs">
+            <li><a href="">Home</a></li>
+        </ul>
 
-    <div class="phpdocumentor-row">
-        <h2 class="phpdocumentor-content__title">Deprecated</h2>
+        <div class="phpdocumentor-row">
+            <h2 class="phpdocumentor-content__title">Deprecated</h2>
 
-                <h3>Table of Contents</h3>
-        <table class="phpdocumentor-table_of_contents">
-                            <tr>
-                    <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/metafox/core/src/Listeners/GetTimeZones.php">packages/metafox/core/src/Listeners/GetTimeZones.php</a></td>
-                </tr>
-                            <tr>
-                    <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/metafox/sticker/src/Http/Requests/v1/StickerSet/UpdateRequest.php">packages/metafox/sticker/src/Http/Requests/v1/StickerSet/UpdateRequest.php</a></td>
-                </tr>
-                            <tr>
-                    <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/platform/src/Contracts/HasApprove.php">packages/platform/src/Contracts/HasApprove.php</a></td>
-                </tr>
-                            <tr>
-                    <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/platform/src/Contracts/HasFeature.php">packages/platform/src/Contracts/HasFeature.php</a></td>
-                </tr>
-                            <tr>
-                    <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/platform/src/Contracts/HasSponsor.php">packages/platform/src/Contracts/HasSponsor.php</a></td>
-                </tr>
-                            <tr>
-                    <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/platform/src/Contracts/HasSponsorInFeed.php">packages/platform/src/Contracts/HasSponsorInFeed.php</a></td>
-                </tr>
-                            <tr>
-                    <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/platform/src/Contracts/HasTotalMember.php">packages/platform/src/Contracts/HasTotalMember.php</a></td>
-                </tr>
-                            <tr>
-                    <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/platform/src/Contracts/HasTotalShare.php">packages/platform/src/Contracts/HasTotalShare.php</a></td>
-                </tr>
-                            <tr>
-                    <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/platform/src/Contracts/Policy/ViewOnProfilePagePolicyInterface.php">packages/platform/src/Contracts/Policy/ViewOnProfilePagePolicyInterface.php</a></td>
-                </tr>
-                            <tr>
-                    <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/platform/src/helpers.php">packages/platform/src/helpers.php</a></td>
-                </tr>
-                            <tr>
-                    <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/platform/src/Traits/Policy/ViewOnProfilePagePolicyTrait.php">packages/platform/src/Traits/Policy/ViewOnProfilePagePolicyTrait.php</a></td>
-                </tr>
-                    </table>
-        
-                    <a id="packages/metafox/core/src/Listeners/GetTimeZones.php"></a>
-            <h3><abbr title="packages/metafox/core/src/Listeners/GetTimeZones.php">GetTimeZones.php</abbr></h3>
-            <table>
-                <tr>
-                    <th class="phpdocumentor-heading">Line</th>
-                    <th class="phpdocumentor-heading">Element</th>
-                    <th class="phpdocumentor-heading">Reason</th>
-                </tr>
-                                                            <tr>
-                            <td class="phpdocumentor-cell">11</td>
-                            <td class="phpdocumentor-cell"><a href="classes/MetaFox-Core-Listeners-GetTimeZones.html"><abbr title="\MetaFox\Core\Listeners\GetTimeZones">GetTimeZones</abbr></a></td>
-                            <td class="phpdocumentor-cell"></td>
-                        </tr>
-                                                </table>
-                    <a id="packages/metafox/sticker/src/Http/Requests/v1/StickerSet/UpdateRequest.php"></a>
-            <h3><abbr title="packages/metafox/sticker/src/Http/Requests/v1/StickerSet/UpdateRequest.php">UpdateRequest.php</abbr></h3>
-            <table>
-                <tr>
-                    <th class="phpdocumentor-heading">Line</th>
-                    <th class="phpdocumentor-heading">Element</th>
-                    <th class="phpdocumentor-heading">Reason</th>
-                </tr>
-                                                            <tr>
-                            <td class="phpdocumentor-cell">10</td>
-                            <td class="phpdocumentor-cell"><a href="classes/MetaFox-Sticker-Http-Requests-v1-StickerSet-UpdateRequest.html"><abbr title="\MetaFox\Sticker\Http\Requests\v1\StickerSet\UpdateRequest">UpdateRequest</abbr></a></td>
-                            <td class="phpdocumentor-cell"></td>
-                        </tr>
-                                                </table>
-                    <a id="packages/platform/src/Contracts/HasApprove.php"></a>
-            <h3><abbr title="packages/platform/src/Contracts/HasApprove.php">HasApprove.php</abbr></h3>
-            <table>
-                <tr>
-                    <th class="phpdocumentor-heading">Line</th>
-                    <th class="phpdocumentor-heading">Element</th>
-                    <th class="phpdocumentor-heading">Reason</th>
-                </tr>
-                                                            <tr>
-                            <td class="phpdocumentor-cell">11</td>
-                            <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Contracts-HasApprove.html"><abbr title="\MetaFox\Platform\Contracts\HasApprove">HasApprove</abbr></a></td>
-                            <td class="phpdocumentor-cell"></td>
-                        </tr>
-                                                </table>
-                    <a id="packages/platform/src/Contracts/HasFeature.php"></a>
-            <h3><abbr title="packages/platform/src/Contracts/HasFeature.php">HasFeature.php</abbr></h3>
-            <table>
-                <tr>
-                    <th class="phpdocumentor-heading">Line</th>
-                    <th class="phpdocumentor-heading">Element</th>
-                    <th class="phpdocumentor-heading">Reason</th>
-                </tr>
-                                                            <tr>
-                            <td class="phpdocumentor-cell">12</td>
-                            <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Contracts-HasFeature.html"><abbr title="\MetaFox\Platform\Contracts\HasFeature">HasFeature</abbr></a></td>
-                            <td class="phpdocumentor-cell"></td>
-                        </tr>
-                                                </table>
-                    <a id="packages/platform/src/Contracts/HasSponsor.php"></a>
-            <h3><abbr title="packages/platform/src/Contracts/HasSponsor.php">HasSponsor.php</abbr></h3>
-            <table>
-                <tr>
-                    <th class="phpdocumentor-heading">Line</th>
-                    <th class="phpdocumentor-heading">Element</th>
-                    <th class="phpdocumentor-heading">Reason</th>
-                </tr>
-                                                            <tr>
-                            <td class="phpdocumentor-cell">11</td>
-                            <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Contracts-HasSponsor.html"><abbr title="\MetaFox\Platform\Contracts\HasSponsor">HasSponsor</abbr></a></td>
-                            <td class="phpdocumentor-cell"></td>
-                        </tr>
-                                                </table>
-                    <a id="packages/platform/src/Contracts/HasSponsorInFeed.php"></a>
-            <h3><abbr title="packages/platform/src/Contracts/HasSponsorInFeed.php">HasSponsorInFeed.php</abbr></h3>
-            <table>
-                <tr>
-                    <th class="phpdocumentor-heading">Line</th>
-                    <th class="phpdocumentor-heading">Element</th>
-                    <th class="phpdocumentor-heading">Reason</th>
-                </tr>
-                                                            <tr>
-                            <td class="phpdocumentor-cell">11</td>
-                            <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Contracts-HasSponsorInFeed.html"><abbr title="\MetaFox\Platform\Contracts\HasSponsorInFeed">HasSponsorInFeed</abbr></a></td>
-                            <td class="phpdocumentor-cell"></td>
-                        </tr>
-                                                </table>
-                    <a id="packages/platform/src/Contracts/HasTotalMember.php"></a>
-            <h3><abbr title="packages/platform/src/Contracts/HasTotalMember.php">HasTotalMember.php</abbr></h3>
-            <table>
-                <tr>
-                    <th class="phpdocumentor-heading">Line</th>
-                    <th class="phpdocumentor-heading">Element</th>
-                    <th class="phpdocumentor-heading">Reason</th>
-                </tr>
-                                                            <tr>
-                            <td class="phpdocumentor-cell">10</td>
-                            <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Contracts-HasTotalMember.html"><abbr title="\MetaFox\Platform\Contracts\HasTotalMember">HasTotalMember</abbr></a></td>
-                            <td class="phpdocumentor-cell"></td>
-                        </tr>
-                                                </table>
-                    <a id="packages/platform/src/Contracts/HasTotalShare.php"></a>
-            <h3><abbr title="packages/platform/src/Contracts/HasTotalShare.php">HasTotalShare.php</abbr></h3>
-            <table>
-                <tr>
-                    <th class="phpdocumentor-heading">Line</th>
-                    <th class="phpdocumentor-heading">Element</th>
-                    <th class="phpdocumentor-heading">Reason</th>
-                </tr>
-                                                            <tr>
-                            <td class="phpdocumentor-cell">10</td>
-                            <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Contracts-HasTotalShare.html"><abbr title="\MetaFox\Platform\Contracts\HasTotalShare">HasTotalShare</abbr></a></td>
-                            <td class="phpdocumentor-cell"></td>
-                        </tr>
-                                                </table>
-                    <a id="packages/platform/src/Contracts/Policy/ViewOnProfilePagePolicyInterface.php"></a>
-            <h3><abbr title="packages/platform/src/Contracts/Policy/ViewOnProfilePagePolicyInterface.php">ViewOnProfilePagePolicyInterface.php</abbr></h3>
-            <table>
-                <tr>
-                    <th class="phpdocumentor-heading">Line</th>
-                    <th class="phpdocumentor-heading">Element</th>
-                    <th class="phpdocumentor-heading">Reason</th>
-                </tr>
-                                                            <tr>
-                            <td class="phpdocumentor-cell">12</td>
-                            <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Contracts-Policy-ViewOnProfilePagePolicyInterface.html"><abbr title="\MetaFox\Platform\Contracts\Policy\ViewOnProfilePagePolicyInterface">ViewOnProfilePagePolicyInterface</abbr></a></td>
-                            <td class="phpdocumentor-cell"></td>
-                        </tr>
-                                                </table>
-                    <a id="packages/platform/src/helpers.php"></a>
-            <h3><abbr title="packages/platform/src/helpers.php">helpers.php</abbr></h3>
-            <table>
-                <tr>
-                    <th class="phpdocumentor-heading">Line</th>
-                    <th class="phpdocumentor-heading">Element</th>
-                    <th class="phpdocumentor-heading">Reason</th>
-                </tr>
-                                                            <tr>
-                            <td class="phpdocumentor-cell">42</td>
-                            <td class="phpdocumentor-cell"><a href="namespaces/default.html#function_set_installation_lock"><abbr title="\set_installation_lock()">set_installation_lock()</abbr></a></td>
-                            <td class="phpdocumentor-cell"></td>
-                        </tr>
-                                                                                <tr>
-                            <td class="phpdocumentor-cell">50</td>
-                            <td class="phpdocumentor-cell"><a href="namespaces/default.html#function_get_installation_lock"><abbr title="\get_installation_lock()">get_installation_lock()</abbr></a></td>
-                            <td class="phpdocumentor-cell"></td>
-                        </tr>
-                                                </table>
-                    <a id="packages/platform/src/Traits/Policy/ViewOnProfilePagePolicyTrait.php"></a>
-            <h3><abbr title="packages/platform/src/Traits/Policy/ViewOnProfilePagePolicyTrait.php">ViewOnProfilePagePolicyTrait.php</abbr></h3>
-            <table>
-                <tr>
-                    <th class="phpdocumentor-heading">Line</th>
-                    <th class="phpdocumentor-heading">Element</th>
-                    <th class="phpdocumentor-heading">Reason</th>
-                </tr>
-                                                            <tr>
-                            <td class="phpdocumentor-cell">12</td>
-                            <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Traits-Policy-ViewOnProfilePagePolicyTrait.html"><abbr title="\MetaFox\Platform\Traits\Policy\ViewOnProfilePagePolicyTrait">ViewOnProfilePagePolicyTrait</abbr></a></td>
-                            <td class="phpdocumentor-cell"></td>
-                        </tr>
-                                                </table>
-            </div>
-                <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
+                        <h3>Table of Contents</h3>
+            <table class="phpdocumentor-table_of_contents">
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/metafox/comment/src/Support/LoadMissingTotalPendingComment.php">packages/metafox/comment/src/Support/LoadMissingTotalPendingComment.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/metafox/comment/src/Support/LoadMissingTotalPendingReply.php">packages/metafox/comment/src/Support/LoadMissingTotalPendingReply.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/metafox/core/src/Listeners/GetTimeZones.php">packages/metafox/core/src/Listeners/GetTimeZones.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/metafox/core/src/Models/SiteSetting.php">packages/metafox/core/src/Models/SiteSetting.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/metafox/core/src/Traits/HasValidateUserTrait.php">packages/metafox/core/src/Traits/HasValidateUserTrait.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/metafox/sticker/src/Http/Requests/v1/StickerSet/UpdateRequest.php">packages/metafox/sticker/src/Http/Requests/v1/StickerSet/UpdateRequest.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/metafox/user/src/Http/Requests/v1/UserVerify/ResendLinkRequest.php">packages/metafox/user/src/Http/Requests/v1/UserVerify/ResendLinkRequest.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/metafox/user/src/Http/Resources/v1/User/UserDetail.php">packages/metafox/user/src/Http/Resources/v1/User/UserDetail.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/metafox/user/src/Http/Resources/v1/User/UserItem.php">packages/metafox/user/src/Http/Resources/v1/User/UserItem.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/metafox/user/src/Http/Resources/v1/User/UserMe.php">packages/metafox/user/src/Http/Resources/v1/User/UserMe.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/metafox/user/src/Http/Resources/v1/UserEntity/UserEntityDetail.php">packages/metafox/user/src/Http/Resources/v1/UserEntity/UserEntityDetail.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/metafox/user/src/Repositories/Eloquent/UserVerifyRepository.php">packages/metafox/user/src/Repositories/Eloquent/UserVerifyRepository.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/metafox/user/src/Repositories/UserVerifyRepositoryInterface.php">packages/metafox/user/src/Repositories/UserVerifyRepositoryInterface.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/metafox/user/src/Support/User.php">packages/metafox/user/src/Support/User.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/platform/src/Contracts/HasApprove.php">packages/platform/src/Contracts/HasApprove.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/platform/src/Contracts/HasFeature.php">packages/platform/src/Contracts/HasFeature.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/platform/src/Contracts/HasSponsor.php">packages/platform/src/Contracts/HasSponsor.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/platform/src/Contracts/HasSponsorInFeed.php">packages/platform/src/Contracts/HasSponsorInFeed.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/platform/src/Contracts/HasThumbnail.php">packages/platform/src/Contracts/HasThumbnail.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/platform/src/Contracts/HasTotalMember.php">packages/platform/src/Contracts/HasTotalMember.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/platform/src/Contracts/HasTotalShare.php">packages/platform/src/Contracts/HasTotalShare.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/platform/src/Contracts/PackageSettingListenerInterface.php">packages/platform/src/Contracts/PackageSettingListenerInterface.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/platform/src/Contracts/Policy/ViewOnProfilePagePolicyInterface.php">packages/platform/src/Contracts/Policy/ViewOnProfilePagePolicyInterface.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/platform/src/Contracts/ResizeImageInterface.php">packages/platform/src/Contracts/ResizeImageInterface.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/platform/src/helpers.php">packages/platform/src/helpers.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/platform/src/Support/Browse/Browse.php">packages/platform/src/Support/Browse/Browse.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/platform/src/Support/Browse/Scopes/PrivacyScope.php">packages/platform/src/Support/Browse/Scopes/PrivacyScope.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/platform/src/Support/Factory/HasSetState.php">packages/platform/src/Support/Factory/HasSetState.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/platform/src/Support/Repository/HasSponsor.php">packages/platform/src/Support/Repository/HasSponsor.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/platform/src/TraitAttributeBag.php">packages/platform/src/TraitAttributeBag.php</a></td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell"><a href="reports/deprecated.html#packages/platform/src/Traits/Policy/ViewOnProfilePagePolicyTrait.php">packages/platform/src/Traits/Policy/ViewOnProfilePagePolicyTrait.php</a></td>
+                    </tr>
+                            </table>
+            
+                            <a id="packages/metafox/comment/src/Support/LoadMissingTotalPendingComment.php"></a>
+                <h3><abbr title="packages/metafox/comment/src/Support/LoadMissingTotalPendingComment.php">LoadMissingTotalPendingComment.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">13</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Comment-Support-LoadMissingTotalPendingComment.html"><abbr title="\MetaFox\Comment\Support\LoadMissingTotalPendingComment">LoadMissingTotalPendingComment</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/metafox/comment/src/Support/LoadMissingTotalPendingReply.php"></a>
+                <h3><abbr title="packages/metafox/comment/src/Support/LoadMissingTotalPendingReply.php">LoadMissingTotalPendingReply.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">12</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Comment-Support-LoadMissingTotalPendingReply.html"><abbr title="\MetaFox\Comment\Support\LoadMissingTotalPendingReply">LoadMissingTotalPendingReply</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/metafox/core/src/Listeners/GetTimeZones.php"></a>
+                <h3><abbr title="packages/metafox/core/src/Listeners/GetTimeZones.php">GetTimeZones.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">11</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Core-Listeners-GetTimeZones.html"><abbr title="\MetaFox\Core\Listeners\GetTimeZones">GetTimeZones</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/metafox/core/src/Models/SiteSetting.php"></a>
+                <h3><abbr title="packages/metafox/core/src/Models/SiteSetting.php">SiteSetting.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">96</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Core-Models-SiteSetting.html#method_getValueAttribute"><abbr title="\MetaFox\Core\Models\SiteSetting::getValueAttribute()">SiteSetting::getValueAttribute()</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/metafox/core/src/Traits/HasValidateUserTrait.php"></a>
+                <h3><abbr title="packages/metafox/core/src/Traits/HasValidateUserTrait.php">HasValidateUserTrait.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">120</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Core-Traits-HasValidateUserTrait.html#method_getMessageTextForOldMobileVersion"><abbr title="\MetaFox\Core\Traits\HasValidateUserTrait::getMessageTextForOldMobileVersion()">HasValidateUserTrait::getMessageTextForOldMobileVersion()</abbr></a></td>
+                                <td class="phpdocumentor-cell"><p>Need remove for some next version</p>
+</td>
+                            </tr>
+                                                                                                <tr>
+                                <td class="phpdocumentor-cell">139</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Core-Traits-HasValidateUserTrait.html#method_isOldMobileVersion"><abbr title="\MetaFox\Core\Traits\HasValidateUserTrait::isOldMobileVersion()">HasValidateUserTrait::isOldMobileVersion()</abbr></a></td>
+                                <td class="phpdocumentor-cell"><p>Need remove for some next version</p>
+</td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/metafox/sticker/src/Http/Requests/v1/StickerSet/UpdateRequest.php"></a>
+                <h3><abbr title="packages/metafox/sticker/src/Http/Requests/v1/StickerSet/UpdateRequest.php">UpdateRequest.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">10</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Sticker-Http-Requests-v1-StickerSet-UpdateRequest.html"><abbr title="\MetaFox\Sticker\Http\Requests\v1\StickerSet\UpdateRequest">UpdateRequest</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/metafox/user/src/Http/Requests/v1/UserVerify/ResendLinkRequest.php"></a>
+                <h3><abbr title="packages/metafox/user/src/Http/Requests/v1/UserVerify/ResendLinkRequest.php">ResendLinkRequest.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">11</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-User-Http-Requests-v1-UserVerify-ResendLinkRequest.html"><abbr title="\MetaFox\User\Http\Requests\v1\UserVerify\ResendLinkRequest">ResendLinkRequest</abbr></a></td>
+                                <td class="phpdocumentor-cell"><p>Need remove for some next version</p>
+</td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/metafox/user/src/Http/Resources/v1/User/UserDetail.php"></a>
+                <h3><abbr title="packages/metafox/user/src/Http/Resources/v1/User/UserDetail.php">UserDetail.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">211</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-User-Http-Resources-v1-User-UserDetail.html#method_getAvatarId"><abbr title="\MetaFox\User\Http\Resources\v1\User\UserDetail::getAvatarId()">UserDetail::getAvatarId()</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/metafox/user/src/Http/Resources/v1/User/UserItem.php"></a>
+                <h3><abbr title="packages/metafox/user/src/Http/Resources/v1/User/UserItem.php">UserItem.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">124</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-User-Http-Resources-v1-User-UserItem.html#method_getAvatarId"><abbr title="\MetaFox\User\Http\Resources\v1\User\UserItem::getAvatarId()">UserItem::getAvatarId()</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/metafox/user/src/Http/Resources/v1/User/UserMe.php"></a>
+                <h3><abbr title="packages/metafox/user/src/Http/Resources/v1/User/UserMe.php">UserMe.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">120</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-User-Http-Resources-v1-User-UserMe.html#method_getAvatarId"><abbr title="\MetaFox\User\Http\Resources\v1\User\UserMe::getAvatarId()">UserMe::getAvatarId()</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/metafox/user/src/Http/Resources/v1/UserEntity/UserEntityDetail.php"></a>
+                <h3><abbr title="packages/metafox/user/src/Http/Resources/v1/UserEntity/UserEntityDetail.php">UserEntityDetail.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">175</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-User-Http-Resources-v1-UserEntity-UserEntityDetail.html#method_getAvatarId"><abbr title="\MetaFox\User\Http\Resources\v1\UserEntity\UserEntityDetail::getAvatarId()">UserEntityDetail::getAvatarId()</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/metafox/user/src/Repositories/Eloquent/UserVerifyRepository.php"></a>
+                <h3><abbr title="packages/metafox/user/src/Repositories/Eloquent/UserVerifyRepository.php">UserVerifyRepository.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">88</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-User-Repositories-Eloquent-UserVerifyRepository.html#method_resendLink"><abbr title="\MetaFox\User\Repositories\Eloquent\UserVerifyRepository::resendLink()">UserVerifyRepository::resendLink()</abbr></a></td>
+                                <td class="phpdocumentor-cell"><p>Need remove for some next version</p>
+</td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/metafox/user/src/Repositories/UserVerifyRepositoryInterface.php"></a>
+                <h3><abbr title="packages/metafox/user/src/Repositories/UserVerifyRepositoryInterface.php">UserVerifyRepositoryInterface.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">86</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-User-Repositories-UserVerifyRepositoryInterface.html#method_resendLink"><abbr title="\MetaFox\User\Repositories\UserVerifyRepositoryInterface::resendLink()">UserVerifyRepositoryInterface::resendLink()</abbr></a></td>
+                                <td class="phpdocumentor-cell"><p>Need remove for some next version</p>
+</td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/metafox/user/src/Support/User.php"></a>
+                <h3><abbr title="packages/metafox/user/src/Support/User.php">User.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">450</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-User-Support-User.html#method_getUserAge"><abbr title="\MetaFox\User\Support\User::getUserAge()">User::getUserAge()</abbr></a></td>
+                                <td class="phpdocumentor-cell"><p>v5.1.8</p>
+</td>
+                            </tr>
+                                                                                                <tr>
+                                <td class="phpdocumentor-cell">53</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-User-Support-User.html#constant_DATE_OF_BIRTH_SHOW_DAY_MONTH"><abbr title="\MetaFox\User\Support\User::DATE_OF_BIRTH_SHOW_DAY_MONTH">User::DATE_OF_BIRTH_SHOW_DAY_MONTH</abbr></a></td>
+                                <td class="phpdocumentor-cell"><p>v5.1.8</p>
+</td>
+                            </tr>
+                                                                                                <tr>
+                                <td class="phpdocumentor-cell">58</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-User-Support-User.html#constant_DATE_OF_BIRTH_SHOW_ALL"><abbr title="\MetaFox\User\Support\User::DATE_OF_BIRTH_SHOW_ALL">User::DATE_OF_BIRTH_SHOW_ALL</abbr></a></td>
+                                <td class="phpdocumentor-cell"><p>v5.1.8</p>
+</td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/platform/src/Contracts/HasApprove.php"></a>
+                <h3><abbr title="packages/platform/src/Contracts/HasApprove.php">HasApprove.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">11</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Contracts-HasApprove.html"><abbr title="\MetaFox\Platform\Contracts\HasApprove">HasApprove</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/platform/src/Contracts/HasFeature.php"></a>
+                <h3><abbr title="packages/platform/src/Contracts/HasFeature.php">HasFeature.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">12</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Contracts-HasFeature.html"><abbr title="\MetaFox\Platform\Contracts\HasFeature">HasFeature</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/platform/src/Contracts/HasSponsor.php"></a>
+                <h3><abbr title="packages/platform/src/Contracts/HasSponsor.php">HasSponsor.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">11</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Contracts-HasSponsor.html"><abbr title="\MetaFox\Platform\Contracts\HasSponsor">HasSponsor</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/platform/src/Contracts/HasSponsorInFeed.php"></a>
+                <h3><abbr title="packages/platform/src/Contracts/HasSponsorInFeed.php">HasSponsorInFeed.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">11</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Contracts-HasSponsorInFeed.html"><abbr title="\MetaFox\Platform\Contracts\HasSponsorInFeed">HasSponsorInFeed</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/platform/src/Contracts/HasThumbnail.php"></a>
+                <h3><abbr title="packages/platform/src/Contracts/HasThumbnail.php">HasThumbnail.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">21</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Contracts-HasThumbnail.html#method_getSizes"><abbr title="\MetaFox\Platform\Contracts\HasThumbnail::getSizes()">HasThumbnail::getSizes()</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                                                                <tr>
+                                <td class="phpdocumentor-cell">27</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Contracts-HasThumbnail.html#method_getImageAttribute"><abbr title="\MetaFox\Platform\Contracts\HasThumbnail::getImageAttribute()">HasThumbnail::getImageAttribute()</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/platform/src/Contracts/HasTotalMember.php"></a>
+                <h3><abbr title="packages/platform/src/Contracts/HasTotalMember.php">HasTotalMember.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">10</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Contracts-HasTotalMember.html"><abbr title="\MetaFox\Platform\Contracts\HasTotalMember">HasTotalMember</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/platform/src/Contracts/HasTotalShare.php"></a>
+                <h3><abbr title="packages/platform/src/Contracts/HasTotalShare.php">HasTotalShare.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">10</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Contracts-HasTotalShare.html"><abbr title="\MetaFox\Platform\Contracts\HasTotalShare">HasTotalShare</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/platform/src/Contracts/PackageSettingListenerInterface.php"></a>
+                <h3><abbr title="packages/platform/src/Contracts/PackageSettingListenerInterface.php">PackageSettingListenerInterface.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">13</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Contracts-PackageSettingListenerInterface.html#method_getPolicies"><abbr title="\MetaFox\Platform\Contracts\PackageSettingListenerInterface::getPolicies()">PackageSettingListenerInterface::getPolicies()</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                                                                <tr>
+                                <td class="phpdocumentor-cell">21</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Contracts-PackageSettingListenerInterface.html#method_getPolicyHandlers"><abbr title="\MetaFox\Platform\Contracts\PackageSettingListenerInterface::getPolicyHandlers()">PackageSettingListenerInterface::getPolicyHandlers()</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                                                                <tr>
+                                <td class="phpdocumentor-cell">43</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Contracts-PackageSettingListenerInterface.html#method_getNotificationTypes"><abbr title="\MetaFox\Platform\Contracts\PackageSettingListenerInterface::getNotificationTypes()">PackageSettingListenerInterface::getNotificationTypes()</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                                                                <tr>
+                                <td class="phpdocumentor-cell">102</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Contracts-PackageSettingListenerInterface.html#method_getProfileMenu"><abbr title="\MetaFox\Platform\Contracts\PackageSettingListenerInterface::getProfileMenu()">PackageSettingListenerInterface::getProfileMenu()</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                                                                <tr>
+                                <td class="phpdocumentor-cell">128</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Contracts-PackageSettingListenerInterface.html#method_getItemTypes"><abbr title="\MetaFox\Platform\Contracts\PackageSettingListenerInterface::getItemTypes()">PackageSettingListenerInterface::getItemTypes()</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/platform/src/Contracts/Policy/ViewOnProfilePagePolicyInterface.php"></a>
+                <h3><abbr title="packages/platform/src/Contracts/Policy/ViewOnProfilePagePolicyInterface.php">ViewOnProfilePagePolicyInterface.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">12</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Contracts-Policy-ViewOnProfilePagePolicyInterface.html"><abbr title="\MetaFox\Platform\Contracts\Policy\ViewOnProfilePagePolicyInterface">ViewOnProfilePagePolicyInterface</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/platform/src/Contracts/ResizeImageInterface.php"></a>
+                <h3><abbr title="packages/platform/src/Contracts/ResizeImageInterface.php">ResizeImageInterface.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">15</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Contracts-ResizeImageInterface.html#method_getSizes"><abbr title="\MetaFox\Platform\Contracts\ResizeImageInterface::getSizes()">ResizeImageInterface::getSizes()</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                                                                <tr>
+                                <td class="phpdocumentor-cell">58</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Contracts-ResizeImageInterface.html#method_setSquareSizes"><abbr title="\MetaFox\Platform\Contracts\ResizeImageInterface::setSquareSizes()">ResizeImageInterface::setSquareSizes()</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/platform/src/helpers.php"></a>
+                <h3><abbr title="packages/platform/src/helpers.php">helpers.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">42</td>
+                                <td class="phpdocumentor-cell"><a href="namespaces/default.html#function_set_installation_lock"><abbr title="\set_installation_lock()">set_installation_lock()</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                                                                <tr>
+                                <td class="phpdocumentor-cell">50</td>
+                                <td class="phpdocumentor-cell"><a href="namespaces/default.html#function_get_installation_lock"><abbr title="\get_installation_lock()">get_installation_lock()</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/platform/src/Support/Browse/Browse.php"></a>
+                <h3><abbr title="packages/platform/src/Support/Browse/Browse.php">Browse.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">15</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Support-Browse-Browse.html#constant_SORT_LATEST"><abbr title="\MetaFox\Platform\Support\Browse\Browse::SORT_LATEST">Browse::SORT_LATEST</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/platform/src/Support/Browse/Scopes/PrivacyScope.php"></a>
+                <h3><abbr title="packages/platform/src/Support/Browse/Scopes/PrivacyScope.php">PrivacyScope.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">306</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Support-Browse-Scopes-PrivacyScope.html#method_addPrivacyMemberScope"><abbr title="\MetaFox\Platform\Support\Browse\Scopes\PrivacyScope::addPrivacyMemberScope()">PrivacyScope::addPrivacyMemberScope()</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/platform/src/Support/Factory/HasSetState.php"></a>
+                <h3><abbr title="packages/platform/src/Support/Factory/HasSetState.php">HasSetState.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">231</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Support-Factory-HasSetState.html#method_fakeRandomId"><abbr title="\MetaFox\Platform\Support\Factory\HasSetState::fakeRandomId()">HasSetState::fakeRandomId()</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/platform/src/Support/Repository/HasSponsor.php"></a>
+                <h3><abbr title="packages/platform/src/Support/Repository/HasSponsor.php">HasSponsor.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">94</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Support-Repository-HasSponsor.html#method_isSponsor"><abbr title="\MetaFox\Platform\Support\Repository\HasSponsor::isSponsor()">HasSponsor::isSponsor()</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/platform/src/TraitAttributeBag.php"></a>
+                <h3><abbr title="packages/platform/src/TraitAttributeBag.php">TraitAttributeBag.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">28</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-TraitAttributeBag.html#method_config"><abbr title="\MetaFox\Platform\TraitAttributeBag::config()">TraitAttributeBag::config()</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                            </table>
+                            <a id="packages/platform/src/Traits/Policy/ViewOnProfilePagePolicyTrait.php"></a>
+                <h3><abbr title="packages/platform/src/Traits/Policy/ViewOnProfilePagePolicyTrait.php">ViewOnProfilePagePolicyTrait.php</abbr></h3>
+                <table>
+                    <tr>
+                        <th class="phpdocumentor-heading">Line</th>
+                        <th class="phpdocumentor-heading">Element</th>
+                        <th class="phpdocumentor-heading">Reason</th>
+                    </tr>
+                                                                        <tr>
+                                <td class="phpdocumentor-cell">12</td>
+                                <td class="phpdocumentor-cell"><a href="classes/MetaFox-Platform-Traits-Policy-ViewOnProfilePagePolicyTrait.html"><abbr title="\MetaFox\Platform\Traits\Policy\ViewOnProfilePagePolicyTrait">ViewOnProfilePagePolicyTrait</abbr></a></td>
+                                <td class="phpdocumentor-cell"></td>
+                            </tr>
+                                                            </table>
+                    </div>
+    </section>
+                            </div>
+            <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
     <section class="phpdocumentor-search-results__dialog">
         <header class="phpdocumentor-search-results__header">
             <h2 class="phpdocumentor-search-results__title">Search results</h2>
@@ -386,7 +783,6 @@
         </section>
     </section>
 </section>
-            </div>
         </div>
         <a href="reports/deprecated.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
