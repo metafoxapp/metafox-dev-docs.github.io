@@ -30,9 +30,9 @@ Then, you will see the the **Code Generator** icon on the top header in AdminCP.
 #### Create New App
 
 Press the **Code Generator** option on the top header. You will see the popup with many supported options.
-Let's choose the *New App* option as we intend to generate code for new app at this time.
+Let's choose the _New App_ option as we intend to generate code for new app at this time.
 
-On the *Create App* form, you will need to fill the following app details:
+On the _Create App_ form, you will need to fill the following app details:
 
 - **App Name**: App name must have to 2 parts in the follow format _vendor_name/app_name_, such as `metafox/note`
 - **Vendor Name**: This info will be used as your app namespace, such as `MetaFox`
@@ -79,7 +79,7 @@ packages/
         Providers/
         Repositories/
       tests/
-        Tests/  
+        Tests/
           Unit/: Unit test source root
           Features/: Feature test source root
       composer.json
@@ -87,7 +87,7 @@ packages/
 
 ### Frontend
 
-We assume that you have set up development environment to build React on your machine/server. downloaded the _MetaFox_ source package and extract it on your local machine or server. 
+We assume that you have set up development environment to build React on your machine/server. downloaded the _MetaFox_ source package and extract it on your local machine or server.
 
 To create app skeleton for the _Frontend_ of _Notes_ app, you can open Terminal, go to the `frontend` folder mentioned above and run the following commands:
 
@@ -142,7 +142,7 @@ You can use the command `yarn metafox --help` to list commands and options.
 
 Press **Code Generator** on the top header in AdminCP, then choose **Migration** item and fill schema name with "notes".
 
-A new _Migration_ file is created under `backend/package/metafox/note/src/Database/Migrations` folder. 
+A new _Migration_ file is created under `backend/package/metafox/note/src/Database/Migrations` folder.
 Its file name will be prefixed by info of datetime, for example:`2022_05_23_101328_migrate_notes_table.php`
 
 The datetime prefix helps migration scripts execute Migration files in chronological order.
@@ -181,8 +181,8 @@ updated_at         :
 
 ## Add New Model
 
-Press **Code Generator** on the top header and choose the **Model** item. 
-Then, fill your *App name* with `metafox/note`, *schemas* with `notes`, *Model* with `Note` and *Entity Name* with `note`.
+Press **Code Generator** on the top header and choose the **Model** item.
+Then, fill your _App name_ with `metafox/note`, _schemas_ with `notes`, _Model_ with `Note` and _Entity Name_ with `note`.
 
 _MetaFox_ generates somes classes based on what features you have chosen on the previous form.
 
@@ -227,7 +227,6 @@ On the form, choose `metafox/note` package and `Note` model, then submit.
 
 You can do the same to generate APIs for Admin but choose **Admin API**.
 
-
 [To update api routes](/backend/routing)
 
 Next, we will edit `packages/metafox/note/routes/api.php` file to add routes:
@@ -266,29 +265,9 @@ Http requests are forwarded to `MetaFox\Note\Http\Controllers\Api\NoteController
 
 ### Add WebSetting
 
-The _Frontend_ loads all site settings, permissions and all resource settings via the _Settings API_ `/api/core/web-settings`. 
-This API collects all data defined in the `WebSetting` classes of all app packages. 
+The _Frontend_ loads all site settings, permissions and all resource settings via the _Settings API_ `/api/core/web-settings`.
+This API collects all data defined in the `WebSetting` classes of all app packages.
 Follow this guide step by step to register app settings into the _Settings API_.
-
-After adding a new API, edit `backend/packages/metafox/note/src/Http/Resources/v1/WebSetting.php` file as below
-
-```php
-<?php
-
-namespace MetaFox\Note\Http\Resources\v1;
-
-use MetaFox\Platform\Support\Resource\WebAppSetting as Setting;
-
-class WebSetting extends Setting
-{
-    /**
-     * @var array<string,string>
-     */
-    protected $resources = [
-        'note' => Note\WebSetting::class, // <- add this line to define WebSetting.
-    ];
-}
-```
 
 Edit `backend/packages/metafox/note/src/Http/Resources/v1/Note/WebSetting.php` file
 
@@ -364,6 +343,20 @@ class WebSetting extends ResourceSetting
         ]);
     }
 }
+```
+
+Checking `backend/packages/note/config/drivers.php` contains
+
+```php
+    [
+        'driver'     => 'MetaFox\\Company\\Http\\Resources\\v1\\Note\\WebSetting',
+        'type'       => 'resource-web',
+        'name'       => 'note',
+        'version'    => 'v1',
+        'resolution' => 'web',
+        'is_active'  => true,
+        'is_preload' => false,
+    ],
 ```
 
 ## Home Page
@@ -647,7 +640,7 @@ You can check all form fields supported at [MetaFox built-in fields support](htt
 
 ### Frontend
 
-_Frontend_ supports built-in dynamic form builder to transform JSON-based responses into ReactJS Form element. 
+_Frontend_ supports built-in dynamic form builder to transform JSON-based responses into ReactJS Form element.
 
 Below is the sample Form response in JSON format
 
@@ -912,7 +905,7 @@ echo __p('auth.failed'); // ouput: These credentials do not match our records.
 
 The simplest way to add translation phrases is via AdminCP, visit **AdminCP** → **Localization** → **Phrases** → **+ Add New Phrase**
 
-Then, you can follow the *Phrase Creation Wizard* to create a new phrase.
+Then, you can follow the _Phrase Creation Wizard_ to create a new phrase.
 
 ### Frontend
 
@@ -1120,8 +1113,6 @@ To list full events your site, you can open terminal and run the command `php ar
 ## Model Observer
 
 In order to track model modification, checkout [Eloquent Observer](/backend/eloquent#observers)
-
-
 
 ## Export App
 
