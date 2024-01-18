@@ -266,18 +266,16 @@ Http requests are forwarded to `MetaFox\Note\Http\Controllers\Api\NoteController
 
 ### Add WebSetting
 
-Then _Frontend_ loads all site settings, permissions and all resource settings via the _Settings API_ `/api/core/web-settings`. This API collects all data defined in the `WebSetting` classes of all app packages. Follow this guide step by step to register app settings into the _Settings API_.
+The _Frontend_ loads all site settings, permissions and all resource settings via the _Settings API_ `/api/core/web-settings`. 
+This API collects all data defined in the `WebSetting` classes of all app packages. 
+Follow this guide step by step to register app settings into the _Settings API_.
 
-After adding a new API, edit `packages/company/hello/src/Http/Resources/v1/WebSetting.php` file as below
+After adding a new API, edit `backend/packages/metafox/note/src/Http/Resources/v1/WebSetting.php` file as below
 
 ```php
 <?php
-/**
- * @author  developer@phpfox.com
- * @license phpfox.com
- */
 
-namespace Company\Hello\Http\Resources\v1;
+namespace MetaFox\Note\Http\Resources\v1;
 
 use MetaFox\Platform\Support\Resource\WebAppSetting as Setting;
 
@@ -292,14 +290,10 @@ class WebSetting extends Setting
 }
 ```
 
-Edit `packages/company/note/src/Http/Resources/v1/Note/WebSetting.php` file
+Edit `backend/packages/metafox/note/src/Http/Resources/v1/Note/WebSetting.php` file
 
 ```php
 <?php
-/**
- * @author  developer@phpfox.com
- * @license phpfox.com
- */
 
 namespace MetaFox\Note\Http\Resources\v1\Note;
 
@@ -314,7 +308,7 @@ use MetaFox\Platform\Support\Resource\WebSetting as ResourceSetting;
  */
 
 /**
- * Class BlogWebSetting
+ * Class NoteWebSetting
  * Inject this class into property $resources.
  * @link \MetaFox\Note\Http\Resources\v1\WebSetting::$resources;
  * @SuppressWarnings(PHPMD.ExcessiveClassLength)
@@ -331,7 +325,7 @@ class WebSetting extends ResourceSetting
             'searchItem'         => [
                 'apiUrl'=> '/note',
                 'pageUrl'     => '/note/search',
-                'placeholder' => 'Search blogs',
+                'placeholder' => 'Search notes',
             ],
             'homePage'           => [
                 'pageUrl' => '/note',
@@ -366,7 +360,7 @@ class WebSetting extends ResourceSetting
     protected function initForms(): void
     {
         $this->addForms([
-            'filter' => new SearchBlogForm(),
+            'filter' => new SearchNoteForm(),
         ]);
     }
 }
@@ -374,7 +368,7 @@ class WebSetting extends ResourceSetting
 
 ## Home Page
 
-Let's open the `note/src/pages/HomePage/Page.tsx` file and look into some annotations at the top of file
+Let's open the `frontend/packages/note/src/pages/HomePage/Page.tsx` file and look into some annotations at the top of file
 
 ```tsx
 /**
@@ -444,14 +438,14 @@ Visit **AdminCP** > **Code Generator** > **Forms**
 
 Put forms with _"store, update, search"_ to create `StoreNoteForm`, `UpdateNoteForm`, `SearchNoteForm`.
 
-Edit `packages/company/note/routes/api.php` file to add routes for form requests.
+Edit `backend/packages/metafox/note/routes/api.php` file to add routes for form requests.
 
 Dive into `StoreNoteForm.php`
 
 ```php
 <?php
 
-namespace Company\Note\Http\Controllers\Api;
+namespace MetaFox\Note\Http\Controllers\Api;
 
 use Illuminate\Support\Facades\Route;
 
@@ -480,12 +474,12 @@ Route::group([
 });
 ```
 
-Edit `Company\Note\Http\Controllers\Api\v1\NoteController` file, add following methods
+Edit the `backend/packages/metafox/note/src/Http/Controllers/Api/v1/NoteController.php` file, add following methods
 
 ```php
 <?php
 
-namespace Company\Note\Http\Controllers\Api\v1;
+namespace MetaFox\Note\Http\Controllers\Api\v1;
 
 // import use method
 
@@ -546,14 +540,14 @@ class NoteController extends ApiController
 ```php
 <?php
 
-namespace Company\Note\Http\Resources\v1\Note;
+namespace MetaFox\Note\Http\Resources\v1\Note;
 
 use MetaFox\Platform\MetaFoxForm;
 use MetaFox\Platform\Support\Form\AbstractForm;
 use MetaFox\Platform\Support\Form\Field\CancelButton;
 use MetaFox\Platform\Support\Form\Field\Submit;
 use MetaFox\Platform\Support\Form\Field\Text;
-use Company\Note\Models\Note as Model;
+use MetaFox\Note\Models\Note as Model;
 
 class StoreNoteForm extends AbstractForm
 {
@@ -653,7 +647,7 @@ You can check all form fields supported at [MetaFox built-in fields support](htt
 
 ### Frontend
 
-_MetaFox Frontend_ supports built-in dynamic form builder to transform JSON-based responses into ReactJS Form element, For example
+_Frontend_ supports built-in dynamic form builder to transform JSON-based responses into ReactJS Form element. 
 
 Below is the sample Form response in JSON format
 
@@ -726,7 +720,7 @@ Below is the sample Form response in JSON format
 }
 ```
 
-Look into `packages/framework/metafox-form/src/elements/TextField.tsx` file
+Look into `frontend/packages/framework/metafox-form/src/elements/TextField.tsx` file
 
 ```tsx
 /**
@@ -807,12 +801,12 @@ Form supports validation both _Frontend_ and _Backend_
 
 ### Backend
 
-Dive into `packages/company/hello/src/Http/Requests/v1/Note/StoreRequest.php` file
+Dive into `backend/packages/metafox/note/src/Http/Requests/v1/Note/StoreRequest.php` file
 
 ```php
 <?php
 
-namespace Company\Hello\Http\Requests\v1\Note;
+namespace MetaFox\Note\Http\Requests\v1\Note;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -845,7 +839,7 @@ The main method `rules` returns an array of [validation rules](https://laravel.c
 
 MetaFox translation feature provides a convenient way to retrieve strings in various languages, allowing you to easily support multiple languages within your application.
 
-Within note package, translations string are stored within the `resources/lang` directive. With thin this directory, the subdirectory is langue code, and files in contains groups of translations phrase.
+Within `note` package, translations string are stored within the `resources/lang` directive. With thin this directory, the subdirectory is langue code, and files in contains groups of translations phrase.
 
 ```text
 note/
@@ -858,7 +852,7 @@ note/
       fr/                 : Others language code.
 ```
 
-Dive deeper into `./note/resources/lang/en/phrase.php`, it defines phrase group `phrase`, contains a list of phrase_name and phrase value.
+Dive deeper into `backend/packages/metafox/note/resources/lang/en/phrase.php`, it defines phrase group `phrase`, contains a list of phrase_name and phrase value.
 
 ```php
 <?php
@@ -918,11 +912,11 @@ echo __p('auth.failed'); // ouput: These credentials do not match our records.
 
 The simplest way to add translation phrases is via AdminCP, visit **AdminCP** → **Localization** → **Phrases** → **+ Add New Phrase**
 
-Follow the phrase creation winzard to creat phrase.
+Then, you can follow the *Phrase Creation Wizard* to create a new phrase.
 
 ### Frontend
 
-MetaFox frontend provides translations feature in the messages.json files. It contains key/value translations. ect:
+MetaFox frontend provides translations feature in the `messages.json` file. It contains key/value translations as below:
 
 ```json
 {
@@ -948,7 +942,7 @@ MetaFox frontend provides translations feature in the messages.json files. It co
 }
 ```
 
-To translate message in the component, use i18n helper.
+To translate message in the component, use `i18n` helper.
 
 ```tsx
 import { useGlobal } from "@metafox/framework";
@@ -976,7 +970,7 @@ function * saga(){
 
 In order to support complex message translation, frontend translation support icu syntax, allows developer formats plurals, number, date, time, select, selectordinal. For more information checkout [icu-syntax]([icu syntax](https://formatjs.io/docs/core-concepts/icu-syntax))
 
-To support multiple language, frontend load custom language translation using api `/core/translations/web/{language}`. The api reponse all messages in the translation group `web`.
+To support multiple language, frontend load custom language translation using api `/core/translations/web/{language}`. The API responds all messages in the translation group `web`.
 
 ```json
 {
@@ -1000,7 +994,7 @@ To support multiple language, frontend load custom language translation using ap
 
 ## Page Browsing
 
-Dive deeper into `packages/company/note/src/pages/BrowseNotes/Page.tsx` file
+Dive deeper into `frontend/packages/metafox/note/src/pages/BrowseNotes/Page.tsx` file
 
 ```tsx
 /**
