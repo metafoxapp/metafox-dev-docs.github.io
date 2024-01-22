@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/base.css">
             <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/template.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous" />
@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-highlight/prism-line-highlight.css">
                 <script src="https://cdn.jsdelivr.net/npm/fuse.js@3.4.6"></script>
         <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
+        <script src="js/template.js"></script>
         <script src="js/search.js"></script>
         <script defer src="js/searchIndex.js"></script>
     </head>
@@ -52,7 +53,7 @@
 <label class="phpdocumentor-sidebar__menu-icon" for="sidebar-button">
     Menu
 </label>
-<aside class="phpdocumentor-column -four phpdocumentor-sidebar">
+<aside class="phpdocumentor-column -three phpdocumentor-sidebar">
                     <section class="phpdocumentor-sidebar__category">
             <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
@@ -169,8 +170,9 @@
     </section>
 </aside>
 
-            <div class="phpdocumentor-column -eight phpdocumentor-content">
-                    <ul class="phpdocumentor-breadcrumbs">
+            <div class="phpdocumentor-column -nine phpdocumentor-content">
+                                <section>
+                                        <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/metafox.html">MetaFox</a></li>
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/metafox-core.html">Core</a></li>
     </ul>
@@ -190,6 +192,11 @@
     
     </h2>
 
+<div class="phpdocumentor-label-line">
+
+
+</div>
+
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Constants.php"><a href="files/packages-metafox-core-src-constants.html"><abbr title="packages/metafox/core/src/Constants.php">Constants.php</abbr></a></abbr>
     :
@@ -198,11 +205,189 @@
     </aside>
 
         
-    <section class="phpdocumentor-description"></section>
 
 
 
 
+
+<h3 id="toc">
+    Table of Contents
+    <a href="classes/MetaFox-Core-Constants.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h3>
+
+
+
+
+
+
+
+<h4 id="toc-constants">
+    Constants
+    <a href="classes/MetaFox-Core-Constants.html#toc-constants" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Core-Constants.html#constant_AVAILABLE_DRIVER_TYPES">AVAILABLE_DRIVER_TYPES</a>
+    <span>
+        &nbsp;= [&#039;Entity&#039; =&gt; self::DRIVER_TYPE_ENTITY, &#039;Content Type&#039; =&gt; self::DRIVER_TYPE_ENTITY_USER, &#039;Data Grid&#039; =&gt; self::DRIVER_TYPE_DATA_GRID, &#039;Json Resource&#039; =&gt; self::DRIVER_TYPE_JSON_RESOURCE, &#039;Resource Web&#039; =&gt; self::DRIVER_TYPE_RESOURCE_WEB, &#039;Resource Mobile&#039; =&gt; self::DRIVER_TYPE_RESOURCE_ACTIONS, &#039;Policy&#039; =&gt; self::DRIVER_TYPE_POLICY_RESOURCE, &#039;Policy Rule&#039; =&gt; self::DRIVER_TYPE_POLICY_RULE, &#039;Form&#039; =&gt; self::DRIVER_TYPE_FORM, &#039;Form Field&#039; =&gt; self::DRIVER_TYPE_FORM_FIELD, &#039;Form Settings&#039; =&gt; self::DRIVER_TYPE_FORM_SETTINGS, &#039;Notification&#039; =&gt; self::DRIVER_TYPE_NOTIFICATION, &#039;Mail&#039; =&gt; self::DRIVER_TYPE_MAIL, &#039;Job&#039; =&gt; self::DRIVER_TYPE_JOB, &#039;File Converter&#039; =&gt; self::DRIVER_TYPE_FILE_CONVERTER]                            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_DATA_GRID">DRIVER_TYPE_DATA_GRID</a>
+    <span>
+        &nbsp;= &#039;data-grid&#039;                            </span>
+</dt>
+<dd>Define data grid value in the `core_drivers` schema.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_ENTITY">DRIVER_TYPE_ENTITY</a>
+    <span>
+        &nbsp;= &#039;entity&#039;                            </span>
+</dt>
+<dd>Set Driver type entity.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_ENTITY_CONTENT">DRIVER_TYPE_ENTITY_CONTENT</a>
+    <span>
+        &nbsp;= &#039;entity-content&#039;                            </span>
+</dt>
+<dd>Set Driver type entity.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_ENTITY_USER">DRIVER_TYPE_ENTITY_USER</a>
+    <span>
+        &nbsp;= &#039;entity-user&#039;                            </span>
+</dt>
+<dd>Set Driver type entity.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_EVENT">DRIVER_TYPE_EVENT</a>
+    <span>
+        &nbsp;= &#039;event&#039;                            </span>
+</dt>
+<dd>Define authorization policy handler in the `core_drivers` schema.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_FILE_CONVERTER">DRIVER_TYPE_FILE_CONVERTER</a>
+    <span>
+        &nbsp;= &#039;file-converter&#039;                            </span>
+</dt>
+<dd>Define site setting form value in the `file-converter` schema.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_FORM">DRIVER_TYPE_FORM</a>
+    <span>
+        &nbsp;= &#039;form&#039;                            </span>
+</dt>
+<dd>Set Driver type form.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_FORM_FIELD">DRIVER_TYPE_FORM_FIELD</a>
+    <span>
+        &nbsp;= &#039;form-field&#039;                            </span>
+</dt>
+<dd>Set Driver type form.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_FORM_SETTINGS">DRIVER_TYPE_FORM_SETTINGS</a>
+    <span>
+        &nbsp;= &#039;form-settings&#039;                            </span>
+</dt>
+<dd>Define site setting form value in the `core_drivers` schema.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_JOB">DRIVER_TYPE_JOB</a>
+    <span>
+        &nbsp;= &#039;job&#039;                            </span>
+</dt>
+<dd>Define authorization policy handler in the `core_drivers` schema.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_JSON_COLLECTION">DRIVER_TYPE_JSON_COLLECTION</a>
+    <span>
+        &nbsp;= &#039;json-collection&#039;                            </span>
+</dt>
+<dd>Define JSON collection value in the `core_drivers` schema.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_JSON_RESOURCE">DRIVER_TYPE_JSON_RESOURCE</a>
+    <span>
+        &nbsp;= &#039;json-resource&#039;                            </span>
+</dt>
+<dd>Define JSON resource value in the `core_drivers` schema.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_MAIL">DRIVER_TYPE_MAIL</a>
+    <span>
+        &nbsp;= &#039;mail&#039;                            </span>
+</dt>
+<dd>Define authorization policy handler in the `core_drivers` schema.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_NOTIFICATION">DRIVER_TYPE_NOTIFICATION</a>
+    <span>
+        &nbsp;= &#039;notification&#039;                            </span>
+</dt>
+<dd>Define authorization policy handler in the `core_drivers` schema.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_PACKAGE_SETTING">DRIVER_TYPE_PACKAGE_SETTING</a>
+    <span>
+        &nbsp;= &#039;package-setting&#039;                            </span>
+</dt>
+<dd>Define package settings.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_POLICY_RESOURCE">DRIVER_TYPE_POLICY_RESOURCE</a>
+    <span>
+        &nbsp;= &#039;policy-resource&#039;                            </span>
+</dt>
+<dd>Define authorization policy handler in the `core_drivers` schema.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_POLICY_RULE">DRIVER_TYPE_POLICY_RULE</a>
+    <span>
+        &nbsp;= &#039;policy-rule&#039;                            </span>
+</dt>
+<dd>Define authorization policy handler in the `core_drivers` schema.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_RESOURCE_ACTIONS">DRIVER_TYPE_RESOURCE_ACTIONS</a>
+    <span>
+        &nbsp;= &#039;resource-mobile&#039;                            </span>
+</dt>
+<dd>Define mobile resource settings value in the `core_drivers` schema.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_RESOURCE_WEB">DRIVER_TYPE_RESOURCE_WEB</a>
+    <span>
+        &nbsp;= &#039;resource-web&#039;                            </span>
+</dt>
+<dd>Define mobile resource settings value in the `core_drivers` schema.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_USER_GATEWAY_FORM">DRIVER_TYPE_USER_GATEWAY_FORM</a>
+    <span>
+        &nbsp;= &#039;form-user-gateway&#039;                            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Core-Constants.html#constant_LOCALE_GROUP_ROOT">LOCALE_GROUP_ROOT</a>
+    <span>
+        &nbsp;= &#039;_root&#039;                            </span>
+</dt>
+<dd>Define alias of &quot;*&quot;  group.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MetaFox-Core-Constants.html#constant_LOCALE_NAMESPACE_ROOT">LOCALE_NAMESPACE_ROOT</a>
+    <span>
+        &nbsp;= &#039;_root&#039;                            </span>
+</dt>
+<dd>Define alias of &quot;*&quot;  locale namespace.</dd>
+
+    </dl>
 
 
 
@@ -211,74 +396,899 @@
 
 
         
+    <section class="phpdocumentor-constants">
+        <h3 class="phpdocumentor-elements__header" id="constants">
+            Constants
+            <a href="classes/MetaFox-Core-Constants.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h3>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_AVAILABLE_DRIVER_TYPES">
+        AVAILABLE_DRIVER_TYPES
+        <a href="classes/MetaFox-Core-Constants.html#constant_AVAILABLE_DRIVER_TYPES" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Constants.php"><a href="files/packages-metafox-core-src-constants.html"><abbr title="packages/metafox/core/src/Constants.php">Constants.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">119</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">AVAILABLE_DRIVER_TYPES</span>
+    = <span class="phpdocumentor-signature__default-value">[&#039;Entity&#039; =&gt; self::DRIVER_TYPE_ENTITY, &#039;Content Type&#039; =&gt; self::DRIVER_TYPE_ENTITY_USER, &#039;Data Grid&#039; =&gt; self::DRIVER_TYPE_DATA_GRID, &#039;Json Resource&#039; =&gt; self::DRIVER_TYPE_JSON_RESOURCE, &#039;Resource Web&#039; =&gt; self::DRIVER_TYPE_RESOURCE_WEB, &#039;Resource Mobile&#039; =&gt; self::DRIVER_TYPE_RESOURCE_ACTIONS, &#039;Policy&#039; =&gt; self::DRIVER_TYPE_POLICY_RESOURCE, &#039;Policy Rule&#039; =&gt; self::DRIVER_TYPE_POLICY_RULE, &#039;Form&#039; =&gt; self::DRIVER_TYPE_FORM, &#039;Form Field&#039; =&gt; self::DRIVER_TYPE_FORM_FIELD, &#039;Form Settings&#039; =&gt; self::DRIVER_TYPE_FORM_SETTINGS, &#039;Notification&#039; =&gt; self::DRIVER_TYPE_NOTIFICATION, &#039;Mail&#039; =&gt; self::DRIVER_TYPE_MAIL, &#039;Job&#039; =&gt; self::DRIVER_TYPE_JOB, &#039;File Converter&#039; =&gt; self::DRIVER_TYPE_FILE_CONVERTER]</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_DRIVER_TYPE_DATA_GRID">
+        DRIVER_TYPE_DATA_GRID
+        <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_DATA_GRID" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Constants.php"><a href="files/packages-metafox-core-src-constants.html"><abbr title="packages/metafox/core/src/Constants.php">Constants.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">20</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define data grid value in the `core_drivers` schema.</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">DRIVER_TYPE_DATA_GRID</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;data-grid&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_DRIVER_TYPE_ENTITY">
+        DRIVER_TYPE_ENTITY
+        <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_ENTITY" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Constants.php"><a href="files/packages-metafox-core-src-constants.html"><abbr title="packages/metafox/core/src/Constants.php">Constants.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">98</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Set Driver type entity.</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">DRIVER_TYPE_ENTITY</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;entity&#039;</span>
+</code>
+
+
+    
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_ENTITY#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/MetaFox-Core-Models-Driver.html"><abbr title="\MetaFox\Core\Models\Driver">Driver</abbr></a></span>
+                                        
+                                             
+                                    </dd>
+                                            </dl>
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_DRIVER_TYPE_ENTITY_CONTENT">
+        DRIVER_TYPE_ENTITY_CONTENT
+        <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_ENTITY_CONTENT" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Constants.php"><a href="files/packages-metafox-core-src-constants.html"><abbr title="packages/metafox/core/src/Constants.php">Constants.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">104</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Set Driver type entity.</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">DRIVER_TYPE_ENTITY_CONTENT</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;entity-content&#039;</span>
+</code>
+
+
+    
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_ENTITY_CONTENT#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/MetaFox-Core-Models-Driver.html"><abbr title="\MetaFox\Core\Models\Driver">Driver</abbr></a></span>
+                                        
+                                             
+                                    </dd>
+                                            </dl>
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_DRIVER_TYPE_ENTITY_USER">
+        DRIVER_TYPE_ENTITY_USER
+        <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_ENTITY_USER" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Constants.php"><a href="files/packages-metafox-core-src-constants.html"><abbr title="packages/metafox/core/src/Constants.php">Constants.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">110</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Set Driver type entity.</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">DRIVER_TYPE_ENTITY_USER</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;entity-user&#039;</span>
+</code>
+
+
+    
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_ENTITY_USER#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/MetaFox-Core-Models-Driver.html"><abbr title="\MetaFox\Core\Models\Driver">Driver</abbr></a></span>
+                                        
+                                             
+                                    </dd>
+                                            </dl>
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_DRIVER_TYPE_EVENT">
+        DRIVER_TYPE_EVENT
+        <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_EVENT" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Constants.php"><a href="files/packages-metafox-core-src-constants.html"><abbr title="packages/metafox/core/src/Constants.php">Constants.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">80</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define authorization policy handler in the `core_drivers` schema.</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">DRIVER_TYPE_EVENT</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;event&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_DRIVER_TYPE_FILE_CONVERTER">
+        DRIVER_TYPE_FILE_CONVERTER
+        <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_FILE_CONVERTER" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Constants.php"><a href="files/packages-metafox-core-src-constants.html"><abbr title="packages/metafox/core/src/Constants.php">Constants.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">117</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define site setting form value in the `file-converter` schema.</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">DRIVER_TYPE_FILE_CONVERTER</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;file-converter&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_DRIVER_TYPE_FORM">
+        DRIVER_TYPE_FORM
+        <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_FORM" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Constants.php"><a href="files/packages-metafox-core-src-constants.html"><abbr title="packages/metafox/core/src/Constants.php">Constants.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">86</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Set Driver type form.</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">DRIVER_TYPE_FORM</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;form&#039;</span>
+</code>
+
+
+    
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_FORM#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/MetaFox-Core-Models-Driver.html"><abbr title="\MetaFox\Core\Models\Driver">Driver</abbr></a></span>
+                                        
+                                             
+                                    </dd>
+                                            </dl>
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_DRIVER_TYPE_FORM_FIELD">
+        DRIVER_TYPE_FORM_FIELD
+        <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_FORM_FIELD" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Constants.php"><a href="files/packages-metafox-core-src-constants.html"><abbr title="packages/metafox/core/src/Constants.php">Constants.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">92</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Set Driver type form.</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">DRIVER_TYPE_FORM_FIELD</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;form-field&#039;</span>
+</code>
+
+
+    
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_FORM_FIELD#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/MetaFox-Core-Models-Driver.html"><abbr title="\MetaFox\Core\Models\Driver">Driver</abbr></a></span>
+                                        
+                                             
+                                    </dd>
+                                            </dl>
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_DRIVER_TYPE_FORM_SETTINGS">
+        DRIVER_TYPE_FORM_SETTINGS
+        <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_FORM_SETTINGS" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Constants.php"><a href="files/packages-metafox-core-src-constants.html"><abbr title="packages/metafox/core/src/Constants.php">Constants.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">25</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define site setting form value in the `core_drivers` schema.</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">DRIVER_TYPE_FORM_SETTINGS</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;form-settings&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_DRIVER_TYPE_JOB">
+        DRIVER_TYPE_JOB
+        <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_JOB" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Constants.php"><a href="files/packages-metafox-core-src-constants.html"><abbr title="packages/metafox/core/src/Constants.php">Constants.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">75</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define authorization policy handler in the `core_drivers` schema.</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">DRIVER_TYPE_JOB</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;job&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_DRIVER_TYPE_JSON_COLLECTION">
+        DRIVER_TYPE_JSON_COLLECTION
+        <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_JSON_COLLECTION" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Constants.php"><a href="files/packages-metafox-core-src-constants.html"><abbr title="packages/metafox/core/src/Constants.php">Constants.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">50</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define JSON collection value in the `core_drivers` schema.</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">DRIVER_TYPE_JSON_COLLECTION</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;json-collection&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_DRIVER_TYPE_JSON_RESOURCE">
+        DRIVER_TYPE_JSON_RESOURCE
+        <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_JSON_RESOURCE" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Constants.php"><a href="files/packages-metafox-core-src-constants.html"><abbr title="packages/metafox/core/src/Constants.php">Constants.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">30</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define JSON resource value in the `core_drivers` schema.</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">DRIVER_TYPE_JSON_RESOURCE</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;json-resource&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_DRIVER_TYPE_MAIL">
+        DRIVER_TYPE_MAIL
+        <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_MAIL" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Constants.php"><a href="files/packages-metafox-core-src-constants.html"><abbr title="packages/metafox/core/src/Constants.php">Constants.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">65</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define authorization policy handler in the `core_drivers` schema.</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">DRIVER_TYPE_MAIL</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;mail&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_DRIVER_TYPE_NOTIFICATION">
+        DRIVER_TYPE_NOTIFICATION
+        <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_NOTIFICATION" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Constants.php"><a href="files/packages-metafox-core-src-constants.html"><abbr title="packages/metafox/core/src/Constants.php">Constants.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">70</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define authorization policy handler in the `core_drivers` schema.</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">DRIVER_TYPE_NOTIFICATION</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;notification&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_DRIVER_TYPE_PACKAGE_SETTING">
+        DRIVER_TYPE_PACKAGE_SETTING
+        <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_PACKAGE_SETTING" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Constants.php"><a href="files/packages-metafox-core-src-constants.html"><abbr title="packages/metafox/core/src/Constants.php">Constants.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">45</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define package settings.</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">DRIVER_TYPE_PACKAGE_SETTING</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;package-setting&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_DRIVER_TYPE_POLICY_RESOURCE">
+        DRIVER_TYPE_POLICY_RESOURCE
+        <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_POLICY_RESOURCE" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Constants.php"><a href="files/packages-metafox-core-src-constants.html"><abbr title="packages/metafox/core/src/Constants.php">Constants.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">55</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define authorization policy handler in the `core_drivers` schema.</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">DRIVER_TYPE_POLICY_RESOURCE</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;policy-resource&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_DRIVER_TYPE_POLICY_RULE">
+        DRIVER_TYPE_POLICY_RULE
+        <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_POLICY_RULE" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Constants.php"><a href="files/packages-metafox-core-src-constants.html"><abbr title="packages/metafox/core/src/Constants.php">Constants.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">60</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define authorization policy handler in the `core_drivers` schema.</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">DRIVER_TYPE_POLICY_RULE</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;policy-rule&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_DRIVER_TYPE_RESOURCE_ACTIONS">
+        DRIVER_TYPE_RESOURCE_ACTIONS
+        <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_RESOURCE_ACTIONS" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Constants.php"><a href="files/packages-metafox-core-src-constants.html"><abbr title="packages/metafox/core/src/Constants.php">Constants.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">35</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define mobile resource settings value in the `core_drivers` schema.</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">DRIVER_TYPE_RESOURCE_ACTIONS</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;resource-mobile&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_DRIVER_TYPE_RESOURCE_WEB">
+        DRIVER_TYPE_RESOURCE_WEB
+        <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_RESOURCE_WEB" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Constants.php"><a href="files/packages-metafox-core-src-constants.html"><abbr title="packages/metafox/core/src/Constants.php">Constants.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">40</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define mobile resource settings value in the `core_drivers` schema.</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">DRIVER_TYPE_RESOURCE_WEB</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;resource-web&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_DRIVER_TYPE_USER_GATEWAY_FORM">
+        DRIVER_TYPE_USER_GATEWAY_FORM
+        <a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_USER_GATEWAY_FORM" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Constants.php"><a href="files/packages-metafox-core-src-constants.html"><abbr title="packages/metafox/core/src/Constants.php">Constants.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">112</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">DRIVER_TYPE_USER_GATEWAY_FORM</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;form-user-gateway&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_LOCALE_GROUP_ROOT">
+        LOCALE_GROUP_ROOT
+        <a href="classes/MetaFox-Core-Constants.html#constant_LOCALE_GROUP_ROOT" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Constants.php"><a href="files/packages-metafox-core-src-constants.html"><abbr title="packages/metafox/core/src/Constants.php">Constants.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">15</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define alias of &quot;*&quot;  group.</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">LOCALE_GROUP_ROOT</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;_root&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_LOCALE_NAMESPACE_ROOT">
+        LOCALE_NAMESPACE_ROOT
+        <a href="classes/MetaFox-Core-Constants.html#constant_LOCALE_NAMESPACE_ROOT" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="packages/metafox/core/src/Constants.php"><a href="files/packages-metafox-core-src-constants.html"><abbr title="packages/metafox/core/src/Constants.php">Constants.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">10</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define alias of &quot;*&quot;  locale namespace.</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">LOCALE_NAMESPACE_ROOT</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;_root&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+            </section>
 
         
 
         
-        
+        <div class="phpdocumentor-modal" id="source-view">
+    <div class="phpdocumentor-modal-bg" data-exit-button></div>
+    <div class="phpdocumentor-modal-container">
+        <div class="phpdocumentor-modal-content">
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/packages/metafox/core/src/Constants.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+        </div>
+        <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
+    </div>
+</div>
+
     <script type="text/javascript">
-        function loadExternalCodeSnippets(line) {
-            Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach((pre) => {
-                var src = pre.getAttribute('data-src').replace( /\\/g, '/');
-                var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
-                var language = 'php';
+        (function () {
+            function loadExternalCodeSnippet(el, url, line) {
+                Array.prototype.slice.call(el.querySelectorAll('pre[data-src]')).forEach((pre) => {
+                    const src = url || pre.getAttribute('data-src').replace(/\\/g, '/');
+                    const language = 'php';
 
-                var code = document.createElement('code');
-                code.className = 'language-' + language;
+                    const code = document.createElement('code');
+                    code.className = 'language-' + language;
+                    pre.textContent = '';
+                    pre.setAttribute('data-line', line)
+                    code.textContent = 'Loading…';
+                    pre.appendChild(code);
 
-                pre.textContent = '';
+                    var xhr = new XMLHttpRequest();
 
-                pre.setAttribute('data-line', line)
-                code.textContent = 'Loading…';
+                    xhr.open('GET', src, true);
 
-                pre.appendChild(code);
-
-                var xhr = new XMLHttpRequest();
-
-                xhr.open('GET', src, true);
-
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState == 4) {
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState !== 4) {
+                            return;
+                        }
 
                         if (xhr.status < 400 && xhr.responseText) {
                             code.textContent = xhr.responseText;
-
                             Prism.highlightElement(code);
+                            return;
                         }
-                        else if (xhr.status >= 400) {
+
+                        if (xhr.status === 404) {
+                            code.textContent = '✖ Error: File could not be found';
+                            return;
+                        }
+
+                        if (xhr.status >= 400) {
                             code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                            return;
                         }
-                        else {
-                            code.textContent = '✖ Error: File does not exist, is empty or trying to view from localhost';
-                        }
+
+                        code.textContent = '✖ Error: An unknown error occurred';
+                    };
+
+                    xhr.send(null);
+                });
+            }
+
+            const modalButtons = document.querySelectorAll("[data-modal]");
+            const openedAsLocalFile = window.location.protocol === 'file:';
+            if (modalButtons.length > 0 && openedAsLocalFile) {
+                console.warn(
+                    'Viewing the source code is unavailable because you are opening this page from the file:// scheme; ' +
+                    'browsers block XHR requests when a page is opened this way'
+                );
+            }
+
+            modalButtons.forEach(function (trigger) {
+                if (openedAsLocalFile) {
+                    trigger.setAttribute("hidden", "hidden");
+                }
+
+                trigger.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const modal = document.getElementById(trigger.dataset.modal);
+                    if (!modal) {
+                        console.error(`Modal with id "${trigger.dataset.modal}" could not be found`);
+                        return;
                     }
-                };
+                    modal.classList.add("phpdocumentor-modal__open");
 
-                xhr.send(null);
-            });
-        }
-
-        var modals = document.querySelectorAll("[data-modal]");
-
-        modals.forEach(function (trigger) {
-            trigger.addEventListener("click", function (event) {
-                //event.preventDefault();
-                const modal = document.getElementById(trigger.dataset.modal);
-                modal.classList.add("phpdocumentor-modal__open");
-                loadExternalCodeSnippets(trigger.dataset.line)
-                const exits = modal.querySelectorAll("[data-exit-button]");
-                exits.forEach(function (exit) {
-                    exit.addEventListener("click", function (event) {
-                        event.preventDefault();
-                        modal.classList.remove("phpdocumentor-modal__open");
+                    loadExternalCodeSnippet(modal, trigger.dataset.src || null, trigger.dataset.line)
+                    const exits = modal.querySelectorAll("[data-exit-button]");
+                    exits.forEach(function (exit) {
+                        exit.addEventListener("click", function (event) {
+                            event.preventDefault();
+                            modal.classList.remove("phpdocumentor-modal__open");
+                        });
                     });
                 });
             });
-        });
+        })();
     </script>
 
     </article>
-                <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
+                                </section>
+                <section class="phpdocumentor-on-this-page__sidebar">
+                                
+    <section class="phpdocumentor-on-this-page__content">
+        <strong class="phpdocumentor-on-this-page__title">On this page</strong>
+
+        <ul class="phpdocumentor-list -clean">
+            <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
+            <li>
+                <ul class="phpdocumentor-list -clean">
+                                        <li><a href="classes/MetaFox-Core-Constants.html#toc-constants">Constants</a></li>
+                                                                            </ul>
+            </li>
+                            <li class="phpdocumentor-on-this-page-section__title">Constants</li>
+                <li>
+                    <ul class="phpdocumentor-list -clean">
+                                                    <li><a href="classes/MetaFox-Core-Constants.html#constant_AVAILABLE_DRIVER_TYPES">AVAILABLE_DRIVER_TYPES</a></li>
+                                                    <li><a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_DATA_GRID">DRIVER_TYPE_DATA_GRID</a></li>
+                                                    <li><a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_ENTITY">DRIVER_TYPE_ENTITY</a></li>
+                                                    <li><a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_ENTITY_CONTENT">DRIVER_TYPE_ENTITY_CONTENT</a></li>
+                                                    <li><a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_ENTITY_USER">DRIVER_TYPE_ENTITY_USER</a></li>
+                                                    <li><a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_EVENT">DRIVER_TYPE_EVENT</a></li>
+                                                    <li><a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_FILE_CONVERTER">DRIVER_TYPE_FILE_CONVERTER</a></li>
+                                                    <li><a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_FORM">DRIVER_TYPE_FORM</a></li>
+                                                    <li><a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_FORM_FIELD">DRIVER_TYPE_FORM_FIELD</a></li>
+                                                    <li><a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_FORM_SETTINGS">DRIVER_TYPE_FORM_SETTINGS</a></li>
+                                                    <li><a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_JOB">DRIVER_TYPE_JOB</a></li>
+                                                    <li><a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_JSON_COLLECTION">DRIVER_TYPE_JSON_COLLECTION</a></li>
+                                                    <li><a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_JSON_RESOURCE">DRIVER_TYPE_JSON_RESOURCE</a></li>
+                                                    <li><a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_MAIL">DRIVER_TYPE_MAIL</a></li>
+                                                    <li><a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_NOTIFICATION">DRIVER_TYPE_NOTIFICATION</a></li>
+                                                    <li><a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_PACKAGE_SETTING">DRIVER_TYPE_PACKAGE_SETTING</a></li>
+                                                    <li><a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_POLICY_RESOURCE">DRIVER_TYPE_POLICY_RESOURCE</a></li>
+                                                    <li><a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_POLICY_RULE">DRIVER_TYPE_POLICY_RULE</a></li>
+                                                    <li><a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_RESOURCE_ACTIONS">DRIVER_TYPE_RESOURCE_ACTIONS</a></li>
+                                                    <li><a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_RESOURCE_WEB">DRIVER_TYPE_RESOURCE_WEB</a></li>
+                                                    <li><a href="classes/MetaFox-Core-Constants.html#constant_DRIVER_TYPE_USER_GATEWAY_FORM">DRIVER_TYPE_USER_GATEWAY_FORM</a></li>
+                                                    <li><a href="classes/MetaFox-Core-Constants.html#constant_LOCALE_GROUP_ROOT">LOCALE_GROUP_ROOT</a></li>
+                                                    <li><a href="classes/MetaFox-Core-Constants.html#constant_LOCALE_NAMESPACE_ROOT">LOCALE_NAMESPACE_ROOT</a></li>
+                                            </ul>
+                </li>
+            
+            
+                    </ul>
+    </section>
+
+                </section>
+                            </div>
+            <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
     <section class="phpdocumentor-search-results__dialog">
         <header class="phpdocumentor-search-results__header">
             <h2 class="phpdocumentor-search-results__title">Search results</h2>
@@ -289,7 +1299,6 @@
         </section>
     </section>
 </section>
-            </div>
         </div>
         <a href="classes/MetaFox-Core-Constants.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
