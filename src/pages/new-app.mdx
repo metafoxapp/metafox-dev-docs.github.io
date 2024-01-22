@@ -1,6 +1,6 @@
 ## Introduction
 
-Assume that you can install the MetaFox site on your local machine or server.
+Assume that you can install the MetaFox site with the the MetaFox Developer package on your local machine or server.
 
 In this acticle, we will create a new app `note` of company `metafox`. The _Notes_ app will support following features:
 
@@ -18,7 +18,7 @@ Generally, developing a new MetaFox app includes 2 parts: _Frontend_ and _Backen
 
 #### Enable Code Generator
 
-The Code Generator option will display on the top header in AdminCP Dashboad, next to the User icon.
+The *Code Generator* option will display on the top header in AdminCP Dashboad, next to the User icon.
 
 To enable this option, please do following steps:
 
@@ -95,10 +95,10 @@ To create app skeleton for the _Frontend_ of _Notes_ app, you can open Terminal,
 
 cd frontend/
 
-npx metafox-cli create-app company/note
+npx metafox-cli create-app metafox/note
 
 ✔ What do you need? · Create new app
-✔ What is vendor/company name? · company
+✔ What is vendor/company name? · metafox
 ✔ What is app name? · note
 Generating files ...
 Updating workspace ...
@@ -107,23 +107,24 @@ Updating workspace ...
 You will see that the default skeleton for the _Frontend_ of _Notes_ app will be generated as below:
 
 ```text
-packages/
-  company/
-    note/
-      src/
-        reducers/
-        sagas/
-      package.json
-      tsconfig.json
-      constants.ts
-      types.ts: define typings
-      index.tsx: general export
-      module.d.ts: integrate typing
+frontend/
+  packages/
+    metafox/
+      note/
+        src/
+          reducers/
+          sagas/
+        package.json
+        tsconfig.json
+        constants.ts
+        types.ts: define typings
+        index.tsx: general export
+        module.d.ts: integrate typing
 ```
 
-Now we should add new routing from '/note' to `./src/pages/HomePage.tsx`
+Now we should add new routing for '/note'. On this page, we will simply show the text "This is note home page" for now.
 
-add new file `./src/pages/HomePage.tsx` and paste source.
+Let's create a new file at  `frontend/packages/metafox/note/src/pages/HomePage.tsx` and add following code:
 
 ```jsx
 /**
@@ -141,14 +142,21 @@ function HomePage() {
 export default HomePage;
 ```
 
-open terminal then run
+Now, we will open terminal, go to the `frontend` folder and run following commands to build the frontend
 
 ```bash
-yarn bootstrap
-yarn start
+yarn bundle
 ```
 
-Open browser then see "This is note home page" on the screen.
+Once the building process is done, you can copy all build source files to the `web` folder.
+
+In terminal, go to the top root folder and run the following command
+
+```bash
+cp -rf frontend/app/dist/* web/
+```
+
+Now, you can open browser and go the URL http://localhost:8081/note . The message "This is note home page" on the screen.
 
 ### Add New Schema
 
