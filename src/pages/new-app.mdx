@@ -95,48 +95,60 @@ To create app skeleton for the _Frontend_ of _Notes_ app, you can open Terminal,
 
 cd frontend/
 
-yarn metafox create-app metafox/note
+npx metafox-cli create-app company/note
 
-# Reload project settings
-yarn bootstrap
-
-#Restart dev server again
-yarn start
-
+✔ What do you need? · Create new app
+✔ What is vendor/company name? · company
+✔ What is app name? · note
+Generating files ...
+Updating workspace ...
 ```
 
 You will see that the default skeleton for the _Frontend_ of _Notes_ app will be generated as below:
 
 ```text
 packages/
-  metafox/
+  company/
     note/
       src/
         reducers/
         sagas/
-      message.json
       package.json
       tsconfig.json
       constants.ts
       types.ts: define typings
       index.tsx: general export
       module.d.ts: integrate typing
-      components/: define components
-      pages/: define pages
-        HomePage/
-          Page.tsx
-          layouts.json
 ```
 
-To create skeleton of _Note_ resource, you can run command:
+Now we should add new routing from '/note' to `./src/pages/HomePage.tsx`
+
+add new file `./src/pages/HomePage.tsx` and paste source.
+
+```jsx
+/**
+ * @type: route
+ * path: /note
+ * name: note.index
+ */
+
+import React from "react";
+
+function HomePage() {
+  return <div>This is note home page</div>;
+}
+
+export default HomePage;
+```
+
+open terminal then run
 
 ```bash
-
-yarn metafox create-resource metafox/note Note
-
+yarn bootstrap
+yarn start
 ```
 
-You can use the command `yarn metafox --help` to list commands and options.
+Open browser then see "This is note home page" on the screen.
 
 ### Add New Schema
 
@@ -336,7 +348,7 @@ class WebSetting extends ResourceSetting
     /**
      * Define forms json should return in web-settings.
      */
-    protected function initForms(): void
+    protected function initForms(): voidxx
     {
         $this->addForms([
             'filter' => new SearchNoteForm(),
