@@ -277,7 +277,7 @@ Route::group([
 });
 ```
 
-Now, you can open the URL `http://localhost:3000/note` on your browser to view result.
+Now, you can open the URL `http://localhost:8081/note` on your browser to view result.
 
 MetaFox framework supports API versioning,
 
@@ -369,7 +369,7 @@ Checking `backend/packages/note/config/drivers.php` contains
 
 ```php
     [
-        'driver'     => 'MetaFox\\Company\\Http\\Resources\\v1\\Note\\WebSetting',
+        'driver'     => 'MetaFox\\Note\\Http\\Resources\\v1\\Note\\WebSetting',
         'type'       => 'resource-web',
         'name'       => 'note',
         'version'    => 'v1',
@@ -894,7 +894,7 @@ to identity translation string in the appliation. etc:
 <?php
 
 /**
- * namespace: "note" is the alias of package `company\note`.
+ * namespace: "note" is the alias of package `metafox\note`.
  * group: "phrase"
  * note: "note_length_title"
  */
