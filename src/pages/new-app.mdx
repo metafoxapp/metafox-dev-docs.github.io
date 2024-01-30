@@ -298,7 +298,7 @@ Edit `backend/packages/metafox/note/src/Http/Resources/v1/Note/WebSetting.php` f
 
 namespace MetaFox\Note\Http\Resources\v1\Note;
 
-use MetaFox\Platform\Support\Resource\WebSetting as ResourceSetting;
+use MetaFox\Platform\Resource\WebSetting as ResourceSetting;
 
 /**
  *--------------------------------------------------------------------------
@@ -358,7 +358,7 @@ class WebSetting extends ResourceSetting
     /**
      * Define forms json should return in web-settings.
      */
-    protected function initForms(): voidxx
+    protected function initForms(): void
     {
         $this->addForms([
             'filter' => new SearchNoteForm(),
@@ -367,7 +367,7 @@ class WebSetting extends ResourceSetting
 }
 ```
 
-Checking `backend/packages/note/config/drivers.php` contains
+Checking `backend/packages/metafox/note/resouces/drivers.php` contains
 
 ```php
     [
@@ -383,7 +383,7 @@ Checking `backend/packages/note/config/drivers.php` contains
 
 ## Home Page
 
-Let's open the `frontend/packages/note/src/pages/HomePage/Page.tsx` file and look into some annotations at the top of file
+Let's open the `frontend/packages/metafox/note/src/pages/HomePage/Page.tsx` file and look into some annotations at the top of file
 
 ```tsx
 /**
