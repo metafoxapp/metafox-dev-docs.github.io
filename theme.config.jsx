@@ -51,7 +51,7 @@ const config = {
           ></iframe>
         </noscript>
         <span>
-          Copyright © 2023 &nbsp;
+          Copyright © 2024 &nbsp;
           <a href="https://phpfox.com" target="_blank">
             phpFox LLC
           </a>
