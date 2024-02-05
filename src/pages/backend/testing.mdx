@@ -1,0 +1,715 @@
+# Testing
+
+**Type of software testing**
+
+![/images/21-types-of-testing.png](/images/21-types-of-testing.png)
+
+## Objective of PhpUnit
+
+**Improved code quality**
+
+By using PHPUnit, developers can easily write and execute automated tests, leading to more reliable and robust code.
+This helps catch bugs early on in the development cycle, reducing the chances of them being deployed to production.
+
+**Faster feedback loop**
+
+With automated testing, developers can get immediate feedback on whether their code changes have introduced any bugs or
+broken existing functionality. This leads to faster bug detection and resolution, improving the overall efficiency of
+the development process
+
+**Cost-effective**
+
+By catching bugs early on, PHPUnit helps reduce the cost of fixing them in later stages of development or even after
+deployment. Additionally, automated testing reduces the need for manual testing, which can be time-consuming and costly.
+
+**Continuous improvement**
+
+PHPUnit promotes a continuous improvement mindset by encouraging developers to write tests for new features and bug
+fixes. This helps maintain code quality over time and ensures that any changes made to the codebase do not introduce
+bugs or regressions.
+
+Focus:
+
+- Data Flow
+- Control Follow
+- Branch Coverage
+- Statement Coverage
+
+## Concepts
+
+**AAA pattern: Arrange - Act - Assert
+
+Arrange-Act-Assert is a great way to structure test cases. It prescribes an order of operations:
+
+- Arrange inputs and targets. Arrange steps should set up the test case. Does the test require any objects or special
+  settings? Does it need to prep a database? Does it need to log into a web app? Handle all of these operations at the
+  start of the test.
+- Act on the target behavior. Act steps should cover the main thing to be tested. This could be calling a function or
+  method, calling a REST API, or interacting with a web page. Keep actions focused on the target behavior.
+- Assert expected outcomes. Act steps should elicit some sort of response. Assert steps verify the goodness or badness
+  of that response. Sometimes, assertions are as simple as checking numeric or string values. Other times, they may
+  require checking multiple facets of a system. Assertions will ultimately determine if the test passes or fails.
+
+```php
+class SampleTest extends TestCase
+{
+    protected function setUp(): void {
+        parent::setUp();
+    }
+    
+    public fuction testFunction(): void{
+        $a = 1;
+        $b = 2;
+       
+        $this->assert($a+$b, 2)
+    }
+    
+    protected function tearDown(): void {
+        parent::setUp();
+        $this->controller = $this->app->make(CacheAdminController::class);
+    }
+}
+```
+
+**Mocking**
+
+Mocking is a process used in unit testing when the unit being tested has external dependencies. The purpose of mocking
+is to isolate and focus on the code being tested and not on the behavior or state of external dependencies.
+
+```php
+$mock = Artisan::spy();
+$mock->shouldReceive('call')
+    ->with('cache:reset')
+    ->once()
+    ->andReturn(0);
+```
+
+**Isolation **
+
+Isolation testing is a software testing technique that isolates individual components or units of code from each other
+to test them independently. This helps to identify and fix defects early in the development process before they can
+cause problems in other parts of the system.
+
+## Configuration
+
+Reference: https://docs.phpunit.de/en/10.5/configuration.html
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.3/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         backupGlobals="false"
+         failOnEmptyTestSuite="false"
+         failOnIncomplete="false"
+         processIsolation="false"
+         cacheResult="false"
+         cacheDirectory=".phpunit.cache"
+         backupStaticProperties="false">
+    <testsuites>
+        <testsuite name="tests">
+            <directory suffix="Test.php">packages</directory>
+        </testsuite>
+    </testsuites>
+    <source>
+        <include>
+            <directory suffix=".php">app</directory>
+            <directory suffix=".php">packages</directory>
+        </include>
+        <exclude>
+            <directory suffix=".php">packages/*/*/tests</directory>
+            <directory>vendor</directory>
+            <directory>tests</directory>
+            <directory>config</directory>
+            <directory>database</directory>
+            <directory>zdocker</directory>
+            <directory>public</directory>
+            <directory>bootstrap</directory>
+            <directory>app/Console</directory>
+        </exclude>
+    </source>
+    <coverage>
+        <report>
+            <html outputDirectory="build/coverage"/>
+        </report>
+    </coverage>
+    <php>
+        <ini name="memory_limit" value="-1"/>
+        <!--        <ini name="pcov.enabled" value="1"/>-->
+        <env name="APP_KEY" value="AckfSECXIvnK5r28GVIWUAxmbBSjTsmF"/>
+        <server name="APP_ENV" value="testing"/>
+        <server name="BCRYPT_ROUNDS" value="4"/>
+        <server name="MFOX_CACHE_DRIVER" value="array"/>
+        <server name="MFOX_MAIL_PROVIDER" value="array"/>
+        <server name="MFOX_MAIL_FROM" value="noreply@metafox.app"/>
+        <server name="MFOX_SESSION_DRIVER" value="array"/>
+        <server name="QUEUE_CONNECTION" value="sync"/>
+        <server name="TELESCOPE_ENABLED" value="false"/>
+    </php>
+    <extensions>
+        <bootstrap class="Qameta\Allure\PHPUnit\AllureExtension">
+            <parameter name="config" value=".config/allure.config.php"/>
+        </bootstrap>
+    </extensions>
+</phpunit>
+```
+
+## Commands
+
+Update phpunit.xml
+
+```bash
+php artisan make:phpunit-xml
+```
+
+Run parallel testing
+
+```bash
+
+php artisan test -p10 -c phpunit.xml --no-coverage packages/metafox/blog/tests/Unit/
+
+```
+
+Run standalone test
+
+```bash
+
+./vendor/bin/phpunit -c phpunit.xml --no-coverage packages/metafox/blog/tests/Unit/
+
+```
+
+Run Test with coverage
+
+```bash
+./vendor/bin/phpunit -c phpunit.xml packages/metafox/blog/tests/Unit/
+```
+
+## Mocking
+
+[1. Laravel Mocking](https://laravel.com/docs/10.x/mocking)
+
+[2. Mockery](https://github.com/mockery/mockery)
+
+phpFox uses laravel dependencies
+
+```php
+namespace MetaFox\Cache\Http\Controllers\Api\v1;
+
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
+use MetaFox\Platform\Http\Controllers\Api\ApiController;
+
+// source
+class CacheAdminController extends ApiController
+{
+    public function clearCache(Request $request): JsonResponse
+    {
+        $optimize = $request->get('optimize');
+
+        if ($optimize) {
+            Artisan::call('cache:reset');
+            Artisan::call('optimize');
+            Artisan::call('queue:restart');
+        } else {
+            Artisan::call('cache:reset');
+        }
+
+        return $this->success(['id' => 1], [], __p('cache::phrase.cache_is_cleared_successfully'));
+    }
+}
+```
+
+```php
+// test
+class CacheAdminControllerTest extends TestCase
+{
+    public function testClearCacheOptimize()
+    {
+        $this->partialMock(\Illuminate\Http\Request::class)
+            ->shouldReceive('get')
+            ->with('optimize')
+            ->andReturn(true);
+
+        // @link https://laravel.com/docs/9.x/mocking#facade-spies
+        $mock = Artisan::spy();
+
+        $mock->shouldReceive('call')
+            ->with('cache:reset')
+            ->once()
+            ->andReturn(0);
+
+        $mock->shouldReceive('call')
+            ->with('optimize')
+            ->once()
+            ->andReturn(0);
+
+        /** @var JsonResponse $response */
+        $response = app()->call([$this->controller, 'clearCache']);
+
+        $this->assertInstanceOf(JsonResponse::class, $response);
+    }
+    
+    
+    public function testClearCacheWithoutOptimize()
+    {
+        $this->partialMock(\Illuminate\Http\Request::class)
+            ->shouldReceive('get')
+            ->with('optimize')
+            ->andReturn(false);
+
+        $mock = Artisan::spy();
+
+        $mock->shouldReceive('call')
+            ->with('cache:reset')
+            ->once()
+            ->andReturn(0);
+
+        $mock->shouldReceive('call')
+            ->with('optimize')
+            ->once()
+            ->andReturn(0);
+
+        /** @var JsonResponse $response */
+        $response = app()->call([$this->controller, 'clearCache']);
+
+        $this->assertInstanceOf(JsonResponse::class, $response);
+    }
+}
+```
+
+## TestRepository
+
+reference: `packages/metafox/blog/tests/Unit/Repositories/Eloquent/BlogRepositoryTest.php`
+
+```php
+<?php
+
+namespace Tests\TestCases;
+
+use ReflectionClass;
+use Tests\TestCase;
+
+class TestRepository extends TestCase
+{
+    public function createRepositoryPartialMock(string $repositoryClass)
+    {
+        $mock = $this->mock($repositoryClass)->makePartial();
+        $reflection = new ReflectionClass($repositoryClass);
+        $property = $reflection->getProperty('app');
+        $property->setAccessible(true);
+        $property->setValue($mock, $this->app);
+        $mock->makeModel();
+        $mock->makePresenter();
+        $mock->makeValidator();
+        $mock->boot();
+
+        return $mock;
+    }
+}
+```
+
+**Browse**
+
+```php
+<?php
+
+class BlogRepositoryTest extends TestRepository
+{
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->repository = $this->createRepositoryPartialMock(Repository::class);
+    }
+    
+    /**
+     * @return void
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @dataProvider provide_viewMode
+     * @testdox View blog view=$view, sort=$sort, q=$q
+     */
+    public function testViewBlogs($view, $sort, $q = null)
+    {
+        $user = $this->createMockUser(1);
+        $owner = $user;
+
+        $this->actingAs($user);
+
+        $attributes = [
+            'q'           => '',
+            'user_id'     => 1,
+            'view'        => $view,
+            'limit'       => 10,
+            'sort'        => $sort,
+            'sort_type'   => 'desc',
+            'category_id' => 0,
+        ];
+
+        $response = $this->repository->viewBlogs($user, $owner, $attributes);
+
+        $this->assertInstanceOf(Paginator::class, $response);
+    }
+}
+```
+
+**Test Permission**
+
+```php
+<?php
+
+class BlogRepositoryTest extends TestRepository
+{
+    public function testCreateFailureBecauseOfPermission()
+    {
+        // user post a blog.
+        $context = $this->createMockUser();
+
+        $this->partialMock(BlogPolicy::class)
+            ->shouldReceive('create')
+            ->with($context, $context)
+            ->andReturn(false);
+
+        $this->expectException(\Illuminate\Auth\Access\AuthorizationException::class);
+
+        $this->repository->createBlog($context, $context, []);
+    }
+}
+```
+
+**Create**
+
+```php
+<?php
+
+class BlogRepositoryTest extends TestRepository
+{
+
+    public static function provide_testMethodCreateBlog()
+    {
+        yield 'User post blog' => [
+            fn() => [
+                'userId'      => 1,
+                'ownerId'     => 1,
+                'title'       => 'blog title 01',
+                'privacy'     => 0,
+                'temp_file'   => null,
+                'attachments' => null,
+            ], function (Blog $blog) {
+                static::assertSame(1, $blog->userId());
+                static::assertSame(1, $blog->ownerId());
+                static::assertSame('blog title 01', $blog->title);
+                static::assertSame(0, $blog->privacy);
+            },
+        ];
+        
+    /**
+     * @see          \MetaFox\Blog\Repositories\Eloquent\BlogRepository::createBlog
+     * @dataProvider provide_testMethodCreateBlog
+     */
+    public function testCreateBlog($fn, $assertion)
+    {
+        $data = is_callable($fn) ? $fn() : $fn;
+        $guards = ['userId', 'ownerId'];
+        extract(Arr::only($data, $guards));
+        $attributes = Arr::except($data, $guards);
+
+        // disable event, test logic that defined on repository only.
+        Event::fake();
+
+        // user post a blog.
+        $context = $this->createMockUser($userId);
+        $owner = $this->createMockUser($ownerId);
+
+        $this->be($context);
+
+        $this->mock(BlogPolicy::class)->allows(['create' => true, 'view' => true, 'autoApprove'=>true]);
+
+        $this->mock(\MetaFox\Platform\Contracts\UploadFile::class)
+            ->shouldReceive('getFileId')
+            ->with($attributes['temp_file'], true)
+            ->atMost()
+            ->andReturn($attributes['temp_file']);
+
+        $this->mock(\MetaFox\Core\Repositories\AttachmentRepositoryInterface::class)
+            ->shouldReceive('updateItemId')
+            ->withAnyArgs()
+            ->once();
+
+        $blog = $this->repository->createBlog($context, $owner, $attributes);
+
+        $this->assertInstanceOf(Blog::class, $blog);
+
+        if ($assertion) {
+            $assertion($blog);
+        }
+
+        $blog->delete();
+    }
+}
+```
+
+## Test Model Patten
+
+reference: `packages/metafox/blog/tests/Unit/Models/BlogTest.php`
+
+```php
+<?php
+
+/**
+ * @group resource.content
+ */
+class BlogTest extends TestContentModel
+{
+    public function modelName(): string
+    {
+        return Blog::class;
+    }
+}
+
+```
+
+## Test Resource Pattern
+
+reference: `packages/metafox/blog/tests/Unit/Http/Resources/v1/Blog/BlogItemTest.php`
+
+```php
+<?php
+
+
+class BlogItemTest extends TestCase
+{
+    /**
+     * @return array<mixed>
+     */
+    public function testCreate()
+    {
+        $model = Model::factory()->create();
+        $user = $this->createUser()->assignRole(UserRole::NORMAL_USER);
+        $model->refresh();
+        $this->assertNotEmpty($model->id);
+        $this->assertInstanceOf(User::class, $user);
+        
+        return [$model, $user];
+    }
+
+    /**
+     * @depends testCreate
+     *
+     * @param array<mixed> $params
+     */
+    public function testResource(array $params)
+    {
+        [$model, $user] = $params;
+        $this->be($user);
+        $resource = new Resource($model);
+        $resource->toJson();
+        $this->assertTrue(true);
+    }
+
+    /**
+     * @depends testCreate
+     *
+     * @param array<mixed> $params
+     */
+    public function testCollection(array $params)
+    {
+        [$model, $user] = $params;
+        $this->be($user);
+        $collection = new ResourceCollection([$model]);
+        $collection->toJson();
+        $this->assertTrue(true);
+    }
+}
+```
+
+## Test Controller Pattern
+
+reference: `packages/metafox/blog/tests/Unit/Http/Controllers/Api/v1/BlogControllerTest.php`
+
+```php
+<?php
+
+
+```
+
+## Test Api Pattern
+
+reference: packages/framework/log/tests/Api/v1/LogApiTest.php
+
+```bash
+./vendor/bin/phpunit -c phpunit.xml --no-coverage packages/framework/log/tests/Api/v1/LogApiTest.php
+```
+
+```php
+
+class LogApiTest extends TestApiFixture
+{
+    /**
+     * @link \Tests\TestCases\TestApiFixture::testRequest
+     */
+    public static function provideFixtures()
+    {
+        /*
+        * Directory packages/framework/log/tests/fixtures
+        */
+        return static::loadFixtures([
+            //            'api/v1/channel-admin.php',
+            'api/v1/log-message-admin.php',
+            'api/v1/file-admin.php',
+        ]);
+    }
+}
+```
+
+```php
+// file: packages/framework/log/tests/fixtures/api/v1/log-message-admin.php
+
+namespace Tests;
+
+return function () {
+    $state = State::factory([]);
+
+    /*
+     * @see \MetaFox\Log\Http\Controllers\Api\v1\LogMessageAdminController::index
+     */
+    yield 'GET api/v1/admincp/log/db/msg' => fn () => [
+        'url'      => $state->url('api/v1/admincp/log/db/msg'),
+        'method'   => 'GET',
+        'user'     => 'admin',
+        'data'     => [],
+        'status'   => 200,
+        'skipTest' => false,
+    ];
+};
+```
+
+Advance usages
+
+reference:
+
+- `packages/metafox/activity/tests/Api/v1/ActivityApiTest.php`
+- `packages/metafox/activity/tests/fixtures/api/v1/type-admin.php`
+-
+
+```bash
+./vendor/bin/phpunit -c phpunit.xml --no-coverage packages/metafox/activity/tests/Api/v1/ActivityApiTest.php
+```
+
+## Code Coverage
+
+https://cloudcall-s01.phpfox.com/coverage/php/
+
+## Allure Report
+
+https://laravel.com/docs/9.x/mocking#facade-spies
+
+## CI Integration
+
+```txt
+name: unitest-pgsql
+
+concurrency: unitest-pgsql
+
+on:
+  push:
+    #    branches: [ develop ]
+    branches: [ fix/review_blog ]
+
+  pull_request:
+    branches: [ ]
+
+  repository_dispatch:
+    types: [ phpunit, test-pgsql ]
+
+  workflow_dispatch:
+    inputs:
+      clean_allure_results:
+          type: boolean
+          default: false
+          description: Clean allure results
+
+env:
+  ALLURE_SERVER: https://cloudcall-s01.phpfox.com
+  ALLURE_PROJECT: phpunit
+  FPM_IMAGE: foxsystem/metafox-fpm
+  MFOX_DAT_DRIVER: pgsql
+  MFOX_CACHE_DRIVER: array
+  ENV_FILE: ".env.testing.example"
+
+jobs:
+  test_postgres:
+    runs-on: self-hosted
+    services:
+#      redis:
+#        image: bitnami/redis:6.2
+#        env:
+#          ALLOW_EMPTY_PASSWORD: "yes"
+#        options: >-
+#          --health-cmd "redis-cli ping"
+#          --health-interval 10s
+#          --health-timeout 5s
+#          --health-retries 5
+
+      pgsql:
+        image: foxsystem/postgres:13.2
+        env:
+          POSTGRES_DB: metafox
+          POSTGRES_USER: metafox
+          POSTGRES_PASSWORD: 123456
+          POSTGRES_HOST_AUTH_METHOD: trust
+          POSTGRES_MAX_CONNECTIONS: 500
+          POSTGRES_SHARED_BUFFERS: 256MB
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+      #needs: [ code_quality ]
+
+    container:
+      image: foxsystem/metafox-fpm
+      credentials:
+        username: foxsystem
+        password: ${{  secrets.DOCKER_CONTAINER_REGISTRY_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+
+      - name: Setup dependencies
+        timeout-minutes: 1
+        run: |
+          cp ${{ env.ENV_FILE }} .env.testing
+          cp ${{ env.ENV_FILE }} .env
+          mkdir -p storage/framework/cache/data
+          chmod -R 777 storage/framework/cache/data
+          php -d memory_limit=-1 /opt/bitnami/php/bin/composer install --ignore-platform-reqs --no-interaction
+
+      - name: Installation
+        timeout-minutes: 2
+        run: |
+          php composer metafox:install
+          php composer dump-autoload
+          php artisan optimize
+
+      - name: PHPUnit without coverage
+        timeout-minutes: 5
+        run: |
+          mkdir -p ./build/allure-results
+          export GIT_HASH=$(git rev-parse --short "$GITHUB_SHA")
+          export GIT_BRANCH=${GITHUB_REF#refs/heads/}
+          php artisan test -p10 -c phpunit.xml --testsuite=tests --no-coverage
+
+      - name: Calculate allure results
+        if: ${{ inputs.clean_allure_results }}
+        run: |
+          curl -X GET "${{env.ALLURE_SERVER}}/allure-docker-service/clean-results?project_id=${{env.ALLURE_PROJECT}}" -H  "accept: */*"
+          curl -X GET "${{env.ALLURE_SERVER}}/allure-docker-service/clean-history?project_id=${{env.ALLURE_PROJECT}}" -H  "accept: */*"
+
+      - name: Send allure results
+        if: always()
+        run: |
+          php ./send_results.php
+```

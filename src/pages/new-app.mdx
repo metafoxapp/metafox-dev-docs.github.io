@@ -18,7 +18,7 @@ Generally, developing a new MetaFox app includes 2 parts: _Frontend_ and _Backen
 
 #### Enable Code Generator
 
-The *Code Generator* option will display on the top header in AdminCP Dashboad, next to the User icon.
+The _Code Generator_ option will display on the top header in AdminCP Dashboad, next to the User icon.
 
 To enable this option, please do following steps:
 
@@ -34,7 +34,7 @@ Let's choose the _New App_ option as we intend to generate code for new app at t
 
 On the _Create App_ form, you will need to fill the following app details:
 
-- **App Name**: App name must have to 2 parts in the follow format _vendor_name/app_name_, such as `metafox/note`
+- **App Name**: App name must have to 2 parts in the follow format _vendor_name/app_name_, such as `company/note`
 - **Vendor Name**: This info will be used as your app namespace, such as `MetaFox`
 - **Author Name**: Fill your company/vendor name, such as `phpFox`
 - **Name**: fill the app name, such as `Note`
@@ -97,7 +97,7 @@ cd frontend/
 
 yarn && yarn bootstrap
 
-npx metafox-cli create-app metafox/note
+npx metafox-cli
 
 ✔ What do you need? · Create new app
 ✔ What is vendor/company name? · metafox
@@ -126,7 +126,7 @@ frontend/
 
 Now we should add new routing for '/note'. On this page, we will simply show the text "This is note home page" for now.
 
-Let's create a new file at  `frontend/packages/metafox/note/src/pages/HomePage.tsx` and add following code:
+Let's create a new file at `frontend/packages/company/note/src/pages/HomePage.tsx` and add following code:
 
 ```jsx
 /**
@@ -150,7 +150,6 @@ Now, we will open terminal, go to the `frontend` folder and run following comman
 yarn bundle
 ```
 
-<<<<<<< HEAD
 Once the building process is done, you can copy all build source files to the `web` folder.
 
 In terminal, go to the top root folder and run the following command
@@ -159,11 +158,11 @@ In terminal, go to the top root folder and run the following command
 cp -rf frontend/app/dist/* web/
 ```
 
-Now, you can open browser and go the URL http://localhost:8081/note . The message "This is note home page" on the screen.
-=======
+# Now, you can open browser and go the URL http://localhost:8081/note . The message "This is note home page" on the screen.
 
 Open browser then see "This is note home page" on the screen.
->>>>>>> 055d51f8a (fix)
+
+> > > > > > > 055d51f8a (fix)
 
 ### Add Landing Page
 
@@ -176,14 +175,13 @@ Editing `./src/pages/HomePage.tsx`
  * path: /note
  */
 
-import { createLandingPage } from '@metafox/framework';
+import { createLandingPage } from "@metafox/framework";
 
 export default createLandingPage({
-  appName: 'note',
-  pageName: 'note.home',
-  resourceName: 'note'
+  appName: "note",
+  pageName: "note.home",
+  resourceName: "note",
 });
-
 ```
 
 Add new file `./src/assets/pages/note.home.json` and paste:
@@ -218,7 +216,6 @@ Add new file `./src/assets/pages/note.home.json` and paste:
   }
 }
 ```
-
 
 ### Add New Menu
 
@@ -332,12 +329,13 @@ Update content
 }
 ```
 
-We add new layout block to layout: 
+We add new layout block to layout:
+
 ```json
 {
-    "blockId": "x8",
-    "component": "note.block.SampleBlock",
-    "slotName": "main"
+  "blockId": "x8",
+  "component": "note.block.SampleBlock",
+  "slotName": "main"
 }
 ```
 
@@ -350,23 +348,23 @@ The second step is create scripts file to handle block, create new file `./packa
  * title: Sample Block
  * description: This is deveveloper sample guide block
  */
-import React from 'react';
-import { createBlock, ListViewBlockProps } from '@metafox/framework';
+import React from "react";
+import { createBlock, ListViewBlockProps } from "@metafox/framework";
 
 function SampleBlock() {
   return <div>Sample Block</div>;
 }
 
 export default createBlock<ListViewBlockProps>({
-  name: 'SampleBlock',
+  name: "SampleBlock",
   extendBlock: SampleBlock,
   defaults: {
-    title: 'Sample'
-  }
+    title: "Sample",
+  },
 });
 ```
 
-Open terminal at `./frontend` directory then run: 
+Open terminal at `./frontend` directory then run:
 
 ```bash
 yarn reload
@@ -380,7 +378,7 @@ The next step we update block scripts to display more complex layout and present
 
 Press **Code Generator** on the top header in AdminCP, then choose **Migration** item and fill schema name with "notes".
 
-A new _Migration_ file is created under `backend/package/metafox/note/src/Database/Migrations` folder.
+A new _Migration_ file is created under `backend/package/company/note/src/Database/Migrations` folder.
 Its file name will be prefixed by info of datetime, for example:`2022_05_23_101328_migrate_notes_table.php`
 
 The datetime prefix helps migration scripts execute Migration files in chronological order.
@@ -488,11 +486,10 @@ Open terminal at `./backend` directory then re-install note package to apply new
 php artisan package:install company/note --fast
 ```
 
-
 ## Add New Model
 
 Press **Code Generator** on the top header and choose the **Model** item.
-Then, fill your _App name_ with `metafox/note`, _schemas_ with `notes`, _Model_ with `Note` and _Entity Name_ with `note`.
+Then, fill your _App name_ with `company/note`, _schemas_ with `notes`, _Model_ with `Note` and _Entity Name_ with `note`.
 
 _MetaFox_ generates somes classes based on what features you have chosen on the previous form.
 
@@ -529,6 +526,7 @@ Create a pivot schema to publish a _Note_ item to activity stream.
 Create [Observer](/backend/eloquent#observers) to listen events on the main schema
 
 Register Repository to laravel service provider at `./packages/company/note/src/Providers/PackageServiceProvider.php`
+
 ```php
 <?php
 
@@ -552,13 +550,13 @@ class PackageServiceProvider extends ServiceProvider
 ## Generate APIs for Web and Admin
 
 Press **Code Generator** on the top header in AdminCP and choose the **Web API** item.
-On the form, choose `metafox/note` package and `Note` model, then submit.
+On the form, choose `company/note` package and `Note` model, then submit.
 
 You can do the same to generate APIs for Admin but choose **Admin API**.
 
 [To update api routes](/backend/routing)
 
-Next, we will edit `backend/packages/metafox/note/routes/api.php` file to add routes:
+Next, we will edit `backend/packages/company/note/routes/api.php` file to add routes:
 
 ```php
 <?php
@@ -579,41 +577,42 @@ php artisan cache:reset
 Checking api is ready at `http://localhost:3000/api/v1/note`
 
 you'll see content similar to
+
 ```json
 {
-    "data": [],
-    "links": {
-        "first": "http:\/\/127.0.0.1:8080\/api\/v1\/note?page=1",
-        "last": "http:\/\/127.0.0.1:8080\/api\/v1\/note?page=1",
-        "prev": null,
-        "next": null
-    },
-    "meta": {
-        "current_page": 1,
-        "from": null,
-        "last_page": 1,
-        "links": [
-            {
-                "url": null,
-                "label": "&laquo; Previous",
-                "active": false
-            },
-            {
-                "url": "http:\/\/127.0.0.1:8080\/api\/v1\/note?page=1",
-                "label": "1",
-                "active": true
-            },
-            {
-                "url": null,
-                "label": "Next &raquo;",
-                "active": false
-            }
-        ],
-        "path": "http:\/\/127.0.0.1:8080\/api\/v1\/note",
-        "per_page": 100,
-        "to": null,
-        "total": 0
-    }
+  "data": [],
+  "links": {
+    "first": "http://127.0.0.1:8080/api/v1/note?page=1",
+    "last": "http://127.0.0.1:8080/api/v1/note?page=1",
+    "prev": null,
+    "next": null
+  },
+  "meta": {
+    "current_page": 1,
+    "from": null,
+    "last_page": 1,
+    "links": [
+      {
+        "url": null,
+        "label": "&laquo; Previous",
+        "active": false
+      },
+      {
+        "url": "http://127.0.0.1:8080/api/v1/note?page=1",
+        "label": "1",
+        "active": true
+      },
+      {
+        "url": null,
+        "label": "Next &raquo;",
+        "active": false
+      }
+    ],
+    "path": "http://127.0.0.1:8080/api/v1/note",
+    "per_page": 100,
+    "to": null,
+    "total": 0
+  }
 }
 ```
 
@@ -629,7 +628,7 @@ The _Frontend_ loads all site settings, permissions and all resource settings vi
 This API collects all data defined in the `WebSetting` classes of all app packages.
 Follow this guide step by step to register app settings into the _Settings API_.
 
-Edit `backend/packages/metafox/note/src/Http/Resources/v1/Note/WebSetting.php` file
+Edit `backend/packages/company/note/src/Http/Resources/v1/Note/WebSetting.php` file
 
 ```php
 <?php
@@ -739,7 +738,6 @@ export default createLandingPage({
 });
 ```
 
-
 `@type: route`
 
 Define this source code is a route, MetaFox bundle tool collects this info and separate to bundle.
@@ -751,7 +749,6 @@ Define a global unique key for route, it can be overwritten by another page when
 `path: /note`
 
 This is a pattern string to define a route path, based on [path-to-regexp](https://www.npmjs.com/package/path-to-regexp)
-
 
 Check new file:
 
@@ -793,7 +790,7 @@ Visit **AdminCP** > **Code Generator** > **Forms**
 
 Put forms with _"store, update, search"_ to create `StoreNoteForm`, `UpdateNoteForm`, `SearchNoteForm`.
 
-Edit `backend/packages/metafox/note/routes/api.php` file to add routes for form requests.
+Edit `backend/packages/company/note/routes/api.php` file to add routes for form requests.
 
 Dive into `StoreNoteForm.php`
 
@@ -829,7 +826,7 @@ Route::group([
 });
 ```
 
-Edit the `backend/packages/metafox/note/src/Http/Controllers/Api/v1/NoteController.php` file, add following methods
+Edit the `backend/packages/company/note/src/Http/Controllers/Api/v1/NoteController.php` file, add following methods
 
 ```php
 <?php
@@ -1006,7 +1003,7 @@ _Frontend_ supports built-in dynamic form builder to transform JSON-based respon
 
 Below is the sample Form response in JSON format
 
-```json
+```txt
 {
   "status": "success",
   "data": {
@@ -1071,7 +1068,7 @@ Below is the sample Form response in JSON format
           },
       },
     }
-  },
+  }
 }
 ```
 
@@ -1156,7 +1153,7 @@ Form supports validation both _Frontend_ and _Backend_
 
 ### Backend
 
-Dive into `backend/packages/metafox/note/src/Http/Requests/v1/Note/StoreRequest.php` file
+Dive into `backend/packages/company/note/src/Http/Requests/v1/Note/StoreRequest.php` file
 
 ```php
 <?php
@@ -1207,7 +1204,7 @@ note/
       fr/                 : Others language code.
 ```
 
-Dive deeper into `backend/packages/metafox/note/resources/lang/en/phrase.php`, it defines phrase group `phrase`, contains a list of phrase_name and phrase value.
+Dive deeper into `backend/packages/company/note/resources/lang/en/phrase.php`, it defines phrase group `phrase`, contains a list of phrase_name and phrase value.
 
 ```php
 <?php
@@ -1236,7 +1233,7 @@ to identity translation string in the appliation. etc:
 <?php
 
 /**
- * namespace: "note" is the alias of package `metafox\note`.
+ * namespace: "note" is the alias of package `company\note`.
  * group: "phrase"
  * note: "note_length_title"
  */
@@ -1349,7 +1346,7 @@ To support multiple language, frontend load custom language translation using ap
 
 ## Page Browsing
 
-Dive deeper into `frontend/packages/metafox/note/src/pages/BrowseNotes/Page.tsx` file
+Dive deeper into `frontend/packages/company/note/src/pages/BrowseNotes/Page.tsx` file
 
 ```tsx
 /**
