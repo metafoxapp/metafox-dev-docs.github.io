@@ -1,21 +1,21 @@
 # Theme
 
-MetaFox theme is based on [Material UI](https://mui.com/material-ui/), a beautiful by design and features a suite of
+MetaFox theme is based on [Material UI](https://mui.com/material-ui/), a beautiful design and features with a suite of
 customization options that make it easy to implement your own custom design system.
 
-MetaFox theme defines styles and layouts, in which styles indicate color palette, typography
+MetaFox theme defines *styles* and *layouts*, in which styles indicate color palette, typography
 
 ## Create A New Theme
 
 Install dependencies
 
+Open terminal and navigate to frontend project root folder. Then run the command
+
 ```bash
 yarn && yarn bootstrap
 ```
 
-Using `metafox-cli` tool to create a new theme and install to front end workbox.
-
-Open terminal and navigate to frontend project root.
+Using `metafox-cli` tool to create a new theme and install to frontend workbox.
 
 ```bash
 npx metafox-cli
@@ -34,14 +34,15 @@ Generated theme chocolate located at ./packages/foxdev/theme-chocolate
 Restart frontend terminal to apply changes.
 ```
 
+Now, you can see that the new theme files are generated under `packages/foxdev/theme-chocolate` folder
 Restart frontend terminal then refresh the browser to see changes.
 
 ### Customize Styling
 
-Styling is defined **src/styles.json**, includes
+Styling is defined in **packages/foxdev/theme-chocolate/src/styles.json**, includes
 
 - [palette](#palette) - used to modify colors
-- [typography](#typography) - used to modify css font properties
+- [typography](#typography) - used to modify CSS font properties
 - [shape](#shape) - used to modify border radius system
 
 #### Palette
@@ -58,11 +59,11 @@ Styling is defined **src/styles.json**, includes
 }
 ```
 
-Used to represent primary interface elements for a user. Modify palette primary affect to submit buttons, continue buttons, upload file button, links, selected menu items.
+Used to represent primary interface elements for a user. Modifying palette `primary` will affect to `submit` buttons, `continue` buttons, `upload file` button, links, selected menu items.
 
 **palette.error**
 
-Used to represent interface elements that the user should be made aware of. Modify palette error affect to error message
+Used to represent interface elements that the user should be made aware of. Modifying palette `error` will affect to error messages
 
 **palette.warning**
 
@@ -89,16 +90,13 @@ Used to indicate the successful completion of an action that user triggered.
 }
 ```
 
-background.default Used to present background of your site & paper. background.default used
+`background.default` Used to present background of your site & paper.
 
-**palette.action**
-
-**palette.text**
 
 #### Typography
 
-Typography indicates css font properties.
-Typography supported variant h1, h2, h3, h4, h5, h6, subtitle1, subtitle2, body1, body2, button, caption, overline.
+Typography indicates CSS font properties.
+Typography supported variant `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `subtitle1`, `subtitle2`, `body1`, `body2`, `button`, `caption`, `overline`.
 The following code styling for typography h1.
 
 ```json
@@ -151,11 +149,11 @@ Layout slots define sizes for layout slot.
 
 ### Custom Components
 
-MetaFox theme systems allow frontend developer overrides material components by processors.
+MetaFox theme system allows to overrides Material components by processors.
 
 #### Components.ts
 
-In order to [customize themed components](https://mui.com/material-ui/customization/theme-components/#theme-default-props). Edit `src/processors/Component.ts`
+In order to [customize themed components](https://mui.com/material-ui/customization/theme-components/#theme-default-props). Edit the `src/processors/Component.ts` file
 
 The following example explain how to [customize button styles](https://mui.com/material-ui/api/button/#props)
 
@@ -181,7 +179,7 @@ export default function overridesComponents(theme: Theme): void {
 
 #### CssBaseLine.ts
 
-In order to overrides [css baseline](https://mui.com/material-ui/react-css-baseline/), edit `processors/CssBaseLine.ts`
+In order to overrides [css baseline](https://mui.com/material-ui/react-css-baseline/), edit the `processors/CssBaseLine.ts` file
 
 ```ts
 import { Theme } from "@mui/material";
@@ -211,8 +209,8 @@ export default function overridesGlobalStyles(theme: Theme) {
 
 ### Custom Site Blocks
 
-Site blocks allows developers add blocks to any templates match screen size and slot name in layout. Put block you need affected to all templates
-in `layout.siteBlocks.origin.json`.
+Site blocks allow to add blocks to any templates, on certain screen size and slot name in layout. You can put blocks to all templates
+in the `layout.siteBlocks.origin.json` file as below
 
 ```text
 {
@@ -256,14 +254,14 @@ Example
 
 ## Theme Backend
 
-In order to allow site administrator control theme, metafox theme system require a backend php package associate with the theme.
-Open your admincp, access `/admincp/layout/theme/create`
+In order to allow site administrator control theme, MetaFox theme system requires a Backend PHP package associated with the theme.
+Go to AdminCP, access `/admincp/layout/theme/create`
 
-![Creat Theme](/images/create-theme.png)
+![Create Theme](/images/create-theme.png)
 
 ## Export Theme
 
-Export metafox theme as order metafox packages, follow [export metafox package](/export-package) to export theme.
+Follow [Export MetaFox package](/export-package) to export theme.
 
 ## Custom Styles
 
@@ -317,3 +315,5 @@ declare module "@mui/material/styles/components" {
   }
 }
 ```
+import { doesNotThrow } from "assert"
+
