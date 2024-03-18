@@ -495,6 +495,10 @@ Edit the `backend/packages/metafox/note/src/Http/Controllers/Api/v1/NoteControll
 <?php
 
 namespace MetaFox\Note\Http\Controllers\Api\v1;
+...
+use MetaFox\Note\Http\Resources\v1\Note\SearchNoteForm;
+use MetaFox\Note\Http\Resources\v1\Note\UpdateNoteForm;
+use MetaFox\Note\Http\Resources\v1\Note\StoreNoteForm;
 
 // import use method
 
@@ -506,6 +510,7 @@ class NoteController extends ApiController
     private NoteRepositoryInterface $repository;
 
     // other method and properties
+    ....
 
     /**
      * Get updating form
@@ -541,17 +546,18 @@ class NoteController extends ApiController
      *
      * @param  int  $id
      *
-     * @return DestroyNoteForm
+     * @return StoreNoteForm
      */
-    public function getDestroyForm(int $id): DestroyNoteForm
+    public function getDestroyForm(int $id): StoreNoteForm
     {
         $resource = $this->repository->find($id);
 
-        return new DestroyNoteForm($resource);
+        return new StoreNoteForm($resource);
     }
 }
 ```
 
+Edit the `backend/packages/pdev/note/src/Http/Resources/v1/Note/StoreNoteForm.php` file as below
 ```php
 <?php
 
