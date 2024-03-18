@@ -18,7 +18,7 @@ Generally, developing a new MetaFox app includes 2 parts: _Frontend_ and _Backen
 
 #### Enable Code Generator
 
-The *Code Generator* option will display on the top header in AdminCP Dashboad, next to the User icon.
+The _Code Generator_ option will display on the top header in AdminCP Dashboad, next to the User icon.
 
 To enable this option, please do following steps:
 
@@ -34,7 +34,7 @@ Let's choose the _New App_ option as we intend to generate code for new app at t
 
 On the _Create App_ form, you will need to fill the following app details:
 
-- **App Name**: App name must have to 2 parts in the follow format _vendor_name/app_name_, such as `metafox/note`
+- **App Name**: App name must have to 2 parts in the follow format _vendor_name/app_name_, such as `company/note`
 - **Vendor Name**: This info will be used as your app namespace, such as `MetaFox`
 - **Author Name**: Fill your company/vendor name, such as `phpFox`
 - **Name**: fill the app name, such as `Note`
@@ -97,7 +97,7 @@ cd frontend/
 
 yarn && yarn bootstrap
 
-npx metafox-cli create-app metafox/note
+npx metafox-cli
 
 ✔ What do you need? · Create new app
 ✔ What is vendor/company name? · metafox
@@ -126,13 +126,13 @@ frontend/
 
 Now we should add new routing for '/note'. On this page, we will simply show the text "This is note home page" for now.
 
-Let's create a new file at  `frontend/packages/metafox/note/src/pages/HomePage.tsx` and add following code:
+Let's create a new file at `frontend/packages/company/note/src/pages/HomePage.tsx` and add following code:
 
 ```jsx
 /**
  * @type: route
  * path: /note
- * name: note.index
+ * name: note.home
  */
 
 import React from "react";
@@ -158,13 +158,227 @@ In terminal, go to the top root folder and run the following command
 cp -rf frontend/app/dist/* web/
 ```
 
-Now, you can open browser and go the URL http://localhost:8081/note . The message "This is note home page" on the screen.
+# Now, you can open browser and go the URL http://localhost:8081/note . The message "This is note home page" on the screen.
+
+Open browser then see "This is note home page" on the screen.
+
+> > > > > > > 055d51f8a (fix)
+
+### Add Landing Page
+
+Editing `./src/pages/HomePage.tsx`
+
+```tsx
+/**
+ * @type: route
+ * name: note.home
+ * path: /note
+ */
+
+import { createLandingPage } from "@metafox/framework";
+
+export default createLandingPage({
+  appName: "note",
+  pageName: "note.home",
+  resourceName: "note",
+});
+```
+
+Add new file `./src/assets/pages/note.home.json` and paste:
+
+```json
+{
+  "large": {
+    "blocks": [
+      {
+        "blockId": "ia",
+        "component": "core.block.sideAppHeader",
+        "slotName": "side",
+        "title": "Notes",
+        "icon": "ico-compose-alt",
+        "blockLayout": "sidebar app header",
+        "freeze": true
+      },
+      {
+        "component": "core.block.sidebarAppMenu",
+        "slotName": "side",
+        "title": "Note",
+        "blockId": "i8",
+        "menuName": "sidebarMenu",
+        "blockLayout": "sidebar app menu"
+      }
+    ],
+    "templateName": "two-column-fixed"
+  },
+  "info": {
+    "bundle": "web",
+    "name": "note.home"
+  }
+}
+```
+
+### Add New Menu
+
+Open backend source `./packages/company/note/resources/menu/menus.php`, There are 02 menus defines:
+
+```php
+<?php
+
+ /* this is auto generated file */
+ return [
+     [
+         'name'=> 'note.sidebarMenu',
+         'resolution'=> 'web',
+     ],
+     [
+         'name' => 'note.admin',
+         'resolution'=> 'admin',
+     ],
+ ];
+```
+
+note.admin define admincp menu for note, and note.sidebarMenu define app menu.
+
+Update menu items defines for note.sidebarMenu at `./packages/company/note/resources/menu/web.php`
+
+```php
+<?php
+
+ /* this is auto generated file */
+ return [
+     [
+         'module_id' => 'note',
+         'menu' => 'core.primaryMenu',
+         'name' => '',
+         'parent_name' => '',
+         'label' => '',
+         'ordering' => 4,
+         'is_deleted' => 0,
+         'version' => 0,
+         'is_active' => 1,
+         'to' => '/',
+         'icon' => 'ico-newspaper-alt',
+         'testid' => '',
+         'extra' => [
+             'subInfo' => 'Browse ',
+         ],
+     ],
+     [
+         'tab'      => 'all',
+         'menu'     => 'note.sidebarMenu',
+         'name'     => 'all',
+         'label'    => 'note::phrase.all_note',
+         'ordering' => 1,
+         'icon'     => 'ico-hashtag',
+         'to'       => '/note',
+     ],
+ ];
+```
+
+Open terminal for backend then upgrade menus:
+
+```bash
+php artisan package:install company/note --fast
+```
+
+`'menu' => 'core.primaryMenu',` apply menu item for primary menu to home page, open browser at '/' to see `note` menu items. Click on `note` will navigate to `/note` page.
+
+Checking `./note` to see the new menu item `note::phrase.all_note` menu items.
+
+### Add Sample Block
+
+Following guide we create a new layout block for frontend and display a sample block content.
+
+Open layout file `./packages/company/note/src/assets/pages/note.home.json`
+
+Update content
+
+```json
+{
+  "large": {
+    "blocks": [
+      {
+        "blockId": "ia",
+        "component": "core.block.sideAppHeader",
+        "slotName": "side",
+        "title": "Notes",
+        "icon": "ico-compose-alt",
+        "blockLayout": "sidebar app header",
+        "freeze": true
+      },
+      {
+        "component": "core.block.sidebarAppMenu",
+        "slotName": "side",
+        "title": "Note",
+        "blockId": "i8",
+        "menuName": "sidebarMenu",
+        "blockLayout": "sidebar app menu"
+      },
+      {
+        "blockId": "x8",
+        "component": "note.block.SampleBlock",
+        "slotName": "main"
+      }
+    ],
+    "templateName": "two-column-fixed"
+  },
+  "info": {
+    "bundle": "web",
+    "name": "note.home"
+  }
+}
+```
+
+We add new layout block to layout:
+
+```json
+{
+  "blockId": "x8",
+  "component": "note.block.SampleBlock",
+  "slotName": "main"
+}
+```
+
+The second step is create scripts file to handle block, create new file `./packages/company/note/src/blocks/Sample.tsx`
+
+```tsx
+/**
+ * @type: block
+ * name: note.block.SampleBlock
+ * title: Sample Block
+ * description: This is deveveloper sample guide block
+ */
+import React from "react";
+import { createBlock, ListViewBlockProps } from "@metafox/framework";
+
+function SampleBlock() {
+  return <div>Sample Block</div>;
+}
+
+export default createBlock<ListViewBlockProps>({
+  name: "SampleBlock",
+  extendBlock: SampleBlock,
+  defaults: {
+    title: "Sample",
+  },
+});
+```
+
+Open terminal at `./frontend` directory then run:
+
+```bash
+yarn reload
+```
+
+open browser at `/note` and you'll see new message "Sample Block" on the screen.
+
+The next step we update block scripts to display more complex layout and present data from backend api.
 
 ### Add New Schema
 
 Press **Code Generator** on the top header in AdminCP, then choose **Migration** item and fill schema name with "notes".
 
-A new _Migration_ file is created under `backend/package/metafox/note/src/Database/Migrations` folder.
+A new _Migration_ file is created under `backend/package/company/note/src/Database/Migrations` folder.
 Its file name will be prefixed by info of datetime, for example:`2022_05_23_101328_migrate_notes_table.php`
 
 The datetime prefix helps migration scripts execute Migration files in chronological order.
@@ -201,10 +415,81 @@ created_at         :
 updated_at         :
 ```
 
+example source
+
+```php
+<?php
+
+use MetaFox\Platform\Support\DbTableHelper;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+/*
+ * stub: /packages/database/migration.stub
+ */
+
+/*
+ * @ignore
+ * @codeCoverageIgnore
+ * @link \$PACKAGE_NAMESPACE$\Models
+ */
+return new class () extends Migration {
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up(): void
+    {
+        if (Schema::hasTable('notes')) {
+            return;
+        }
+
+        Schema::create('notes', function (Blueprint $table) {
+            $table->bigIncrements('id');
+
+            DbTableHelper::setupResourceColumns($table, true, true, true, true);
+
+            DbTableHelper::totalColumns($table, ['view', 'like', 'comment', 'reply', 'share', 'attachment']);
+
+            $table->string('title', 255);
+
+            $table->unsignedTinyInteger('is_draft')->default(0);
+
+            DbTableHelper::featuredColumn($table);
+            DbTableHelper::sponsorColumn($table);
+            DbTableHelper::approvedColumn($table);
+            DbTableHelper::imageColumns($table);
+            DbTableHelper::tagsColumns($table);
+
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('notes');
+    }
+};
+
+```
+
+Open terminal at `./backend` directory then re-install note package to apply new schema.
+
+```bash
+php artisan package:install company/note --fast
+```
+
 ## Add New Model
 
 Press **Code Generator** on the top header and choose the **Model** item.
-Then, fill your _App name_ with `metafox/note`, _schemas_ with `notes`, _Model_ with `Note` and _Entity Name_ with `note`.
+Then, fill your _App name_ with `company/note`, _schemas_ with `notes`, _Model_ with `Note` and _Entity Name_ with `note`.
 
 _MetaFox_ generates somes classes based on what features you have chosen on the previous form.
 
@@ -240,50 +525,102 @@ Create a pivot schema to publish a _Note_ item to activity stream.
 
 Create [Observer](/backend/eloquent#observers) to listen events on the main schema
 
+Register Repository to laravel service provider at `./packages/company/note/src/Providers/PackageServiceProvider.php`
+
+```php
+<?php
+
+namespace Company\Note\Providers;
+
+use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\ServiceProvider;
+
+class PackageServiceProvider extends ServiceProvider
+{
+
+    public array $singletons = [
+        \Company\Note\Repositories\NoteRepositoryInterface::class     => \Company\Note\Repositories\Eloquent\NoteRepository::class,
+        // .. more dependencies
+    ];
+}
+```
+
 > **Code Generator** will generate all necessary source files of the model based on the chosen options. It saves you much time.
 
 ## Generate APIs for Web and Admin
 
 Press **Code Generator** on the top header in AdminCP and choose the **Web API** item.
-On the form, choose `metafox/note` package and `Note` model, then submit.
+On the form, choose `company/note` package and `Note` model, then submit.
 
 You can do the same to generate APIs for Admin but choose **Admin API**.
 
 [To update api routes](/backend/routing)
 
-Next, we will edit `backend/packages/metafox/note/routes/api.php` file to add routes:
+Next, we will edit `backend/packages/company/note/routes/api.php` file to add routes:
 
 ```php
 <?php
 
-namespace MetaFox\Note\Http\Controllers\Api;
-
+namespace Company\Note\Http\Controllers\Api;
 use Illuminate\Support\Facades\Route;
 
-/**
- * --------------------------------------------------------------------------
- *  API Routes
- * --------------------------------------------------------------------------
- *
- *  This file will be loaded by @link \MetaFox\Platform\ModuleManager::getApiRoutes()
- *
- *  stub: app/Console/Commands/stubs/routes/api.stub
- */
+Route::prefix('/note')
+    ->resource('resource', NoteController::class);
+```
 
-Route::group([
-    'namespace'  => __NAMESPACE__,
-    'middleware' => 'auth:api', // logged in required
-], function () {
-    // put your routes
-    Route::resource('note', NoteController::class);
-});
+Open terminal at `./backend` directory then clear cache
+
+```php
+php artisan cache:reset
+```
+
+Checking api is ready at `http://localhost:3000/api/v1/note`
+
+you'll see content similar to
+
+```json
+{
+  "data": [],
+  "links": {
+    "first": "http://127.0.0.1:8080/api/v1/note?page=1",
+    "last": "http://127.0.0.1:8080/api/v1/note?page=1",
+    "prev": null,
+    "next": null
+  },
+  "meta": {
+    "current_page": 1,
+    "from": null,
+    "last_page": 1,
+    "links": [
+      {
+        "url": null,
+        "label": "&laquo; Previous",
+        "active": false
+      },
+      {
+        "url": "http://127.0.0.1:8080/api/v1/note?page=1",
+        "label": "1",
+        "active": true
+      },
+      {
+        "url": null,
+        "label": "Next &raquo;",
+        "active": false
+      }
+    ],
+    "path": "http://127.0.0.1:8080/api/v1/note",
+    "per_page": 100,
+    "to": null,
+    "total": 0
+  }
+}
 ```
 
 Now, you can open the URL `http://localhost:8081/note` on your browser to view result.
 
 MetaFox framework supports API versioning,
 
-Http requests are forwarded to `MetaFox\Note\Http\Controllers\Api\NoteController`, validated for versioning and then forwarded to `MetaFox\Note\Http\Controllers\Api\v1\NoteController`.
+Http requests are forwarded to `Company\Note\Http\Controllers\Api\NoteController`, validated for versioning and then forwarded to `Company\Note\Http\Controllers\Api\v1\NoteController`.
 
 ### Add WebSetting
 
@@ -291,12 +628,12 @@ The _Frontend_ loads all site settings, permissions and all resource settings vi
 This API collects all data defined in the `WebSetting` classes of all app packages.
 Follow this guide step by step to register app settings into the _Settings API_.
 
-Edit `backend/packages/metafox/note/src/Http/Resources/v1/Note/WebSetting.php` file
+Edit `backend/packages/company/note/src/Http/Resources/v1/Note/WebSetting.php` file
 
 ```php
 <?php
 
-namespace MetaFox\Note\Http\Resources\v1\Note;
+namespace Company\Note\Http\Resources\v1\Note;
 
 use MetaFox\Platform\Resource\WebSetting as ResourceSetting;
 
@@ -311,7 +648,7 @@ use MetaFox\Platform\Resource\WebSetting as ResourceSetting;
 /**
  * Class NoteWebSetting
  * Inject this class into property $resources.
- * @link \MetaFox\Note\Http\Resources\v1\WebSetting::$resources;
+ * @link \Company\Note\Http\Resources\v1\WebSetting::$resources;
  * @SuppressWarnings(PHPMD.ExcessiveClassLength)
  * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
  */
@@ -413,7 +750,7 @@ Define a global unique key for route, it can be overwritten by another page when
 
 This is a pattern string to define a route path, based on [path-to-regexp](https://www.npmjs.com/package/path-to-regexp)
 
-## Add New Menu
+Check new file:
 
 ### App Menu
 
@@ -453,14 +790,14 @@ Visit **AdminCP** > **Code Generator** > **Forms**
 
 Put forms with _"store, update, search"_ to create `StoreNoteForm`, `UpdateNoteForm`, `SearchNoteForm`.
 
-Edit `backend/packages/metafox/note/routes/api.php` file to add routes for form requests.
+Edit `backend/packages/company/note/routes/api.php` file to add routes for form requests.
 
 Dive into `StoreNoteForm.php`
 
 ```php
 <?php
 
-namespace MetaFox\Note\Http\Controllers\Api;
+namespace Company\Note\Http\Controllers\Api;
 
 use Illuminate\Support\Facades\Route;
 
@@ -489,16 +826,12 @@ Route::group([
 });
 ```
 
-Edit the `backend/packages/metafox/note/src/Http/Controllers/Api/v1/NoteController.php` file, add following methods
+Edit the `backend/packages/company/note/src/Http/Controllers/Api/v1/NoteController.php` file, add following methods
 
 ```php
 <?php
+namespace Company\Note\Http\Controllers\Api\v1;
 
-namespace MetaFox\Note\Http\Controllers\Api\v1;
-...
-use MetaFox\Note\Http\Resources\v1\Note\SearchNoteForm;
-use MetaFox\Note\Http\Resources\v1\Note\UpdateNoteForm;
-use MetaFox\Note\Http\Resources\v1\Note\StoreNoteForm;
 
 // import use method
 
@@ -561,14 +894,14 @@ Edit the `backend/packages/pdev/note/src/Http/Resources/v1/Note/StoreNoteForm.ph
 ```php
 <?php
 
-namespace MetaFox\Note\Http\Resources\v1\Note;
+namespace Company\Note\Http\Resources\v1\Note;
 
 use MetaFox\Platform\MetaFoxForm;
 use MetaFox\Platform\Support\Form\AbstractForm;
 use MetaFox\Platform\Support\Form\Field\CancelButton;
 use MetaFox\Platform\Support\Form\Field\Submit;
 use MetaFox\Platform\Support\Form\Field\Text;
-use MetaFox\Note\Models\Note as Model;
+use Company\Note\Models\Note as Model;
 
 class StoreNoteForm extends AbstractForm
 {
@@ -672,7 +1005,7 @@ _Frontend_ supports built-in dynamic form builder to transform JSON-based respon
 
 Below is the sample Form response in JSON format
 
-```json
+```txt
 {
   "status": "success",
   "data": {
@@ -737,7 +1070,7 @@ Below is the sample Form response in JSON format
           },
       },
     }
-  },
+  }
 }
 ```
 
@@ -822,12 +1155,12 @@ Form supports validation both _Frontend_ and _Backend_
 
 ### Backend
 
-Dive into `backend/packages/metafox/note/src/Http/Requests/v1/Note/StoreRequest.php` file
+Dive into `backend/packages/company/note/src/Http/Requests/v1/Note/StoreRequest.php` file
 
 ```php
 <?php
 
-namespace MetaFox\Note\Http\Requests\v1\Note;
+namespace Company\Note\Http\Requests\v1\Note;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -873,7 +1206,7 @@ note/
       fr/                 : Others language code.
 ```
 
-Dive deeper into `backend/packages/metafox/note/resources/lang/en/phrase.php`, it defines phrase group `phrase`, contains a list of phrase_name and phrase value.
+Dive deeper into `backend/packages/company/note/resources/lang/en/phrase.php`, it defines phrase group `phrase`, contains a list of phrase_name and phrase value.
 
 ```php
 <?php
@@ -902,7 +1235,7 @@ to identity translation string in the appliation. etc:
 <?php
 
 /**
- * namespace: "note" is the alias of package `metafox\note`.
+ * namespace: "note" is the alias of package `company\note`.
  * group: "phrase"
  * note: "note_length_title"
  */
@@ -1015,7 +1348,7 @@ To support multiple language, frontend load custom language translation using ap
 
 ## Page Browsing
 
-Dive deeper into `frontend/packages/metafox/note/src/pages/BrowseNotes/Page.tsx` file
+Dive deeper into `frontend/packages/company/note/src/pages/BrowseNotes/Page.tsx` file
 
 ```tsx
 /**
@@ -1062,7 +1395,7 @@ Global search system is centralized search system in MetaFox. In order for your 
 ```php
 <?php
 
-namespace MetaFox\Note\Models;
+namespace Company\Note\Models;
 
 // declares php "uses" directive.
 
@@ -1092,7 +1425,7 @@ To support activity feed system, the `Note` model will need to implement the `Me
 ```php
 <?php
 
-namespace MetaFox\Note\Models;
+namespace Company\Note\Models;
 use MetaFox\Platform\Support\FeedAction;
 
 // declares php "uses" directive.

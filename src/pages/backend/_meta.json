@@ -15,5 +15,10 @@
   "routing": "Routing",
   "interfaces": "Interfaces",
   "load-reduce": "Load Reduce",
-  "octane": "Octane"
+  "octane": "Octane",
+  "testing": {
+    "title": "Testing",
+    "hidden": false,
+    "href": "/backend/testing"
+  }
 }
